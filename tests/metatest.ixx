@@ -25,32 +25,19 @@ module;
 #endif
 
 #if __has_include(<unistd.h>) && __has_include(<sys/wait.h>)
-#include <sys/wait.h>
+ <sys/wait.h>
 #include <unistd.h>
 #endif
-
-#include <fmt/core.h> 
-#include <fmt/format.h>
 
 export module Nil.MetaTest;
 
 import Boost.TMP;
 import Utils.Strings;
 
-export import <array>;
-export import <concepts>;
-
-#if defined(__cpp_exceptions)
-import <exception>;
-#endif
-
-export import <ranges>;
-export import <source_location>;
-export import <sstream>;
-export import <string>;
-export import <string_view>;
-export import <type_traits>;
-export import <vector>;
+import <array>;
+import <sstream>;
+import <source_location>;
+import <vector>;
 
 export namespace boost::inline ext::ut::inline v1_1_8 {
 namespace utility {
@@ -990,7 +977,7 @@ class reporter {
                  << " | " << printer_.colors().fail << asserts_.fail
                  << " failed" << printer_.colors().none << '\n';
 
-        fmt::print(stderr, "{}\n", printer_.str());
+        fmt::print("{}\n", printer_.str());
       } else {
         // FIXME: Add colors.
         fmt::print("All test passed ({} asserts in {} tests)\n", asserts_.pass, tests_.pass);

@@ -8,8 +8,6 @@
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
 
-module;
-
 export module Utils.Strings.Tokenizer;
 
 import <string>;

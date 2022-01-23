@@ -5,13 +5,8 @@ export import Utils.Strings.Nonmodifying;
 export import Utils.Strings.Unsafe;
 
 import <algorithm>;
-import <cstdint>;
-import <ranges>;
 
-export
-{
-
-template<std::size_t N>
+export template<size_t N>
 struct StrLit
 {
     constexpr StrLit(const char (&str)[N])
@@ -21,5 +16,3 @@ struct StrLit
 
     char value[N];
 };
-
-} // export

@@ -23,8 +23,8 @@ include("C:/dev/vcpkg/scripts/buildsystems/vcpkg.cmake")
 
 if(WIN32)
 	# Enable usage of updated __cplusplus macro
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /sdl- /D __WIN64__ /D UNICODE /D _UNICODE /Zc:__cplusplus /EHsc /arch:AVX2")	
-    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /D __WIN64__ /D UNICODE /D _UNICODE /Zc:__cplusplus /EHsc /arch:AVX2")	
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 endif()
 
 set(CMAKE_CXX_SYSROOT_FLAG_CODE "list(APPEND CMAKE_CXX_SOURCE_FILE_EXTENSIONS ixx)")
@@ -36,6 +36,5 @@ project(vanir VERSION 1.0)
 find_package(fmt CONFIG REQUIRED)
 find_package(Boost REQUIRED COMPONENTS nowide)
 
-add_subdirectory(3rdparty/tmp)
 add_subdirectory(modules)
 add_subdirectory(tests)
