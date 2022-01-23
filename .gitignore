@@ -1,0 +1,9 @@
+build/*
+out/*
+
+.vs/*
+.vscode/*
+
+CMakeSettings.json
+
+3rdparty/*
