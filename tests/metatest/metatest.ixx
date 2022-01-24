@@ -895,7 +895,7 @@ class printer {
 
  private:
   ut::colors colors_{};
-  std::stringsstream out_{};
+  std::stringstream out_{};
 };
 
 template <class TPrinter = printer>
