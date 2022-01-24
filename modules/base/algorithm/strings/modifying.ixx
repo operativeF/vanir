@@ -14,6 +14,10 @@ export namespace nil::utils
 constexpr std::size_t ReplaceAll(std::string& instr, std::string_view candidate, std::string_view replacement)
 {
     std::size_t count{ 0 };
+
+    if(candidate.empty() || replacement.empty())
+        return 0;
+
     for (std::string::size_type pos{};
         instr.npos != (pos = instr.find(candidate.data(), pos, candidate.length()));
         pos += replacement.length(), ++count)
@@ -35,7 +39,6 @@ constexpr void TrimAllSpace(R& str)
     str.erase(str.begin(), it1);
 }
 
-
 template<typename R>
 constexpr void TrimLeadingSpace(R& str)
 {
@@ -43,7 +46,6 @@ constexpr void TrimLeadingSpace(R& str)
 
     str.erase(str.begin(), it);
 }
-
 
 template<typename R>
 constexpr void TrimTrailingSpace(R& str)
@@ -53,13 +55,11 @@ constexpr void TrimTrailingSpace(R& str)
     str.erase(it.base(), str.end());
 }
 
-
 template<typename R>
 constexpr void ToUpper(R& str)
 {
     std::ranges::transform(str, str.begin(), [](auto c) noexcept { return ToUpperCh(c); });
 }
-
 
 template<typename R>
 constexpr void ToLower(R& str)

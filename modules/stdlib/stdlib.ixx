@@ -7,7 +7,7 @@ import <bit>;
 // import <cassert>; // Fundamentally incompatible; can never be a header unit.
 import <cctype>;
 import <charconv>;
-// import <chrono>; // Incompatible, relies on static crt function.
+import <chrono>; // Incompatible, relies on static crt function.
 import <climits>;
 import <clocale>;
 import <cmath>;
@@ -33,7 +33,7 @@ import <iterator>;
 import <limits>;
 import <list>;
 import <map>;
-// import <memory>; // Incompatible, relies on static crt function.
+import <memory>; // Incompatible, relies on static crt function.
 import <numbers>;
 import <numeric>;
 import <optional>;
@@ -56,3 +56,5 @@ import <unordered_map>;
 import <unordered_set>;
 import <utility>;
 import <vector>;
+
+import <boost/nowide/args.hpp>;

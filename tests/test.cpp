@@ -2,21 +2,15 @@
 import Nil.MetaTest;
 
 import fmt;
+import <boost/nowide/args.hpp>;
 
 namespace ut = boost::ut;
-
-ut::suite newsuite = []
-{
-    using namespace ut;
-
-    expect(1_i == 1_i);
-
-    fmt::print("{}", detail::eq_{1, 2});
-};
 
 int main(int argc, char** argv)
 {
     using namespace ut;
+
+    boost::nowide::args a(argc, argv);
 
     const auto result = ut::cfg<ut::override>.run(
         { .report_errors = true });  // explicitly run registered test suites and report errors

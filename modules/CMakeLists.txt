@@ -110,12 +110,15 @@ set(STRING_ALGORITHM
 )
 
 add_library(stdlib_module
-    STATIC
         ${CMAKE_CURRENT_SOURCE_DIR}/stdlib/stdlib.ixx
 )
 
+target_link_libraries(stdlib_module
+    PUBLIC
+        Boost::nowide
+)
+
 add_library(nilbase
-    STATIC
         ${BASE_ALGORITHM}
         ${STRING_ALGORITHM}
 )
