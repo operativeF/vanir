@@ -34,6 +34,8 @@ export module Nil.MetaTest;
 import Boost.TMP;
 import Utils.Strings;
 
+import fmt;
+
 import <array>;
 import <sstream>;
 import <source_location>;
@@ -893,7 +895,7 @@ class printer {
 
  private:
   ut::colors colors_{};
-  std::stringstream out_{};
+  std::stringsstream out_{};
 };
 
 template <class TPrinter = printer>

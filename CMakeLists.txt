@@ -33,8 +33,9 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 project(vanir VERSION 1.0)
 
-find_package(fmt CONFIG REQUIRED)
 find_package(Boost REQUIRED COMPONENTS nowide)
+
+add_subdirectory(3rdparty/fmt EXCLUDE_FROM_ALL)
 
 add_subdirectory(modules)
 add_subdirectory(tests)

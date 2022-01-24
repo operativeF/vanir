@@ -1,8 +1,7 @@
 
 import Nil.MetaTest;
 
-import <iostream>;
-import <sstream>;
+import fmt;
 
 namespace ut = boost::ut;
 
@@ -12,7 +11,7 @@ ut::suite newsuite = []
 
     expect(1_i == 1_i);
 
-    std::cout << "print";
+    fmt::print("{}", detail::eq_{1, 2});
 };
 
 int main(int argc, char** argv)

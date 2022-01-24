@@ -1,9 +1,7 @@
-module;
-
-#include <fmt/core.h>
-#include <fmt/format.h>
 
 export module Utils.Strings.Nonmodifying;
+
+import fmt;
 
 import Utils.Chars;
 

@@ -1,6 +1,6 @@
 
 add_executable(niltest
-    metatest.ixx
+    metatest/metatest.ixx
     test.cpp
 )
 
