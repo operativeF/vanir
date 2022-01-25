@@ -33,10 +33,12 @@ template<typename R>
 constexpr void TrimAllSpace(R& str)
 {
     auto it1 = std::ranges::find_if_not(str, isWhitespace);
+
+    str.erase(str.begin(), it1);
+
     auto it2 = std::ranges::find_if_not(std::ranges::reverse_view(str), isWhitespace);
 
     str.erase(it2.base(), str.end());
-    str.erase(str.begin(), it1);
 }
 
 template<typename R>
