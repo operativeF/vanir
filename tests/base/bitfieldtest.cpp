@@ -35,9 +35,9 @@ ut::suite BitfieldTests = []
     {
         StyleFlags newStyles{Styles::Bold, Styles::Italic, Styles::Underline};
 
-        constexpr auto newStylesSetFlags = StyleFlags::bitmask(Styles::Italic, Styles::Bold, Styles::Underline);
+        constexpr auto newStylesSetFlags = StyleFlags{Styles::Italic, Styles::Bold, Styles::Underline};
 
-        expect(newStyles.as_value() == newStylesSetFlags);
+        expect(newStyles == newStylesSetFlags);
     };
 
     "Toggle On / Off"_test = []
@@ -46,11 +46,11 @@ ut::suite BitfieldTests = []
 
         styles.toggle(Styles::Italic);
 
-        expect(styles.as_value() == StyleFlags::bitmask(Styles::Italic));
+        expect(styles == StyleFlags{Styles::Italic});
 
         styles.toggle(Styles::Italic);
 
-        expect(styles.as_value() == 0);
+        expect(styles == StyleFlags{});
     };
 
     "Set / Reset"_test = []
@@ -59,11 +59,11 @@ ut::suite BitfieldTests = []
 
         styles.set(Styles::Bold);
 
-        expect(styles.as_value() == StyleFlags::bitmask(Styles::Bold));
+        expect(styles == StyleFlags{Styles::Bold});
 
         styles.reset(Styles::Bold);
 
-        expect(styles.as_value() == 0);
+        expect(styles == StyleFlags{});
     };
 
     "Comparison operators"_test = []
@@ -78,7 +78,7 @@ ut::suite BitfieldTests = []
     };
 };
 
-ut::suite BitfieldUnaryOpTests = []
+ut::suite BitfieldOpTests = []
 {
     using namespace ut;
     using namespace nil::utils;
@@ -88,7 +88,6 @@ ut::suite BitfieldUnaryOpTests = []
         StyleFlags styles{Styles::Strikethrough, Styles::Bold};
         StyleFlags altStyles{Styles::Bold, Styles::Italic};
         StyleFlags emptyStyles{};
-        StyleFlags forbiddenStyle{Styles::_max_size};
 
         auto resultStyle = styles & Styles::Bold;
 
@@ -105,38 +104,13 @@ ut::suite BitfieldUnaryOpTests = []
         expect(stillNoStyles == StyleFlags{});
     };
 
-    // SUBCASE("| operator")
-    // {
-
-    // }
-
-    "Set All / Clear"_test = []
-    {
-        StyleFlags styles;
-
-        styles.set_all();
-
-        expect(styles.as_value() == StyleFlags::AllFlagsSet);
-        expect(styles == StyleFlags{Styles::Italic, Styles::Bold, Styles::Underline, Styles::Strikethrough});
-
-        styles.clear();
-
-        expect(styles.as_value() == 0);
-    };
-};
-
-ut::suite BitfieldBinaryOpTests = []
-{
-    using namespace ut;
-    using namespace nil::utils;
-
     "&= operator"_test = []
     {
         StyleFlags styles{Styles::Strikethrough};
 
         styles &= Styles::Strikethrough;
 
-        expect(styles.as_value() == StyleFlags::bitmask(Styles::Strikethrough));
+        expect(styles == StyleFlags{Styles::Strikethrough});
 
         styles.set(Styles::Italic);
 
@@ -152,7 +126,7 @@ ut::suite BitfieldBinaryOpTests = []
         styles |= Styles::Bold;
         styles |= Styles::Strikethrough;
 
-        expect(styles.as_value() == StyleFlags::bitmask(Styles::Bold, Styles::Strikethrough));
+        expect(styles == StyleFlags{Styles::Bold, Styles::Strikethrough});
     };
 
     "^= operator"_test = []
@@ -161,9 +135,23 @@ ut::suite BitfieldBinaryOpTests = []
 
         styles ^= Styles::Bold;
 
-        expect(styles.as_value() == StyleFlags::bitmask(Styles::Bold));
+        expect(styles == StyleFlags{Styles::Bold});
 
         styles ^= Styles::Bold;
+
+        expect(styles == StyleFlags{});
+    };
+
+    "Set All / Clear"_test = []
+    {
+        StyleFlags styles;
+
+        styles.set_all();
+
+        expect(styles.as_value() == StyleFlags::AllFlagsSet);
+        expect(styles == StyleFlags{Styles::Italic, Styles::Bold, Styles::Underline, Styles::Strikethrough});
+
+        styles.clear();
 
         expect(styles.as_value() == 0);
     };

@@ -249,7 +249,7 @@ using ConflictOptions = boost::tmp::list_<BaseOption, ConflictingOption, Conflic
 //private:
 //};
 
-namespace detail
+namespace
 {
 
 template<typename Enum, typename... Enums>
@@ -283,16 +283,16 @@ class CombineBitfield
 {
 public:
     template<typename Enum>
-    using enum_index = detail::IndexOfEnum<Enum, Enums...>::index;
+    using enum_index = IndexOfEnum<Enum, Enums...>::index;
 
     template<unsigned int N>
-    using enum_offset = detail::OffsetOfEnum<N, Enums...>::offset;
+    using enum_offset = OffsetOfEnum<N, Enums...>::offset;
 
     using enum_count = boost::tmp::uint_<sizeof...(Enums)>;
 
     using value_type = std::common_type_t<std::underlying_type_t<Enums>...>;
 
-    using max_options_t = typename detail::EnumOptionsCount<Enums...>::count;
+    using max_options_t = typename EnumOptionsCount<Enums...>::count;
 
     constexpr CombineBitfield() {}
     
