@@ -109,6 +109,13 @@ set(STRING_ALGORITHM
     ${ALGO_DIR}/strings/unsafe.ixx
 )
 
+if(MSVC)
+    set(WIN_IXX
+        ${CMAKE_CURRENT_SOURCE_DIR}/win/unique_hnd.ixx
+        ${CMAKE_CURRENT_SOURCE_DIR}/win/windef.ixx
+    )
+endif()
+
 add_library(stdlib_module
         ${CMAKE_CURRENT_SOURCE_DIR}/stdlib/stdlib.ixx
 )
@@ -121,6 +128,7 @@ target_link_libraries(stdlib_module
 add_library(nilbase
         ${BASE_ALGORITHM}
         ${STRING_ALGORITHM}
+        ${WIN_IXX}
 )
 
 target_link_libraries(nilbase
