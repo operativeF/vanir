@@ -157,7 +157,6 @@ std::string JoinStringsEsc(std::span<const std::string> strSpan, char delim, std
     return str;
 }
 
-// FIXME: Wrong (for Unicode), and temporary implementation of a case insensitive string comparison
 int CmpNoCase(std::string_view strViewA, std::string_view strViewB)
 {
     const auto nA = strViewA.size();
@@ -177,7 +176,6 @@ constexpr bool IsSameAsCase(std::string_view strViewA, std::string_view strViewB
     return strViewA == strViewB;
 }
 
-// FIXME: Wrong (for Unicode), and temporary implementation of a case insensitive string comparison
 bool IsSameAsNoCase(std::string_view strViewA, std::string_view strViewB)
 {
     return CmpNoCase(strViewA, strViewB) == 0;

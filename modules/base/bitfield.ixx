@@ -13,11 +13,11 @@ concept BitfieldCompatible =  requires
     {Enum::_max_size};
 };
 
-template<BitfieldCompatible Enum>
-class Bitfield;
-
 export namespace nil::utils
 {
+
+template<BitfieldCompatible Enum>
+class Bitfield;
 
 template<typename Enum>
 using InclBitfield = Bitfield<Enum>;
@@ -110,7 +110,7 @@ public:
     constexpr bool empty() const noexcept
     {
         return m_fields == value_type{0};
-    }
+    };
 
     constexpr auto clear() noexcept
     {
@@ -153,8 +153,6 @@ public:
         return m_fields;
     }
 
-    constexpr auto operator<=>(const Bitfield&) const noexcept = default;
-
 private:
     value_type m_fields{};
 };
@@ -191,6 +189,18 @@ constexpr auto operator^(InclBitfield<Enum> bf, const Enum& e) noexcept
 {
     bf ^= e;
     return bf;
+}
+
+template<BitfieldCompatible Enum>
+constexpr auto operator==(const Bitfield<Enum>& lhbf, const Bitfield<Enum>& rhbf) noexcept
+{
+    return lhbf.as_value() == rhbf.as_value();
+}
+
+template<BitfieldCompatible Enum> 
+constexpr auto operator!=(const Bitfield<Enum>& lhbf, const Bitfield<Enum>& rhbf) noexcept
+{
+    return !(lhbf.as_value() == rhbf.as_value());
 }
 
 template<typename... Enums>

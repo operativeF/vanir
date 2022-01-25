@@ -2,6 +2,7 @@
 add_executable(niltest
     metatest/metatest.ixx
     base/algorithm/strutils.cpp
+    base/bitfieldtest.cpp
     test.cpp
 )
 

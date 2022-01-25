@@ -1,6 +1,6 @@
 
 import Nil.MetaTest;
-import Utils.Strings.Modifying;
+import Utils.Strings;
 
 import <string_view>;
 import <vector>;
@@ -144,23 +144,28 @@ ut::suite StrModifyingAlgorithmTests = []
     {
         std::string allLow{"all lower case."};
         std::string allUp{"ALL UPPER CASE."};
+        std::string emptyStr{""};
 
         "ToUpper"_test = [=]() mutable
         {
             ToUpper(allLow);
             ToUpper(allUp);
+            ToUpper(emptyStr);
 
             expect(allLow == "ALL LOWER CASE.");
             expect(allUp == "ALL UPPER CASE.");
+            expect(emptyStr == "");
         };
 
         "ToLower"_test = [=]() mutable
         {
             ToLower(allLow);
             ToLower(allUp);
+            ToLower(emptyStr);
 
             expect(allLow == "all lower case.");
             expect(allUp == "all upper case.");
+            expect(emptyStr == "");
         };
     };
 
@@ -172,5 +177,42 @@ ut::suite StrModifyingAlgorithmTests = []
 
 ut::suite StrNonModifyingAlgorithmTests = []
 {
+    using namespace ut;
+    using namespace nil::utils;
 
+    "Case conversion"_test = []
+    {
+        std::string lowerStr{"a lower string."};
+        std::string upperStr{"AN UPPER STRING."};
+
+        "ToLowerCopy"_test = [=]() mutable
+        {
+            auto lowstr = ToLowerCopy(lowerStr);
+            auto upstr = ToLowerCopy(upperStr);
+
+            expect(lowstr == "a lower string.");
+            expect(upstr == "an upper string.");
+        };
+
+        "ToUpperCopy"_test = [=]() mutable
+        {
+            auto lowstr = ToUpperCopy(lowerStr);
+            auto upstr = ToUpperCopy(upperStr);
+
+            expect(lowstr == "A LOWER STRING.");
+            expect(upstr == "AN UPPER STRING.");
+        };
+    };
+
+    "String split"_test = []
+    {
+        std::string_view comma_delim{"10,20,30,40,,50"};
+        std::string_view empty_delim{";;;;; ;; ;"};
+
+        auto csplit = StrSplit(comma_delim, ',');
+        auto emptysplit = StrSplit(empty_delim, ';');
+
+        expect(csplit == std::vector<std::string>{"10", "20", "30", "40", "50"});
+        expect(emptysplit == std::vector<std::string>{" ", " "});
+    };
 };
