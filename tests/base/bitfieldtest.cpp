@@ -166,7 +166,7 @@ ut::suite BitfieldMetaTest = []
     using namespace boost::tmp;
     using namespace nil::utils;
 
-    using ib = conflict_list<Styles::Underline, Styles::Italic, Styles::Bold>;
+    using ib = conflict_list<Styles::Underline, Styles::Italic>;
 
     using nl = conflict_list<Styles::Bold, Styles::Italic, Styles::Underline>;
 
