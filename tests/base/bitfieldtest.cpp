@@ -166,11 +166,19 @@ ut::suite BitfieldMetaTest = []
     using namespace boost::tmp;
     using namespace nil::utils;
 
-    using ib = conflict_list<Styles::Underline, Styles::Italic>;
+    using ib = conflict_list<Styles::Strikethrough, Styles::Bold>;
 
     using nl = conflict_list<Styles::Bold, Styles::Italic, Styles::Underline>;
 
-    using no_conflicts = check_conflicts<ib, nl>;
+    using nn = conflict_list<Styles::Bold, Styles::Italic, Styles::Strikethrough>;
 
-    no_conflicts{} = int_list<>{};
+    using si = conflict_list<Styles::Strikethrough, Styles::Underline>;
+
+    using bi = conflict_list<Styles::Bold, Styles::Underline>;
+
+    using no_conflicts = check_conflicts<ib, nl, nn, si, bi>;
+
+    
+
+    no_conflicts{} = true_{};
 };

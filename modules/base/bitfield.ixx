@@ -246,8 +246,8 @@ using int_list = call_<sort_<lift_<less>>, int_<static_cast<std::underlying_type
 template<auto T1, auto T2, auto... Ts>
 using conflict_list = list_<int_list<T1, T2, Ts...>>;
 
-template<typename T, typename U>
-using check_conflicts = call_<set_intersection_<>, T, U>;
+template<typename T, typename U, typename... Us>
+using check_conflicts = call_<and_<unpack_<lift_<std::is_same, not_<>>>>, list_<T, U>, list_<T, Us>...>;
 
 } // export
 
