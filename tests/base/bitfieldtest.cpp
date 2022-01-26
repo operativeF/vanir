@@ -2,6 +2,8 @@
 import Nil.MetaTest;
 import Utils.Bitfield;
 
+import Boost.TMP;
+
 namespace ut = boost::ut;
 
 
@@ -155,4 +157,20 @@ ut::suite BitfieldOpTests = []
 
         expect(styles.as_value() == 0);
     };
+};
+
+ut::suite BitfieldMetaTest = []
+{
+    using namespace ut;
+
+    using namespace boost::tmp;
+    using namespace nil::utils;
+
+    using ib = conflict_list<Styles::Underline, Styles::Italic, Styles::Bold>;
+
+    using nl = conflict_list<Styles::Bold, Styles::Italic, Styles::Underline>;
+
+    using no_conflicts = check_conflicts<ib, nl>;
+
+    no_conflicts{} = int_list<>{};
 };

@@ -235,8 +235,19 @@ private:
     value_type m_fields;
 };
 
-template<typename BaseOption, typename ConflictingOption, typename... ConflictingOptions>
-using ConflictOptions = boost::tmp::list_<BaseOption, ConflictingOption, ConflictingOptions...>;
+using namespace boost::tmp;
+
+template <typename T, typename U>
+using less = bool_<(T::value < U::value)>;
+
+template<auto... Ts>
+using int_list = call_<sort_<lift_<less>>, int_<static_cast<std::underlying_type_t<decltype(Ts)>>(Ts)>...>;
+
+template<auto T, auto... Ts>
+using conflict_list = list_<int_list<T, Ts...>>;
+
+template<typename T, typename U>
+using check_conflicts = call_<set_intersection_<>, T, U>;
 
 } // export
 
