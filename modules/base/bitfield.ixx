@@ -240,14 +240,14 @@ using namespace boost::tmp;
 template <typename T, typename U>
 using less = bool_<(T::value < U::value)>;
 
-template<auto... Ts>
-using int_list = call_<sort_<lift_<less>>, int_<static_cast<std::underlying_type_t<decltype(Ts)>>(Ts)>...>;
+template<auto... Es> requires(std::is_enum_v<decltype(Es)> || ...)
+using enum_list = call_<sort_<lift_<less>>, int_<static_cast<std::underlying_type_t<decltype(Es)>>(Es)>...>;
 
-template<auto T1, auto T2, auto... Ts>
-using conflict_list = list_<int_list<T1, T2, Ts...>>;
+template<auto E1, auto E2, auto... Es>
+using conflict_list = enum_list<E1, E2, Es...>;
 
-template<typename T, typename U, typename... Us>
-using check_conflicts = call_<and_<unpack_<lift_<std::is_same, not_<>>>>, list_<T, U>, list_<T, Us>...>;
+template<typename InputFields, typename ConflictFields, typename... OtherConflictFields>
+using check_conflicts = call_<and_<unpack_<lift_<std::is_same, not_<>>>>, list_<InputFields, ConflictFields>, list_<InputFields, OtherConflictFields>...>;
 
 } // export
 
