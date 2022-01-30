@@ -22,6 +22,9 @@ export namespace boost::tmp {
 		struct less_ {};
 
 		template <typename V = nothing_, typename C = identity_>
+		struct less_eq_ {};
+
+		template <typename V = nothing_, typename C = identity_>
 		struct greater_ {};
 
 		template<typename V = nothing_, typename C = identity_>
@@ -55,6 +58,18 @@ export namespace boost::tmp {
 			struct dispatch<1, less_<U, C>> {
 				template<typename T>
 				using f = typename dispatch<1, C>::template f<bool_<(U::value)<(T::value)>>;
+			};
+
+			template <typename C>
+			struct dispatch<2, less_eq_<C>> {
+				template <typename T, typename U>
+				using f = typename dispatch<1, C>::template f<bool_<(T::value)<=(U::value)>>;
+			};
+
+			template <typename U, typename C>
+			struct dispatch<1, less_eq_<U, C>> {
+				template<typename T>
+				using f = typename dispatch<1, C>::template f<bool_<(U::value)<=(T::value)>>;
 			};
 
 			template <typename C>

@@ -100,6 +100,7 @@ set(ALGO_DIR ${BASE_DIR}/algorithm)
 set(BASE_ALGORITHM
     ${BASE_DIR}/bitfield.ixx
     ${ALGO_DIR}/charutils.ixx
+    ${BASE_DIR}/static_vector.ixx
     ${ALGO_DIR}/stringutils.ixx
 )
 

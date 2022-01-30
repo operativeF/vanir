@@ -3,6 +3,7 @@ export module Utils.Bitfield;
 
 import Boost.TMP;
 
+import <algorithm>;
 import <compare>;
 import <type_traits>;
 
