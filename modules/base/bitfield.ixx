@@ -41,8 +41,7 @@ public:
         set(e);
     }
 
-    template<BitfieldCompatible... Enums>
-    constexpr Bitfield(const Enums&... es)
+    constexpr Bitfield(const auto&... es)
     {
         (set(es), ...);
     }
@@ -157,6 +156,54 @@ private:
     value_type m_fields{};
 };
 
+using namespace boost::tmp;
+
+template <typename T, typename U>
+using less = bool_<(T::value < U::value)>;
+
+template<auto... Es> requires(std::is_enum_v<decltype(Es)> || ...)
+using enum_list = call_<sort_<lift_<less>>, int_<static_cast<std::underlying_type_t<decltype(Es)>>(Es)>...>;
+
+template<auto E1, auto E2, auto... Es>
+using conflict_list = enum_list<E1, E2, Es...>;
+
+template<typename InputFields, typename ConflictFields>
+concept check_conflicts = requires
+{
+    requires call_<unpack_<or_<is_<InputFields>, not_<>>>, ConflictFields>;
+};
+
+#define FAIL_CONSTEVAL throw
+
+consteval void exclusive_check_(auto t, auto u)
+{
+
+}
+
+template <auto... T>
+struct Checker {
+    consteval void check_(auto t, auto u)
+    {
+        std::ranges::sort(t);
+        std::ranges::sort(u);
+
+        if(std::ranges::includes(t, u))
+        {
+            FAIL_CONSTEVAL; // #1 Invalid pattern found.
+        }
+    }
+
+    consteval Checker(auto vals) {
+        (check_(T, vals), ...);
+    }
+};
+
+template <auto... T>
+void fmt(std::type_identity_t<Checker<T...>> checked)
+{
+    
+}
+
 template<BitfieldCompatible Enum>
 constexpr auto operator|(InclBitfield<Enum> bf, const Enum& e) noexcept
 {
@@ -234,20 +281,6 @@ public:
 private:
     value_type m_fields;
 };
-
-using namespace boost::tmp;
-
-template <typename T, typename U>
-using less = bool_<(T::value < U::value)>;
-
-template<auto... Es> requires(std::is_enum_v<decltype(Es)> || ...)
-using enum_list = call_<sort_<lift_<less>>, int_<static_cast<std::underlying_type_t<decltype(Es)>>(Es)>...>;
-
-template<auto E1, auto E2, auto... Es>
-using conflict_list = enum_list<E1, E2, Es...>;
-
-template<typename InputFields, typename ConflictFields, typename... OtherConflictFields>
-using check_conflicts = call_<and_<unpack_<lift_<std::is_same, not_<>>>>, list_<InputFields, ConflictFields>, list_<InputFields, OtherConflictFields>...>;
 
 } // export
 
