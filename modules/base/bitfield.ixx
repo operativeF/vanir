@@ -6,6 +6,7 @@ import Boost.TMP;
 import <algorithm>;
 import <compare>;
 import <type_traits>;
+import <vector>;
 
 template<typename Enum>
 concept BitfieldCompatible =  requires
@@ -176,34 +177,52 @@ concept check_conflicts = requires
 
 #define FAIL_CONSTEVAL throw
 
-consteval void exclusive_check_(auto t, auto u)
+template<auto T, auto...>
+struct identity_type
 {
+    using type = typename decltype(T)::value_type;
+};
 
-}
+template<auto... Conflicts>
+struct resolver
+{
+    using base_conflict_type = typename identity_type<Conflicts...>::type;
 
-template <auto... T>
-struct Checker {
-    consteval void check_(auto t, auto u)
+    template<typename T, std::size_t N>
+    consteval resolver(std::array<T, N> args)
     {
-        std::ranges::sort(t);
-        std::ranges::sort(u);
+        std::vector<std::vector<base_conflict_type>> newarr{{std::ranges::begin(Conflicts), std::ranges::end(Conflicts)}...};
 
-        if(std::ranges::includes(t, u))
+        for(auto rv : newarr)
         {
-            FAIL_CONSTEVAL; // #1 Invalid pattern found.
+            std::ranges::sort(rv);
         }
-    }
 
-    consteval Checker(auto vals) {
-        (check_(T, vals), ...);
+        std::ranges::sort(args);
+        
+        for(auto rv : newarr)
+        {
+            if(std::ranges::includes(args, rv))
+            {
+                FAIL_CONSTEVAL;
+            }
+        }
     }
 };
 
-template <auto... T>
-void fmt(std::type_identity_t<Checker<T...>> checked)
+template<auto... Us>
+struct bitfield
 {
-    
-}
+    consteval bitfield(std::type_identity_t<resolver<Us...>> val)
+    {
+    }
+
+    template<typename... Args> requires(!std::is_aggregate_v<Args> && ...)
+    consteval bitfield(Args&&... args) : bitfield(std::array<std::common_type_t<Args...>, sizeof...(Args)>{args...})
+    {
+    }
+};
+
 
 template<BitfieldCompatible Enum>
 constexpr auto operator|(InclBitfield<Enum> bf, const Enum& e) noexcept
