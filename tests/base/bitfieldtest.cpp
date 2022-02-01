@@ -4,6 +4,9 @@ import Utils.Bitfield;
 
 import Boost.TMP;
 
+import <array>;
+import <type_traits>;
+
 namespace ut = boost::ut;
 
 
@@ -159,10 +162,25 @@ ut::suite BitfieldOpTests = []
     };
 };
 
+template<typename T, size_t N>
+struct check_array : std::array<T, N> {};
+
+template<typename... Args>
+check_array(Args...) -> check_array<std::common_type_t<Args...>, sizeof...(Args)>;
+
 ut::suite BitfieldMetaTest = []
 {
     using namespace ut;
 
     using namespace boost::tmp;
-    using namespace nil::utils;    
+    using namespace nil::utils;
+
+    using resolute = bitfield<check_array{Styles::Bold, Styles::Underline}, check_array{Styles::Italic, Styles::Underline, Styles::Bold}>;
+
+    resolute newres{Styles::Bold, Styles::Italic};
+
+    // resolute oldres{Borders::Double, Borders::Single};
+
+    // Throws.
+    // resolute oldres{Styles::Bold, Styles::Italic, Styles::Underline};
 };

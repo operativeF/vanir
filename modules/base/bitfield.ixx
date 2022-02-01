@@ -5,6 +5,8 @@ import Boost.TMP;
 
 import <algorithm>;
 import <compare>;
+import <numeric>;
+import <ranges>;
 import <type_traits>;
 import <vector>;
 
@@ -193,34 +195,34 @@ struct resolver
     {
         std::vector<std::vector<base_conflict_type>> newarr{{std::ranges::begin(Conflicts), std::ranges::end(Conflicts)}...};
 
-        for(auto rv : newarr)
-        {
-            std::ranges::sort(rv);
-        }
+        std::ranges::for_each(newarr, [](auto&& cfs){ std::ranges::sort(cfs); });
 
         std::ranges::sort(args);
-        
-        for(auto rv : newarr)
-        {
-            if(std::ranges::includes(args, rv))
-            {
-                FAIL_CONSTEVAL;
-            }
-        }
+
+        std::ranges::for_each(newarr, [args](auto&& cfs){ if(std::ranges::includes(args, cfs)) { FAIL_CONSTEVAL; } }); // #1 Bitfield contains conflicting arguments.
     }
 };
 
 template<auto... Us>
 struct bitfield
 {
+    // FIXME: common_type_t not currently working in 17.1.0?
+    // using under_type = std::common_type<std::remove_all_extents_t<decltype(Us)>...>;
+
+    // Delegated constructor that does nothing more than check whether or not
+    // a set of passed in values (array) satisfy a set of arrays passed in (Us)
+    // that act as checks.
     consteval bitfield(std::type_identity_t<resolver<Us...>> val)
     {
     }
 
-    template<typename... Args> requires(!std::is_aggregate_v<Args> && ...)
+    template<typename... Args> requires(!std::is_aggregate_v<Args> && ...) // NOTE: Prevent recursion.
     consteval bitfield(Args&&... args) : bitfield(std::array<std::common_type_t<Args...>, sizeof...(Args)>{args...})
     {
+        value = (static_cast<int>(args) + ... + 0);
     }
+
+    int value{};
 };
 
 
