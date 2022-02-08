@@ -1,7 +1,10 @@
 
 export module Nil.SVector;
 
+import <algorithm>;
 import <limits>;
+import <type_traits>;
+import <vector>;
 
 import Boost.TMP;
 
@@ -10,26 +13,25 @@ export
 
 using namespace boost::tmp;
 
-template<size_t Capacity>
-using size_type = call_<
-                   if_<less_eq_<sizet_<std::numeric_limits<unsigned char>::max()>>,
-                    always_<unsigned char>,
-                    if_<less_eq_<sizet_<std::numeric_limits<unsigned short>::max()>>,
-                     always_<unsigned short>,
-                     if_<less_eq_<sizet_<std::numeric_limits<unsigned int>::max()>>,
-                      always_<unsigned int>,
-                      if_<less_eq_<sizet_<std::numeric_limits<unsigned long>::max()>>,
-                       always_<unsigned long>,
-                       if_<less_eq_<sizet_<std::numeric_limits<unsigned long long>::max()>>,
-                        always_<unsigned long long>,
-                        always_<size_t>
-                       >
-                      >
-                     >
-                    >
-                   >, sizet_<Capacity>
-                  >;
+template<typename T, std::size_t N>
+struct cs_vector
+{
+    consteval cs_vector(auto&&... ts)
+    {
+        auto vs = std::vector{ts...};
 
+        std::ranges::copy_n(std::begin(vs), std::size(vs), std::begin(value));
+    }
 
+    constexpr cs_vector(T val[N])
+    {
+        std::ranges::copy_n(std::begin(val), std::size(val), std::begin(value));
+    }
+
+    T value[N]{};
+};
+
+template<typename... Ts>
+cs_vector(Ts...) -> cs_vector<std::common_type_t<Ts...>, sizeof...(Ts)>;
 
 } // export
