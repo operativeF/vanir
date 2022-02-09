@@ -184,3 +184,21 @@ ut::suite BitfieldMetaTest = []
     // Throws.
     // resolute oldres{Styles::Bold, Styles::Italic, Styles::Underline};
 };
+
+ut::suite CombineBitfieldTest = []
+{
+    using namespace ut;
+    using namespace nil::utils;
+
+    using cb = CombineBitfield<Borders, Styles>;
+
+    cb newcb{};
+
+    expect(newcb.max_options == 8);
+
+    expect(newcb.enum_offset(Borders::Double) == 0) << fmt::format("{}", newcb.enum_offset(Borders::Double));
+    expect(newcb.enum_offset(Styles::Bold) == 4) << fmt::format("{}", newcb.enum_offset(Styles::Bold));
+
+    expect(newcb.enum_true_value(Borders::Triple) == 2) << fmt::format("{}", newcb.enum_true_value(Borders::Triple));
+    expect(newcb.enum_true_value(Styles::Strikethrough) == (4 + 3)) << fmt::format("{}", newcb.enum_true_value(Styles::Strikethrough));
+};

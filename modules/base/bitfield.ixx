@@ -315,34 +315,10 @@ private:
 //private:
 //};
 
-namespace
-{
-
-template<typename Enum, typename... Enums>
-struct IndexOfEnum
-{
-    using index = boost::tmp::call_<boost::tmp::find_if_<boost::tmp::is_<Enum>>, Enums...>;
-};
-
-template<unsigned int N, typename... Enums>
-struct OffsetOfEnum
-{
-    using as_ints = boost::tmp::list_<boost::tmp::uint_<static_cast<unsigned int>(Enums::_max_size)>...>;
-    using offset = boost::tmp::call_<boost::tmp::take_<boost::tmp::uint_<N>, boost::tmp::accumulate_<>>, as_ints>;
-};
-
-template<typename... Enums>
-struct EnumOptionsCount
-{
-    using as_type = boost::tmp::list_<boost::tmp::uint_<static_cast<unsigned int>(Enums::_max_size)>...>;
-
-    using count = boost::tmp::call_<boost::tmp::unpack_<boost::tmp::accumulate_<>>, as_type>;
-};
-
-}
-
 export
 {
+
+using namespace boost::tmp;
 
 template<size_t Capacity>
 using size_type = call_<
@@ -368,17 +344,33 @@ template<typename... Enums> requires(CombinableBitfield<Enums...>)
 class CombineBitfield
 {
 public:
-    template<typename Enum>
-    using enum_index = IndexOfEnum<Enum, Enums...>::index;
+    // FIXME: What if _max_size == 0?
+    // FIXME: Not correct.
+    using value_type = size_type<(static_cast<size_t>(Enums::_max_size) + ... + 0)>;
+    using enum_list = list_<Enums...>;
+    using enum_max_list = list_<int_<static_cast<value_type>(Enums::_max_size)>...>;
+    
+    template<typename E>
+    using enum_index = call_<unpack_<find_if_<is_<E>>>, enum_list>;
 
-    template<unsigned int N>
-    using enum_offset = OffsetOfEnum<N, Enums...>::offset;
+    static constexpr auto max_options = (static_cast<value_type>(Enums::_max_size) + ... + 0);
+    static constexpr auto total_enums = sizeof...(Enums);
 
-    using enum_count = boost::tmp::uint_<sizeof...(Enums)>;
+    template<typename E, auto idx = enum_index<E>::value>
+    consteval auto enum_offset(E e)
+    {
+        auto te = {static_cast<value_type>(Enums::_max_size)...};
 
-    using value_type = std::common_type_t<std::underlying_type_t<Enums>...>;
+        auto tv = std::views::counted(te.begin(), idx);
 
-    using max_options_t = typename EnumOptionsCount<Enums...>::count;
+        return std::accumulate(std::begin(tv), std::end(tv), 0);
+    }
+
+    template<typename E>
+    consteval auto enum_true_value(E e)
+    {
+        return static_cast<value_type>(e) + enum_offset(e);
+    };
 
     constexpr CombineBitfield() {}
     
@@ -497,12 +489,12 @@ public:
 
     constexpr void set_all() noexcept
     {
-        m_fields = (value_type{1} << max_options_t::value) - value_type{1};
+        m_fields = (value_type{1} << max_options) - value_type{1};
     }
 
     constexpr void toggle_all() noexcept
     {
-        m_fields ^= ((value_type{1} << max_options_t::value) - value_type{1});
+        m_fields ^= ((value_type{1} << max_options) - value_type{1});
     }
 
     constexpr auto as_value() const noexcept
