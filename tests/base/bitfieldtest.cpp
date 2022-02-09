@@ -192,13 +192,62 @@ ut::suite CombineBitfieldTest = []
 
     using cb = CombineBitfield<Borders, Styles>;
 
-    cb newcb{};
+    cb newcb{Borders::Raised, Styles::Italic};
 
     expect(newcb.max_options == 8);
 
     expect(newcb.enum_offset(Borders::Double) == 0) << fmt::format("{}", newcb.enum_offset(Borders::Double));
     expect(newcb.enum_offset(Styles::Bold) == 4) << fmt::format("{}", newcb.enum_offset(Styles::Bold));
 
-    expect(newcb.enum_true_value(Borders::Triple) == 2) << fmt::format("{}", newcb.enum_true_value(Borders::Triple));
-    expect(newcb.enum_true_value(Styles::Strikethrough) == (4 + 3)) << fmt::format("{}", newcb.enum_true_value(Styles::Strikethrough));
+    expect(newcb.enum_offset_value(Borders::Triple) == 2) << fmt::format("{}", newcb.enum_offset_value(Borders::Triple));
+    expect(newcb.enum_offset_value(Styles::Strikethrough) == (static_cast<int>(Borders::_max_size) + static_cast<int>(Styles::Strikethrough)))
+        << fmt::format("{}", newcb.enum_offset_value(Styles::Strikethrough));
+
+    "Operator tests"_test = []
+    {
+        cb optest{};
+
+        const cb BoldTripleBitset{Styles::Bold, Borders::Triple};
+
+        optest |= Styles::Bold;
+        optest |= Borders::Triple;
+
+        expect(optest == BoldTripleBitset);
+
+        // Test clear
+        optest.clear();
+
+        expect(optest == cb{});
+        expect(optest.empty());
+
+        // Toggle bits
+        optest ^= Borders::Single;
+        optest ^= Styles::Underline;
+
+        expect(optest == cb{Styles::Underline, Borders::Single});
+
+        optest ^= Styles::Underline;
+
+        expect(optest == cb{Borders::Single});
+
+        optest ^= Borders::Single;
+
+        expect(!optest);
+
+        optest.set_all();
+        expect(optest == cb{Borders::Single, Borders::Double, Borders::Triple, Borders::Raised,
+                            Styles::Bold, Styles::Italic, Styles::Strikethrough, Styles::Underline});
+        
+        optest.toggle_all();
+
+        expect(optest.empty());
+
+        optest.set_all();
+        optest.reset(Borders::Single);
+        optest.toggle_all();
+
+        const cb zero_bitset{Borders::Single};
+        expect(zero_bitset.as_enum_value() == 0) << fmt::format("{}", zero_bitset.as_enum_value());
+        expect(zero_bitset.as_value() == 1) << fmt::format("{}", zero_bitset.as_value());
+    };
 };

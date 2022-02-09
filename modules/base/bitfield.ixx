@@ -340,6 +340,12 @@ using size_type = call_<
                    >, sizet_<Capacity>
                   >;
 
+// FIXME: For enums with a larger than usual initial value,
+// there also needs to be an initial offset (a range).
+// This happens in cases like Windows where enums are a set value,
+// Values will be set like usual, but they will be converted upon
+// access (so we only need to keep the offset).
+
 template<typename... Enums> requires(CombinableBitfield<Enums...>)
 class CombineBitfield
 {
@@ -348,7 +354,6 @@ public:
     // FIXME: Not correct.
     using value_type = size_type<(static_cast<size_t>(Enums::_max_size) + ... + 0)>;
     using enum_list = list_<Enums...>;
-    using enum_max_list = list_<int_<static_cast<value_type>(Enums::_max_size)>...>;
     
     template<typename E>
     using enum_index = call_<unpack_<find_if_<is_<E>>>, enum_list>;
@@ -357,24 +362,31 @@ public:
     static constexpr auto total_enums = sizeof...(Enums);
 
     template<typename E, auto idx = enum_index<E>::value>
-    consteval auto enum_offset(E e)
+    constexpr value_type enum_offset(E e)
     {
-        auto te = {static_cast<value_type>(Enums::_max_size)...};
+        const auto te = {static_cast<value_type>(Enums::_max_size)...};
 
-        auto tv = std::views::counted(te.begin(), idx);
+        value_type offset{};
 
-        return std::accumulate(std::begin(tv), std::end(tv), 0);
+        // TODO: accumulate does an implicit conversion to unsigned int
+        // Is there a way to get around this?
+        for(auto enummax : std::views::counted(std::begin(te), idx))
+        {
+            offset += enummax;
+        }
+
+        return offset;
     }
 
     template<typename E>
-    consteval auto enum_true_value(E e)
+    constexpr auto enum_offset_value(E e)
     {
         return static_cast<value_type>(e) + enum_offset(e);
     };
 
     constexpr CombineBitfield() {}
     
-    template<typename Enum> requires(IsValidEnumForBitfield<Enum, Enums...>)
+    template<typename Enum>
     explicit constexpr CombineBitfield(const Enum& e)
     {
         set(e);
@@ -382,16 +394,16 @@ public:
 
     explicit constexpr CombineBitfield(value_type bits) : m_fields{bits} {}
 
-    template<typename... OtherEnums> requires(IsValidEnumForBitfield<OtherEnums, Enums...> && ...)
+    template<typename... OtherEnums>
     constexpr CombineBitfield(const OtherEnums&... es)
     {
         (set(es), ...);
     }
 
-    template<typename Enum> requires(IsValidEnumForBitfield<Enum, Enums...>)
-    static constexpr value_type bitmask(const Enum& e) noexcept
+    template<typename Enum>
+    constexpr value_type bitmask(const Enum& e) noexcept
     {
-        return value_type{1} << static_cast<value_type>(e);
+        return value_type{1} << enum_offset_value(e);
     }
 
     constexpr explicit operator bool() const noexcept
@@ -399,15 +411,15 @@ public:
         return m_fields != value_type{0};
     }
 
-    template<typename... OtherEnums> requires(IsValidEnumForBitfield<OtherEnums, Enums...> && ...)
-    static constexpr value_type bitmask(const OtherEnums&... es) noexcept
+    template<typename... OtherEnums>
+    constexpr value_type bitmask(const OtherEnums&... es) noexcept
     {
-        return ((value_type{ 1 } << static_cast<value_type>(es)) | ...);
+        return ((value_type{ 1 } << enum_offset_value(es)) | ...);
     }
 
     //static constexpr value_type AllFlagsSet = bitmask(Enum::_max_size) - value_type{1};
 
-    template<typename Enum> requires(IsValidEnumForBitfield<Enum, Enums...>)
+    template<typename Enum>
     constexpr auto& operator|=(const Enum& e) noexcept
     {
         m_fields |= bitmask(e);
@@ -415,7 +427,7 @@ public:
         return *this;
     }
 
-    template<typename Enum> requires(IsValidEnumForBitfield<Enum, Enums...>)
+    template<typename Enum>
     constexpr bool is_set(const Enum& e) const noexcept
     {
         auto fields = m_fields;
@@ -437,7 +449,7 @@ public:
         return *this;
     }
 
-    template<typename Enum> requires(IsValidEnumForBitfield<Enum, Enums...>)
+    template<typename Enum>
     constexpr auto& operator&=(const Enum& e) noexcept
     {
         m_fields &= bitmask(e);
@@ -445,7 +457,7 @@ public:
         return *this;
     }
 
-    template<typename Enum> requires(IsValidEnumForBitfield<Enum, Enums...>)
+    template<typename Enum>
     constexpr auto& operator^=(const Enum& e) noexcept
     {
         m_fields ^= bitmask(e);
@@ -463,25 +475,25 @@ public:
         m_fields = value_type{0};
     }
 
-    template<typename Enum> requires(IsValidEnumForBitfield<Enum, Enums...>)
+    template<typename Enum>
     constexpr void set(const Enum& e) noexcept
     {
         m_fields |= bitmask(e);
     }
 
-    template<typename... OtherEnums> requires(IsValidEnumForBitfield<OtherEnums, Enums...> && ...)
+    template<typename... OtherEnums>
     constexpr void set(const OtherEnums&... es) noexcept
     {
         m_fields |= (bitmask(es), ...);
     }
 
-    template<typename Enum> requires(IsValidEnumForBitfield<Enum, Enums...>)
+    template<typename Enum>
     constexpr void reset(const Enum& e) noexcept
     {
         m_fields &= ~bitmask(e);
     }
 
-    template<typename Enum> requires(IsValidEnumForBitfield<Enum, Enums...>)
+    template<typename Enum>
     constexpr void toggle(const Enum& e) noexcept
     {
         m_fields ^= bitmask(e);
@@ -497,15 +509,28 @@ public:
         m_fields ^= ((value_type{1} << max_options) - value_type{1});
     }
 
+    constexpr value_type as_enum_value() const noexcept
+    {
+        if(m_fields == 0)
+            return 0;
+        else
+        {
+            return m_fields - value_type{1};
+        }
+    }
+
     constexpr auto as_value() const noexcept
     {
         return m_fields;
     }
 
-    auto operator<=>(const CombineBitfield&) const noexcept = default;
+    constexpr bool operator==(const CombineBitfield& other) const noexcept
+    {
+        return m_fields == other.as_value();
+    }
     
 private:
-    template<typename Enum> requires(IsValidEnumForBitfield<Enum, Enums...>)
+    template<typename Enum>
     constexpr auto GetEnumIndex() const noexcept
     {
         return enum_index<Enum>::value;
