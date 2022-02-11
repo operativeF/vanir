@@ -20,7 +20,7 @@ ut::suite PuppleCopyConstructors = []
     {
         pupple<> src;
         pupple<> dest(src);
-        // CHECK(src == dest); // This fails to compile.
+        expect(src == dest);
     };
 
     "Template copy constructors."_test = []
@@ -35,7 +35,7 @@ ut::suite PuppleCopyConstructors = []
         pupple<int, int> src(100, 200);
         pupple<int, int> dest(src);
 
-        // expect(src == dest);
+        expect(src == dest);
     };
 
     "Template two value (implicit conversion) copy constructors."_test = []

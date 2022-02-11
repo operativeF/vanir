@@ -39,16 +39,13 @@ namespace detail
         {
         }
 
-        constexpr pupple_impl(const pupple_impl&) = default;
-        constexpr pupple_impl(pupple_impl&&)      = default;
-        constexpr pupple_impl& operator=(const pupple_impl&) = default;
-        constexpr pupple_impl& operator=(pupple_impl&&) = default;
-
         template<typename... Ns>
         constexpr pupple_impl(Ns&&... ns)
                 : pupple_element<tmp::uint_<Indices>, Params>(std::move(ns))...
         {
         }
+
+        auto operator<=>(const pupple_impl&) const = default;
     };
 
     // TODO: Determine the alignment of objects after appending.
@@ -86,7 +83,8 @@ struct pupple : aux::detail::pupple_impl<std::make_integer_sequence<int, sizeof.
     {
     }
 
-    // TODO: Add comparisons.
+    auto operator<=>(const pupple&) const = default;
+
     // TODO: Add swapping.
 };
 

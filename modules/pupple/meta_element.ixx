@@ -1,6 +1,7 @@
 
 export module Pupple.Element;
 
+import <compare>;
 import <type_traits>;
 import <utility>;
 
@@ -54,44 +55,20 @@ struct pupple_element<Key, Value, false>
     {
     }
 
+    template<typename OtherKey, typename OtherValue>
+    constexpr auto operator<=>(const pupple_element<OtherKey, OtherValue>& otherPupple) const
+    {
+        return data <=> otherPupple.data;
+    }
+
+    template<typename OtherKey, typename OtherValue>
+    constexpr auto operator==(const pupple_element<OtherKey, OtherValue>& otherPupple) const
+    {
+        return data == otherPupple.data;
+    }
+
     Value data{};
 };
-
-template<typename Key1, typename Value1, typename Key2, typename Value2>
-[[nodiscard]] constexpr bool operator==(const pupple_element<Key1, Value1>& lhs, const pupple_element<Key2, Value2>& rhs)
-{
-    return lhs.data == rhs.data;
-}
-
-template<typename Key1, typename Value1, typename Key2, typename Value2>
-[[nodiscard]] constexpr bool operator!=(const pupple_element<Key1, Value1>& lhs, const pupple_element<Key2, Value2>& rhs)
-{
-    return !(lhs == rhs);
-}
-
-template<typename Key1, typename Value1, typename Key2, typename Value2>
-[[nodiscard]] constexpr bool operator<(const pupple_element<Key1, Value1>& lhs, const pupple_element<Key2, Value2>& rhs)
-{
-    return (lhs.data < rhs.data);
-}
-
-template<typename Key1, typename Value1, typename Key2, typename Value2>
-[[nodiscard]] constexpr bool operator>(const pupple_element<Key1, Value1>& lhs, const pupple_element<Key2, Value2>& rhs)
-{
-    return !(lhs < rhs);
-}
-
-template<typename Key1, typename Value1, typename Key2, typename Value2>
-[[nodiscard]] constexpr bool operator<=(const pupple_element<Key1, Value1>& lhs, const pupple_element<Key2, Value2>& rhs)
-{
-    return (lhs.data <= rhs.data);
-}
-
-template<typename Key1, typename Value1, typename Key2, typename Value2>
-[[nodiscard]] constexpr bool operator>=(const pupple_element<Key1, Value1>& lhs, const pupple_element<Key2, Value2>& rhs)
-{
-    return !(lhs <= rhs);
-}
 
 template <typename Key, typename Value>
 [[nodiscard]] constexpr const Value& get(const pupple_element<Key, Value, true>& p)
