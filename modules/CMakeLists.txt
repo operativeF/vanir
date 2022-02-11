@@ -9,6 +9,7 @@ set(TMP_DETAIL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tmp/detail)
 set(TMP_FUSION_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tmp/fusion)
 set(TMP_SEQ_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tmp/sequence)
 set(TMP_MAIN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tmp)
+set(PUPPLE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/pupple)
 
 set(TMP_ALGO_IXX
     ${TMP_ALGO_DIR}/all_of.ixx
@@ -80,12 +81,19 @@ set(TMP_SEQ_IXX
     ${TMP_SEQ_DIR}/zip.ixx
 )
 
+set(PUPPLE_IXX
+    ${PUPPLE_DIR}/meta_element.ixx
+    ${PUPPLE_DIR}/meta_map.ixx
+    ${PUPPLE_DIR}/pupple.ixx
+)
+
 add_library(nil_tmp
     STATIC
         ${TMP_ALGO_IXX}
         ${TMP_MAIN_IXX}
         ${TMP_DETAIL_IXX}
         ${TMP_SEQ_IXX}
+        ${PUPPLE_IXX}
         ${CMAKE_CURRENT_SOURCE_DIR}/tmp.ixx
 )
 
