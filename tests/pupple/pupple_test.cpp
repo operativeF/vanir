@@ -34,6 +34,7 @@ ut::suite PuppleCopyConstructors = []
     {
         pupple<int, int> src(100, 200);
         pupple<int, int> dest(src);
+        // auto pp = pupple{pupple{2, 3}, pupple{400, 400}};
 
         expect(src == dest);
     };
@@ -64,10 +65,10 @@ ut::suite TestPuppleAppend = []
 
     auto pup_AB_append = append(pupA, 1, 2, pupple<int>(1));
 
-    expect(get<tmp::uint_<0>>(pup_AB_append) == 1);
-    expect(get<tmp::uint_<1>>(pup_AB_append) == 2);
-    expect(get<tmp::uint_<2>>(pup_AB_append) == 3);
-    expect(get<tmp::uint_<5>>(pup_AB_append) == pupple<int>(1));
+    expect(get<0>(pup_AB_append) == 1);
+    expect(get<1>(pup_AB_append) == 2);
+    expect(get<2>(pup_AB_append) == 3);
+    expect(get<5>(pup_AB_append) == pupple<int>(1));
 };
 
 ut::suite TestPuppleStorageAlignment = []

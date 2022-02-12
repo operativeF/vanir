@@ -28,19 +28,19 @@ namespace detail
 
     template<int... Indices, typename... Params>
     struct pupple_impl<std::integer_sequence<int, Indices...>, Params...>
-            : pupple_element<tmp::uint_<Indices>, Params>...
+            : pupple_element<Indices, Params>...
     {
         constexpr pupple_impl() = default;
 
         template<typename Other>
-        explicit constexpr pupple_impl(from_other, Other&& other) : pupple_element<tmp::uint_<Indices>, Params>(
-                get<tmp::uint_<Indices>>(std::move(other)))...
+        explicit constexpr pupple_impl(from_other, Other&& other) : pupple_element<Indices, Params>(
+                get<Indices>(std::move(other)))...
         {
         }
 
         template<typename... Ns>
         constexpr pupple_impl(Ns&&... ns)
-                : pupple_element<tmp::uint_<Indices>, Params>(std::move(ns))...
+                : pupple_element<Indices, Params>(std::move(ns))...
         {
         }
 
@@ -95,19 +95,19 @@ template<typename... Params>
 template<unsigned I, typename... Ts, typename VT = tmp::call_<tmp::index_<tmp::uint_<I>>, Ts...>>
 [[nodiscard]] constexpr const auto& get(const pupple<Ts...>& t) noexcept
 {
-    return get(static_cast<pupple_element<tmp::uint_<I>, VT> const&>(t));
+    return get(static_cast<pupple_element<I, VT> const&>(t));
 }
 
 template<unsigned I, typename... Ts, typename VT = tmp::call_<tmp::index_<tmp::uint_<I>>, Ts...>>
 [[nodiscard]] constexpr auto& get(pupple<Ts...>& t) noexcept
 {
-    return get(static_cast<pupple_element<tmp::uint_<I>, VT>&>(t));
+    return get(static_cast<pupple_element<I, VT>&>(t));
 }
 
 template<unsigned I, typename... Ts, typename VT = tmp::call_<tmp::index_<tmp::uint_<I>>, Ts...>>
-[[nodiscard]] constexpr auto&& get(pupple<Ts...>&& t) noexcept
+[[nodiscard]] constexpr auto get(pupple<Ts...>&& t) noexcept
 {
-    return get(std::move(static_cast<pupple_element<tmp::uint_<I>, VT>>(t)));
+    return get(std::move(static_cast<pupple_element<I, VT>>(t)));
 }
 
 template<typename... Ts, typename... Us>
@@ -192,13 +192,13 @@ struct Tuple : pair_with_index<Ts...>
 template<unsigned I, typename... Us>
 [[nodiscard]] constexpr auto get(const Tuple<Us...>& pup) noexcept
 {
-    return get<typename Tuple<Us...>::template actual_index<tmp::uint_<I>>>(pup.m_pupple);
+    return get<Tuple<Us...>::template actual_index<tmp::uint_<I>>::value>(pup.m_pupple);
 }
 
 template<unsigned I, typename... Us>
 [[nodiscard]] constexpr auto get(Tuple<Us...>&& pup) noexcept
 {
-    return get<typename Tuple<Us...>::template actual_index<tmp::uint_<I>>>(std::move(pup.m_pupple));
+    return get<Tuple<Us...>::template actual_index<tmp::uint_<I>>::value>(std::move(pup.m_pupple));
 }
 
 } // export

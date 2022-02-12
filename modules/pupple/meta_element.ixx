@@ -12,98 +12,100 @@ export
 
 namespace tmp = boost::tmp;
 
-template <typename Key, typename Value, bool = std::is_empty_v<Value> && !std::is_final_v<Value>>
-struct pupple_element;
-
-template <typename Key, typename Value>
-struct pupple_element<Key, Value, true> : Value
+template<typename Data>
+struct pupple_data
 {
-    using key   = Key;
-    using value = Value;
-
-    constexpr pupple_element() = default;
-    constexpr pupple_element(pupple_element<Key, Value, true>&& p) : Value(std::move(p))
-    {
-    }
-    constexpr pupple_element(const pupple_element<Key, Value, true>& p)
-            : Value(static_cast<const Value&>(p))
-    {
-    }
-    explicit constexpr pupple_element(const Value& v) : Value(v)
-    {
-    }
-    explicit constexpr pupple_element(Value&& v) : Value(std::move(v))
-    {
-    }
+    Data value;
 };
 
-template <typename Key, typename Value>
-struct pupple_element<Key, Value, false>
+template<typename V>
+using in_val = tmp::bool_<(std::is_empty_v<V> && !std::is_final_v<V>)>;
+
+template<unsigned int Key, typename Value, typename IV = tmp::call_<tmp::if_<tmp::lift_<in_val>, tmp::identity_, tmp::always_<pupple_data<Value>>>, Value>>
+struct pupple_element : IV
 {
-    using key   = Key;
-    using value = Value;
-
     constexpr pupple_element() = default;
-    constexpr pupple_element(pupple_element<Key, Value>&& p)
-            : data(std::forward<decltype(p.data)>(p.data))
+
+    constexpr pupple_element(pupple_element<Key, Value>&& p) : IV(std::move(p))
     {
     }
-    explicit constexpr pupple_element(const Value& v) : data(v)
+    constexpr pupple_element(const pupple_element<Key, Value>& p) : IV(p)
     {
     }
-    explicit constexpr pupple_element(Value&& v) : data(std::move(v))
+    explicit constexpr pupple_element(const Value& v) : IV(v)
+    {
+    }
+    explicit constexpr pupple_element(Value&& v) : IV(std::move(v))
     {
     }
 
-    template<typename OtherKey, typename OtherValue>
+    constexpr pupple_element& operator=(const pupple_element&) = default;
+    constexpr pupple_element& operator=(pupple_element&&) = default;
+
+    template<unsigned OtherKey, typename OtherValue>
     constexpr auto operator<=>(const pupple_element<OtherKey, OtherValue>& otherPupple) const
     {
-        return data <=> otherPupple.data;
+        if constexpr(std::derived_from<pupple_element<OtherKey, OtherValue>, pupple_data<OtherValue>>)
+        {
+            return this->value <=> otherPupple.value;
+        }
+        else
+        {
+            return *this <=> otherPupple;
+        }
     }
 
-    template<typename OtherKey, typename OtherValue>
+    template<unsigned OtherKey, typename OtherValue>
     constexpr auto operator==(const pupple_element<OtherKey, OtherValue>& otherPupple) const
     {
-        return data == otherPupple.data;
+        if constexpr(std::derived_from<pupple_element<OtherKey, OtherValue>, pupple_data<OtherValue>>)
+        {
+            return this->value == otherPupple.value;
+        }
+        else
+        {
+            return *this <=> otherPupple;
+        }
     }
-
-    Value data{};
 };
 
-template <typename Key, typename Value>
-[[nodiscard]] constexpr const Value& get(const pupple_element<Key, Value, true>& p)
+template <unsigned int Key, typename Value>
+[[nodiscard]] constexpr const Value& get(const pupple_element<Key, Value>& p)
 {
-    return p;
+    if constexpr(std::derived_from<pupple_element<Key, Value>, Value>)
+    {
+        return p;
+    }
+    else
+    {
+        return p.value;
+    }
 }
 
-template <typename Key, typename Value>
-[[nodiscard]] constexpr Value& get(pupple_element<Key, Value, true>& p)
+template <unsigned int Key, typename Value>
+[[nodiscard]] constexpr Value& get(pupple_element<Key, Value>& p)
 {
-    return p;
+    if constexpr(std::derived_from<pupple_element<Key, Value>, Value>)
+    {
+        return p;
+    }
+    else
+    {
+        return p.value;
+    }
 }
 
-template <typename Key, typename Value>
-[[nodiscard]] constexpr Value&& get(pupple_element<Key, Value, true>&& p)
+template <unsigned int Key, typename Value>
+[[nodiscard]] constexpr Value&& get(pupple_element<Key, Value>&& p)
 {
-    return std::move(p);
-}
-
-template <typename Key, typename Value>
-[[nodiscard]] constexpr const Value& get(const pupple_element<Key, Value, false>& p)
-{
-    return p.data;
-}
-
-template <typename Key, typename Value>
-[[nodiscard]] constexpr Value& get(pupple_element<Key, Value, false>& p)
-{
-    return p.data;
-}
-
-template <typename Key, typename Value>
-[[nodiscard]] constexpr Value&& get(pupple_element<Key, Value, false>&& p)
-{
-    return std::move(p.data);
+    if constexpr(std::derived_from<pupple_element<Key, Value>, Value>)
+    {
+        return std::move(p);
+    }
+    else
+    {
+        return std::move(p.value);
+    }
 }
 
 } // export

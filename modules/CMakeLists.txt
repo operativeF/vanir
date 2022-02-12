@@ -83,7 +83,7 @@ set(TMP_SEQ_IXX
 
 set(PUPPLE_IXX
     ${PUPPLE_DIR}/meta_element.ixx
-    ${PUPPLE_DIR}/meta_map.ixx
+    # ${PUPPLE_DIR}/meta_map.ixx
     ${PUPPLE_DIR}/pupple.ixx
 )
 

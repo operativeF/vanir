@@ -14,7 +14,7 @@ export
 template<typename T, typename U>
 using alignment_greater = tmp::bool_<((std::alignment_of_v<T>) > (std::alignment_of_v<U>))>;
 
-template <typename Key>
+template <auto Key>
 struct is_key
 {
     template <typename T>
@@ -25,7 +25,7 @@ struct is_key
     {
     };
 
-    template <typename OtherKey, typename Value>
+    template <auto OtherKey, typename Value>
     struct f_impl<pupple_element<OtherKey, Value>> : tmp::false_
     {
     };
@@ -63,22 +63,22 @@ using nmap = tmp::call_<tmp::unpack_<tmp::lift_<map>>, L>;
 template<typename L>
 using smap = tmp::call_<tmp::unpack_<tmp::sort_<tmp::lift_<alignment_greater>, tmp::lift_<map>>>, L>;
 
-template <typename Name, typename Parameters>
+template <unsigned int Name, typename Parameters>
 struct value_type;
 
-template <typename Name, typename... Params>
+template <unsigned int Name, typename... Params>
 struct value_type<Name, map<Params...>>
 {
     using type = tmp::call_<tmp::find_if_<is_key<Name>, tmp::lift_<tmp::index_>>, Params...>;
 };
 
-template <typename Key, typename... Params>
+template <unsigned int Key, typename... Params>
 [[nodiscard]] constexpr auto get(map<Params...>& parameter_map) -> typename value_type<Key, Params...>::type&
 {
     return get(parameter_map);
 }
 
-template <typename Key, typename... Params>
+template <auto Key, typename... Params>
 [[nodiscard]] constexpr auto get(const map<Params...>& parameter_map) ->
         typename const value_type<Key, Params...>::type&
 {
