@@ -6,7 +6,6 @@ import <utility>;
 import Boost.TMP;
 
 import Pupple.Element;
-import Pupple.Map;
 
 export
 {
@@ -72,8 +71,7 @@ struct pupple : aux::detail::pupple_impl<std::make_integer_sequence<int, sizeof.
             Params...>;
 
     // TODO: Replace with concepts when the time comes.
-    template <typename Other, typename = typename std::enable_if_t<
-                                      std::is_same_v<typename tmp::decay<Other>::type, pupple<Params...>>>>
+    template <typename Other> requires(std::same_as<typename tmp::decay<Other>::type, pupple<Params...>>)
     constexpr pupple(Other&& other) : Base(aux::detail::from_other{}, std::move(other))
     {
     }
