@@ -18,10 +18,13 @@ struct pupple_data
     Data value;
 };
 
-template<typename V>
-using in_val = tmp::bool_<(std::is_empty_v<V> && !std::is_final_v<V>)>;
+template<typename T>
+using in_val = tmp::bool_<(std::is_empty_v<T> && !std::is_final_v<T>)>;
 
-template<unsigned int Key, typename Value, typename IV = tmp::call_<tmp::if_<tmp::lift_<in_val>, tmp::identity_, tmp::always_<pupple_data<Value>>>, Value>>
+template<typename T>
+using PuppleDataT = tmp::call_<tmp::if_<tmp::lift_<in_val>, tmp::identity_, tmp::always_<pupple_data<T>>>, T>;
+
+template<unsigned int Key, typename Value, typename IV = PuppleDataT<Value>>
 struct pupple_element : IV
 {
     constexpr pupple_element() = default;

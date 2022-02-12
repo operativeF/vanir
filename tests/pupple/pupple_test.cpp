@@ -78,8 +78,10 @@ ut::suite TestPuppleStorageAlignment = []
     Tuple<char, int, char, int, char, double, char> new_tupple{'a', 1, 'c', 3, 'd', 5.0, 'e'};
     std::tuple<char, int, char, int, char, double, char> stdtuple{'a', 1, 'c', 3, 'd', 5.0, 'e'};
 
-    //MESSAGE("Size of Pupple: " << sizeof(new_tupple) << " bytes.\n");
-    //MESSAGE("Size of std::tuple: " << sizeof(stdtuple) << " bytes.\n");
+    // Size of new_tupple will be 20 bytes + 4 bytes padding.
+    expect(sizeof(new_tupple) == 24) << fmt::format("{}", sizeof(new_tupple));
+    // fmt::print("Size of Pupple: {} bytes.\n", sizeof(new_tupple));
+    // fmt::print("Size of std::tuple: {} bytes.\n", sizeof(stdtuple));
 
     auto pos = get<5>(new_tupple);
     expect(pos == 5.0);
@@ -94,10 +96,6 @@ static_assert(get<3>(constexpr_tupple) == 3);
 static_assert(get<4>(constexpr_tupple) == 'd');
 static_assert(get<5>(constexpr_tupple) == 5.0);
 static_assert(get<6>(constexpr_tupple) == 'e');
-
-// TEST_CASE("Test pupple after append storage alignment.")
-// {
-// }
 
 // TEST_CASE("Test pupple after removing item for storage alignment.")
 // { 
