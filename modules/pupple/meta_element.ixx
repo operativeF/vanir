@@ -15,14 +15,16 @@ namespace tmp = boost::tmp;
 template<typename Data>
 struct pupple_data
 {
-    Data value;
+    auto operator<=>(const pupple_data&) const = default;
+
+    Data value{};
 };
 
 template<typename T>
-using in_val = tmp::bool_<(std::is_empty_v<T> && !std::is_final_v<T>)>;
+using IsEmptyAndInheritible = tmp::bool_<(std::is_empty_v<T> && !std::is_final_v<T>)>;
 
 template<typename T>
-using PuppleDataT = tmp::call_<tmp::if_<tmp::lift_<in_val>, tmp::identity_, tmp::always_<pupple_data<T>>>, T>;
+using PuppleDataT = tmp::call_<tmp::if_<tmp::lift_<IsEmptyAndInheritible>, tmp::identity_, tmp::always_<pupple_data<T>>>, T>;
 
 template<unsigned int Key, typename Value, typename IV = PuppleDataT<Value>>
 struct pupple_element : IV
@@ -46,7 +48,7 @@ struct pupple_element : IV
     constexpr pupple_element& operator=(pupple_element&&) = default;
 
     template<unsigned OtherKey, typename OtherValue>
-    constexpr auto operator<=>(const pupple_element<OtherKey, OtherValue>& otherPupple) const
+    [[nodiscard]] constexpr auto operator<=>(const pupple_element<OtherKey, OtherValue>& otherPupple) const
     {
         if constexpr(std::derived_from<pupple_element<OtherKey, OtherValue>, pupple_data<OtherValue>>)
         {
@@ -59,7 +61,7 @@ struct pupple_element : IV
     }
 
     template<unsigned OtherKey, typename OtherValue>
-    constexpr auto operator==(const pupple_element<OtherKey, OtherValue>& otherPupple) const
+    [[nodiscard]] constexpr auto operator==(const pupple_element<OtherKey, OtherValue>& otherPupple) const
     {
         if constexpr(std::derived_from<pupple_element<OtherKey, OtherValue>, pupple_data<OtherValue>>)
         {
@@ -67,7 +69,7 @@ struct pupple_element : IV
         }
         else
         {
-            return *this <=> otherPupple;
+            return *this == otherPupple;
         }
     }
 };

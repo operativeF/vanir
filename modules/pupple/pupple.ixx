@@ -7,6 +7,18 @@ import Boost.TMP;
 
 import Pupple.Element;
 
+// TODO: Tuple size
+// TODO: Tuple element
+// TODO: Accept std::ignore
+// TODO: std::tie
+// TODO: forward_as_tuple
+// TODO: Tuple concatenation
+// TODO: std::apply
+// TODO: std::swap
+// TODO: make_from_tuple
+// TODO: Construct from range
+// TODO: Construct from std::tuple
+
 export
 {
 
@@ -70,7 +82,6 @@ struct pupple : aux::detail::pupple_impl<std::make_integer_sequence<int, sizeof.
     using Base = typename aux::detail::pupple_impl<std::make_integer_sequence<int, sizeof...(Params)>,
             Params...>;
 
-    // TODO: Replace with concepts when the time comes.
     template <typename Other> requires(std::same_as<typename tmp::decay<Other>::type, pupple<Params...>>)
     constexpr pupple(Other&& other) : Base(aux::detail::from_other{}, std::move(other))
     {
@@ -82,9 +93,10 @@ struct pupple : aux::detail::pupple_impl<std::make_integer_sequence<int, sizeof.
     }
 
     auto operator<=>(const pupple&) const = default;
-
-    // TODO: Add swapping.
 };
+
+template<unsigned int I, typename... Ts>
+using indexed_at = tmp::call_<tmp::index_<tmp::uint_<I>>, Ts...>;
 
 template<typename... Params>
 [[nodiscard]] constexpr auto make_pupple(Params&&... params)
@@ -92,19 +104,19 @@ template<typename... Params>
     return pupple<typename tmp::decay<decltype(params)>::type...>(std::forward<Params>(params)...);
 }
 
-template<unsigned I, typename... Ts, typename VT = tmp::call_<tmp::index_<tmp::uint_<I>>, Ts...>>
+template<unsigned int I, typename... Ts, typename VT = indexed_at<I, Ts...>>
 [[nodiscard]] constexpr const auto& get(const pupple<Ts...>& t) noexcept
 {
     return get(static_cast<pupple_element<I, VT> const&>(t));
 }
 
-template<unsigned I, typename... Ts, typename VT = tmp::call_<tmp::index_<tmp::uint_<I>>, Ts...>>
+template<unsigned int I, typename... Ts, typename VT = indexed_at<I, Ts...>>
 [[nodiscard]] constexpr auto& get(pupple<Ts...>& t) noexcept
 {
     return get(static_cast<pupple_element<I, VT>&>(t));
 }
 
-template<unsigned I, typename... Ts, typename VT = tmp::call_<tmp::index_<tmp::uint_<I>>, Ts...>>
+template<unsigned int I, typename... Ts, typename VT = indexed_at<I, Ts...>>
 [[nodiscard]] constexpr auto get(pupple<Ts...>&& t) noexcept
 {
     return get(std::move(static_cast<pupple_element<I, VT>>(t)));
@@ -133,7 +145,7 @@ struct PuppleBase<tmp::list_<tmp::uint_<Is>...>, pupple<Ts...>>
     using rep = tmp::list_<Ts...>;
 
     template<typename... Params>
-    constexpr PuppleBase(pupple<Params...>&& p) : m_pupple{static_cast<tmp::call_<tmp::index_<tmp::uint_<Is>>, Params...>&&>(get<Is>(p))...}
+    constexpr PuppleBase(pupple<Params...>&& p) : m_pupple{static_cast<indexed_at<Is, Params...>&&>(get<Is>(p))...}
     {
     }
 
@@ -143,7 +155,7 @@ struct PuppleBase<tmp::list_<tmp::uint_<Is>...>, pupple<Ts...>>
     }
 
     template<typename... Params>
-    constexpr PuppleBase(const pupple<Params...>& p) : m_pupple{static_cast<const tmp::call_<tmp::index_<tmp::uint_<Is>>, Params...>&>(get<Is>(p))...}
+    constexpr PuppleBase(const pupple<Params...>& p) : m_pupple{static_cast<const indexed_at<Is, Params...>&>(get<Is>(p))...}
     {
     }
 
@@ -151,6 +163,8 @@ struct PuppleBase<tmp::list_<tmp::uint_<Is>...>, pupple<Ts...>>
     constexpr PuppleBase(const Params&... params) : PuppleBase{make_pupple(static_cast<const Params&>(params)...)}
     {
     }
+
+    auto operator<=>(const PuppleBase&) const = default;
     
     template<typename I, typename NL = tmp::list_<tmp::uint_<Is>...>>
     using actual_index = tmp::call_<tmp::unpack_<tmp::find_if_<tmp::is_<I>>>, NL>;
@@ -189,16 +203,20 @@ struct Tuple : pair_with_index<Ts...>
     using pair_with_index<Ts...>::pair_with_index;
 };
 
-template<unsigned I, typename... Us>
+template<unsigned int I, typename... Us>
 [[nodiscard]] constexpr auto get(const Tuple<Us...>& pup) noexcept
 {
     return get<Tuple<Us...>::template actual_index<tmp::uint_<I>>::value>(pup.m_pupple);
 }
 
-template<unsigned I, typename... Us>
+template<unsigned int I, typename... Us>
 [[nodiscard]] constexpr auto get(Tuple<Us...>&& pup) noexcept
 {
     return get<Tuple<Us...>::template actual_index<tmp::uint_<I>>::value>(std::move(pup.m_pupple));
 }
+
+// CTAD
+template<typename... Ts>
+Tuple(Ts... ts) -> Tuple<Ts...>;
 
 } // export
