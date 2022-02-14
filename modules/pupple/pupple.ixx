@@ -7,7 +7,6 @@ import Boost.TMP;
 
 import Pupple.Element;
 
-// TODO: Tuple size
 // TODO: Tuple element
 // TODO: Accept std::ignore
 // TODO: std::tie
@@ -15,7 +14,6 @@ import Pupple.Element;
 // TODO: Tuple concatenation
 // TODO: std::apply
 // TODO: std::swap
-// TODO: make_from_tuple
 // TODO: Construct from range
 // TODO: Construct from std::tuple
 
@@ -213,6 +211,25 @@ template<unsigned int I, typename... Us>
 [[nodiscard]] constexpr auto get(Tuple<Us...>&& pup) noexcept
 {
     return get<Tuple<Us...>::template actual_index<tmp::uint_<I>>::value>(std::move(pup.m_pupple));
+}
+
+template<class... Ts>
+struct pupple_size : tmp::uint_<sizeof...(Ts)>
+{
+};
+
+template <class T, class P, unsigned int... I> requires(std::is_constructible_v<T,
+                                                        decltype(get<I>(std::declval<P>()))...>)
+constexpr T make_from_pupple_impl(P&& t, std::index_sequence<I...>)
+{
+    return T(get<I>(std::forward<P>(t))...);
+}
+
+template<class T, class P>
+constexpr T make_from_pupple(P&& p)
+{
+    return make_from_pupple_impl<T>(std::forward<P>(p),
+           std::make_index_sequence<pupple_size<P>::value>{});
 }
 
 // CTAD

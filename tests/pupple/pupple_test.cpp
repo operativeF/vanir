@@ -128,6 +128,22 @@ ut::suite TestPuppleStorageAlignment = []
     expect(pos == 5.0);
 };
 
+ut::suite MakePuppleTest = []
+{
+    using namespace ut;
+
+    auto tupleToMakeFrom = Tuple{1, "nil", 3.0};
+
+    struct constrFromTuple
+    {
+        int aa{};
+        std::string_view ss{};
+        double dd{};
+    };
+
+    auto madeP = make_from_pupple<constrFromTuple>(tupleToMakeFrom);
+};
+
 constexpr Tuple<char, int, char, int, char, double, char> constexpr_tupple{'a', 1, 'c', 3, 'd', 5.0, 'e'};
 
 static_assert(get<0>(constexpr_tupple) == 'a');
