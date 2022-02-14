@@ -144,6 +144,21 @@ ut::suite MakePuppleTest = []
     auto madeP = make_from_pupple<constrFromTuple>(tupleToMakeFrom);
 };
 
+ut::suite SwapPupplesTest = []
+{
+    using namespace ut;
+
+    Tuple newtup{'a', 1.0, 3};
+    Tuple othertup{'b', 2.0, 10};
+
+    swap(newtup, othertup);
+
+    expect(newtup == Tuple{'b', 2.0, 10});
+    expect(othertup == Tuple{'a', 1.0, 3});
+
+    // TODO: Add test for movable types
+};
+
 constexpr Tuple<char, int, char, int, char, double, char> constexpr_tupple{'a', 1, 'c', 3, 'd', 5.0, 'e'};
 
 static_assert(get<0>(constexpr_tupple) == 'a');

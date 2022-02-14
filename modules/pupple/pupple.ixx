@@ -213,6 +213,17 @@ template<unsigned int I, typename... Us>
     return get<Tuple<Us...>::template actual_index<tmp::uint_<I>>::value>(std::move(pup.m_pupple));
 }
 
+template<typename... Ts>
+void swap(Tuple<Ts...>& a, Tuple<Ts...>& b) noexcept(std::is_nothrow_move_constructible<Tuple<Ts...>>::value &&
+                                                     std::is_nothrow_move_assignable<Tuple<Ts...>>::value)
+{
+    using tuple_type = Tuple<Ts...>;
+
+    tuple_type temp{std::move(a)};
+    a = std::move(b);
+    b = std::move(temp);
+}
+
 template<class... Ts>
 struct pupple_size : tmp::uint_<sizeof...(Ts)>
 {
