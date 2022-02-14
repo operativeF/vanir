@@ -1,4 +1,4 @@
-//  Copyright 2019-2021 Thomas Figueroa.
+//  Copyright 2019-2022 Thomas Figueroa.
 //
 //  Distributed under the Boost Software License, Version 1.0.
 //
@@ -15,6 +15,8 @@ import Boost.TMP.Base.Logic;
 import Boost.TMP.Base.Vocabulary;
 
 import Boost.TMP.Sequence.Join;
+
+import <cstddef>;
 
 export namespace boost::tmp {
 		// Requires sets to be the input, unless 
@@ -40,7 +42,7 @@ export namespace boost::tmp {
 			struct remove_pairs_impl<C, list_<T, T, T2s...>>
 			    : remove_pairs_impl<C, list_<T2s...>> {};
 
-			template <unsigned N, typename C>
+			template <std::size_t N, typename C>
 			struct dispatch<N, remove_pairs_<C>> {
 				template <typename... Ts>
 				using f = typename detail::remove_pairs_impl<C, list_<Ts...>>::type;

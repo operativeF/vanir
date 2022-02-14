@@ -2,6 +2,7 @@
 export module Pupple.Element;
 
 import <compare>;
+import <cstddef>;
 import <type_traits>;
 import <utility>;
 
@@ -26,7 +27,7 @@ using IsEmptyAndInheritible = tmp::bool_<(std::is_empty_v<T> && !std::is_final_v
 template<typename T>
 using PuppleDataT = tmp::call_<tmp::if_<tmp::lift_<IsEmptyAndInheritible>, tmp::identity_, tmp::always_<pupple_data<T>>>, T>;
 
-template<unsigned int Key, typename Value, typename IV = PuppleDataT<Value>>
+template<std::size_t Key, typename Value, typename IV = PuppleDataT<Value>>
 struct pupple_element : IV
 {
     constexpr pupple_element() = default;
@@ -74,7 +75,7 @@ struct pupple_element : IV
     }
 };
 
-template <unsigned int Key, typename Value>
+template<std::size_t Key, typename Value>
 [[nodiscard]] constexpr const Value& get(const pupple_element<Key, Value>& p)
 {
     if constexpr(std::derived_from<pupple_element<Key, Value>, Value>)
@@ -87,7 +88,7 @@ template <unsigned int Key, typename Value>
     }
 }
 
-template <unsigned int Key, typename Value>
+template<std::size_t Key, typename Value>
 [[nodiscard]] constexpr Value& get(pupple_element<Key, Value>& p)
 {
     if constexpr(std::derived_from<pupple_element<Key, Value>, Value>)
@@ -100,7 +101,7 @@ template <unsigned int Key, typename Value>
     }
 }
 
-template <unsigned int Key, typename Value>
+template<std::size_t Key, typename Value>
 [[nodiscard]] constexpr Value&& get(pupple_element<Key, Value>&& p)
 {
     if constexpr(std::derived_from<pupple_element<Key, Value>, Value>)

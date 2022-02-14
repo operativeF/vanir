@@ -23,7 +23,7 @@ namespace boost {
 		struct partition_ {};
 
 		namespace detail {
-			template <unsigned N, typename F, typename C>
+			template <std::size_t N, typename F, typename C>
 			struct dispatch<N, partition_<F, C>> : dispatch<N, tee_<filter_<F>, remove_if_<F>, C>> {
 			};
 		} // namespace detail

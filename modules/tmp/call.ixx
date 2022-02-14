@@ -1,5 +1,5 @@
 //  Copyright 2018 Odin Holmes.
-//            2021 Thomas Figueroa.
+//            2021-2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
@@ -10,6 +10,7 @@ export module Boost.TMP.Base.Call;
 import Boost.TMP.Detail.Dispatch;
 import Boost.TMP.Base.Vocabulary;
 
+import <cstddef>;
 import <type_traits>;
 
 export namespace boost::tmp {
@@ -53,7 +54,7 @@ export namespace boost::tmp {
 		struct call_f_ {};
 
 		namespace detail {
-			template <unsigned N, typename C>
+			template <std::size_t N, typename C>
 			struct dispatch<N, call_f_<C>> {
 				template <typename F, typename... Ts>
 				using f = typename dispatch<1, C>::template f<typename dispatch<

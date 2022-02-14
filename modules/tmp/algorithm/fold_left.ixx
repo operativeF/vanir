@@ -1,5 +1,5 @@
 //  Copyright 2018 Odin Holmes.
-//            2021 Thomas Figueroa.
+//            2021-2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
@@ -10,6 +10,8 @@ export module Boost.TMP.Algorithm.FoldLeft;
 import Boost.TMP.Base.Call;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Detail.Dispatch;
+
+import <cstddef>;
 
 export namespace boost::tmp {
 		/// \brief folds left over a list using a binary predicate /
@@ -230,18 +232,18 @@ export namespace boost::tmp {
 						T63>,
 						Ts...>;
 			};
-			template <unsigned N, template <typename...> class F, template <typename...> class C>
+			template <std::size_t N, template <typename...> class F, template <typename...> class C>
 			struct dispatch<N, fold_left_<lift_<F>, lift_<C>>>
 			    : dispatch<64, fold_left_<lift_<F>, lift_<C>>> {};
 
-			template <unsigned N, typename F, typename C>
+			template <std::size_t N, typename F, typename C>
 			struct dispatch<N, fold_left_<F, C>>
 			    : dispatch<N, fold_left_<lift_<dispatch<2, F>::template f>,
 			                             lift_<dispatch<1, C>::template f>>> {};
-			template <unsigned N, template <typename...> class F, typename C>
+			template <std::size_t N, template <typename...> class F, typename C>
 			struct dispatch<N, fold_left_<lift_<F>, C>>
 			    : dispatch<N, fold_left_<lift_<F>, lift_<dispatch<1, C>::template f>>> {};
-			template <unsigned N, typename F, template <typename...> class C>
+			template <std::size_t N, typename F, template <typename...> class C>
 			struct dispatch<N, fold_left_<F, lift_<C>>>
 			    : dispatch<N, fold_left_<lift_<dispatch<2, F>::template f>, lift_<C>>> {};
 

@@ -1,5 +1,5 @@
 //  Copyright 2018-2019 Odin Holmes.
-//			  2020-2021 Thomas Figueroa.
+//			  2020-2022 Thomas Figueroa.
 //
 //  Distributed under the Boost Software License, Version 1.0.
 //
@@ -25,6 +25,8 @@ import Boost.TMP.Sequence.Join;
 import Boost.TMP.Sequence.PushFront;
 import Boost.TMP.Sequence.Tee;
 import Boost.TMP.Sequence.Unpack;
+
+import <cstddef>;
 
 export namespace boost::tmp {
 		template<typename C = listify_>
@@ -98,12 +100,12 @@ export namespace boost::tmp {
 			using less = bool_<(T::value < U::value)>;
 
 			// TODO: Make sorting optional.
-			template<unsigned N, typename C>
+			template<std::size_t N, typename C>
 			struct dispatch<N, make_set_<C>> :
 				dispatch<N, push_front_<detail::unique_super_base,
 						fold_left_<detail::unique_push_if,
 							flatten_<
-								drop_<uint_<1>,
+								drop_<sizet_<1>,
 									sort_<lift_<less>, C
 									>
 								>
@@ -121,7 +123,7 @@ export namespace boost::tmp {
 			template<typename T, typename U>
 			using productize = call_<product_<>, T, U>;
 
-			template<unsigned N, typename C>
+			template<std::size_t N, typename C>
 			struct dispatch<N, set_union_<C>> {
 				template<typename T, typename U>
 				using f =
@@ -132,7 +134,7 @@ export namespace boost::tmp {
 				>;
 			};
 
-			template<unsigned N, typename C>
+			template<std::size_t N, typename C>
 			struct dispatch<N, set_intersection_<C>> {
 				template<typename T, typename U>
 				using f =
@@ -148,7 +150,7 @@ export namespace boost::tmp {
 
 			// Requires two sets be the input because
 			// more than two unique values will not be handled correctly.
-			template<unsigned N, typename C>
+			template<std::size_t N, typename C>
 			struct dispatch<N, set_symmetric_difference_<C>> {
 				template<typename T, typename U>
 				using f =
@@ -169,7 +171,7 @@ export namespace boost::tmp {
 			template<typename T, typename U>
 			using diff_helper3 = call_<join_<>, diff_helper<T, U>, T, list_<>>;
 
-			template<unsigned N, typename C>
+			template<std::size_t N, typename C>
 			struct dispatch<N, set_difference_A_<C>> {
 				template<typename T, typename U>
 				using f =
@@ -184,7 +186,7 @@ export namespace boost::tmp {
 				>;
 			};
 			
-			template<unsigned N, typename C>
+			template<std::size_t N, typename C>
 			struct dispatch<N, set_difference_B_<C>> {
 				template<typename T, typename U>
 				using f =
@@ -202,7 +204,7 @@ export namespace boost::tmp {
 			template<typename T, typename U>
 			using comp_join = call_<join_<>, T, U>;
 
-			template<unsigned N, typename C>
+			template<std::size_t N, typename C>
 			struct dispatch<N, set_quotient_<C>> {
 				template<typename T, typename U>
 				using f =

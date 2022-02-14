@@ -1,5 +1,5 @@
 //  Copyright 2018 Odin Holmes.
-//            2021 Thomas Figueroa.
+//            2021-2022 Thomas Figueroa.
 //
 //  Distributed under the Boost Software License, Version 1.0.
 //
@@ -17,13 +17,15 @@ import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Detail.Dispatch;
 import Boost.TMP.Sequence.Join;
 
+import <cstddef>;
+
 /// \brief Given a predicate F, check the variadic parameter pack passed in
 /// and remove the value if the predicate holds true.
 export namespace boost::tmp {
 		template <typename F, typename C = listify_>
 		struct remove_if_ {};
 		namespace detail {
-			template <unsigned N, typename F, typename C>
+			template <std::size_t N, typename F, typename C>
 			struct dispatch<N, remove_if_<F, C>>
 			    : dispatch<N, transform_<if_<F, always_<list_<>>, listify_>, join_<C>>> {};
 		} // namespace detail

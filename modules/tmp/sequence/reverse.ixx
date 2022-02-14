@@ -1,5 +1,5 @@
 //  Copyright 2018 Odin Holmes.
-//            2021 Thomas Figueroa.
+//            2021-2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
@@ -9,6 +9,8 @@ export module Boost.TMP.Sequence.Reverse;
 
 import Boost.TMP.Base.Lift;
 import Boost.TMP.Detail.Dispatch;
+
+import <cstddef>;
 
 export namespace boost::tmp {
 		template <typename C = listify_>
@@ -174,7 +176,7 @@ export namespace boost::tmp {
 				                   T24, T23, T22, T21, T20, T19, T18, T17, T16, T15, T14, T13, T12,
 				                   T11, T10, T9, T8, T7, T6, T5, T4, T3, T2, T1, T0>;
 			};
-			template <unsigned N, typename C>
+			template <std::size_t N, typename C>
 			struct dispatch<N, reverse_<C>> : dispatch<65, reverse_<C>> {};
 		} // namespace detail
 } // export namespace boost::tmp

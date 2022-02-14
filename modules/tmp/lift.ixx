@@ -1,5 +1,5 @@
 //  Copyright 2018 Odin Holmes.
-//            2021 Thomas Figueroa.
+//            2021-2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
@@ -9,6 +9,8 @@ export module Boost.TMP.Base.Lift;
 
 import Boost.TMP.Detail;
 import Boost.TMP.Base.Identity;
+
+import <cstddef>;
 
 export namespace boost::tmp {
 		template <template <typename...> class F, typename C = identity_>
@@ -40,7 +42,7 @@ export namespace boost::tmp {
 				using f = typename dispatch<1, C>::template f<F<T0, T1, T2, T3>>;
 			};
 #endif
-			template <unsigned N, template <typename...> class F, typename C>
+			template <std::size_t N, template <typename...> class F, typename C>
 			struct dispatch<N, lift_<F, C>> {
 				template <typename... Ts>
 				using f = typename dispatch<1, C>::template f<F<Ts...>>;

@@ -1,5 +1,5 @@
 //  Copyright 2018-2019 Odin Holmes.
-//                      Thomas Figueroa.
+//            2022 Thomas Figueroa.
 //
 //  Distributed under the Boost Software License, Version 1.0.
 //
@@ -12,12 +12,14 @@ import Boost.TMP.Base.Logic;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Detail.Dispatch;
 
+import <cstddef>;
+
 export namespace boost::tmp {
 		template <typename F, typename C = identity_>
 		struct all_of_;
 		
 		namespace detail {
-			template <unsigned N, typename F, typename C>
+			template <std::size_t N, typename F, typename C>
 			struct dispatch<N, all_of_<F, C>>
                 : dispatch<N, and_<F, C>> {};
 		} // namespace detail

@@ -1,5 +1,5 @@
 //  Copyright 2018 Odin Holmes.
-//            2021 Thomas Figueroa.
+//            2021-2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
@@ -15,6 +15,8 @@ import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Sequence.PushFront;
 import Boost.TMP.Sequence.Take;
 import Boost.TMP.Sequence.Unpack;
+
+import <cstddef>;
 
 // NOTE: Sort only works on lists, not parameter packs.
 export namespace boost::tmp {
@@ -216,11 +218,11 @@ export namespace boost::tmp {
 			template <typename C>
 			using collapse_unpack = lift_<btree::collapse_t, unpack_<C>>;
 
-			template <unsigned N, template <typename...> class F, typename C>
+			template <std::size_t N, template <typename...> class F, typename C>
 			struct dispatch<N, sort_<lift_<F>, C>>
 			    : dispatch<N, make_binary_tree<F, collapse_unpack<C>, btree::blist<>>> {};
 
-			template <unsigned N, typename F, typename C>
+			template <std::size_t N, typename F, typename C>
 			struct dispatch<N, sort_<F, C>>
 			    : dispatch<N, make_binary_tree<dispatch<2, F>::template f, collapse_unpack<C>,
 			                                   btree::blist<>>> {};

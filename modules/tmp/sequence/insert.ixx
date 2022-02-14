@@ -1,5 +1,5 @@
 //  Copyright 2018 Odin Holmes.
-//            2021 Thomas Figueroa.
+//            2021-2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
@@ -13,22 +13,25 @@ import Boost.TMP.Sequence.Rotate;
 
 import Boost.TMP.Base.Vocabulary;
 
+import <cstddef>;
+
 ///
 // @BUG: This does not work as expected.
 // Inserting will cause a permutation of the current list with the
 // to-be-inserted value. Also, as long as N < size of input list, it'll compile.
 // Attempting to insert a value in a position greater than the size of the list
 // will result in an error, as the value goes negative.
+// FIXME: Constraints on input values?
 export namespace boost::tmp {
-		template <typename N = uint_<0>, typename V = nothing_, typename C = listify_>
+		template <typename N = sizet_<0>, typename V = nothing_, typename C = listify_>
 		struct insert_ {};
 
 		namespace detail {
-			template <unsigned N, typename I, typename V, typename C>
+			template <std::size_t N, typename I, typename V, typename C>
 			struct dispatch<N, insert_<I, V, C>> {
 				template <typename... Ts>
 				using f = typename dispatch<
-				        N, rotate_<I, push_front_<V, rotate_<uint_<(sizeof...(Ts) - I::value - 1)>,
+				        N, rotate_<I, push_front_<V, rotate_<sizet_<(sizeof...(Ts) - I::value - 1)>,
 				                                             C>>>>::template f<Ts...>;
 			};
 			template <typename I, typename V, typename C>

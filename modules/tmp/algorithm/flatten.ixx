@@ -11,6 +11,8 @@ import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Sequence.Join;
 import Boost.TMP.Detail.Dispatch;
 
+import <cstddef>;
+
 export namespace boost::tmp {
 		template <typename C = listify_>
 		struct flatten_;
@@ -32,7 +34,7 @@ export namespace boost::tmp {
 			struct flatten_impl<C, list_<T1s...>, X<T2s...>, T3s...>
 			    : flatten_impl<C, list_<T1s...>, T2s..., T3s...> {};
 
-			template <unsigned N, typename C>
+			template <std::size_t N, typename C>
 			struct dispatch<N, flatten_<C>> {
 				template <typename... Ts>
 				using f = typename detail::flatten_impl<C, list_<>, Ts...>::type;

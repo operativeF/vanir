@@ -1,5 +1,5 @@
 //  Copyright 2018 Odin Holmes.
-//            2021 Thomas Figueroa.
+//            2021-2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
@@ -15,6 +15,8 @@ import Boost.TMP.Detail.Dispatch;
 
 import Boost.TMP.Sequence.PushFront;
 import Boost.TMP.Sequence.Rotate;
+
+import <cstddef>;
 
 export namespace boost::tmp {
 		template <typename... Fs>
@@ -37,7 +39,7 @@ export namespace boost::tmp {
 				                   Ts...>;
 			};
 			template <typename L, typename C, typename... Fs>
-			struct tee_impl<uint_<1>, L, C, Fs...> {
+			struct tee_impl<sizet_<1>, L, C, Fs...> {
 				template <typename T0>
 				using f = typename dispatch<find_dispatch(sizeof...(Fs) + 1), C>::template f<
 				        typename dispatch<1, Fs>::template f<T0>...,
@@ -45,13 +47,13 @@ export namespace boost::tmp {
 			};
 			// specialization for case where last closure is a forward
 			template <typename C, typename... Fs>
-			struct tee_impl<uint_<1>, identity_, C, Fs...> {
+			struct tee_impl<sizet_<1>, identity_, C, Fs...> {
 				template <typename T0>
 				using f = typename dispatch<find_dispatch(sizeof...(Fs) + 1), C>::template f<
 				        typename dispatch<1, Fs>::template f<T0>..., T0>;
 			};
 			template <typename L, typename C, typename... Fs>
-			struct tee_impl<uint_<2>, L, C, Fs...> {
+			struct tee_impl<sizet_<2>, L, C, Fs...> {
 				template <typename T0, typename T1>
 				using f = typename dispatch<find_dispatch(sizeof...(Fs) + 1), C>::template f<
 				        typename dispatch<2, Fs>::template f<T0, T1>...,
@@ -59,7 +61,7 @@ export namespace boost::tmp {
 			};
 			// specialization for case where last closure is a forward
 			template <typename C, typename... Fs>
-			struct tee_impl<uint_<2>, identity_, C, Fs...> {
+			struct tee_impl<sizet_<2>, identity_, C, Fs...> {
 				template <typename T0, typename T1>
 				using f = typename dispatch<find_dispatch(sizeof...(Fs) + 2), C>::template f<
 				        typename dispatch<2, Fs>::template f<T0, T1>..., T0, T1>;
@@ -126,16 +128,16 @@ export namespace boost::tmp {
 			template <typename N, typename L, typename C, typename... Fs>
 			struct tee_impl<N, L, and_<identity_, C>, Fs...> : tee_and_impl<true, C, Fs..., L> {};
 			template <typename L, typename C, typename... Fs>
-			struct tee_impl<uint_<1>, L, and_<identity_, C>, Fs...>
+			struct tee_impl<sizet_<1>, L, and_<identity_, C>, Fs...>
 					: tee_and_impl_1<true, C, Fs..., L> {};
 			template <typename C, typename... Fs>
-			struct tee_impl<uint_<1>, identity_, and_<identity_, C>, Fs...>
+			struct tee_impl<sizet_<1>, identity_, and_<identity_, C>, Fs...>
 					: tee_and_impl_1<true, C, Fs..., identity_> {};
 			template <typename L, typename C, typename... Fs>
-			struct tee_impl<uint_<2>, L, and_<identity_, C>, Fs...>
+			struct tee_impl<sizet_<2>, L, and_<identity_, C>, Fs...>
 					: tee_and_impl_2<true, C, Fs..., L> {};
 			template <typename C, typename... Fs>
-			struct tee_impl<uint_<2>, identity_, and_<identity_, C>, Fs...>
+			struct tee_impl<sizet_<2>, identity_, and_<identity_, C>, Fs...>
 					: tee_and_impl_2<true, C, Fs..., identity_> {};
 
 			// in case the continuation is an or_
@@ -199,19 +201,19 @@ export namespace boost::tmp {
 			template <typename N, typename L, typename C, typename... Fs>
 			struct tee_impl<N, L, or_<identity_, C>, Fs...> : tee_or_impl<false, C, Fs..., L> {};
 			template <typename L, typename C, typename... Fs>
-			struct tee_impl<uint_<1>, L, or_<identity_, C>, Fs...>
+			struct tee_impl<sizet_<1>, L, or_<identity_, C>, Fs...>
 					: tee_or_impl_1<false, C, Fs..., L> {};
 			template <typename C, typename... Fs>
-			struct tee_impl<uint_<1>, identity_, or_<identity_, C>, Fs...>
+			struct tee_impl<sizet_<1>, identity_, or_<identity_, C>, Fs...>
 					: tee_or_impl_1<false, C, Fs..., identity_> {};
 			template <typename L, typename C, typename... Fs>
-			struct tee_impl<uint_<2>, L, or_<identity_, C>, Fs...>
+			struct tee_impl<sizet_<2>, L, or_<identity_, C>, Fs...>
 					: tee_or_impl_2<false, C, Fs..., L> {};
 
-			template <unsigned N, typename F0, typename F1, typename... Fs>
+			template <std::size_t N, typename F0, typename F1, typename... Fs>
 			struct dispatch<N, tee_<F0, F1, Fs...>>
 			    : dispatch<find_dispatch(sizeof...(Fs) + 2),
-			               rotate_<uint_<sizeof...(Fs)>, push_front_<uint_<N>, lift_<tee_impl>>>>::
+			               rotate_<sizet_<sizeof...(Fs)>, push_front_<sizet_<N>, lift_<tee_impl>>>>::
 			              template f<F0, F1, Fs...> {};
 
 		} // namespace detail

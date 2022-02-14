@@ -1,5 +1,5 @@
 //  Copyright 2018 Odin Holmes.
-//            2021 Thomas Figueroa.
+//            2021-2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
@@ -10,6 +10,8 @@ export module Boost.TMP.Sequence.Join;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Sequence.Unpack;
 import Boost.TMP.Detail.Dispatch;
+
+import <cstddef>;
 
 export namespace boost::tmp {
 		template <typename C = listify_>
@@ -48,7 +50,7 @@ export namespace boost::tmp {
 				            T17s..., T18s..., T19s..., T20s..., T21s..., T22s..., T23s..., T24s...,
 				            T25s..., T26s..., T27s..., T28s..., T29s..., T30s..., T31s..., Vs...>;
 			};
-			template <unsigned N>
+			template <std::size_t N>
 			struct join_loop;
 			template <>
 			struct join_loop<1> {
@@ -78,13 +80,13 @@ export namespace boost::tmp {
 				          typename T7 = list_<>, typename T8 = list_<>>
 				using f = typename joiner<C, T0, T1, T2, T3, T4, T5, T6, T7>::template f<>;
 			};
-			template <unsigned N, template <typename...> class C>
+			template <std::size_t N, template <typename...> class C>
 			struct dispatch<N, join_<lift_<C>>> {
 				template <typename... Ts>
 				using f = typename join_loop<(sizeof...(Ts) > 8)>::template f<C, Ts...>;
 			};
 
-			template <unsigned N, typename C>
+			template <std::size_t N, typename C>
 			struct dispatch<N, join_<C>> {
 				template <typename... Ts>
 				using f = typename join_loop<(

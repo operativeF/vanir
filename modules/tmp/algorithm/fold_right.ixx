@@ -1,5 +1,5 @@
 //  Copyright 2018 Odin Holmes.
-//            2021 Thomas Figueroa.
+//            2021-2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
@@ -72,7 +72,7 @@ export namespace boost::tmp {
 				          typename T5, typename T6, typename In>
 				using f = C<F<F<F<F<F<F<F<In, T6>, T5>, T4>, T3>, T2>, T1>, T0>>;
 			};
-			template <unsigned N, template <typename...> class F, template <typename...> class C>
+			template <std::size_t N, template <typename...> class F, template <typename...> class C>
 			struct dispatch<N, fold_right_<lift_<F>, lift_<C>>> {
 				template <typename T0, typename T1, typename T2, typename T3, typename T4,
 				          typename T5, typename T6, typename T7, typename T8, typename... Ts>
@@ -89,14 +89,14 @@ export namespace boost::tmp {
 				                T1>,
 				              T0>>;
 			};
-			template <unsigned N, typename F, typename C>
+			template <std::size_t N, typename F, typename C>
 			struct dispatch<N, fold_right_<F, C>>
 			    : dispatch<N, fold_right_<lift_<dispatch<2, F>::template f>,
 			                              lift_<dispatch<1, C>::template f>>> {};
-			template <unsigned N, template <typename...> class F, typename C>
+			template <std::size_t N, template <typename...> class F, typename C>
 			struct dispatch<N, fold_right_<lift_<F>, C>>
 			    : dispatch<N, fold_right_<lift_<F>, lift_<dispatch<1, C>::template f>>> {};
-			template <unsigned N, typename F, template <typename...> class C>
+			template <std::size_t N, typename F, template <typename...> class C>
 			struct dispatch<N, fold_right_<F, lift_<C>>>
 			    : dispatch<N, fold_right_<lift_<dispatch<2, F>::template f>, lift_<C>>> {};
 		} // namespace detail

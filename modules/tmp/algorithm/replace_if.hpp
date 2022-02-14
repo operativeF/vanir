@@ -2,7 +2,7 @@
 #define BOOST_TMP_REPLACE_IF_HPP_INCLUDED
 
 //  Copyright 2018-2019 Odin Holmes.
-//                      Thomas Figueroa.
+//            2021-2022 Thomas Figueroa.
 //
 //  Distributed under the Boost Software License, Version 1.0.
 //
@@ -24,7 +24,7 @@ namespace boost {
 		template <typename Input, typename F, typename C = listify_>
 		struct replace_if_ {};
 		namespace detail {
-			template <unsigned N, typename Input, typename F, typename C>
+			template <std::size_t N, typename Input, typename F, typename C>
 			struct dispatch<N, replace_if_<Input, F, C>>
 			    : dispatch<N, transform_<if_<F, always_<Input>, identity_>, C>> {};
 		} // namespace detail

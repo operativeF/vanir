@@ -1,5 +1,5 @@
 //  Copyright 2018 Odin Holmes.
-//	          2021 Thomas Figueroa.
+//	          2021-2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
@@ -12,17 +12,19 @@ import Boost.TMP.Base.Vocabulary;
 
 import Boost.TMP.Sequence.Rotate;
 
+import <cstddef>;
+
 export namespace boost::tmp {
 		/// \brief Drop n values, starting from the front,
 		/// off the passed in list.
-		template <typename N = uint_<0>, typename C = listify_>
+		template <typename N = sizet_<0>, typename C = listify_>
 		struct drop_ {};
 
 		namespace detail {
-			constexpr unsigned drop_select(unsigned N) {
+			constexpr std::size_t drop_select(std::size_t N) {
 				return N <= 8 ? N : N < 16 ? 8 : N < 32 ? 16 : N < 64 ? 32 : 64;
 			}
-			template <unsigned, typename C>
+			template <std::size_t, typename C>
 			struct drop_impl;
 			template <typename C>
 			struct drop_impl<0, C> {
@@ -110,13 +112,13 @@ export namespace boost::tmp {
 				using f = typename dispatch<sizeof...(Ts), C>::template f<Ts...>;
 			};
 
-			template <unsigned P, typename C, unsigned Step = drop_select(P)>
-			struct make_drop : drop_impl<Step, drop_<uint_<(P - Step)>, C>> { /* not done */
+			template <std::size_t P, typename C, std::size_t Step = drop_select(P)>
+			struct make_drop : drop_impl<Step, drop_<sizet_<(P - Step)>, C>> { /* not done */
 			};
-			template <unsigned P, typename C>
+			template <std::size_t P, typename C>
 			struct make_drop<P, C, P> : drop_impl<P, C> {};
 
-			template <unsigned N, typename P, typename C>
+			template <std::size_t N, typename P, typename C>
 			struct dispatch<N, drop_<P, C>> : make_drop<P::value, C> {};
 		} // namespace detail
 } // export namespace boost::tmp

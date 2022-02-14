@@ -1,5 +1,5 @@
 //  Copyright 2018 Odin Holmes.
-//            2021 Thomas Figueroa.
+//            2021-2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
@@ -14,6 +14,8 @@ import Boost.TMP.Base.Lift;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Sequence.Unpack;
 
+import <cstddef>;
+
 export namespace boost::tmp {
 		template <template <typename...> class F, typename C = identity_>
 		struct try_ {};
@@ -27,7 +29,7 @@ export namespace boost::tmp {
 			t_<F<Ts...>> try_f(lift_<F>, list_<Ts...>);
 			t_<nothing_> try_f(...);
 
-			template <unsigned N, template <typename...> class F, typename C>
+			template <std::size_t N, template <typename...> class F, typename C>
 			struct dispatch<N, try_<F, C>> {
 				template <typename... Ts>
 				using f = typename dispatch<1, C>::template f<typename decltype(

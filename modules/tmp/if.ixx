@@ -1,5 +1,5 @@
 //  Copyright 2018 Odin Holmes.
-//            2021 Thomas Figueroa.
+//            2021-2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
@@ -11,6 +11,8 @@ import Boost.TMP.Base.Always;
 import Boost.TMP.Base.Lift;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Detail.Dispatch;
+
+import <cstddef>;
 
 #if defined(__has_builtin)
 #if __has_builtin(__type_pack_element)
@@ -54,7 +56,7 @@ export namespace boost::tmp {
 				        1, typename if_impl<P<T0>::value>::template f<T, F>>::template f<T0>;
 			};
 
-			template <unsigned N, typename P, typename T, typename F>
+			template <std::size_t N, typename P, typename T, typename F>
 			struct dispatch<N, if_<P, T, F>> {
 				template <typename... Ts>
 				using f = typename dispatch<
@@ -62,7 +64,7 @@ export namespace boost::tmp {
 				        typename if_impl<dispatch<find_dispatch(sizeof...(Ts)), P>::template f<
 				                Ts...>::value>::template f<T, F>>::template f<Ts...>;
 			};
-			template <unsigned N, template <typename...> class P, typename T, typename F>
+			template <std::size_t N, template <typename...> class P, typename T, typename F>
 			struct dispatch<N, if_<lift_<P>, T, F>> {
 				template <typename... Ts>
 				using f = typename dispatch<

@@ -13,7 +13,6 @@ import Pupple.Element;
 // TODO: forward_as_tuple
 // TODO: Tuple concatenation
 // TODO: std::apply
-// TODO: std::swap
 // TODO: Construct from range
 // TODO: Construct from std::tuple
 
@@ -36,8 +35,8 @@ namespace detail
     {
     };
 
-    template<int... Indices, typename... Params>
-    struct pupple_impl<std::integer_sequence<int, Indices...>, Params...>
+    template<std::size_t... Indices, typename... Params>
+    struct pupple_impl<std::integer_sequence<std::size_t, Indices...>, Params...>
             : pupple_element<Indices, Params>...
     {
         constexpr pupple_impl() = default;
@@ -58,15 +57,15 @@ namespace detail
     };
 
     // TODO: Determine the alignment of objects after appending.
-    template<typename... Ts, int... Is, typename... Us>
-    constexpr auto append_impl(std::integer_sequence<int, Is...>, pupple<Ts...>&& elements, Us&&... params)
+    template<typename... Ts, std::size_t... Is, typename... Us>
+    constexpr auto append_impl(std::integer_sequence<std::size_t, Is...>, pupple<Ts...>&& elements, Us&&... params)
     {
         return pupple<typename tmp::decay<Ts>::type..., typename tmp::decay<Us>::type...>(
                 get<Is>(elements)..., std::forward<Us>(params)...);
     }
 
-    template<typename... Ts, int... Is, typename... Us>
-    constexpr auto append_impl(std::integer_sequence<int, Is...>, const pupple<Ts...>& elements, Us&&... params)
+    template<typename... Ts, std::size_t... Is, typename... Us>
+    constexpr auto append_impl(std::integer_sequence<std::size_t, Is...>, const pupple<Ts...>& elements, Us&&... params)
     {
         return pupple<typename tmp::decay<Ts>::type..., typename tmp::decay<Us>::type...>(
                 get<Is>(elements)..., std::forward<Us>(params)...);
@@ -75,9 +74,9 @@ namespace detail
 } // namespace aux
 
 template<typename... Params>
-struct pupple : aux::detail::pupple_impl<std::make_integer_sequence<int, sizeof...(Params)>, Params...>
+struct pupple : aux::detail::pupple_impl<std::make_integer_sequence<std::size_t, sizeof...(Params)>, Params...>
 {
-    using Base = typename aux::detail::pupple_impl<std::make_integer_sequence<int, sizeof...(Params)>,
+    using Base = typename aux::detail::pupple_impl<std::make_integer_sequence<std::size_t, sizeof...(Params)>,
             Params...>;
 
     template <typename Other> requires(std::same_as<typename tmp::decay<Other>::type, pupple<Params...>>)
@@ -93,8 +92,8 @@ struct pupple : aux::detail::pupple_impl<std::make_integer_sequence<int, sizeof.
     auto operator<=>(const pupple&) const = default;
 };
 
-template<unsigned int I, typename... Ts>
-using indexed_at = tmp::call_<tmp::index_<tmp::uint_<I>>, Ts...>;
+template<std::size_t I, typename... Ts>
+using indexed_at = tmp::call_<tmp::index_<tmp::sizet_<I>>, Ts...>;
 
 template<typename... Params>
 [[nodiscard]] constexpr auto make_pupple(Params&&... params)
@@ -102,19 +101,19 @@ template<typename... Params>
     return pupple<typename tmp::decay<decltype(params)>::type...>(std::forward<Params>(params)...);
 }
 
-template<unsigned int I, typename... Ts, typename VT = indexed_at<I, Ts...>>
+template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
 [[nodiscard]] constexpr const auto& get(const pupple<Ts...>& t) noexcept
 {
     return get(static_cast<pupple_element<I, VT> const&>(t));
 }
 
-template<unsigned int I, typename... Ts, typename VT = indexed_at<I, Ts...>>
+template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
 [[nodiscard]] constexpr auto& get(pupple<Ts...>& t) noexcept
 {
     return get(static_cast<pupple_element<I, VT>&>(t));
 }
 
-template<unsigned int I, typename... Ts, typename VT = indexed_at<I, Ts...>>
+template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
 [[nodiscard]] constexpr auto get(pupple<Ts...>&& t) noexcept
 {
     return get(std::move(static_cast<pupple_element<I, VT>>(t)));
@@ -123,20 +122,20 @@ template<unsigned int I, typename... Ts, typename VT = indexed_at<I, Ts...>>
 template<typename... Ts, typename... Us>
 [[nodiscard]] constexpr auto append(pupple<Ts...>&& elements, Us&&... params) noexcept
 {
-    return aux::detail::append_impl(std::make_integer_sequence<int, sizeof...(Ts)>(), std::move(elements), std::forward<Us>(params)...);
+    return aux::detail::append_impl(std::make_integer_sequence<std::size_t, sizeof...(Ts)>(), std::move(elements), std::forward<Us>(params)...);
 }
 
 template<typename... Ts, typename... Us>
 [[nodiscard]] constexpr auto append(const pupple<Ts...>& elements, Us&&... params) noexcept
 {
-    return aux::detail::append_impl(std::make_integer_sequence<int, sizeof...(Ts)>(), elements, std::forward<Us>(params)...);
+    return aux::detail::append_impl(std::make_integer_sequence<std::size_t, sizeof...(Ts)>(), elements, std::forward<Us>(params)...);
 }
 
 template<typename Mapping, typename Pupple>
 struct PuppleBase {};
 
 template<unsigned... Is, typename... Ts>
-struct PuppleBase<tmp::list_<tmp::uint_<Is>...>, pupple<Ts...>>
+struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
 {
     pupple<Ts...> m_pupple;
 
@@ -164,7 +163,7 @@ struct PuppleBase<tmp::list_<tmp::uint_<Is>...>, pupple<Ts...>>
 
     auto operator<=>(const PuppleBase&) const = default;
     
-    template<typename I, typename NL = tmp::list_<tmp::uint_<Is>...>>
+    template<typename I, typename NL = tmp::list_<tmp::sizet_<Is>...>>
     using actual_index = tmp::call_<tmp::unpack_<tmp::find_if_<tmp::is_<I>>>, NL>;
 };
 
@@ -201,16 +200,16 @@ struct Tuple : pair_with_index<Ts...>
     using pair_with_index<Ts...>::pair_with_index;
 };
 
-template<unsigned int I, typename... Us>
+template<std::size_t I, typename... Us>
 [[nodiscard]] constexpr auto get(const Tuple<Us...>& pup) noexcept
 {
-    return get<Tuple<Us...>::template actual_index<tmp::uint_<I>>::value>(pup.m_pupple);
+    return get<Tuple<Us...>::template actual_index<tmp::sizet_<I>>::value>(pup.m_pupple);
 }
 
-template<unsigned int I, typename... Us>
+template<std::size_t I, typename... Us>
 [[nodiscard]] constexpr auto get(Tuple<Us...>&& pup) noexcept
 {
-    return get<Tuple<Us...>::template actual_index<tmp::uint_<I>>::value>(std::move(pup.m_pupple));
+    return get<Tuple<Us...>::template actual_index<tmp::sizet_<I>>::value>(std::move(pup.m_pupple));
 }
 
 template<typename... Ts>
@@ -225,11 +224,11 @@ void swap(Tuple<Ts...>& a, Tuple<Ts...>& b) noexcept(std::is_nothrow_move_constr
 }
 
 template<class... Ts>
-struct pupple_size : tmp::uint_<sizeof...(Ts)>
+struct pupple_size : tmp::sizet_<sizeof...(Ts)>
 {
 };
 
-template <class T, class P, unsigned int... I> requires(std::is_constructible_v<T,
+template <class T, class P, std::size_t... I> requires(std::is_constructible_v<T,
                                                         decltype(get<I>(std::declval<P>()))...>)
 constexpr T make_from_pupple_impl(P&& t, std::index_sequence<I...>)
 {

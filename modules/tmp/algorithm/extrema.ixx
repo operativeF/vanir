@@ -1,5 +1,5 @@
 //  Copyright 2018-2019 Odin Holmes.
-//            2020-2021 Thomas Figueroa.
+//            2020-2022 Thomas Figueroa.
 //
 //  Distributed under the Boost Software License, Version 1.0.
 //
@@ -14,19 +14,21 @@ import Boost.TMP.Base.Identity;
 import Boost.TMP.Base.Lift;
 import Boost.TMP.Detail.Dispatch;
 
+import <cstddef>;
+
 export namespace boost::tmp {
 		template <typename F, typename C = identity_>
 		struct extrema_ {};
 
 		namespace detail {
-			constexpr int extrema_select(unsigned N) {
+			constexpr std::size_t extrema_select(std::size_t N) {
 				return N == 0 ? 0 :
 				                N < 2 ?
 				                1 :
 				                N < 4 ? 2 : N < 8 ? 4 : N < 16 ? 8 : N < 32 ? 16 : N < 64 ? 32 : 64;
 			}
 
-			template <unsigned N, template <typename...> class F, typename C>
+			template <std::size_t N, template <typename...> class F, typename C>
 			struct dispatch<N, extrema_<lift_<F>, C>> {
 				template <typename T, typename... Ts>
 				using f = typename dispatch<find_dispatch(sizeof...(Ts)),

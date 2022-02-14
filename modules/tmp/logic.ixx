@@ -17,6 +17,7 @@ import Boost.TMP.Base.Vocabulary;
 
 import Boost.TMP.Detail.Dispatch;
 
+import <cstddef>;
 import <type_traits>;
 
 export namespace boost::tmp {
@@ -38,28 +39,28 @@ export namespace boost::tmp {
 			struct andy {
 				template <typename T>
 				using f                    = andy<(!F<T>::value), F>;
-				static constexpr int value = -1;
+				static constexpr std::size_t value = -1;
 			};
 			template <template <typename...> class F>
 			struct andy<true, F> {
 				template <typename T>
 				using f                    = andy;
-				static constexpr int value = 1;
+				static constexpr std::size_t value = 1;
 			};
 			template <bool Short, template <typename...> class F>
 			struct ory {
 				template <typename T>
 				using f                    = ory<F<T>::value, F>;
-				static constexpr int value = -1;
+				static constexpr std::size_t value = -1;
 			};
 			template <template <typename...> class F>
 			struct ory<true, F> {
 				template <typename T>
 				using f                    = ory;
-				static constexpr int value = 1;
+				static constexpr std::size_t value = 1;
 			};
 
-			template <unsigned N, template <typename...> class F, typename C>
+			template <std::size_t N, template <typename...> class F, typename C>
 			struct dispatch<N, and_<lift_<F>, C>> {
 				template <typename... Ts>
 				using f = typename dispatch<1, C>::template f<
@@ -71,7 +72,7 @@ export namespace boost::tmp {
 				template <typename... Ts>
 				using f = typename dispatch<1, C>::template f<bool_<false>>;
 			};
-			template <unsigned N, typename F, typename C>
+			template <std::size_t N, typename F, typename C>
 			struct dispatch<N, and_<F, C>> {
 				template <typename... Ts>
 				using f = typename dispatch<1, C>::template f<
@@ -85,7 +86,7 @@ export namespace boost::tmp {
 				using f = typename dispatch<1, C>::template f<bool_<false>>;
 			};
 
-			template <unsigned N, template <typename...> class F, typename C>
+			template <std::size_t N, template <typename...> class F, typename C>
 			struct dispatch<N, or_<lift_<F>, C>> {
 				template <typename... Ts>
 				using f = typename dispatch<1, C>::template f<
@@ -98,7 +99,7 @@ export namespace boost::tmp {
 				template <typename... Ts>
 				using f = typename dispatch<1, C>::template f<bool_<false>>;
 			};
-			template <unsigned N, typename F, typename C>
+			template <std::size_t N, typename F, typename C>
 			struct dispatch<N, or_<F, C>> {
 				template <typename... Ts>
 				using f = typename dispatch<1, C>::template f<

@@ -1,5 +1,5 @@
 //  Copyright 2018-2019 Odin Holmes.
-//            2020-2021 Thomas Figueroa.
+//            2020-2022 Thomas Figueroa.
 //
 //  Distributed under the Boost Software License, Version 1.0.
 //
@@ -18,12 +18,14 @@ import Boost.TMP.Algorithm.FindIf;
 
 import Boost.TMP.Detail.Dispatch;
 
+import <cstddef>;
+
 export namespace boost::tmp {
 		template <typename F = identity_, typename C = identity_>
 		struct any_of_;
 
 		namespace detail {
-			template <unsigned N, typename F, typename C>
+			template <std::size_t N, typename F, typename C>
 			struct dispatch<N, any_of_<F, C>>
 			    : dispatch<N,
 			               find_if_<F, if_<is_<nothing_>, always_<false_, C>, always_<true_, C>>>> {

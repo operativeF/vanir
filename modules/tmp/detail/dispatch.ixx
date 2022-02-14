@@ -1,5 +1,5 @@
 //  Copyright 2018 Odin Holmes.
-//            2021 Thomas Figueroa.
+//            2021-2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
@@ -7,8 +7,10 @@
 
 export module Boost.TMP.Detail.Dispatch;
 
+import <cstddef>;
+
 export namespace boost::tmp::detail {
-			constexpr unsigned find_dispatch(unsigned n) {
+			constexpr std::size_t find_dispatch(std::size_t n) {
 				return n <= 8 ? n :
 				                n < 16 ?
 				                9 :
@@ -21,7 +23,7 @@ export namespace boost::tmp::detail {
 				                n < 64 ? 33 : n == 64 ? 64 : n < 128 ? 65 : n == 128 ? 128 : 129;
 			}
 
-			template <unsigned N, typename T>
+			template <std::size_t N, typename T>
 			struct dispatch;
 
 			template <typename C>

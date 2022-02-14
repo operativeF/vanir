@@ -1,5 +1,5 @@
 //  Copyright 2018 Odin Holmes.
-//            2021 Thomas Figueroa.
+//            2021-2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
@@ -10,15 +10,17 @@ export module Boost.TMP.Sequence.Rotate;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Detail.Dispatch;
 
+import <cstddef>;
+
 export namespace boost::tmp {
-		template <typename N = uint_<0>, typename C = listify_>
+		template <typename N = sizet_<0>, typename C = listify_>
 		struct rotate_ {};
 
 		namespace detail {
-			constexpr unsigned rotate_select(unsigned N) {
+			constexpr std::size_t rotate_select(std::size_t N) {
 				return N <= 8 ? N : N < 16 ? 8 : N < 32 ? 16 : N < 64 ? 32 : 64;
 			}
-			template <unsigned, typename C>
+			template <std::size_t, typename C>
 			struct rotate_impl;
 			template <typename C>
 			struct rotate_impl<0, C> {
@@ -128,14 +130,14 @@ export namespace boost::tmp {
 				template <typename...>
 				using f = typename dispatch<0, C>::template f<>;
 			};
-			template <unsigned P, typename C, unsigned Step = rotate_select(P)>
+			template <std::size_t P, typename C, std::size_t Step = rotate_select(P)>
 			struct make_rotate
-			    : rotate_impl<rotate_select(Step), rotate_<uint_<(P - Step)>, C>> { /* not done */
+			    : rotate_impl<rotate_select(Step), rotate_<sizet_<(P - Step)>, C>> { /* not done */
 			};
-			template <unsigned P, typename C>
+			template <std::size_t P, typename C>
 			struct make_rotate<P, C, P> : rotate_impl<P, C> {};
 
-			template <unsigned N, typename P, typename C>
+			template <std::size_t N, typename P, typename C>
 			struct dispatch<N, rotate_<P, C>> : make_rotate<P::value, C> {};
 		} // namespace detail
 } // export namespace boost::tmp
