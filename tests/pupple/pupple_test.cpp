@@ -148,8 +148,8 @@ ut::suite SwapPupplesTest = []
 {
     using namespace ut;
 
-    Tuple newtup{'a', 1.0, 3};
-    Tuple othertup{'b', 2.0, 10};
+    auto newtup = Tuple{'a', 1.0, 3};
+    auto othertup = Tuple{'b', 2.0, 10};
 
     swap(newtup, othertup);
 
@@ -157,6 +157,21 @@ ut::suite SwapPupplesTest = []
     expect(othertup == Tuple{'a', 1.0, 3});
 
     // TODO: Add test for movable types
+};
+
+ut::suite ConcatPuppleTest = []
+{
+    using namespace ut;
+
+    auto newtup = Tuple{'a', 1.0, 3};
+    auto othertup = Tuple{'b', 2.0, 10};
+
+    auto cpptuple = std::tuple{'a', 1.0, 3};
+
+    auto pcat = pupple_cat(newtup, othertup);
+    expect(sizeof(cpptuple) == 24) << fmt::format("{}", sizeof(cpptuple));
+    expect(sizeof(newtup) == 16) << fmt::format("{}", sizeof(newtup));
+    expect(sizeof(pcat) == 32) << fmt::format("{}", sizeof(newtup) + sizeof(othertup));
 };
 
 constexpr Tuple<char, int, char, int, char, double, char> constexpr_tupple{'a', 1, 'c', 3, 'd', 5.0, 'e'};

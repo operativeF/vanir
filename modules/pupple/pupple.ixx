@@ -137,9 +137,11 @@ struct PuppleBase {};
 template<unsigned... Is, typename... Ts>
 struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
 {
-    pupple<Ts...> m_pupple;
+    pupple<Ts...> m_pupple{};
 
     using rep = tmp::list_<Ts...>;
+
+    constexpr PuppleBase() = default;
 
     template<typename... Params>
     constexpr PuppleBase(pupple<Params...>&& p) : m_pupple{static_cast<indexed_at<Is, Params...>&&>(get<Is>(p))...}
@@ -245,5 +247,17 @@ constexpr T make_from_pupple(P&& p)
 // CTAD
 template<typename... Ts>
 Tuple(Ts... ts) -> Tuple<Ts...>;
+
+template<typename P1, typename P2, std::size_t... Is, std::size_t... Js>
+constexpr auto pupple_cat_impl(P1&& a, P2&& b, std::index_sequence<Is...>, std::index_sequence<Js...>)
+{
+    return Tuple{get<Is>(std::forward<P1>(a))..., get<Js>(std::forward<P2>(b))...};
+}
+
+template<typename... Ts, typename... Us>
+constexpr auto pupple_cat(Tuple<Ts...> p1, Tuple<Us...> p2)
+{
+    return pupple_cat_impl(p1, p2, std::make_index_sequence<sizeof...(Ts)>{}, std::make_index_sequence<sizeof...(Us)>{});
+}
 
 } // export
