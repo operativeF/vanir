@@ -17,8 +17,7 @@ import Boost.TMP.Base.Vocabulary;
 
 import Boost.TMP.Detail.Dispatch;
 
-import <cstddef>;
-import <type_traits>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename C = identity_>

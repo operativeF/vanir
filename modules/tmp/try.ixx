@@ -14,7 +14,7 @@ import Boost.TMP.Base.Lift;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Sequence.Unpack;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <template <typename...> class F, typename C = identity_>

@@ -2,11 +2,7 @@ export module Utils.Strings.Modifying;
 
 import Utils.Chars;
 
-import <algorithm>;
-import <cstdint>;
-import <ranges>;
-import <string>;
-import <string_view>;
+import std.core;
 
 export namespace nil::utils
 {

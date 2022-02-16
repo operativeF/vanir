@@ -5,14 +5,7 @@ import fmt;
 
 import Utils.Chars;
 
-import <algorithm>;
-import <cstdint>;
-import <ranges>;
-import <span>;
-import <string>;
-import <string_view>;
-import <utility>;
-import <vector>;
+import std.core;
 
 export namespace nil::utils
 {

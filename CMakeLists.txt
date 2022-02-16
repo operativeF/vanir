@@ -1,11 +1,3 @@
-#############################################################################
-# Name:        CMakeLists.txt
-# Purpose:     Primary CMake for wxWidgets
-# Author:      Tobias Taschner
-# Created:     2016-09-20
-# Copyright:   (c) 2016 wxWidgets development team
-# Licence:     wxWindows licence
-#############################################################################
 
 cmake_minimum_required(VERSION 3.11)
 include(FetchContent)
@@ -20,7 +12,7 @@ endif()
 
 if(WIN32)
 	# Enable usage of updated __cplusplus macro
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /D __WIN64__ /D UNICODE /D _UNICODE /Zc:__cplusplus /EHsc /arch:AVX2")	
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd5050 /utf-8 /D __WIN64__ /D UNICODE /D _UNICODE /Zc:__cplusplus /EHsc /arch:AVX2 /experimental:module /sdl-")	
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 endif()
 

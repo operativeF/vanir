@@ -12,7 +12,7 @@ import Boost.TMP.Base.Lift;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Detail.Dispatch;
 
-import <cstddef>;
+import std.core;
 
 #if defined(__has_builtin)
 #if __has_builtin(__type_pack_element)

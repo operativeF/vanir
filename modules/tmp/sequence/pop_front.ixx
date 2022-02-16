@@ -9,7 +9,7 @@ export module Boost.TMP.Sequence.PopFront;
 
 import Boost.TMP.Base.Vocabulary;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename C = listify_>

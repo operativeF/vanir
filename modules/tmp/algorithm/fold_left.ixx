@@ -11,7 +11,7 @@ import Boost.TMP.Base.Call;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Detail.Dispatch;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		/// \brief folds left over a list using a binary predicate /

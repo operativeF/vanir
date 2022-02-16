@@ -9,7 +9,7 @@
 
 export module Utils.Chars;
 
-import <cstddef>;
+import std.core;
 
 export namespace nil::utils
 {

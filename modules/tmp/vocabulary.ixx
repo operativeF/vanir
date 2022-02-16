@@ -10,8 +10,7 @@ export module Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Base.Always;
 import Boost.TMP.Base.Lift;
 
-import <cstddef>;
-import <cstdlib>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename... Ts>

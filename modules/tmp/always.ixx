@@ -10,7 +10,7 @@ export module Boost.TMP.Base.Always;
 import Boost.TMP.Detail.Dispatch;
 import Boost.TMP.Base.Identity;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename T, typename C = identity_>

@@ -11,7 +11,8 @@ module;
 export module Nil.Win.UniqueHnd;
 
 import Nil.WinDef;
-import <memory>;
+
+import std.core;
 
 namespace
 {

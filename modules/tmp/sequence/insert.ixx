@@ -13,7 +13,7 @@ import Boost.TMP.Sequence.Rotate;
 
 import Boost.TMP.Base.Vocabulary;
 
-import <cstddef>;
+import std.core;
 
 ///
 // @BUG: This does not work as expected.

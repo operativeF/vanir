@@ -7,7 +7,7 @@
 
 export module Boost.TMP.Detail.Dispatch;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp::detail {
 			constexpr std::size_t find_dispatch(std::size_t n) {

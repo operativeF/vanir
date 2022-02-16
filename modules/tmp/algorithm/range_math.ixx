@@ -19,7 +19,7 @@ import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Sequence.Tee;
 import Boost.TMP.Sequence.Unpack;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename C = identity_>

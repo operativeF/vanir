@@ -11,8 +11,7 @@ import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Detail.Dispatch;
 import Boost.TMP.Sequence.MakeSequence;
 
-import <cstddef>;
-import <utility>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename F = listify_, typename C = listify_>

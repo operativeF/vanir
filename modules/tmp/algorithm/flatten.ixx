@@ -11,7 +11,7 @@ import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Sequence.Join;
 import Boost.TMP.Detail.Dispatch;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename C = listify_>

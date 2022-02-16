@@ -16,7 +16,7 @@ import Boost.TMP.Base.Vocabulary;
 
 import Boost.TMP.Sequence.Join;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		// Requires sets to be the input, unless 

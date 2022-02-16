@@ -1,7 +1,7 @@
 
 export module Pupple;
 
-import <utility>;
+import std.core;
 
 import Boost.TMP;
 

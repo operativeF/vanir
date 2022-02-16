@@ -36,10 +36,7 @@ import Utils.Strings;
 
 import fmt;
 
-import <array>;
-import <sstream>;
-import <source_location>;
-import <vector>;
+import std.core;
 
 export namespace boost::inline ext::ut::inline v1_1_8 {
 namespace utility {

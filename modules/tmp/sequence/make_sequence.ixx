@@ -12,8 +12,7 @@ import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Algorithm.Transform;
 import Boost.TMP.Sequence.Unpack;
 
-import <cstddef>;
-import <utility>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename F = identity_, typename C = listify_>

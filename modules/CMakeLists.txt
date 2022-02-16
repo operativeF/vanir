@@ -97,11 +97,6 @@ add_library(nil_tmp
         ${CMAKE_CURRENT_SOURCE_DIR}/tmp.ixx
 )
 
-target_link_libraries(nil_tmp
-    PRIVATE
-        stdlib_module
-)
-
 set(BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/base)
 set(ALGO_DIR ${BASE_DIR}/algorithm)
 
@@ -125,15 +120,6 @@ if(MSVC)
     )
 endif()
 
-add_library(stdlib_module
-        ${CMAKE_CURRENT_SOURCE_DIR}/stdlib/stdlib.ixx
-)
-
-target_link_libraries(stdlib_module
-    PUBLIC
-        Boost::nowide
-)
-
 add_library(nilbase
         ${BASE_ALGORITHM}
         ${STRING_ALGORITHM}
@@ -144,5 +130,4 @@ target_link_libraries(nilbase
     PRIVATE
         nil_tmp
         fmt::fmt
-        stdlib_module
 )

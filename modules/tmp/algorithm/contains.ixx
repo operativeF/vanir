@@ -13,7 +13,7 @@ import Boost.TMP.Base.Logic;
 
 import Boost.TMP.Detail.Dispatch;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename V, typename C = identity_>

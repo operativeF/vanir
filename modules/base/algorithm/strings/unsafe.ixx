@@ -1,7 +1,6 @@
 export module Utils.Strings.Unsafe;
 
-import <string_view>;
-import <vector>;
+import std.core;
 
 // Generally unsafe utilities to be used in circumstances where
 // speed is important and / or lifetimes are a certainty.

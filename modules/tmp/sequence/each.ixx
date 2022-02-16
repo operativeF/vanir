@@ -10,7 +10,7 @@ export module Boost.TMP.Sequence.Each;
 
 import Boost.TMP.Detail.Dispatch;
 
-import <utility>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename... Fs>

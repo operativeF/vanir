@@ -12,7 +12,7 @@ import Boost.TMP.Base.Lift;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Detail.Dispatch;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename F, typename C = identity_>

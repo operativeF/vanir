@@ -1,8 +1,7 @@
 
 export module Pupple.Map;
 
-import <concepts>;
-import <type_traits>;
+import std.core;
 
 import Boost.TMP;
 

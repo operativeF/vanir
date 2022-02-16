@@ -13,7 +13,7 @@ import Boost.TMP.Base.Identity;
 import Boost.TMP.Algorithm.Filter;
 import Boost.TMP.Sequence.Tee;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename L, typename H, typename C = identity_>

@@ -14,7 +14,7 @@ import Boost.TMP.Base.Identity;
 import Boost.TMP.Base.Lift;
 import Boost.TMP.Detail.Dispatch;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename F, typename C = identity_>

@@ -4,10 +4,7 @@ import Nil.MetaTest;
 import Boost.TMP;
 import Pupple;
 
-import <algorithm>;
-import <array>;
-import <string>;
-import <tuple>;
+import std.core;
 
 namespace ut = boost::ut;
 namespace tmp = boost::tmp;

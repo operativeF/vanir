@@ -4,7 +4,7 @@ export import Utils.Strings.Modifying;
 export import Utils.Strings.Nonmodifying;
 export import Utils.Strings.Unsafe;
 
-import <algorithm>;
+import std.core;
 
 export template<size_t N>
 struct StrLit

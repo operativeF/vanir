@@ -13,7 +13,7 @@ import Boost.TMP.Base.Vocabulary;
 
 import Boost.TMP.Detail.Dispatch;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename F = identity_, typename C = listify_>

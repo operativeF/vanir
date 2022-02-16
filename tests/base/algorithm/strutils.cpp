@@ -2,8 +2,7 @@
 import Nil.MetaTest;
 import Utils.Strings;
 
-import <string_view>;
-import <vector>;
+import std.core;
 
 namespace ut = boost::ut;
 

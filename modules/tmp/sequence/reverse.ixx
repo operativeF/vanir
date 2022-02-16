@@ -10,7 +10,7 @@ export module Boost.TMP.Sequence.Reverse;
 import Boost.TMP.Base.Lift;
 import Boost.TMP.Detail.Dispatch;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename C = listify_>

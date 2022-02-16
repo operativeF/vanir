@@ -1,10 +1,7 @@
 
 export module Nil.SVector;
 
-import <algorithm>;
-import <limits>;
-import <type_traits>;
-import <vector>;
+import std.core;
 
 import Boost.TMP;
 

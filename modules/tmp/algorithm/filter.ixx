@@ -10,7 +10,7 @@ export module Boost.TMP.Algorithm.Filter;
 import Boost.TMP.Base.Lift;
 import Boost.TMP.Detail;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename F, typename C = listify_>

@@ -12,7 +12,7 @@ import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Sequence.Drop;
 import Boost.TMP.Sequence.Rotate;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename N = sizet_<0>, typename C = listify_>

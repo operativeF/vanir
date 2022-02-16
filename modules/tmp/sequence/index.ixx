@@ -12,7 +12,7 @@ import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Sequence.Drop;
 import Boost.TMP.Sequence.Unpack;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename I, typename C = identity_>

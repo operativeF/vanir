@@ -3,12 +3,7 @@ export module Utils.Bitfield;
 
 import Boost.TMP;
 
-import <algorithm>;
-import <compare>;
-import <numeric>;
-import <ranges>;
-import <type_traits>;
-import <vector>;
+import std.core;
 
 template<typename Enum>
 concept BitfieldCompatible =  requires

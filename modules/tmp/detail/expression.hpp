@@ -12,7 +12,7 @@
 #include <boost/tmp/detail/capabilities.hpp>
 #include <boost/tmp/pack.hpp>
 
-import <type_traits>;
+import std.core;
 
 namespace boost {
 	namespace tmp {

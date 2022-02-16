@@ -13,7 +13,7 @@ import Boost.TMP.Sequence.Rotate;
 
 import Boost.TMP.Base.Vocabulary;
 
-import <cstddef>;
+import std.core;
 
 // \brief
 // Given a variadic parameter pack, remove the nth value in the pack.

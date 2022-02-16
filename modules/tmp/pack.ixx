@@ -13,7 +13,7 @@ import Boost.TMP.Base.Lift;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Sequence.ZipWithIndex;
 
-import <utility>;
+import std.core;
 
 export namespace boost::tmp {
 		namespace fusion {

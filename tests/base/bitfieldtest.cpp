@@ -4,8 +4,7 @@ import Utils.Bitfield;
 
 import Boost.TMP;
 
-import <array>;
-import <type_traits>;
+import std.core;
 
 namespace ut = boost::ut;
 

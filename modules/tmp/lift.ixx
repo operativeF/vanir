@@ -10,7 +10,7 @@ export module Boost.TMP.Base.Lift;
 import Boost.TMP.Detail;
 import Boost.TMP.Base.Identity;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <template <typename...> class F, typename C = identity_>

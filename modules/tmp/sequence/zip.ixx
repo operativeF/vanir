@@ -14,7 +14,7 @@ import Boost.TMP.Detail.Dispatch;
 
 import Boost.TMP.Algorithm.Transform;
 
-import <utility>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename F, typename C = listify_>

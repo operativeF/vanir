@@ -1,10 +1,7 @@
 
 export module Pupple.Element;
 
-import <compare>;
-import <cstddef>;
-import <type_traits>;
-import <utility>;
+import std.core;
 
 import Boost.TMP;
 

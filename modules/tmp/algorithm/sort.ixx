@@ -16,7 +16,7 @@ import Boost.TMP.Sequence.PushFront;
 import Boost.TMP.Sequence.Take;
 import Boost.TMP.Sequence.Unpack;
 
-import <cstddef>;
+import std.core;
 
 // NOTE: Sort only works on lists, not parameter packs.
 export namespace boost::tmp {

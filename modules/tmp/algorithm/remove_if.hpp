@@ -17,7 +17,7 @@ import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Detail.Dispatch;
 import Boost.TMP.Sequence.Join;
 
-import <cstddef>;
+import std.core;
 
 /// \brief Given a predicate F, check the variadic parameter pack passed in
 /// and remove the value if the predicate holds true.

@@ -16,7 +16,7 @@ import Boost.TMP.Detail.Dispatch;
 import Boost.TMP.Sequence.PushFront;
 import Boost.TMP.Sequence.Rotate;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename... Fs>

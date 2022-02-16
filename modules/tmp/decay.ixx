@@ -7,7 +7,7 @@
 
 export module Boost.TMP.Base.Decay;
 
-import <type_traits>;
+import std.core;
 
 export namespace boost::tmp {
 		template <typename T, typename U = typename std::remove_reference_t<T>>

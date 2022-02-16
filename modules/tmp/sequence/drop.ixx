@@ -12,7 +12,7 @@ import Boost.TMP.Base.Vocabulary;
 
 import Boost.TMP.Sequence.Rotate;
 
-import <cstddef>;
+import std.core;
 
 export namespace boost::tmp {
 		/// \brief Drop n values, starting from the front,
