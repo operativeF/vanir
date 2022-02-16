@@ -4,68 +4,79 @@ import Nil.MetaTest;
 import Boost.TMP;
 import Pupple;
 
+import fmt;
+
 import std.core;
+import std.memory;
 
 namespace ut = boost::ut;
 namespace tmp = boost::tmp;
 
-ut::suite PuppleCopyConstructors = []
-{
-    using namespace ut;
-
-    "Empty template copy constructors."_test = []
-    {
-        pupple<> src;
-        pupple<> dest(src);
-        expect(src == dest);
-    };
-
-    "Template copy constructors."_test = []
-    {
-        pupple<int> src(100);
-        pupple<int> dest(src);
-        expect(src == dest);
-    };
-
-    "Template two value copy constructors."_test = []
-    {
-        pupple<int, int> src(100, 200);
-        pupple<int, int> dest(src);
-        // auto pp = pupple{pupple{2, 3}, pupple{400, 400}};
-
-        expect(src == dest);
-    };
-
-    "Template two value (implicit conversion) copy constructors."_test = []
-    {
-        // This should fail. A better error message should be created for this.
-        pupple<int, int> src(100, 200);
-        //pupple<long, long> dest(src);
-
-        //CHECK(src == dest);
-    };
-};
+static_assert(std::is_trivially_constructible_v<Tuple<>>, "Empty Tuple should be trivially constructible.");
+static_assert(std::is_nothrow_constructible_v<Tuple<>>, "Empty Tuple should be nothrow constructible.");
 
 ut::suite TestPuppleConstruction = []
 {
-    auto new_pupple = pupple<int, int, int>(1, 2, 3);
+    using namespace ut;
 
-    auto made_pupple = make_pupple(1, 2, 3);
+    "Basic construction"_test = []
+    {
+
+    };
+
+    "Copy construction"_test = []
+    {
+
+    };
+
+    "Move construction"_test = []
+    {
+
+    };
+
+    /* FIXME: Not working yet.
+    "Copy-elided construction"_test = []
+    {
+        struct NonMoveAndCopy
+        {
+            NonMoveAndCopy(int aa) : a{aa} {}
+            NonMoveAndCopy(const NonMoveAndCopy&) = delete;
+            NonMoveAndCopy& operator=(const NonMoveAndCopy&) = delete;
+            NonMoveAndCopy& operator=(NonMoveAndCopy&&) = delete;
+            NonMoveAndCopy(NonMoveAndCopy&&) = delete;
+
+            auto operator<=>(const NonMoveAndCopy&) const = default;
+
+            int a;
+        };
+
+        std::tuple<NonMoveAndCopy> eld{1};
+
+        Tuple<NonMoveAndCopy> elided{};
+    };
+    */
 };
 
 ut::suite TestPuppleAppend = []
 {
     using namespace ut;
 
-    auto pupA = make_pupple(1, 2, 3);
-    auto pupB = make_pupple(4, 5, 6);
+    auto pupA = Tuple("first", 1);
 
-    auto pup_AB_append = append(pupA, 1, 2, pupple<int>(1));
+    auto pupAB = append(pupA, "second", 2);
 
-    expect(get<0>(pup_AB_append) == 1);
-    expect(get<1>(pup_AB_append) == 2);
-    expect(get<2>(pup_AB_append) == 3);
-    expect(get<5>(pup_AB_append) == pupple<int>(1));
+    const auto idealPupAppend = Tuple{"first", 1, "second", 2};
+
+    expect(get<0>(pupAB) == "first");
+    expect(get<1>(pupAB) == 1);
+    expect(get<2>(pupAB) == "second");
+    expect(get<3>(pupAB) == 2);
+
+    "Test proper alignment order"_test = [=]
+    {
+        // Should be 24 bytes in size.
+        expect(sizeof(pupAB) == 24) << fmt::format("Size is: {}, should be 24 bytes.", sizeof(pupAB));
+    };
 };
 
 ut::suite TestPuppleElementTypes = []
@@ -92,7 +103,7 @@ ut::suite TestPuppleStorageAlignment = []
     using namespace ut;
     
     Tuple<char, int, char, int, char, double, char> new_tupple{'a', 1, 'c', 3, 'd', 5.0, 'e'};
-    std::tuple<char, int, char, int, char, double, char> stdtuple{'a', 1, 'c', 3, 'd', 5.0, 'e'};
+    // std::tuple<char, int, char, int, char, double, char> stdtuple{'a', 1, 'c', 3, 'd', 5.0, 'e'};
 
     auto aggregateTuple      = Tuple{'a', 1, 'c', 3, 'd', 5.0, 'e'};
     auto otherAggregateTuple = Tuple{'b', 2, 'd', 5, 'j', 1.0, 'f'};
@@ -145,15 +156,36 @@ ut::suite SwapPupplesTest = []
 {
     using namespace ut;
 
-    auto newtup = Tuple{'a', 1.0, 3};
-    auto othertup = Tuple{'b', 2.0, 10};
+    const auto first  = Tuple{"first", 1};
+    const auto second = Tuple{"second", 2};
 
-    swap(newtup, othertup);
+    "specialized swap"_test = [=]
+    {
+        auto x = first;
+        auto y = second;
 
-    expect(newtup == Tuple{'b', 2.0, 10});
-    expect(othertup == Tuple{'a', 1.0, 3});
+        swap(x, y);
 
-    // TODO: Add test for movable types
+        expect(get<0>(x) == "second" && get<1>(x) == 2);
+        expect(get<0>(y) == "first"  && get<1>(y) == 1);
+
+        // Specialized swap shouldn't affect alignment / size.
+        expect(sizeof(x) == sizeof(y)) << fmt::format("{} != {}", sizeof(x), sizeof(y));
+    };
+
+    "std::swap"_test = [=]
+    {
+        auto x = first;
+        auto y = second;
+
+        std::swap(x, y);
+
+        expect(get<0>(x) == "second" && get<1>(x) == 2);
+        expect(get<0>(y) == "first"  && get<1>(y) == 1);
+
+        // Using std::swap shouldn't affect alignment / size.
+        expect(sizeof(x) == sizeof(y)) << fmt::format("{} != {}", sizeof(x), sizeof(y));
+    };
 };
 
 ut::suite ConcatPuppleTest = []
@@ -162,13 +194,16 @@ ut::suite ConcatPuppleTest = []
 
     auto newtup = Tuple{'a', 1.0, 3};
     auto othertup = Tuple{'b', 2.0, 10};
+    auto emptytup = Tuple{};
 
-    auto cpptuple = std::tuple{'a', 1.0, 3};
+    // auto cpptuple = std::tuple{'a', 1.0, 3};
 
     auto pcat = pupple_cat(newtup, othertup);
-    expect(sizeof(cpptuple) == 24) << fmt::format("{}", sizeof(cpptuple));
+    auto ecat = pupple_cat(emptytup, othertup);
+    // expect(sizeof(cpptuple) == 24) << fmt::format("{}", sizeof(cpptuple));
     expect(sizeof(newtup) == 16) << fmt::format("{}", sizeof(newtup));
     expect(sizeof(pcat) == 32) << fmt::format("{}", sizeof(newtup) + sizeof(othertup));
+    expect(ecat == othertup);
 };
 
 constexpr Tuple<char, int, char, int, char, double, char> constexpr_tupple{'a', 1, 'c', 3, 'd', 5.0, 'e'};

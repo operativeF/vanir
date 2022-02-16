@@ -55,23 +55,13 @@ namespace detail
 
         auto operator<=>(const pupple_impl&) const = default;
     };
-
-    // TODO: Determine the alignment of objects after appending.
-    template<typename... Ts, std::size_t... Is, typename... Us>
-    constexpr auto append_impl(std::integer_sequence<std::size_t, Is...>, pupple<Ts...>&& elements, Us&&... params)
-    {
-        return pupple<typename tmp::decay<Ts>::type..., typename tmp::decay<Us>::type...>(
-                get<Is>(elements)..., std::forward<Us>(params)...);
-    }
-
-    template<typename... Ts, std::size_t... Is, typename... Us>
-    constexpr auto append_impl(std::integer_sequence<std::size_t, Is...>, const pupple<Ts...>& elements, Us&&... params)
-    {
-        return pupple<typename tmp::decay<Ts>::type..., typename tmp::decay<Us>::type...>(
-                get<Is>(elements)..., std::forward<Us>(params)...);
-    }
 } // namespace detail
 } // namespace aux
+
+template<>
+struct pupple<>
+{
+};
 
 template<typename... Params>
 struct pupple : aux::detail::pupple_impl<std::make_integer_sequence<std::size_t, sizeof...(Params)>, Params...>
@@ -119,27 +109,14 @@ template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
     return get(std::move(static_cast<pupple_element<I, VT>>(t)));
 }
 
-template<typename... Ts, typename... Us>
-[[nodiscard]] constexpr auto append(pupple<Ts...>&& elements, Us&&... params) noexcept
-{
-    return aux::detail::append_impl(std::make_integer_sequence<std::size_t, sizeof...(Ts)>(), std::move(elements), std::forward<Us>(params)...);
-}
-
-template<typename... Ts, typename... Us>
-[[nodiscard]] constexpr auto append(const pupple<Ts...>& elements, Us&&... params) noexcept
-{
-    return aux::detail::append_impl(std::make_integer_sequence<std::size_t, sizeof...(Ts)>(), elements, std::forward<Us>(params)...);
-}
-
 template<typename Mapping, typename Pupple>
 struct PuppleBase {};
 
 template<unsigned... Is, typename... Ts>
 struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
 {
-    pupple<Ts...> m_pupple{};
-
-    using rep = tmp::list_<Ts...>;
+    template<typename I, typename NL = tmp::list_<tmp::sizet_<Is>...>>
+    using actual_index = tmp::call_<tmp::unpack_<tmp::find_if_<tmp::is_<I>>>, NL>;
 
     constexpr PuppleBase() = default;
 
@@ -165,8 +142,7 @@ struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
 
     auto operator<=>(const PuppleBase&) const = default;
     
-    template<typename I, typename NL = tmp::list_<tmp::sizet_<Is>...>>
-    using actual_index = tmp::call_<tmp::unpack_<tmp::find_if_<tmp::is_<I>>>, NL>;
+    pupple<Ts...> m_pupple;
 };
 
 template<typename T, typename U>
@@ -212,6 +188,38 @@ template<std::size_t I, typename... Us>
 [[nodiscard]] constexpr auto get(Tuple<Us...>&& pup) noexcept
 {
     return get<Tuple<Us...>::template actual_index<tmp::sizet_<I>>::value>(std::move(pup.m_pupple));
+}
+
+namespace aux::detail
+{
+
+// TODO: Determine the alignment of objects after appending.
+template<typename... Ts, std::size_t... Is, typename... Us>
+constexpr auto append_impl(std::integer_sequence<std::size_t, Is...>, Tuple<Ts...>&& elements, Us&&... params)
+{
+    return Tuple<typename tmp::decay<Ts>::type..., typename tmp::decay<Us>::type...>(
+            get<Is>(elements)..., std::forward<Us>(params)...);
+}
+
+template<typename... Ts, std::size_t... Is, typename... Us>
+constexpr auto append_impl(std::integer_sequence<std::size_t, Is...>, const Tuple<Ts...>& elements, Us&&... params)
+{
+    return Tuple<typename tmp::decay<Ts>::type..., typename tmp::decay<Us>::type...>(
+            get<Is>(elements)..., std::forward<Us>(params)...);
+}
+
+} // namespace aux::detail
+
+template<typename... Ts, typename... Us>
+[[nodiscard]] constexpr auto append(Tuple<Ts...>&& elements, Us&&... params) noexcept
+{
+    return aux::detail::append_impl(std::make_integer_sequence<std::size_t, sizeof...(Ts)>(), std::move(elements), std::forward<Us>(params)...);
+}
+
+template<typename... Ts, typename... Us>
+[[nodiscard]] constexpr auto append(const Tuple<Ts...>& elements, Us&&... params) noexcept
+{
+    return aux::detail::append_impl(std::make_integer_sequence<std::size_t, sizeof...(Ts)>(), elements, std::forward<Us>(params)...);
 }
 
 template<typename... Ts>
