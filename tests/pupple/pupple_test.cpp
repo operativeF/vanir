@@ -196,7 +196,7 @@ ut::suite ConcatPuppleTest = []
     auto othertup = Tuple{'b', 2.0, 10};
     auto emptytup = Tuple{};
 
-    // auto cpptuple = std::tuple{'a', 1.0, 3};
+    auto cpptuple = std::tuple{'a', 1.0, 3};
 
     auto pcat = pupple_cat(newtup, othertup);
     auto ecat = pupple_cat(emptytup, othertup);
@@ -204,6 +204,22 @@ ut::suite ConcatPuppleTest = []
     expect(sizeof(newtup) == 16) << fmt::format("{}", sizeof(newtup));
     expect(sizeof(pcat) == 32) << fmt::format("{}", sizeof(newtup) + sizeof(othertup));
     expect(ecat == othertup);
+};
+
+ut::suite StructuredBindingPuppleTest = []
+{
+    using namespace ut;
+
+    auto newtup = Tuple{"first", 1};
+
+    auto [a, b] = newtup;
+
+    expect(a == "first" && b == 1);
+};
+
+ut::suite TiePuppleTest = []
+{
+    using namespace ut;
 };
 
 constexpr Tuple<char, int, char, int, char, double, char> constexpr_tupple{'a', 1, 'c', 3, 'd', 5.0, 'e'};

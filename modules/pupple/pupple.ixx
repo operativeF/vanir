@@ -2,6 +2,7 @@
 export module Pupple;
 
 import std.core;
+import std.memory;
 
 import Boost.TMP;
 
@@ -118,6 +119,9 @@ struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
     template<typename I, typename NL = tmp::list_<tmp::sizet_<Is>...>>
     using actual_index = tmp::call_<tmp::unpack_<tmp::find_if_<tmp::is_<I>>>, NL>;
 
+    template<std::size_t I>
+    using type_at_index = tmp::call_<tmp::index_<tmp::sizet_<I>>, Ts...>;
+
     constexpr PuppleBase() = default;
 
     template<typename... Params>
@@ -233,10 +237,19 @@ void swap(Tuple<Ts...>& a, Tuple<Ts...>& b) noexcept(std::is_nothrow_move_constr
     b = std::move(temp);
 }
 
-template<class... Ts>
-struct pupple_size : tmp::sizet_<sizeof...(Ts)>
+namespace std
 {
-};
+    template<class... Ts>
+    struct tuple_size<Tuple<Ts...>> : integral_constant<std::size_t, sizeof...(Ts)>
+    {
+    };
+
+    template<std::size_t I, class... Ts>
+    struct tuple_element<I, Tuple<Ts...>>
+    {
+        using type = typename Tuple<Ts...>::template type_at_index<I>;
+    };
+} // namespace std
 
 template <class T, class P, std::size_t... I> requires(std::is_constructible_v<T,
                                                         decltype(get<I>(std::declval<P>()))...>)
@@ -249,7 +262,13 @@ template<class T, class P>
 constexpr T make_from_pupple(P&& p)
 {
     return make_from_pupple_impl<T>(std::forward<P>(p),
-           std::make_index_sequence<pupple_size<P>::value>{});
+           std::make_index_sequence<std::tuple_size<std::remove_cvref_t<P>>::value>{});
+}
+
+template<class... Ts>
+constexpr Tuple<Ts&...> puptie(Ts&... ts)
+{
+    return {ts...};
 }
 
 // CTAD

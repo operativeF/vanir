@@ -10,6 +10,7 @@ export
 
 namespace tmp = boost::tmp;
 
+// FIXME: Reference values?
 template<typename Data>
 struct pupple_data
 {
