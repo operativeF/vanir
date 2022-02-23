@@ -232,18 +232,6 @@ ut::suite StructuredBindingPuppleTest = []
     };
 };
 
-ut::suite TiePuppleTest = []
-{
-    using namespace ut;
-
-    // auto newtup = Tuple{std::string{"first", 1};
-
-    // std::string name;
-    // int i;
-
-    // newtup = puptie(name, i);
-};
-
 constexpr Tuple<char, int, char, int, char, double, char> constexpr_tupple{'a', 1, 'c', 3, 'd', 5.0, 'e'};
 
 static_assert(get<0>(constexpr_tupple) == 'a');

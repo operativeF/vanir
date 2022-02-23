@@ -271,12 +271,6 @@ constexpr T make_from_pupple(P&& p)
            std::make_index_sequence<std::tuple_size<std::remove_cvref_t<P>>::value>{});
 }
 
-template<class... Ts>
-constexpr Tuple<Ts&...> puptie(Ts&... ts)
-{
-    return {ts...};
-}
-
 // CTAD
 template<typename... Ts>
 Tuple(Ts... ts) -> Tuple<Ts...>;
