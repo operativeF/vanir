@@ -189,6 +189,12 @@ template<std::size_t I, typename... Us>
 }
 
 template<std::size_t I, typename... Us>
+[[nodiscard]] constexpr auto& get(Tuple<Us...>& pup) noexcept
+{
+    return get<Tuple<Us...>::template actual_index<tmp::sizet_<I>>::value>(pup.m_pupple);
+}
+
+template<std::size_t I, typename... Us>
 [[nodiscard]] constexpr auto get(Tuple<Us...>&& pup) noexcept
 {
     return get<Tuple<Us...>::template actual_index<tmp::sizet_<I>>::value>(std::move(pup.m_pupple));
@@ -248,7 +254,7 @@ namespace std
     struct tuple_element<I, Tuple<Ts...>>
     {
         using type = typename Tuple<Ts...>::template type_at_index<I>;
-    };
+    };   
 } // namespace std
 
 template <class T, class P, std::size_t... I> requires(std::is_constructible_v<T,

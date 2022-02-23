@@ -210,16 +210,38 @@ ut::suite StructuredBindingPuppleTest = []
 {
     using namespace ut;
 
-    auto newtup = Tuple{"first", 1};
+    "Bind to copy"_test = []
+    {
+        auto newtup = Tuple{"first", 1};
 
-    auto [a, b] = newtup;
+        auto [a, b] = newtup;
 
-    expect(a == "first" && b == 1);
+        expect(a == "first" && b == 1);
+    };
+
+    "Bind to reference"_test = []
+    {
+        auto othertup = Tuple{"first", 1};
+
+        auto& [c, d] = othertup;
+
+        c = "second";
+        d = 2;
+
+        expect(get<0>(othertup) == "second" && get<1>(othertup) == 2);
+    };
 };
 
 ut::suite TiePuppleTest = []
 {
     using namespace ut;
+
+    // auto newtup = Tuple{std::string{"first", 1};
+
+    // std::string name;
+    // int i;
+
+    // newtup = puptie(name, i);
 };
 
 constexpr Tuple<char, int, char, int, char, double, char> constexpr_tupple{'a', 1, 'c', 3, 'd', 5.0, 'e'};

@@ -14,8 +14,6 @@ namespace tmp = boost::tmp;
 template<typename Data>
 struct pupple_data
 {
-    auto operator<=>(const pupple_data&) const = default;
-
     Data value;
 };
 
@@ -31,12 +29,16 @@ struct pupple_element : IV
     constexpr pupple_element() = default;
 
     template<typename OV = Value>
-    explicit(!std::convertible_to<OV, Value>) constexpr pupple_element(const OV& v) : IV{v}
+    explicit(!std::convertible_to<OV, Value>) constexpr pupple_element(const OV& v)
+        noexcept(std::is_nothrow_copy_constructible<OV>)
+        : IV{v}
     {
     }
 
     template<typename OV = Value>
-    explicit(!std::convertible_to<OV, Value>) constexpr pupple_element(OV&& v) : IV{std::forward<OV>(v)}
+    explicit(!std::convertible_to<OV, Value>) constexpr pupple_element(OV&& v)
+        noexcept(std::is_nothrow_move_constructible<OV>)
+        : IV{std::forward<OV>(v)}
     {
     }
 
