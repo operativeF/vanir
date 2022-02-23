@@ -16,7 +16,7 @@ struct pupple_data
 {
     auto operator<=>(const pupple_data&) const = default;
 
-    Data value{};
+    Data value;
 };
 
 template<typename T>
@@ -30,21 +30,15 @@ struct pupple_element : IV
 {
     constexpr pupple_element() = default;
 
-    constexpr pupple_element(pupple_element<Key, Value>&& p) : IV(std::move(p))
-    {
-    }
-    constexpr pupple_element(const pupple_element<Key, Value>& p) : IV(p)
-    {
-    }
-    explicit constexpr pupple_element(const Value& v) : IV(v)
-    {
-    }
-    explicit constexpr pupple_element(Value&& v) : IV(std::move(v))
+    template<typename OV = Value>
+    explicit(!std::convertible_to<OV, Value>) constexpr pupple_element(const OV& v) : IV{v}
     {
     }
 
-    constexpr pupple_element& operator=(const pupple_element&) = default;
-    constexpr pupple_element& operator=(pupple_element&&) = default;
+    template<typename OV = Value>
+    explicit(!std::convertible_to<OV, Value>) constexpr pupple_element(OV&& v) : IV{std::forward<OV>(v)}
+    {
+    }
 
     template<unsigned OtherKey, typename OtherValue>
     [[nodiscard]] constexpr auto operator<=>(const pupple_element<OtherKey, OtherValue>& otherPupple) const
