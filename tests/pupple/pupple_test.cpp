@@ -33,28 +33,6 @@ ut::suite TestPuppleConstruction = []
     {
 
     };
-
-    /* FIXME: Not working yet.
-    "Copy-elided construction"_test = []
-    {
-        struct NonMoveAndCopy
-        {
-            NonMoveAndCopy(int aa) : a{aa} {}
-            NonMoveAndCopy(const NonMoveAndCopy&) = delete;
-            NonMoveAndCopy& operator=(const NonMoveAndCopy&) = delete;
-            NonMoveAndCopy& operator=(NonMoveAndCopy&&) = delete;
-            NonMoveAndCopy(NonMoveAndCopy&&) = delete;
-
-            auto operator<=>(const NonMoveAndCopy&) const = default;
-
-            int a;
-        };
-
-        std::tuple<NonMoveAndCopy> eld{1};
-
-        Tuple<NonMoveAndCopy> elided{};
-    };
-    */
 };
 
 ut::suite TestPuppleAppend = []
