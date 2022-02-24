@@ -210,6 +210,19 @@ ut::suite StructuredBindingPuppleTest = []
     };
 };
 
+ut::suite ApplyPuppleTest = []
+{
+    using namespace ut;
+
+    auto newtup = Tuple{1, 2};
+
+    auto add_two = [](auto a, auto b){ return a + b; };
+
+    auto added = tapply(add_two, newtup);
+
+    expect(added == 3);
+};
+
 constexpr Tuple<char, int, char, int, char, double, char> constexpr_tupple{'a', 1, 'c', 3, 'd', 5.0, 'e'};
 
 static_assert(get<0>(constexpr_tupple) == 'a');

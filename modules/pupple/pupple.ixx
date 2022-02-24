@@ -8,12 +8,7 @@ import Boost.TMP;
 
 import Pupple.Element;
 
-// TODO: Tuple element
-// TODO: Accept std::ignore
-// TODO: std::tie
-// TODO: forward_as_tuple
 // TODO: Tuple concatenation
-// TODO: std::apply
 // TODO: Construct from range
 // TODO: Construct from std::tuple
 
@@ -272,8 +267,25 @@ constexpr T make_from_pupple(P&& p)
 }
 
 // CTAD
-template<typename... Ts>
+template<class... Ts>
 Tuple(Ts... ts) -> Tuple<Ts...>;
+
+namespace detail
+{
+    template <class F, class T, std::size_t... I>
+    constexpr decltype(auto) tapply_impl(F&& f, T&& t, std::index_sequence<I...>)
+    {
+        return std::invoke(std::forward<F>(f), get<I>(std::forward<T>(t))...);
+    }
+}  // namespace detail
+ 
+template <class F, class T>
+constexpr decltype(auto) tapply(F&& f, T&& t)
+{
+    return detail::tapply_impl(
+        std::forward<F>(f), std::forward<T>(t),
+        std::make_index_sequence<std::tuple_size<std::remove_reference_t<T>>::value>{});
+}
 
 template<typename P1, typename P2, std::size_t... Is, std::size_t... Js>
 constexpr auto pupple_cat_impl(P1&& a, P2&& b, std::index_sequence<Is...>, std::index_sequence<Js...>)
