@@ -115,11 +115,15 @@ std::vector<std::string> JoinChArray(std::span<const char> chSpan)
     return vec;
 }
 
+// FIXME: ICE VS2022 17.2
+// [build] C:\dev\vanir\3rdparty\fmt\include\fmt\core.h(1915,1): fatal error C1001: Internal compiler error.
+// [C:\dev\vanir\build\modules\nilbase.vcxproj]
+// [build]   (compiler file 'msc1.cpp', line 1691)
 // Delimit strings from a span of them.
-std::string JoinStrings(std::span<const std::string> strSpan, char delim)
-{
-    return fmt::format("{}", fmt::join(strSpan, std::string{delim}));
-}
+// std::string JoinStrings(std::span<std::string> strSpan, char delim)
+// {
+//     return fmt::format("{}", fmt::join(strSpan, std::string{delim}));
+// }
 
 // Like JoinStrings, except there is an
 // escape character inserted before a delimiter that is found in a string.

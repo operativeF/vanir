@@ -120,22 +120,26 @@ struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
     constexpr PuppleBase() = default;
 
     template<typename... Params>
-    constexpr PuppleBase(pupple<Params...>&& p) : m_pupple{static_cast<indexed_at<Is, Params...>&&>(get<Is>(p))...}
+    constexpr PuppleBase(pupple<Params...>&& p)
+        : m_pupple{static_cast<indexed_at<Is, Params...>&&>(get<Is>(p))...}
     {
     }
 
     template<typename... Params>
-    constexpr PuppleBase(Params&&... params) : PuppleBase{make_pupple(std::move(params)...)}
+    constexpr PuppleBase(Params&&... params)
+        : PuppleBase{make_pupple(std::move(params)...)}
     {
     }
 
     template<typename... Params>
-    constexpr PuppleBase(const pupple<Params...>& p) : m_pupple{static_cast<const indexed_at<Is, Params...>&>(get<Is>(p))...}
+    constexpr PuppleBase(const pupple<Params...>& p)
+        : m_pupple{static_cast<const indexed_at<Is, Params...>&>(get<Is>(p))...}
     {
     }
 
     template<typename... Params>
-    constexpr PuppleBase(const Params&... params) : PuppleBase{make_pupple(static_cast<const Params&>(params)...)}
+    constexpr PuppleBase(const Params&... params)
+        : PuppleBase{make_pupple(static_cast<const Params&>(params)...)}
     {
     }
 
@@ -241,7 +245,8 @@ void swap(Tuple<Ts...>& a, Tuple<Ts...>& b) noexcept(std::is_nothrow_move_constr
 namespace std
 {
     template<class... Ts>
-    struct tuple_size<Tuple<Ts...>> : integral_constant<std::size_t, sizeof...(Ts)>
+    struct tuple_size<Tuple<Ts...>>
+        : integral_constant<std::size_t, sizeof...(Ts)>
     {
     };
 
@@ -253,7 +258,7 @@ namespace std
 } // namespace std
 
 template <class T, class P, std::size_t... I> requires(std::is_constructible_v<T,
-                                                        decltype(get<I>(std::declval<P>()))...>)
+                                                       decltype(get<I>(std::declval<P>()))...>)
 constexpr T make_from_pupple_impl(P&& t, std::index_sequence<I...>)
 {
     return T(get<I>(std::forward<P>(t))...);
@@ -282,21 +287,23 @@ namespace detail
 template <class F, class T>
 constexpr decltype(auto) tapply(F&& f, T&& t)
 {
-    return detail::tapply_impl(
-        std::forward<F>(f), std::forward<T>(t),
+    return detail::tapply_impl(std::forward<F>(f), std::forward<T>(t),
         std::make_index_sequence<std::tuple_size<std::remove_reference_t<T>>::value>{});
 }
 
 template<typename P1, typename P2, std::size_t... Is, std::size_t... Js>
 constexpr auto pupple_cat_impl(P1&& a, P2&& b, std::index_sequence<Is...>, std::index_sequence<Js...>)
 {
-    return Tuple{get<Is>(std::forward<P1>(a))..., get<Js>(std::forward<P2>(b))...};
+    return Tuple{get<Is>(std::forward<P1>(a))...,
+                 get<Js>(std::forward<P2>(b))...};
 }
 
 template<typename... Ts, typename... Us>
 constexpr auto pupple_cat(Tuple<Ts...> p1, Tuple<Us...> p2)
 {
-    return pupple_cat_impl(p1, p2, std::make_index_sequence<sizeof...(Ts)>{}, std::make_index_sequence<sizeof...(Us)>{});
+    return pupple_cat_impl(p1, p2,
+        std::make_index_sequence<sizeof...(Ts)>{},
+        std::make_index_sequence<sizeof...(Us)>{});
 }
 
 } // export
