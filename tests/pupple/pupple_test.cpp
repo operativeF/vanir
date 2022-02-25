@@ -182,6 +182,18 @@ ut::suite ConcatPuppleTest = []
     expect(sizeof(newtup) == 16) << fmt::format("{}", sizeof(newtup));
     expect(sizeof(pcat) == 32) << fmt::format("{}", sizeof(newtup) + sizeof(othertup));
     expect(ecat == othertup);
+
+    "Verify data alignments"_test = []
+    {
+        auto aligntup = Tuple{"first", 1, 2, "second"};
+        auto aligned_actual = Tuple{"first", 1, 2, "second", "first", 1, 2, "second", "first", 1, 2, "second"};
+
+        expect(sizeof(aligntup) == 24) << fmt::format("{} != 24", sizeof(aligntup));
+
+        auto align3 = pupple_cat(aligntup, aligntup, aligntup);
+
+        expect(sizeof(align3) == sizeof(aligned_actual)) << fmt::format("{} != {}", sizeof(align3), sizeof(aligned_actual));
+    };
 };
 
 ut::suite StructuredBindingPuppleTest = []

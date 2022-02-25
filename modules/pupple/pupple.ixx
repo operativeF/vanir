@@ -8,10 +8,6 @@ import Boost.TMP;
 
 import Pupple.Element;
 
-// TODO: Tuple concatenation
-// TODO: Construct from range
-// TODO: Construct from std::tuple
-
 export
 {
 
@@ -268,7 +264,7 @@ template<class T, class P>
 constexpr T make_from_pupple(P&& p)
 {
     return make_from_pupple_impl<T>(std::forward<P>(p),
-           std::make_index_sequence<std::tuple_size<std::remove_cvref_t<P>>::value>{});
+           std::make_index_sequence<std::tuple_size_v<std::remove_cvref_t<P>>>{});
 }
 
 // CTAD
@@ -288,7 +284,7 @@ template <class F, class T>
 constexpr decltype(auto) tapply(F&& f, T&& t)
 {
     return detail::tapply_impl(std::forward<F>(f), std::forward<T>(t),
-        std::make_index_sequence<std::tuple_size<std::remove_reference_t<T>>::value>{});
+        std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<T>>>{});
 }
 
 template<typename P1, typename P2, std::size_t... Is, std::size_t... Js>
@@ -298,12 +294,41 @@ constexpr auto pupple_cat_impl(P1&& a, P2&& b, std::index_sequence<Is...>, std::
                  get<Js>(std::forward<P2>(b))...};
 }
 
+template<typename P1, typename P2, std::size_t... Is, std::size_t... Js>
+constexpr auto pupple_cat_impl(const P1& a, const P2& b, std::index_sequence<Is...>, std::index_sequence<Js...>)
+{
+    return Tuple{get<Is>(a)...,
+                 get<Js>(b)...};
+}
+
 template<typename... Ts, typename... Us>
-constexpr auto pupple_cat(Tuple<Ts...> p1, Tuple<Us...> p2)
+constexpr auto pupple_cat(Tuple<Ts...>&& p1, Tuple<Us...>&& p2)
+{
+    return pupple_cat_impl(std::forward<Tuple<Ts...>>(p1), std::forward<Tuple<Us...>>(p2),
+        std::make_index_sequence<sizeof...(Ts)>{},
+        std::make_index_sequence<sizeof...(Us)>{});
+}
+
+template<typename... Ts, typename... Us>
+constexpr auto pupple_cat(const Tuple<Ts...>& p1, const Tuple<Us...>& p2)
 {
     return pupple_cat_impl(p1, p2,
         std::make_index_sequence<sizeof...(Ts)>{},
         std::make_index_sequence<sizeof...(Us)>{});
+}
+
+template<typename... Ts, typename... Us, typename... Others>
+constexpr auto pupple_cat(Tuple<Ts...>&& p1, Tuple<Us...>&& p2, Others&&... others)
+{
+    return pupple_cat(pupple_cat(std::forward<Tuple<Ts...>>(p1),
+                                 std::forward<Tuple<Us...>>(p2)),
+                                 std::forward<Others>(others)...);
+}
+
+template<typename... Ts, typename... Us, typename... Others>
+constexpr auto pupple_cat(const Tuple<Ts...>& p1, const Tuple<Us...>& p2, const Others&... others)
+{
+    return pupple_cat(pupple_cat(p1, p2), others...);
 }
 
 } // export
