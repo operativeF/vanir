@@ -15,25 +15,6 @@ namespace tmp = boost::tmp;
 static_assert(std::is_trivially_constructible_v<Tuple<>>, "Empty Tuple should be trivially constructible.");
 static_assert(std::is_nothrow_constructible_v<Tuple<>>, "Empty Tuple should be nothrow constructible.");
 
-ut::suite TestPuppleConstruction = []
-{
-    using namespace ut;
-
-    "Basic construction"_test = []
-    {
-
-    };
-
-    "Copy construction"_test = []
-    {
-
-    };
-
-    "Move construction"_test = []
-    {
-
-    };
-};
 
 ut::suite TestPuppleAppend = []
 {
@@ -53,7 +34,7 @@ ut::suite TestPuppleAppend = []
     "Test proper alignment order"_test = [=]
     {
         // Should be 24 bytes in size.
-        expect(sizeof(pupAB) == 24) << fmt::format("Size is: {}, should be 24 bytes.", sizeof(pupAB));
+        expect(sizeof(pupAB) == 24);
     };
 };
 
