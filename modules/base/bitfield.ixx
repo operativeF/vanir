@@ -282,7 +282,7 @@ concept IsValidEnumForBitfield = requires
 // Only a single field may be set at any time.
 // Use with CombineBitfield to have Singular Bitfields with combinations of other,
 // possibly non-singular, bitfields.
-template<typename Enum> requires(BitfieldCompatible<Enum>)
+template<BitfieldCompatible Enum>
 class SingularBitfield
 {
 public:
@@ -315,25 +315,25 @@ export
 
 using namespace boost::tmp;
 
-template<size_t Capacity>
+template<std::size_t Capacity>
 using size_type = call_<
-                   if_<less_eq_<sizet_<std::numeric_limits<unsigned char>::max()>>,
-                    always_<unsigned char>,
-                    if_<less_eq_<sizet_<std::numeric_limits<unsigned short>::max()>>,
-                     always_<unsigned short>,
-                     if_<less_eq_<sizet_<std::numeric_limits<unsigned int>::max()>>,
-                      always_<unsigned int>,
-                      if_<less_eq_<sizet_<std::numeric_limits<unsigned long>::max()>>,
-                       always_<unsigned long>,
-                       if_<less_eq_<sizet_<std::numeric_limits<unsigned long long>::max()>>,
-                        always_<unsigned long long>,
-                        always_<size_t>
-                       >
+                   if_<less_eq_<sizet_<std::numeric_limits<std::uint8_t>::max()>>,
+                    always_<std::uint8_t>,
+                    if_<less_eq_<sizet_<std::numeric_limits<std::uint16_t>::max()>>,
+                     always_<std::uint16_t>,
+                     if_<less_eq_<sizet_<std::numeric_limits<std::uint32_t>::max()>>,
+                      always_<std::uint32_t>,
+                      if_<less_eq_<sizet_<std::numeric_limits<std::uint64_t>::max()>>,
+                       always_<std::uint64_t>,
+                       always_<std::size_t>
                       >
                      >
                     >
                    >, sizet_<Capacity>
                   >;
+
+template<typename Enum, typename... Enums>
+static constexpr bool enum_is_present = std::disjunction<std::is_same<Enum, Enums>...>::value;
 
 // FIXME: For enums with a larger than usual initial value,
 // there also needs to be an initial offset (a range).
@@ -341,7 +341,7 @@ using size_type = call_<
 // Values will be set like usual, but they will be converted upon
 // access (so we only need to keep the offset).
 
-template<typename... Enums> requires(CombinableBitfield<Enums...>)
+template<BitfieldCompatible... Enums>
 class CombineBitfield
 {
 public:
@@ -350,38 +350,40 @@ public:
     using value_type = size_type<(static_cast<size_t>(Enums::_max_size) + ... + 0)>;
     using enum_list = list_<Enums...>;
     
-    template<typename E>
-    using enum_index = call_<unpack_<find_if_<is_<E>>>, enum_list>;
+    template<typename Enum>
+    using enum_index = call_<unpack_<find_if_<is_<Enum>>>, enum_list>;
 
     static constexpr auto max_options = (static_cast<value_type>(Enums::_max_size) + ... + 0);
     static constexpr auto total_enums = sizeof...(Enums);
 
-    template<typename E, auto idx = enum_index<E>::value>
-    constexpr value_type enum_offset(E e)
+    // TODO: What if enum is not part of bitfield collection?
+    template<typename Enum, auto idx = enum_index<Enum>::value> requires(enum_is_present<Enum, Enums...>)
+    constexpr value_type enum_offset(Enum e)
     {
-        const auto te = {static_cast<value_type>(Enums::_max_size)...};
+        static constexpr auto enum_maximums = {static_cast<value_type>(Enums::_max_size)...};
 
-        value_type offset{};
+        // value_type offset{};
 
-        // TODO: accumulate does an implicit conversion to unsigned int
-        // Is there a way to get around this?
-        for(auto enummax : std::views::counted(std::begin(te), idx))
-        {
-            offset += enummax;
-        }
+        // ICE: Serious error occurs when using impromptu ranges. Crashes the compiler cl
+        // and emits a weird error. 
+        // for(auto enummax : std::views::counted(std::ranges::begin(enum_maximums), idx))
+        // {
+        //     offset += enummax;
+        // }
+        // return offset;
 
-        return offset;
+        return std::accumulate(std::begin(enum_maximums), std::begin(enum_maximums) + idx, value_type{0});
     }
 
-    template<typename E>
-    constexpr auto enum_offset_value(E e)
+    template<typename Enum> requires(enum_is_present<Enum, Enums...>)
+    constexpr auto enum_offset_value(Enum e)
     {
         return static_cast<value_type>(e) + enum_offset(e);
     };
 
     constexpr CombineBitfield() {}
     
-    template<typename Enum>
+    template<typename Enum> requires(enum_is_present<Enum, Enums...>)
     explicit constexpr CombineBitfield(const Enum& e)
     {
         set(e);
@@ -395,7 +397,7 @@ public:
         (set(es), ...);
     }
 
-    template<typename Enum>
+    template<typename Enum> requires(enum_is_present<Enum, Enums...>)
     constexpr value_type bitmask(const Enum& e) noexcept
     {
         return value_type{1} << enum_offset_value(e);
@@ -414,7 +416,7 @@ public:
 
     //static constexpr value_type AllFlagsSet = bitmask(Enum::_max_size) - value_type{1};
 
-    template<typename Enum>
+    template<typename Enum> requires(enum_is_present<Enum, Enums...>)
     constexpr auto& operator|=(const Enum& e) noexcept
     {
         m_fields |= bitmask(e);
@@ -422,7 +424,7 @@ public:
         return *this;
     }
 
-    template<typename Enum>
+    template<typename Enum> requires(enum_is_present<Enum, Enums...>)
     constexpr bool is_set(const Enum& e) const noexcept
     {
         auto fields = m_fields;
@@ -444,7 +446,7 @@ public:
         return *this;
     }
 
-    template<typename Enum>
+    template<typename Enum> requires(enum_is_present<Enum, Enums...>)
     constexpr auto& operator&=(const Enum& e) noexcept
     {
         m_fields &= bitmask(e);
@@ -452,7 +454,7 @@ public:
         return *this;
     }
 
-    template<typename Enum>
+    template<typename Enum> requires(enum_is_present<Enum, Enums...>)
     constexpr auto& operator^=(const Enum& e) noexcept
     {
         m_fields ^= bitmask(e);
@@ -470,7 +472,7 @@ public:
         m_fields = value_type{0};
     }
 
-    template<typename Enum>
+    template<typename Enum> requires(enum_is_present<Enum, Enums...>)
     constexpr void set(const Enum& e) noexcept
     {
         m_fields |= bitmask(e);
@@ -482,13 +484,13 @@ public:
         m_fields |= (bitmask(es), ...);
     }
 
-    template<typename Enum>
+    template<typename Enum> requires(enum_is_present<Enum, Enums...>)
     constexpr void reset(const Enum& e) noexcept
     {
         m_fields &= ~bitmask(e);
     }
 
-    template<typename Enum>
+    template<typename Enum> requires(enum_is_present<Enum, Enums...>)
     constexpr void toggle(const Enum& e) noexcept
     {
         m_fields ^= bitmask(e);
@@ -534,14 +536,14 @@ private:
     value_type m_fields{};
 };
 
-template<typename Enum, typename... Enums> requires(CombinableBitfield<Enum, Enums...>)
+template<BitfieldCompatible Enum, BitfieldCompatible... Enums>
 constexpr auto operator&(CombineBitfield<Enums...> bf, const Enum& e) noexcept
 {
     bf &= e;
     return bf;
 }
 
-template<typename... Enums> requires(CombinableBitfield<Enums...>)
+template<BitfieldCompatible... Enums>
 constexpr auto operator&(CombineBitfield<Enums...> bf, const CombineBitfield<Enums...>& otherBf) noexcept
 {
     bf &= otherBf;
