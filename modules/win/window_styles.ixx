@@ -5,78 +5,85 @@ module;
 
 export module Nil.Windows.Styles;
 
+import std.core;
 import Utils.Bitfield;
+import Utils.BitManip;
 
 export namespace msw::utils
 {
 
+namespace nu = nil::utils;
+
 enum class WinStyle
 {
-    Overlapped = WS_OVERLAPPED, // 0
-    Tiled = WS_TILED, // 0
-    Border  = WS_BORDER,
-    Caption = WS_CAPTION,
-    Child   = WS_CHILD,
-    ChildWindow = WS_CHILDWINDOW,
-    ClipChildren = WS_CLIPCHILDREN,
-    ClipSiblings = WS_CLIPSIBLINGS,
-    Disabled = WS_DISABLED,
-    DlgFrame = WS_DLGFRAME,
-    Group = WS_GROUP,
-    HScroll = WS_HSCROLL,
-    Iconic = WS_ICONIC,
-    Maximize = WS_MAXIMIZE,
-    MaximizeBox = WS_MAXIMIZEBOX,
-    Minimize = WS_MINIMIZE,
-    Popup = WS_POPUP,
-    // PopupWindow = WS_POPUPWINDOW,
-    SizeBox = WS_SIZEBOX,
-    SysMenu = WS_SYSMENU,
-    TabStop = WS_TABSTOP,
-    ThickFrame = WS_THICKFRAME,
-    // TiledWindow = WS_TILEDWINDOW,
-    Visible = WS_VISIBLE,
-    VScroll = WS_VSCROLL // clashes with WS_EX_NOREDIRECTIONBITMAP
+    Overlapped   = nu::ValToBitPos(WS_OVERLAPPED), // Default, 0
+    Tiled        = nu::ValToBitPos(WS_TILED),      // Default, 0
+    // Values 1 - 15 are invalid.
+    _init_offset = 16,
+    MaximizeBox  = nu::ValToBitPos(WS_MAXIMIZEBOX),
+    Group        = nu::ValToBitPos(WS_GROUP),
+    SizeBox      = nu::ValToBitPos(WS_SIZEBOX),
+    ThickFrame   = nu::ValToBitPos(WS_THICKFRAME), // same as SizeBox
+    SysMenu      = nu::ValToBitPos(WS_SYSMENU),
+    TabStop      = nu::ValToBitPos(WS_TABSTOP), // same as MaximizeBox
+    HScroll      = nu::ValToBitPos(WS_HSCROLL),
+    VScroll      = nu::ValToBitPos(WS_VSCROLL), // clashes with WS_EX_NOREDIRECTIONBITMAP
+    DlgFrame     = nu::ValToBitPos(WS_DLGFRAME),
+    Border       = nu::ValToBitPos(WS_BORDER),
+    Maximize     = nu::ValToBitPos(WS_MAXIMIZE),
+    ClipChildren = nu::ValToBitPos(WS_CLIPCHILDREN),
+    ClipSiblings = nu::ValToBitPos(WS_CLIPSIBLINGS),
+    Disabled     = nu::ValToBitPos(WS_DISABLED),
+    Visible      = nu::ValToBitPos(WS_VISIBLE),
+    Iconic       = nu::ValToBitPos(WS_ICONIC),
+    Minimize     = nu::ValToBitPos(WS_MINIMIZE), // same as Iconic
+    Child        = nu::ValToBitPos(WS_CHILD),
+    ChildWindow  = nu::ValToBitPos(WS_CHILDWINDOW), // same as WS_CHILD
+    Popup        = nu::ValToBitPos(WS_POPUP),
+    _max_size,
+    INVALID_MASK = nu::InvBitmaskRange(0, _init_offset)
+    // PopupWindow = WS_POPUPWINDOW, combination
+    // TiledWindow = WS_TILEDWINDOW, combination
 };
 
 enum class WinStyleEx
 {
-    Left, // Default value
-    LTRReading = Left, // Default value
-    RightScrollbar = LTRReading, // Default value
-
-    DlgModalFrame, // = WS_EX_DLGMODALFRAME
+    Left                = nu::ValToBitPos(WS_EX_LEFT), // Default, 0
+    LTRReading          = nu::ValToBitPos(WS_EX_LTRREADING), // Default, 0
+    RightScrollbar      = nu::ValToBitPos(WS_EX_RIGHTSCROLLBAR), // Default, 0
+    DlgModalFrame       = nu::ValToBitPos(WS_EX_DLGMODALFRAME),
     INVALID_2,
-    NoParentNotify = WS_EX_NOPARENTNOTIFY, // 4
-    TopMost = WS_EX_TOPMOST, // 8
-    AcceptFiles = WS_EX_ACCEPTFILES, // 16
-    Transparent = WS_EX_TRANSPARENT, // 32
-    MDIChild = WS_EX_MDICHILD, // 64
-    ToolWindow = WS_EX_TOOLWINDOW, // 128
-    WindowEdge = WS_EX_WINDOWEDGE, // 256
-    ClientEdge  = WS_EX_CLIENTEDGE, // 512
-    ContextHelp = WS_EX_CONTEXTHELP, // 1024
-    // INVALID_2048,
-    Right = WS_EX_RIGHT, // 4096
-    RTLReading = WS_EX_RTLREADING, // 8192
-    LeftScrollBar = WS_EX_LEFTSCROLLBAR, // 16384
-    // INVALID_32768,
-    ControlParent = WS_EX_CONTROLPARENT, // 65536
-    StaticEdge = WS_EX_STATICEDGE, // 131072
-    AppWindow   = WS_EX_APPWINDOW, // 262144
-    Layered = WS_EX_LAYERED, // 524288
-    NoInheritLayout = WS_EX_NOINHERITLAYOUT, // 1048576
-    NoRedirectionBitmap = WS_EX_NOREDIRECTIONBITMAP, // 2097152
-    LayoutRTL = WS_EX_LAYOUTRTL, // 4194304
-    // INVALID_8388608,
-    // INVALID_16777216,
-    Composited  = WS_EX_COMPOSITED, // 33554432
-    // INVALID_67108864,
-    NoActivate = WS_EX_NOACTIVATE // 134217728
+    NoParentNotify      = nu::ValToBitPos(WS_EX_NOPARENTNOTIFY),
+    TopMost             = nu::ValToBitPos(WS_EX_TOPMOST),
+    AcceptFiles         = nu::ValToBitPos(WS_EX_ACCEPTFILES),
+    Transparent         = nu::ValToBitPos(WS_EX_TRANSPARENT),
+    MDIChild            = nu::ValToBitPos(WS_EX_MDICHILD),
+    ToolWindow          = nu::ValToBitPos(WS_EX_TOOLWINDOW),
+    WindowEdge          = nu::ValToBitPos(WS_EX_WINDOWEDGE),
+    ClientEdge          = nu::ValToBitPos(WS_EX_CLIENTEDGE),
+    ContextHelp         = nu::ValToBitPos(WS_EX_CONTEXTHELP),
+    INVALID_12,
+    Right               = nu::ValToBitPos(WS_EX_RIGHT),
+    RTLReading          = nu::ValToBitPos(WS_EX_RTLREADING),
+    LeftScrollBar       = nu::ValToBitPos(WS_EX_LEFTSCROLLBAR),
+    INVALID_16,
+    ControlParent       = nu::ValToBitPos(WS_EX_CONTROLPARENT),
+    StaticEdge          = nu::ValToBitPos(WS_EX_STATICEDGE),
+    AppWindow           = nu::ValToBitPos(WS_EX_APPWINDOW),
+    Layered             = nu::ValToBitPos(WS_EX_LAYERED),
+    NoInheritLayout     = nu::ValToBitPos(WS_EX_NOINHERITLAYOUT),
+    NoRedirectionBitmap = nu::ValToBitPos(WS_EX_NOREDIRECTIONBITMAP),
+    LayoutRTL           = nu::ValToBitPos(WS_EX_LAYOUTRTL),
+    INVALID_24,
+    INVALID_25,
+    Composited          = nu::ValToBitPos(WS_EX_COMPOSITED),
+    INVALID_27,
+    NoActivate          = nu::ValToBitPos(WS_EX_NOACTIVATE),
+    _max_size,
+    INVALID_MASK = nu::InvBitmaskValue(INVALID_2,  INVALID_12, INVALID_16,
+                                       INVALID_24, INVALID_25, INVALID_27)
     // OverlappedWindow = WS_EX_OVERLAPPEDWINDOW,
     // PaletteWindow = WS_EX_PALETTEWINDOW,
 };
-
-
 
 }; // namespace msw::utils

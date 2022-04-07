@@ -136,11 +136,13 @@ public:
         m_fields ^= bitmask(e);
     }
 
+    // FIXME: Not correct for bitfields with invalid values.
     constexpr void set_all() noexcept
     {
         m_fields = (value_type{1} << static_cast<value_type>(Enum::_max_size)) - value_type{1};
     }
 
+    // FIXME: Not correct for bitfields with invalid values.
     constexpr void toggle_all() noexcept
     {
         m_fields ^= AllFlagsSet;
@@ -376,7 +378,7 @@ public:
     }
 
     template<typename Enum> requires(enum_is_present<Enum, Enums...>)
-    constexpr auto enum_offset_value(Enum e)
+    constexpr auto enum_offset_value(const Enum& e)
     {
         return static_cast<value_type>(e) + enum_offset(e);
     };
@@ -389,9 +391,10 @@ public:
         set(e);
     }
 
-    explicit constexpr CombineBitfield(value_type bits) : m_fields{bits} {}
+    // TODO: Should this *really* be available?
+    // explicit constexpr CombineBitfield(value_type bits) : m_fields{bits} {}
 
-    template<typename... OtherEnums>
+    template<typename... OtherEnums> requires(enum_is_present<OtherEnums, Enums...> && ...)
     constexpr CombineBitfield(const OtherEnums&... es)
     {
         (set(es), ...);
@@ -408,7 +411,7 @@ public:
         return m_fields != value_type{0};
     }
 
-    template<typename... OtherEnums>
+    template<typename... OtherEnums> requires(enum_is_present<OtherEnums, Enums...> && ...)
     constexpr value_type bitmask(const OtherEnums&... es) noexcept
     {
         return ((value_type{ 1 } << enum_offset_value(es)) | ...);
@@ -478,7 +481,7 @@ public:
         m_fields |= bitmask(e);
     }
 
-    template<typename... OtherEnums>
+    template<typename... OtherEnums> requires(enum_is_present<OtherEnums, Enums...> && ...)
     constexpr void set(const OtherEnums&... es) noexcept
     {
         m_fields |= (bitmask(es), ...);
@@ -527,7 +530,7 @@ public:
     }
     
 private:
-    template<typename Enum>
+    template<typename Enum> requires(enum_is_present<Enum, Enums...>)
     constexpr auto GetEnumIndex() const noexcept
     {
         return enum_index<Enum>::value;
@@ -536,14 +539,14 @@ private:
     value_type m_fields{};
 };
 
-template<BitfieldCompatible Enum, BitfieldCompatible... Enums>
+template<BitfieldCompatible Enum, typename... Enums>
 constexpr auto operator&(CombineBitfield<Enums...> bf, const Enum& e) noexcept
 {
     bf &= e;
     return bf;
 }
 
-template<BitfieldCompatible... Enums>
+template<typename... Enums>
 constexpr auto operator&(CombineBitfield<Enums...> bf, const CombineBitfield<Enums...>& otherBf) noexcept
 {
     bf &= otherBf;
