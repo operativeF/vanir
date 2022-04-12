@@ -45,110 +45,110 @@ public:
         (set(es), ...);
     }
 
-    static constexpr value_type bitmask(const Enum& e) noexcept
+    static constexpr value_type bitmask(const Enum& e)
     {
         return value_type{1} << static_cast<value_type>(e);
     }
 
-    constexpr explicit operator bool() const noexcept
+    constexpr explicit operator bool() const
     {
         return m_fields != value_type{0};
     }
 
     template<BitfieldCompatible... Enums>
-    static constexpr value_type bitmask(const Enums&... es) noexcept
+    static constexpr value_type bitmask(const Enums&... es)
     {
         return ((value_type{ 1 } << static_cast<value_type>(es)) | ...);
     }
 
     static constexpr value_type AllFlagsSet = bitmask(Enum::_max_size) - value_type{1};
 
-    constexpr auto& operator|=(const Enum& e) noexcept
+    constexpr auto& operator|=(const Enum& e)
     {
         m_fields |= bitmask(e);
 
         return *this;
     }
 
-    constexpr bool is_set(const Enum& e) const noexcept
+    constexpr bool is_set(const Enum& e) const
     {
         auto fields = m_fields;
         fields &= bitmask(e);
         return fields != value_type{0};
     }
 
-    constexpr auto& operator|=(const Bitfield& otherBf) noexcept
+    constexpr auto& operator|=(const Bitfield& otherBf)
     {
         m_fields |= otherBf.as_value();
 
         return *this;
     }
 
-    constexpr auto& operator&=(const Bitfield& otherBf) noexcept
+    constexpr auto& operator&=(const Bitfield& otherBf)
     {
         m_fields &= otherBf.as_value();
 
         return *this;
     }
 
-    constexpr auto& operator&=(const Enum& e) noexcept
+    constexpr auto& operator&=(const Enum& e)
     {
         m_fields &= bitmask(e);
 
         return *this;
     }
 
-    constexpr auto& operator^=(const Enum& e) noexcept
+    constexpr auto& operator^=(const Enum& e)
     {
         m_fields ^= bitmask(e);
 
         return *this;
     }
 
-    constexpr bool empty() const noexcept
+    constexpr bool empty() const
     {
         return m_fields == value_type{0};
     };
 
-    constexpr auto clear() noexcept
+    constexpr auto clear()
     {
         m_fields = value_type{0};
     }
 
-    constexpr void set(const Enum& e) noexcept
+    constexpr void set(const Enum& e)
     {
         m_fields |= bitmask(e);
     }
 
     template<BitfieldCompatible... Enums>
-    constexpr void set(const Enums&... es) noexcept
+    constexpr void set(const Enums&... es)
     {
         m_fields |= (bitmask(es), ...);
     }
 
-    constexpr void reset(const Enum& e) noexcept
+    constexpr void reset(const Enum& e)
     {
         m_fields &= ~bitmask(e);
     }
 
-    constexpr void toggle(const Enum& e) noexcept
+    constexpr void toggle(const Enum& e)
     {
         m_fields ^= bitmask(e);
     }
 
     // FIXME: Not correct for bitfields with invalid values.
-    constexpr void set_all() noexcept
+    constexpr void set_all()
     {
         m_fields = (value_type{1} << static_cast<value_type>(Enum::_max_size)) - value_type{1};
     }
 
     // FIXME: Not correct for bitfields with invalid values.
-    constexpr void toggle_all() noexcept
+    constexpr void toggle_all()
     {
         m_fields ^= AllFlagsSet;
     }
 
-    constexpr auto as_value() const noexcept
+    constexpr auto as_value() const
     {
         return m_fields;
     }
@@ -224,47 +224,47 @@ struct bitfield
 
 
 template<BitfieldCompatible Enum>
-constexpr auto operator|(InclBitfield<Enum> bf, const Enum& e) noexcept
+constexpr auto operator|(InclBitfield<Enum> bf, const Enum& e)
 {
     bf |= e;
     return bf;
 }
 
 template<BitfieldCompatible Enum>
-constexpr auto operator&(InclBitfield<Enum> bf, const Enum& e) noexcept
+constexpr auto operator&(InclBitfield<Enum> bf, const Enum& e)
 {
     bf &= e;
     return bf;
 }
 
 template<BitfieldCompatible Enum>
-constexpr auto operator&(InclBitfield<Enum> bf, const InclBitfield<Enum>& otherBf) noexcept
+constexpr auto operator&(InclBitfield<Enum> bf, const InclBitfield<Enum>& otherBf)
 {
     bf &= otherBf;
     return bf;
 }
 
 template<BitfieldCompatible Enum>
-constexpr auto operator&(const Enum& e, InclBitfield<Enum> bf) noexcept
+constexpr auto operator&(const Enum& e, InclBitfield<Enum> bf)
 {
     return bf & e;
 }
 
 template<BitfieldCompatible Enum>
-constexpr auto operator^(InclBitfield<Enum> bf, const Enum& e) noexcept
+constexpr auto operator^(InclBitfield<Enum> bf, const Enum& e)
 {
     bf ^= e;
     return bf;
 }
 
 template<BitfieldCompatible Enum>
-constexpr auto operator==(const Bitfield<Enum>& lhbf, const Bitfield<Enum>& rhbf) noexcept
+constexpr auto operator==(const Bitfield<Enum>& lhbf, const Bitfield<Enum>& rhbf)
 {
     return lhbf.as_value() == rhbf.as_value();
 }
 
 template<BitfieldCompatible Enum> 
-constexpr auto operator!=(const Bitfield<Enum>& lhbf, const Bitfield<Enum>& rhbf) noexcept
+constexpr auto operator!=(const Bitfield<Enum>& lhbf, const Bitfield<Enum>& rhbf)
 {
     return !(lhbf.as_value() == rhbf.as_value());
 }
@@ -401,18 +401,18 @@ public:
     }
 
     template<typename Enum> requires(enum_is_present<Enum, Enums...>)
-    constexpr value_type bitmask(const Enum& e) noexcept
+    constexpr value_type bitmask(const Enum& e)
     {
         return value_type{1} << enum_offset_value(e);
     }
 
-    constexpr explicit operator bool() const noexcept
+    constexpr explicit operator bool() const
     {
         return m_fields != value_type{0};
     }
 
     template<typename... OtherEnums> requires(enum_is_present<OtherEnums, Enums...> && ...)
-    constexpr value_type bitmask(const OtherEnums&... es) noexcept
+    constexpr value_type bitmask(const OtherEnums&... es)
     {
         return ((value_type{ 1 } << enum_offset_value(es)) | ...);
     }
@@ -420,7 +420,7 @@ public:
     //static constexpr value_type AllFlagsSet = bitmask(Enum::_max_size) - value_type{1};
 
     template<typename Enum> requires(enum_is_present<Enum, Enums...>)
-    constexpr auto& operator|=(const Enum& e) noexcept
+    constexpr auto& operator|=(const Enum& e)
     {
         m_fields |= bitmask(e);
 
@@ -428,21 +428,21 @@ public:
     }
 
     template<typename Enum> requires(enum_is_present<Enum, Enums...>)
-    constexpr bool is_set(const Enum& e) const noexcept
+    constexpr bool is_set(const Enum& e) const
     {
         auto fields = m_fields;
         fields &= bitmask(e);
         return fields != value_type{0};
     }
 
-    constexpr auto& operator|=(const CombineBitfield& otherBf) noexcept
+    constexpr auto& operator|=(const CombineBitfield& otherBf)
     {
         m_fields |= otherBf.as_value();
 
         return *this;
     }
 
-    constexpr auto& operator&=(const CombineBitfield& otherBf) noexcept
+    constexpr auto& operator&=(const CombineBitfield& otherBf)
     {
         m_fields &= otherBf.as_value();
 
@@ -450,7 +450,7 @@ public:
     }
 
     template<typename Enum> requires(enum_is_present<Enum, Enums...>)
-    constexpr auto& operator&=(const Enum& e) noexcept
+    constexpr auto& operator&=(const Enum& e)
     {
         m_fields &= bitmask(e);
 
@@ -458,58 +458,58 @@ public:
     }
 
     template<typename Enum> requires(enum_is_present<Enum, Enums...>)
-    constexpr auto& operator^=(const Enum& e) noexcept
+    constexpr auto& operator^=(const Enum& e)
     {
         m_fields ^= bitmask(e);
 
         return *this;
     }
 
-    constexpr bool empty() const noexcept
+    constexpr bool empty() const
     {
         return m_fields == value_type{0};
     }
 
-    constexpr auto clear() noexcept
+    constexpr auto clear()
     {
         m_fields = value_type{0};
     }
 
     template<typename Enum> requires(enum_is_present<Enum, Enums...>)
-    constexpr void set(const Enum& e) noexcept
+    constexpr void set(const Enum& e)
     {
         m_fields |= bitmask(e);
     }
 
     template<typename... OtherEnums> requires(enum_is_present<OtherEnums, Enums...> && ...)
-    constexpr void set(const OtherEnums&... es) noexcept
+    constexpr void set(const OtherEnums&... es)
     {
         m_fields |= (bitmask(es), ...);
     }
 
     template<typename Enum> requires(enum_is_present<Enum, Enums...>)
-    constexpr void reset(const Enum& e) noexcept
+    constexpr void reset(const Enum& e)
     {
         m_fields &= ~bitmask(e);
     }
 
     template<typename Enum> requires(enum_is_present<Enum, Enums...>)
-    constexpr void toggle(const Enum& e) noexcept
+    constexpr void toggle(const Enum& e)
     {
         m_fields ^= bitmask(e);
     }
 
-    constexpr void set_all() noexcept
+    constexpr void set_all()
     {
         m_fields = (value_type{1} << max_options) - value_type{1};
     }
 
-    constexpr void toggle_all() noexcept
+    constexpr void toggle_all()
     {
         m_fields ^= ((value_type{1} << max_options) - value_type{1});
     }
 
-    constexpr value_type as_enum_value() const noexcept
+    constexpr value_type as_enum_value() const
     {
         if(m_fields == 0)
             return 0;
@@ -519,19 +519,19 @@ public:
         }
     }
 
-    constexpr auto as_value() const noexcept
+    constexpr auto as_value() const
     {
         return m_fields;
     }
 
-    constexpr bool operator==(const CombineBitfield& other) const noexcept
+    constexpr bool operator==(const CombineBitfield& other) const
     {
         return m_fields == other.as_value();
     }
     
 private:
     template<typename Enum> requires(enum_is_present<Enum, Enums...>)
-    constexpr auto GetEnumIndex() const noexcept
+    constexpr auto GetEnumIndex() const
     {
         return enum_index<Enum>::value;
     }
@@ -540,14 +540,14 @@ private:
 };
 
 template<BitfieldCompatible Enum, typename... Enums>
-constexpr auto operator&(CombineBitfield<Enums...> bf, const Enum& e) noexcept
+constexpr auto operator&(CombineBitfield<Enums...> bf, const Enum& e)
 {
     bf &= e;
     return bf;
 }
 
 template<typename... Enums>
-constexpr auto operator&(CombineBitfield<Enums...> bf, const CombineBitfield<Enums...>& otherBf) noexcept
+constexpr auto operator&(CombineBitfield<Enums...> bf, const CombineBitfield<Enums...>& otherBf)
 {
     bf &= otherBf;
     return bf;
