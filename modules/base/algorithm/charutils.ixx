@@ -250,23 +250,6 @@ concept Hexable = requires
              ('a' <= c && c <= 'f'));
 };
 
-template<char C> requires(Hexable<C>)
-consteval char HexCharToDec()
-{
-    if constexpr('A' <= C && C <= 'F')
-    {
-        return C - char(55);
-    }
-    else if('a' <= C && C <= 'f')
-    {
-        return C - char(87);
-    }
-    else // '0' - '9
-    {
-        return C - char(48);
-    }
-}
-
 constexpr std::byte HexCharToDec(std::byte C)
 {
     auto asChar = static_cast<char>(C);

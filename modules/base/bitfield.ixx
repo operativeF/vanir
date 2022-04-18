@@ -123,7 +123,7 @@ public:
     template<BitfieldCompatible... Enums>
     constexpr void set(const Enums&... es)
     {
-        m_fields |= (bitmask(es), ...);
+        m_fields = (bitmask(es) | ...);
     }
 
     constexpr void reset(const Enum& e)
@@ -484,7 +484,7 @@ public:
     template<typename... OtherEnums> requires(enum_is_present<OtherEnums, Enums...> && ...)
     constexpr void set(const OtherEnums&... es)
     {
-        m_fields |= (bitmask(es), ...);
+        m_fields = (bitmask(es) | ...);
     }
 
     template<typename Enum> requires(enum_is_present<Enum, Enums...>)
