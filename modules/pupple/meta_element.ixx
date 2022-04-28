@@ -55,8 +55,8 @@ struct pupple_element : IV
         }
     }
 
-    template<unsigned OtherKey, typename OtherValue>
-    [[nodiscard]] constexpr auto operator==(const pupple_element<OtherKey, OtherValue>& otherPupple) const
+    template<std::size_t OtherKey, typename OtherValue>
+    [[nodiscard]] constexpr bool operator==(const pupple_element<OtherKey, OtherValue>& otherPupple) const
     {
         if constexpr(std::derived_from<pupple_element<OtherKey, OtherValue>, pupple_data<OtherValue>>)
         {

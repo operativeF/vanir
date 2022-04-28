@@ -78,25 +78,25 @@ template<std::size_t I, typename... Ts>
 using indexed_at = tmp::call_<tmp::index_<tmp::sizet_<I>>, Ts...>;
 
 template<typename... Params>
-[[nodiscard]] constexpr auto make_pupple(Params&&... params)
+constexpr auto make_pupple(Params&&... params)
 {
     return pupple<typename tmp::decay<decltype(params)>::type...>(std::forward<Params>(params)...);
 }
 
 template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
-[[nodiscard]] constexpr const auto& get(const pupple<Ts...>& t) noexcept
+constexpr const auto& get(const pupple<Ts...>& t) noexcept
 {
     return get(static_cast<pupple_element<I, VT> const&>(t));
 }
 
 template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
-[[nodiscard]] constexpr auto& get(pupple<Ts...>& t) noexcept
+constexpr auto& get(pupple<Ts...>& t) noexcept
 {
     return get(static_cast<pupple_element<I, VT>&>(t));
 }
 
 template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
-[[nodiscard]] constexpr auto get(pupple<Ts...>&& t) noexcept
+constexpr auto get(pupple<Ts...>&& t) noexcept
 {
     return get(std::move(static_cast<pupple_element<I, VT>>(t)));
 }
@@ -178,19 +178,19 @@ struct Tuple : pair_with_index<Ts...>
 };
 
 template<std::size_t I, typename... Us>
-[[nodiscard]] constexpr auto get(const Tuple<Us...>& pup) noexcept
+constexpr auto get(const Tuple<Us...>& pup) noexcept
 {
     return get<Tuple<Us...>::template actual_index<tmp::sizet_<I>>::value>(pup.m_pupple);
 }
 
 template<std::size_t I, typename... Us>
-[[nodiscard]] constexpr auto& get(Tuple<Us...>& pup) noexcept
+constexpr auto& get(Tuple<Us...>& pup) noexcept
 {
     return get<Tuple<Us...>::template actual_index<tmp::sizet_<I>>::value>(pup.m_pupple);
 }
 
 template<std::size_t I, typename... Us>
-[[nodiscard]] constexpr auto get(Tuple<Us...>&& pup) noexcept
+constexpr auto get(Tuple<Us...>&& pup) noexcept
 {
     return get<Tuple<Us...>::template actual_index<tmp::sizet_<I>>::value>(std::move(pup.m_pupple));
 }
@@ -198,7 +198,6 @@ template<std::size_t I, typename... Us>
 namespace aux::detail
 {
 
-// TODO: Determine the alignment of objects after appending.
 template<typename... Ts, std::size_t... Is, typename... Us>
 constexpr auto append_impl(std::integer_sequence<std::size_t, Is...>, Tuple<Ts...>&& elements, Us&&... params)
 {
@@ -216,13 +215,13 @@ constexpr auto append_impl(std::integer_sequence<std::size_t, Is...>, const Tupl
 } // namespace aux::detail
 
 template<typename... Ts, typename... Us>
-[[nodiscard]] constexpr auto append(Tuple<Ts...>&& elements, Us&&... params) noexcept
+constexpr auto append(Tuple<Ts...>&& elements, Us&&... params) noexcept
 {
     return aux::detail::append_impl(std::make_integer_sequence<std::size_t, sizeof...(Ts)>(), std::move(elements), std::forward<Us>(params)...);
 }
 
 template<typename... Ts, typename... Us>
-[[nodiscard]] constexpr auto append(const Tuple<Ts...>& elements, Us&&... params) noexcept
+constexpr auto append(const Tuple<Ts...>& elements, Us&&... params) noexcept
 {
     return aux::detail::append_impl(std::make_integer_sequence<std::size_t, sizeof...(Ts)>(), elements, std::forward<Us>(params)...);
 }
