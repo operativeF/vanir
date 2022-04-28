@@ -8,10 +8,10 @@ import Boost.TMP;
 
 import Pupple.Element;
 
+namespace tmp = boost::tmp;
+
 export
 {
-
-namespace tmp = boost::tmp;
 
 template <typename... Params>
 struct pupple;
@@ -227,9 +227,18 @@ template<typename... Ts, typename... Us>
     return aux::detail::append_impl(std::make_integer_sequence<std::size_t, sizeof...(Ts)>(), elements, std::forward<Us>(params)...);
 }
 
-template<typename... Ts>
-constexpr void swap(Tuple<Ts...>& a, Tuple<Ts...>& b) noexcept(std::is_nothrow_move_constructible<Tuple<Ts...>>::value &&
-                                                               std::is_nothrow_move_assignable<Tuple<Ts...>>::value)
+template<std::swappable... Ts>
+constexpr void swap(Tuple<Ts...>& a, Tuple<Ts...>& b) noexcept((std::is_nothrow_swappable_v<Ts> && ...))
+{
+    using tuple_type = Tuple<Ts...>;
+
+    tuple_type temp{std::move(a)};
+    a = std::move(b);
+    b = std::move(temp);
+}
+
+template<std::swappable... Ts>
+constexpr void swap(const Tuple<Ts...>& a, const Tuple<Ts...>& b) noexcept((std::is_nothrow_swappable_v<const Ts> && ...))
 {
     using tuple_type = Tuple<Ts...>;
 
