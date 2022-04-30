@@ -42,7 +42,7 @@ ut::suite TestPuppleElementTypes = []
 {
     using namespace ut;
 
-    auto pupA = make_pupple(1, 2, 3);
+    auto pupA = Tuple{1, 2, 3};
 
     struct finalPup final
     {
@@ -51,8 +51,8 @@ ut::suite TestPuppleElementTypes = []
         auto operator<=>(const finalPup&) const = default;
     };
 
-    auto pupB = make_pupple(finalPup{1});
-    auto pupC = make_pupple(finalPup{3});
+    auto pupB = Tuple{finalPup{1}};
+    auto pupC = Tuple{finalPup{3}};
 
     expect(pupB != pupC);
 };
