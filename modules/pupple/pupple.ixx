@@ -155,26 +155,33 @@ using align_greater_ = tmp::call_<
         tmp::lift_<alignment_greater>
     >, T, U>;
 
+// Sorts input types from greatest to least and maps their 
+// original input order.
+// For a given input:
+// remap_by_size_<int, double, char>
+// will output list_<sizet_<1>, sizet_<0>, sizet_<2>>
+// as the mapping. In other words:
+// int (0) -> (1)
+// double (1) -> (0)
+// char (2) -> (2)
+// and the second part generated, pupple<double, int, char>
+// actually represents how the types are stored.
 template<typename... Ts>
-using pair_with_index = tmp::call_<
-    tmp::tee_<
-        tmp::size_<tmp::make_sequence_<>>,
-        tmp::listify_, 
-        tmp::pairing_<tmp::listify_,
-            tmp::sort_<tmp::lift_<align_greater_>,
-                tmp::tee_<
-                    tmp::transform_<tmp::ui0_<>>,
-                    tmp::transform_<tmp::ui1_<>, tmp::lift_<pupple>>,
-                    tmp::lift_<PuppleBase>
-                >
+using remap_by_size_ = tmp::call_<
+    tmp::zip_with_index_<tmp::listify_,
+        tmp::sort_<tmp::lift_<align_greater_>,
+            tmp::tee_<
+                tmp::transform_<tmp::ui0_<>>,
+                tmp::transform_<tmp::ui1_<>, tmp::lift_<pupple>>,
+                tmp::lift_<PuppleBase>
             >
         >
     >, Ts...>;
 
 template<typename... Ts>
-struct Tuple : pair_with_index<Ts...>
+struct Tuple : remap_by_size_<Ts...>
 {
-    using pair_with_index<Ts...>::pair_with_index;
+    using remap_by_size_<Ts...>::remap_by_size_;
 };
 
 template<std::size_t I, typename... Us>
