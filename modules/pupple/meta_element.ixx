@@ -5,9 +5,6 @@ import std.core;
 
 import Boost.TMP;
 
-export
-{
-
 namespace tmp = boost::tmp;
 
 // FIXME: Reference values?
@@ -22,6 +19,9 @@ using IsEmptyAndInheritible = tmp::bool_<(std::is_empty_v<T> && !std::is_final_v
 
 template<typename T>
 using PuppleDataT = tmp::call_<tmp::if_<tmp::lift_<IsEmptyAndInheritible>, tmp::identity_, tmp::always_<pupple_data<T>>>, T>;
+
+export
+{
 
 template<std::size_t Key, typename Value, typename IV = PuppleDataT<Value>>
 struct pupple_element : IV
@@ -42,7 +42,7 @@ struct pupple_element : IV
     {
     }
 
-    template<unsigned OtherKey, typename OtherValue>
+    template<std::size_t OtherKey, typename OtherValue>
     [[nodiscard]] constexpr auto operator<=>(const pupple_element<OtherKey, OtherValue>& otherPupple) const
     {
         if constexpr(std::derived_from<pupple_element<OtherKey, OtherValue>, pupple_data<OtherValue>>)
@@ -70,7 +70,7 @@ struct pupple_element : IV
 };
 
 template<std::size_t Key, typename Value>
-[[nodiscard]] constexpr const Value& get(const pupple_element<Key, Value>& p)
+constexpr const Value& get(const pupple_element<Key, Value>& p)
 {
     if constexpr(std::derived_from<pupple_element<Key, Value>, Value>)
     {
@@ -83,7 +83,7 @@ template<std::size_t Key, typename Value>
 }
 
 template<std::size_t Key, typename Value>
-[[nodiscard]] constexpr Value& get(pupple_element<Key, Value>& p)
+constexpr Value& get(pupple_element<Key, Value>& p)
 {
     if constexpr(std::derived_from<pupple_element<Key, Value>, Value>)
     {
@@ -96,7 +96,7 @@ template<std::size_t Key, typename Value>
 }
 
 template<std::size_t Key, typename Value>
-[[nodiscard]] constexpr Value&& get(pupple_element<Key, Value>&& p)
+constexpr Value&& get(pupple_element<Key, Value>&& p)
 {
     if constexpr(std::derived_from<pupple_element<Key, Value>, Value>)
     {

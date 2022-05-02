@@ -85,6 +85,7 @@ set(PUPPLE_IXX
     ${PUPPLE_DIR}/meta_element.ixx
     # ${PUPPLE_DIR}/meta_map.ixx
     ${PUPPLE_DIR}/pupple.ixx
+    ${PUPPLE_DIR}/pupple_algorithm.ixx
 )
 
 add_library(nil_tmp
