@@ -17,7 +17,7 @@ export import Boost.TMP.Algorithm.Pairing;
 // export import Boost.TMP.Algorithm.Partition;
 export import Boost.TMP.Algorithm.Product;
 export import Boost.TMP.Algorithm.RangeMath;
-// export import Boost.TMP.Algorithm.RemoveIf;
+export import Boost.TMP.Algorithm.RemoveIf;
 export import Boost.TMP.Algorithm.RemovePairs;
 // export import Boost.TMP.Algorithm.Repeat;
 // export import Boost.TMP.Algorithm.ReplaceIf;

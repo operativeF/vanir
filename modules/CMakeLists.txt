@@ -28,6 +28,7 @@ set(TMP_ALGO_IXX
     ${TMP_ALGO_DIR}/pairing.ixx
     ${TMP_ALGO_DIR}/product.ixx
     ${TMP_ALGO_DIR}/range_math.ixx
+    ${TMP_ALGO_DIR}/remove_if.ixx
     ${TMP_ALGO_DIR}/remove_pairs.ixx
     ${TMP_ALGO_DIR}/sort.ixx
     ${TMP_ALGO_DIR}/transform.ixx

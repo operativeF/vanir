@@ -12,6 +12,7 @@ import Boost.TMP.Algorithm.Transform;
 
 import Boost.TMP.Base.Always;
 import Boost.TMP.Base.Comparison;
+import Boost.TMP.Base.If;
 import Boost.TMP.Base.Vocabulary;
 
 import Boost.TMP.Detail.Dispatch;
