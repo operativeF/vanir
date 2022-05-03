@@ -9,21 +9,6 @@ import Boost.TMP;
 import std.core;
 import std.memory;
 
-// Append impl
-template<typename... Ts, std::size_t... Is, typename... Us>
-constexpr auto append_impl(std::index_sequence<Is...>, Tuple<Ts...>&& elements, Us&&... params)
-{
-    return Tuple<typename tmp::decay<Ts>::type..., typename tmp::decay<Us>::type...>(
-            get<Is>(elements)..., std::forward<Us>(params)...);
-}
-
-template<typename... Ts, std::size_t... Is, typename... Us>
-constexpr auto append_impl(std::index_sequence<Is...>, const Tuple<Ts...>& elements, Us&&... params)
-{
-    return Tuple<typename tmp::decay<Ts>::type..., typename tmp::decay<Us>::type...>(
-            get<Is>(elements)..., std::forward<Us>(params)...);
-}
-
 // make_from_pupple impl
 template <class T, class P, std::size_t... Is> requires(std::is_constructible_v<T,
                                                        decltype(get<Is>(std::declval<P>()))...>)
@@ -57,13 +42,31 @@ namespace std
 template<typename... Ts, typename... Us>
 constexpr auto append(Tuple<Ts...>&& elements, Us&&... params) noexcept
 {
-    return append_impl(std::make_index_sequence<sizeof...(Ts)>(), std::move(elements), std::forward<Us>(params)...);
+    return []<typename... TParams, typename... Params, std::size_t... Is>(Tuple<TParams...>&& tp, std::index_sequence<Is...>, Params&&... ps)
+        {
+            return Tuple<typename tmp::decay<TParams>::type..., typename tmp::decay<Params>::type...>(
+                         get<Is>(tp)..., std::forward<Params>(ps)...);
+        } (std::forward<Tuple<Ts...>>(elements), std::index_sequence_for<Ts...>{}, std::forward<Us>(params)...);
+}
+
+template<typename... Ts, typename... Us>
+constexpr auto append(const Tuple<Ts...>& elements, const Us&... params) noexcept
+{
+    return []<typename... TParams, typename... Params, std::size_t... Is>(const Tuple<TParams...>& tp, std::index_sequence<Is...>, const Params&... ps)
+        {
+            return Tuple<typename tmp::decay<TParams>::type..., typename tmp::decay<Params>::type...>(
+                         get<Is>(tp)..., ps...);
+        } (elements, std::index_sequence_for<Ts...>{}, params...);
 }
 
 template<typename... Ts, typename... Us>
 constexpr auto append(const Tuple<Ts...>& elements, Us&&... params) noexcept
 {
-    return append_impl(std::make_index_sequence<sizeof...(Ts)>(), elements, std::forward<Us>(params)...);
+    return []<typename... TParams, typename... Params, std::size_t... Is>(const Tuple<TParams...>& tp, std::index_sequence<Is...>, Params&&... ps)
+        {
+            return Tuple<typename tmp::decay<TParams>::type..., typename tmp::decay<Params>::type...>(
+                         get<Is>(tp)..., std::forward<Params>(ps)...);
+        } (elements, std::index_sequence_for<Ts...>{}, std::forward<Us>(params)...);
 }
 
 template<class T, class P>
