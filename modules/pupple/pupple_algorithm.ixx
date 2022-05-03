@@ -39,34 +39,13 @@ namespace std
 } // namespace std
 
 // Append
-template<typename... Ts, typename... Us>
-constexpr auto append(Tuple<Ts...>&& elements, Us&&... params) noexcept
+template<typename TupleT, typename... Us>
+constexpr auto append(TupleT&& elements, Us&&... params) noexcept
 {
-    return []<typename... TParams, typename... Params, std::size_t... Is>(Tuple<TParams...>&& tp, std::index_sequence<Is...>, Params&&... ps)
+    return []<typename TP, typename... Params, std::size_t... Is>(TP&& tp, std::index_sequence<Is...>, Params&&... ps)
         {
-            return Tuple<typename tmp::decay<TParams>::type..., typename tmp::decay<Params>::type...>(
-                         get<Is>(tp)..., std::forward<Params>(ps)...);
-        } (std::forward<Tuple<Ts...>>(elements), std::index_sequence_for<Ts...>{}, std::forward<Us>(params)...);
-}
-
-template<typename... Ts, typename... Us>
-constexpr auto append(const Tuple<Ts...>& elements, const Us&... params) noexcept
-{
-    return []<typename... TParams, typename... Params, std::size_t... Is>(const Tuple<TParams...>& tp, std::index_sequence<Is...>, const Params&... ps)
-        {
-            return Tuple<typename tmp::decay<TParams>::type..., typename tmp::decay<Params>::type...>(
-                         get<Is>(tp)..., ps...);
-        } (elements, std::index_sequence_for<Ts...>{}, params...);
-}
-
-template<typename... Ts, typename... Us>
-constexpr auto append(const Tuple<Ts...>& elements, Us&&... params) noexcept
-{
-    return []<typename... TParams, typename... Params, std::size_t... Is>(const Tuple<TParams...>& tp, std::index_sequence<Is...>, Params&&... ps)
-        {
-            return Tuple<typename tmp::decay<TParams>::type..., typename tmp::decay<Params>::type...>(
-                         get<Is>(tp)..., std::forward<Params>(ps)...);
-        } (elements, std::index_sequence_for<Ts...>{}, std::forward<Us>(params)...);
+            return Tuple{get<Is>(tp)..., std::forward<Params>(ps)...};
+        } (std::forward<TupleT>(elements), tuple_indexer<std::remove_reference_t<TupleT>>{}, std::forward<Us>(params)...);
 }
 
 template<class T, class P>
