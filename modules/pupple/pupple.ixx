@@ -90,17 +90,38 @@ constexpr auto get(pupple<Ts...>&& t) noexcept
 template<typename Mapping, typename Pupple>
 struct PuppleBase {};
 
+template<std::size_t I, std::size_t... Is>
+using actual_index = tmp::call_<tmp::find_if_<tmp::is_<tmp::sizet_<I>>>, tmp::sizet_<Is>...>;
+
+template<typename It, std::size_t... Is>
+using actual_index_t = tmp::call_<tmp::find_if_<tmp::is_<It>>, tmp::sizet_<Is>...>;
+
+template<typename TypeToFind>
+struct is_indexed_type
+{
+    template<typename InputType>
+    using f = tmp::call_<tmp::ui1_<tmp::is_<TypeToFind>>, InputType>;
+};
+
 template<std::size_t... Is, typename... Ts>
 struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
 {
     template<std::size_t I>
-    using actual_index = tmp::call_<tmp::find_if_<tmp::is_<tmp::sizet_<I>>>, tmp::sizet_<Is>...>;
-
-    template<std::size_t I>
-    static constexpr std::size_t actual_index_v = actual_index<I>::value;
+    static constexpr std::size_t actual_index_v = actual_index<I, Is...>::value;
 
     template<std::size_t I>
     using type_at_index = tmp::call_<tmp::index_<tmp::sizet_<I>>, Ts...>;
+
+    template<typename T>
+    using get_indexes_of_type = tmp::call_<
+        tmp::zip_<tmp::listify_,
+            tmp::filter_<typename tmp::lift_<is_indexed_type<T>::template f>,
+                tmp::transform_<tmp::ui0_<>,
+                    tmp::transform_<tmp::lift_<actual_index_t>
+                    >
+                >
+            >
+        >, tmp::list_<tmp::sizet_<Is>...>, tmp::list_<Ts...>>;
 
     constexpr PuppleBase() = default;
 
@@ -124,7 +145,7 @@ struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
 
     template<typename... Params>
     constexpr PuppleBase(const Params&... params)
-        : PuppleBase{make_pupple(static_cast<const Params&>(params)...)}
+        : PuppleBase{pupple{params...}}
     {
     }
 
