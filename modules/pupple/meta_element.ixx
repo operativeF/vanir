@@ -74,11 +74,11 @@ constexpr const Value& get(const pupple_element<Key, Value>& p)
 {
     if constexpr(std::derived_from<pupple_element<Key, Value>, Value>)
     {
-        return p;
+        return static_cast<const Value&>(p);
     }
     else
     {
-        return p.value;
+        return static_cast<const Value&>(p.value);
     }
 }
 
@@ -87,11 +87,11 @@ constexpr Value& get(pupple_element<Key, Value>& p)
 {
     if constexpr(std::derived_from<pupple_element<Key, Value>, Value>)
     {
-        return p;
+        return static_cast<Value&>(p);
     }
     else
     {
-        return p.value;
+        return static_cast<Value&>(p.value);
     }
 }
 
