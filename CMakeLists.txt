@@ -24,6 +24,9 @@ project(vanir VERSION 1.0)
 
 find_package(Boost REQUIRED COMPONENTS nowide)
 
+find_package(celero CONFIG REQUIRED)
+add_subdirectory(benchmark)
+
 add_subdirectory(3rdparty/fmt EXCLUDE_FROM_ALL)
 
 add_subdirectory(modules)
