@@ -26,7 +26,5 @@ find_package(Boost REQUIRED COMPONENTS nowide)
 
 add_subdirectory(3rdparty/fmt EXCLUDE_FROM_ALL)
 
-add_subdirectory(benchmark)
-
 add_subdirectory(modules)
 add_subdirectory(tests)

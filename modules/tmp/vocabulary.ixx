@@ -10,7 +10,13 @@ export module Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Base.Always;
 import Boost.TMP.Base.Lift;
 
+#ifdef __GNUC__
+import <cstdint>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 export namespace boost::tmp {
 		template <typename... Ts>

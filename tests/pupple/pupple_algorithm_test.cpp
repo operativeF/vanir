@@ -8,8 +8,14 @@ import Pupple.Algorithm;
 
 import fmt;
 
+#ifdef __GNUC__
+import <tuple>;
+import <utility>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
-import std.memory;
+#endif
 
 namespace ut = boost::ut;
 namespace tmp = boost::tmp;

@@ -13,8 +13,13 @@ import Boost.TMP.Sequence.Rotate;
 
 import Boost.TMP.Base.Vocabulary;
 
+#ifdef __GNUC__
+import <cstdint>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
-
+#endif
 ///
 // @BUG: This does not work as expected.
 // Inserting will cause a permutation of the current list with the

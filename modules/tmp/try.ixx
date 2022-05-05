@@ -14,7 +14,13 @@ import Boost.TMP.Base.Lift;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Sequence.Unpack;
 
+#ifdef __GNUC__
+import <cstdint>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 export namespace boost::tmp {
 		template <template <typename...> class F, typename C = identity_>

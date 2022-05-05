@@ -9,7 +9,13 @@
 
 export module Utils.Chars;
 
+#ifdef __GNUC__
+import <cstddef>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 export namespace nil::utils
 {

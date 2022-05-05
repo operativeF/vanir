@@ -12,7 +12,13 @@
 #include <boost/tmp/detail/capabilities.hpp>
 #include <boost/tmp/pack.hpp>
 
+#ifdef __GNUC__
+import <cstdint>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 namespace boost {
 	namespace tmp {

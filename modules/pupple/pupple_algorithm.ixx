@@ -6,8 +6,15 @@ import Pupple;
 
 import Boost.TMP;
 
+#ifdef __GNUC__
+import <cstdint>;
+import <type_traits>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
 import std.memory;
+#endif
 
 // make_from_pupple impl
 template <class T, class P, std::size_t... Is> requires(std::is_constructible_v<T,

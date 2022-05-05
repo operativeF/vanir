@@ -18,7 +18,13 @@ import Boost.TMP.Algorithm.FindIf;
 
 import Boost.TMP.Detail.Dispatch;
 
+#ifdef __GNUC__
+import <cstdint>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 export namespace boost::tmp {
 		template <typename F = identity_, typename C = identity_>

@@ -7,7 +7,13 @@
 
 export module Boost.TMP.Detail.Dispatch;
 
+#ifdef __GNUC__
+import <cstdint>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 export namespace boost::tmp::detail {
 			constexpr std::size_t find_dispatch(std::size_t n) {

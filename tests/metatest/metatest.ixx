@@ -36,7 +36,17 @@ import Utils.Strings;
 
 import fmt;
 
+#ifdef __GNUC__
+import <cstdint>;
+import <ranges>;
+import <string>;
+import <string_view>;
+import <vector>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 export namespace boost::inline ext::ut::inline v1_1_8 {
 namespace utility {

@@ -4,7 +4,14 @@ import Utils.Bitfield;
 
 import Boost.TMP;
 
+#ifdef __GNUC__
+import <array>;
+import <type_traits>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 namespace ut = boost::ut;
 

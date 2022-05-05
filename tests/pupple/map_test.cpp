@@ -6,6 +6,14 @@ import Boost.TMP;
 import Pupple.Element;
 import Pupple.Map;
 
+#ifdef __GNUC__
+import <type_traits>;
+#elif __clang__
+import std;
+#elif _MSC_VER
+import std.core;
+#endif
+
 namespace ut = boost::ut;
 namespace tmp = boost::tmp;
 

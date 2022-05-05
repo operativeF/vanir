@@ -3,7 +3,16 @@ export module Utils.Bitfield;
 
 import Boost.TMP;
 
+#ifdef __GNUC__
+import <algorithm>;
+import <cstdint>;
+import <ranges>;
+import <type_traits>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 template<typename Enum>
 concept BitfieldCompatible =  requires

@@ -1,12 +1,19 @@
 
 export module Pupple;
 
-import std.core;
-import std.memory;
-
 import Boost.TMP;
 
 import Pupple.Element;
+
+#ifdef __GNUC__
+import <cstdint>;
+import <type_traits>;
+#elif __clang__
+import std;
+#elif _MSC_VER
+import std.core;
+import std.memory;
+#endif
 
 namespace tmp = boost::tmp;
 

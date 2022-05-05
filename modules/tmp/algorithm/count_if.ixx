@@ -16,7 +16,13 @@ import Boost.TMP.Sequence.Size;
 
 import Boost.TMP.Algorithm.Transform;
 
+#ifdef __GNUC__
+import <cstdint>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 /// \brief Given a predicate F, check the variadic parameter pack passed in and count
 /// each time that the predicate holds true. Returns n counts as uint_<n>.

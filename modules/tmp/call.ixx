@@ -10,7 +10,14 @@ export module Boost.TMP.Base.Call;
 import Boost.TMP.Detail.Dispatch;
 import Boost.TMP.Base.Vocabulary;
 
+#ifdef __GNUC__
+import <cstdint>;
+import <type_traits>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 export namespace boost::tmp {
 		namespace detail {

@@ -12,7 +12,13 @@ import Boost.TMP.Base.Lift;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Detail.Dispatch;
 
+#ifdef __GNUC__
+import <cstdint>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 export namespace boost::tmp {
 		/// \brief folds right over a list using a binary predicate

@@ -12,7 +12,13 @@ import Boost.TMP.Base.Call;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Sequence.Join;
 
+#ifdef __GNUC__
+import <cstdint>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 export namespace boost::tmp {
         // Sorts, and then groups items into a list of lists of the same type.

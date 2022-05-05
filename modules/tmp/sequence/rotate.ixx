@@ -10,7 +10,13 @@ export module Boost.TMP.Sequence.Rotate;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Detail.Dispatch;
 
+#ifdef __GNUC__
+import <cstdint>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 export namespace boost::tmp {
 		template <typename N = sizet_<0>, typename C = listify_>

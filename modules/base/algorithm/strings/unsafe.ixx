@@ -1,6 +1,16 @@
 export module Utils.Strings.Unsafe;
 
+#ifdef __GNUC__
+import <cstdint>;
+import <ranges>;
+import <string>;
+import <string_view>;
+import <vector>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 // Generally unsafe utilities to be used in circumstances where
 // speed is important and / or lifetimes are a certainty.

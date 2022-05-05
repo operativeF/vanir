@@ -14,7 +14,13 @@ import Boost.TMP.Detail.Dispatch;
 
 import Boost.TMP.Algorithm.Transform;
 
+#ifdef __GNUC__
+import <cstdint>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 export namespace boost::tmp {
 		template <typename F, typename C = listify_>

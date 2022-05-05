@@ -4,7 +4,13 @@ export import Utils.Strings.Modifying;
 export import Utils.Strings.Nonmodifying;
 export import Utils.Strings.Unsafe;
 
+#ifdef __GNUC__
+import <ranges>;
+#elif __clang__
+import std;
+#elif _MSC_VER
 import std.core;
+#endif
 
 export template<size_t N>
 struct StrLit
