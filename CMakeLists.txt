@@ -5,6 +5,13 @@ include(FetchContent)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang" AND NOT MSVC)
+    set(PREBUILT_MODULE_PATH ${CMAKE_BINARY_DIR}/modules)
+    add_compile_options("-fmodules -stdlib=libc++ -fbuiltin-module-map -fimplicit-module-maps -fprebuilt-module-path=${PREBUILT_MODULE_PATH}")
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    set(PREBUILT_MODULE_PATH ${CMAKE_BINARY_DIR}/modules)
+endif()
+
 if(DEFINED ENV{VCPKG_ROOT} AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
   set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
       CACHE STRING "")
@@ -24,7 +31,8 @@ project(vanir VERSION 1.0)
 
 find_package(Boost REQUIRED COMPONENTS nowide)
 
-add_subdirectory(3rdparty/fmt EXCLUDE_FROM_ALL)
+include_directories(cmake)
 
+add_subdirectory(3rdparty/fmt EXCLUDE_FROM_ALL)
 add_subdirectory(modules)
 add_subdirectory(tests)

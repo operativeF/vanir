@@ -6,6 +6,10 @@ set(PUPPLE_TESTS
     pupple/pupple_algorithm_test.cpp
 )
 
+if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
+    add_module(metatest metatest/metatest.ixx)
+endif()
+
 add_executable(niltest
     metatest/metatest.ixx
     # base/algorithm/strutils.cpp
@@ -13,6 +17,10 @@ add_executable(niltest
     test.cpp
     ${PUPPLE_TESTS}
 )
+
+if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
+    add_dependencies(niltest metatest.pcm)
+endif()
 
 target_compile_features(niltest PRIVATE cxx_std_23)
 

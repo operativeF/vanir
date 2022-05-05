@@ -89,6 +89,17 @@ set(PUPPLE_IXX
     ${PUPPLE_DIR}/pupple_algorithm.ixx
 )
 
+set(TMP_BASE_IXX
+    ${CMAKE_CURRENT_SOURCE_DIR}/tmp.ixx
+)
+
+if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
+    foreach(tmp_module IN LISTS ${TMP_ALGO_IXX} ${TMP_MAIN_IXX} ${TMP_DETAIL_IXX} ${TMP_SEQ_IXX} ${PUPPLE_IXX} ${TMP_BASE_IXX})
+        string(REGEX REPLACE "\/(.+)\.ixx" "\\1" module_file_name ${tmp_module})
+        add_module(${module_file_name} ${tmp_module})
+    endforeach()
+endif()
+
 add_library(nil_tmp
     STATIC
         ${TMP_ALGO_IXX}
@@ -96,8 +107,16 @@ add_library(nil_tmp
         ${TMP_DETAIL_IXX}
         ${TMP_SEQ_IXX}
         ${PUPPLE_IXX}
-        ${CMAKE_CURRENT_SOURCE_DIR}/tmp.ixx
+        ${TMP_BASE_IXX}
 )
+
+if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
+    foreach(mod_name IN LISTS ${TMP_ALGO_IXX} ${TMP_MAIN_IXX} ${TMP_DETAIL_IXX} ${TMP_SEQ_IXX} ${PUPPLE_IXX} ${TMP_BASE_IXX})
+        string(REGEX REPLACE "\/([A-z_]+)\.ixx" "\\1" module_without_ext ${mod_name})
+        string(APPEND module_without_ext ".pcm")
+        add_dependencies(nil_tmp ${module_without_ext})
+    endforeach()
+endif()
 
 set(BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/base)
 set(ALGO_DIR ${BASE_DIR}/algorithm)
@@ -124,11 +143,26 @@ if(MSVC)
     )
 endif()
 
+if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
+    foreach(algo_mod IN LISTS ${BASE_ALGORITHM} ${STRING_ALGORITHM})
+        string(REGEX REPLACE "\/([A-z_]+)\.ixx" "\\1" algo_module_name ${algo_mod})
+        add_module(${algo_module_name} ${algo_mod})
+    endforeach()
+endif()
+
 add_library(nilbase
         ${BASE_ALGORITHM}
         ${STRING_ALGORITHM}
         ${WIN_IXX}
 )
+
+if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
+    foreach(algo_mod IN LISTS ${BASE_ALGORITHM} ${STRING_ALGORITHM})
+        string(REGEX REPLACE "\/([A-z_]+)\.ixx" "\\1" algo_module_name ${algo_mod})
+        string(APPEND algo_module_name ".pcm")
+        add_dependencies(nilbase ${algo_module_name})
+    endforeach()
+endif()
 
 target_link_libraries(nilbase
     PRIVATE
