@@ -8,13 +8,29 @@ import Pupple.Algorithm;
 import std.core;
 
 int main() {
-    ankerl::nanobench::Bench().run("Some tuple ops", [] {
-        std::tuple d{1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a'};
+    ankerl::nanobench::Bench().run("std::tuple construction", [] {
+        std::tuple d{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"};
         ankerl::nanobench::doNotOptimizeAway(d);
     });
 
-    ankerl::nanobench::Bench().run("Some pupple ops", [] {
-        Tuple dd{1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a'};
+    ankerl::nanobench::Bench().run("Tuple construction", [] {
+        Tuple dd{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"};
         ankerl::nanobench::doNotOptimizeAway(dd);
+    });
+
+    std::tuple aa{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"};
+    std::tuple bb{"bubsy", 3.0, 5, 10.0, 99, "values", "genos", "pulses", 32, 'a', 7, 44, -10, "gary the snail"};
+    ankerl::nanobench::Bench().run("std::tuple swap", [&] {
+        ankerl::nanobench::doNotOptimizeAway(aa);
+        ankerl::nanobench::doNotOptimizeAway(bb);
+        std::swap(aa, bb);
+    });
+
+    Tuple dd{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"};
+    Tuple ee{"bubsy", 3.0, 5, 10.0, 99, "values", "genos", "pulses", 32, 'a', 7, 44, -10, "gary the snail"};
+    ankerl::nanobench::Bench().run("Tuple swap", [&] {
+        ankerl::nanobench::doNotOptimizeAway(dd);
+        ankerl::nanobench::doNotOptimizeAway(ee);
+        swap(dd, ee);
     });
 }

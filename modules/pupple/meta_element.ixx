@@ -115,4 +115,17 @@ constexpr Value&& get(pupple_element<Key, Value>&& p)
     }
 }
 
+template<std::size_t Key, typename Value>
+constexpr const Value&& get(const pupple_element<Key, Value>&& p)
+{
+    if constexpr(std::derived_from<pupple_element<Key, Value>, Value>)
+    {
+        return std::move(p);
+    }
+    else
+    {
+        return std::move(p.value);
+    }
+}
+
 } // export
