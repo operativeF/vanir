@@ -31,8 +31,12 @@ project(vanir VERSION 1.0)
 
 find_package(Boost REQUIRED COMPONENTS nowide)
 
+
+
 include_directories(cmake)
 
 add_subdirectory(3rdparty/fmt EXCLUDE_FROM_ALL)
+
+add_subdirectory(benchmark)
 add_subdirectory(modules)
 add_subdirectory(tests)
