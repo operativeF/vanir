@@ -27,6 +27,33 @@ constexpr T make_from_pupple_impl(P&& t, std::index_sequence<Is...>)
 template<typename TP>
 using tuple_indexer = std::make_index_sequence<std::tuple_size_v<TP>>;
 
+template<std::size_t V, std::size_t... Is>
+constexpr auto make_repeated_sequence(std::index_sequence<Is...>) -> std::index_sequence<(Is, V)...>
+{
+    return {};
+}
+
+template<std::size_t N, std::size_t V>
+using repeated_sequence = decltype(make_repeated_sequence<V>(std::make_index_sequence<N>{}));
+
+template<std::size_t... Is, std::size_t... Js>
+constexpr std::index_sequence<Is..., Js...> concat_sequences(std::index_sequence<Is...>, std::index_sequence<Js...>)
+{
+    return {};
+}
+
+template<std::size_t... Is, std::size_t... Js, typename... Others>
+constexpr auto concat_sequences(std::index_sequence<Is...>, std::index_sequence<Js...>, Others...)
+{
+    return concat_sequences(std::integer_sequence<Is..., Js...>{}, Others{}...);
+}
+
+template<typename T>
+constexpr std::index_sequence<> concat_sequences(std::index_sequence<>)
+{
+    return {};
+}
+
 export
 {
 
@@ -62,6 +89,13 @@ constexpr T make_from_pupple(P&& p)
            std::make_index_sequence<std::tuple_size_v<std::remove_cvref_t<P>>>{});
 }
 
+// Forward As Pupple
+template<typename... Ts>
+constexpr Tuple<Ts&&...> forward_as_pupple(Ts&&... ts) noexcept // TODO: Conditionally noexcept?
+{
+    return Tuple<Ts&&...>(std::forward<Ts>(ts)...);
+}
+
 // Swapping
 template<std::swappable... Ts>
 constexpr void swap(Tuple<Ts...>& a, Tuple<Ts...>& b) noexcept((std::is_nothrow_swappable_v<Ts> && ...))
@@ -84,26 +118,23 @@ constexpr void swap(const Tuple<Ts...>& a, const Tuple<Ts...>& b) noexcept((std:
 }
 
 // Concatenation
-template<typename TupleA, typename TupleB>
-constexpr auto pupple_cat(TupleA&& p1, TupleB&& p2)
+template<typename... TupleTs, std::size_t... Ns>
+constexpr auto pupple_cat_impl(std::index_sequence<Ns...>, TupleTs&&... tps)
 {
-    return []<typename TP0, typename TP1, std::size_t... Is, std::size_t... Js>
-        (TP0&& tp0, TP1&& tp1, std::index_sequence<Is...>, std::index_sequence<Js...>)
+    auto cc_seq = concat_sequences(repeated_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>, Ns>{}...);
+    auto ts_seq = concat_sequences(std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>>{}...);
+
+    return []<typename FullTuple, std::size_t... Is, std::size_t... Js>
+        (FullTuple&& ft, std::index_sequence<Is...>, std::index_sequence<Js...>)
         {
-            return Tuple{get<Is>(tp0)...,
-                         get<Js>(tp1)...};
-        } (std::forward<TupleA>(p1),
-           std::forward<TupleB>(p2),
-           tuple_indexer<std::remove_reference_t<TupleA>>{},
-           tuple_indexer<std::remove_reference_t<TupleB>>{});
+            return Tuple{get<Is>(get<Js>(ft))...};
+        } (Tuple{std::forward<TupleTs>(tps)...}, ts_seq, cc_seq);
 }
 
-template<typename TupleA, typename TupleB, typename... Others>
-constexpr auto pupple_cat(TupleA&& p1, TupleB&& p2, Others&&... others)
+template<typename... TupleTs>
+constexpr auto pupple_cat(TupleTs&&... tps)
 {
-    return pupple_cat(pupple_cat(std::forward<TupleA>(p1),
-                                 std::forward<TupleB>(p2)),
-                                 std::forward<Others>(others)...);
+    return pupple_cat_impl(std::index_sequence_for<TupleTs...>{}, std::forward<TupleTs>(tps)...);
 }
 
 } // export
