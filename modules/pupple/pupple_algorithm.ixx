@@ -45,7 +45,7 @@ constexpr std::index_sequence<Is..., Js...> concat_sequences(std::index_sequence
 template<std::size_t... Is, std::size_t... Js, typename... Others>
 constexpr auto concat_sequences(std::index_sequence<Is...>, std::index_sequence<Js...>, Others...)
 {
-    return concat_sequences(std::integer_sequence<Is..., Js...>{}, Others{}...);
+    return concat_sequences(std::index_sequence<Is..., Js...>{}, Others{}...);
 }
 
 template<typename T>
