@@ -18,7 +18,7 @@ namespace tmp = boost::tmp;
 template<typename Data>
 struct pupple_data
 {
-    Data value;
+    [[msvc::no_unique_address]] Data value;
 };
 
 template<typename T>
@@ -52,7 +52,11 @@ struct pupple_element : IV
     template<std::size_t OtherKey, typename OtherValue>
     [[nodiscard]] constexpr auto operator<=>(const pupple_element<OtherKey, OtherValue>& otherPupple) const
     {
-        if constexpr(std::derived_from<pupple_element<OtherKey, OtherValue>, pupple_data<OtherValue>>)
+        if constexpr(std::is_empty_v<pupple_element<OtherKey, OtherValue>> && std::is_empty_v<pupple_data<OtherValue>>)
+        {
+            return std::strong_ordering::equal;
+        }
+        else if constexpr(std::derived_from<pupple_element<OtherKey, OtherValue>, pupple_data<OtherValue>>)
         {
             return this->value <=> otherPupple.value;
         }
@@ -65,7 +69,11 @@ struct pupple_element : IV
     template<std::size_t OtherKey, typename OtherValue>
     [[nodiscard]] constexpr bool operator==(const pupple_element<OtherKey, OtherValue>& otherPupple) const
     {
-        if constexpr(std::derived_from<pupple_element<OtherKey, OtherValue>, pupple_data<OtherValue>>)
+        if constexpr(std::is_empty_v<pupple_element<OtherKey, OtherValue>> && std::is_empty_v<pupple_data<OtherValue>>)
+        {
+            return true;
+        }
+        else if constexpr(std::derived_from<pupple_element<OtherKey, OtherValue>, pupple_data<OtherValue>>)
         {
             return this->value == otherPupple.value;
         }

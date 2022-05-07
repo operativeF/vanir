@@ -210,6 +210,19 @@ struct Tuple : remap_by_size_<Ts...>
     using remap_by_size_<Ts...>::remap_by_size_;
 };
 
+template<>
+struct Tuple<>
+{
+    [[nodiscard]] constexpr bool operator==(const Tuple&) const noexcept
+    {
+        return true;
+    }
+
+    [[nodiscard]] constexpr std::strong_ordering operator<=>(const Tuple&) const noexcept {
+        return std::strong_ordering::equal;
+    }
+};
+
 } // export
 
 export
