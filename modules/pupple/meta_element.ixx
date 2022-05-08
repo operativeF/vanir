@@ -49,7 +49,22 @@ struct pupple_element : IV
     {
     }
 
-
+    template<std::size_t OtherKey, typename OtherValue>
+    [[nodiscard]] constexpr auto operator<=>(const pupple_element<OtherKey, OtherValue>& otherPupple) const
+    {
+        if constexpr(std::is_empty_v<pupple_element<OtherKey, OtherValue>> && std::is_empty_v<pupple_data<OtherValue>>)
+        {
+            return std::strong_ordering::equal;
+        }
+        else if constexpr(std::derived_from<pupple_element<OtherKey, OtherValue>, pupple_data<OtherValue>>)
+        {
+            return this->value <=> otherPupple.value;
+        }
+        else
+        {
+            return *this <=> otherPupple;
+        }
+    }
 
     template<std::size_t OtherKey, typename OtherValue>
     [[nodiscard]] constexpr bool operator==(const pupple_element<OtherKey, OtherValue>& otherPupple) const
@@ -68,23 +83,6 @@ struct pupple_element : IV
         }
     }
 };
-
-template<std::size_t LHKey, std::size_t RHKey, typename Value>
-[[nodiscard]] constexpr auto operator<=>(const pupple_element<LHKey, Value>& lhs, const pupple_element<RHKey, Value>& rhs)
-{
-    if constexpr(std::is_empty_v<decltype(lhs)> && std::is_empty_v<decltype(rhs)>)
-    {
-        return std::strong_ordering::equal;
-    }
-    else if constexpr(std::derived_from<pupple_element<LHKey, Value>, pupple_data<Value>>)
-    {
-        return lhs.value <=> rhs.value;
-    }
-    else
-    {
-        return lhs <=> rhs;
-    }
-}
 
 template<std::size_t Key, typename Value>
 constexpr const Value& get(const pupple_element<Key, Value>& p)

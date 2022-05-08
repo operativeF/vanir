@@ -24,25 +24,6 @@ namespace tmp = boost::tmp;
 static_assert(std::is_trivially_constructible_v<Tuple<>>, "Empty Tuple should be trivially constructible.");
 static_assert(std::is_nothrow_constructible_v<Tuple<>>, "Empty Tuple should be nothrow constructible.");
 
-ut::suite TestPuppleEqualityOp = []
-{
-    using namespace ut;
-
-    auto pup_123 = Tuple{1, 2, 3};
-    auto pup_345 = Tuple{3, 4, 5};
-    auto pup_123_copy = pup_123;
-
-    expect(pup_123 != pup_345);
-    expect(pup_123 == pup_123_copy);
-
-    // Implicit conversion to const char*
-    auto pup_implicit = Tuple{"value", "name"};
-    auto pup_neq_implicit = Tuple{"name", "value"};
-    Tuple<std::string, std::string> pup_explicit = {"value", "name"};
-
-    expect(pup_implicit != pup_neq_implicit);
-};
-
 ut::suite TestPuppleElementTypes = []
 {
     using namespace ut;
