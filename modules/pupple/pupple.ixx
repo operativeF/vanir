@@ -26,17 +26,9 @@ template<std::size_t... Indices, typename... Params>
 struct pupple_impl<std::index_sequence<Indices...>, Params...>
         : pupple_element<Indices, Params>...
 {
-    constexpr pupple_impl() = default;
-
-    template<typename Other>
-    explicit constexpr pupple_impl(from_other, Other&& other) : pupple_element<Indices, Params>(
-            get<Indices>(std::move(other)))...
-    {
-    }
-
-    template<typename... Ns>
-    constexpr pupple_impl(Ns&&... ns)
-            : pupple_element<Indices, Params>(std::move(ns))...
+    template<typename... SomeValues>
+    constexpr pupple_impl(SomeValues&&... pes)
+        : pupple_element<Indices, Params>{std::forward<SomeValues>(pes)}...
     {
     }
 
@@ -51,15 +43,7 @@ struct pupple : pupple_impl<std::make_index_sequence<sizeof...(Params)>, Params.
 {
     using Base = pupple_impl<std::make_index_sequence<sizeof...(Params)>, Params...>;
 
-    template <typename Other> requires(std::same_as<typename tmp::decay<Other>::type, pupple<Params...>>)
-    constexpr pupple(Other&& other) : Base(from_other{}, std::move(other))
-    {
-    }
-
-    template <typename... Ns>
-    constexpr pupple(Ns&&... ns) : Base(std::move(ns)...)
-    {
-    }
+    using Base::Base;
 };
 
 template<std::size_t I, typename... Ts>
@@ -68,7 +52,7 @@ using indexed_at = tmp::call_<tmp::index_<tmp::sizet_<I>>, Ts...>;
 template<typename... Params>
 constexpr auto make_pupple(Params&&... params)
 {
-    return pupple<typename tmp::decay<decltype(params)>::type...>(std::forward<Params>(params)...);
+    return pupple<Params...>(std::forward<Params>(params)...);
 }
 
 template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
@@ -125,29 +109,21 @@ struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
             >
         >, tmp::list_<tmp::sizet_<Is>...>, tmp::list_<Ts...>>;
 
-    constexpr PuppleBase() = default;
-
     template<typename... Params>
     constexpr PuppleBase(pupple<Params...>&& p)
-        : m_pupple{static_cast<indexed_at<Is, Params...>&&>(get<Is>(p))...}
+        : m_pupple{get<Is>(p)...}
     {
     }
 
     template<typename... Params>
     constexpr PuppleBase(Params&&... params)
-        : PuppleBase{make_pupple(std::move(params)...)}
+        : PuppleBase{make_pupple(std::forward<Params>(params)...)}
     {
     }
 
     template<typename... Params>
     constexpr PuppleBase(const pupple<Params...>& p)
-        : m_pupple{static_cast<const indexed_at<Is, Params...>&>(get<Is>(p))...}
-    {
-    }
-
-    template<typename... Params>
-    constexpr PuppleBase(const Params&... params)
-        : PuppleBase{pupple{params...}}
+        : m_pupple{get<Is>(p)...}
     {
     }
 
