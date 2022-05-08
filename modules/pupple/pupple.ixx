@@ -46,11 +46,6 @@ struct pupple_impl<std::index_sequence<Indices...>, Params...>
 template <typename... Params>
 struct pupple;
 
-template<>
-struct pupple<>
-{
-};
-
 template<typename... Params>
 struct pupple : pupple_impl<std::make_index_sequence<sizeof...(Params)>, Params...>
 {
@@ -242,6 +237,12 @@ constexpr auto& get(Tuple<Us...>& pup) noexcept
 
 template<std::size_t I, typename... Us>
 constexpr auto get(Tuple<Us...>&& pup) noexcept
+{
+    return get<Tuple<Us...>::template actual_index_v<I>>(std::move(pup.m_pupple));
+}
+
+template<std::size_t I, typename... Us>
+constexpr auto get(const Tuple<Us...>&& pup) noexcept
 {
     return get<Tuple<Us...>::template actual_index_v<I>>(std::move(pup.m_pupple));
 }
