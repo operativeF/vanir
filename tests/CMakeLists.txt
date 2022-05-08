@@ -1,7 +1,5 @@
 
 set(PUPPLE_TESTS
-    pupple/element_test.cpp
-    # pupple/map_test.cpp
     pupple/pupple_test.cpp
     pupple/pupple_algorithm_test.cpp
 )
