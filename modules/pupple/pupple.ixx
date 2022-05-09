@@ -20,18 +20,10 @@ namespace tmp = boost::tmp;
 template<typename... Ts>
 struct pupple_impl;
 
-struct from_other;
-
 template<std::size_t... Indices, typename... Params>
 struct pupple_impl<std::index_sequence<Indices...>, Params...>
         : pupple_element<Indices, Params>...
 {
-    template<typename Other>
-    explicit constexpr pupple_impl(from_other, Other&& other) : pupple_element<Indices, Params>(
-            get<Indices>(std::move(other)))...
-    {
-    }
-
     template<typename... Ns>
     constexpr pupple_impl(Ns&&... ns)
             : pupple_element<Indices, Params>(std::forward<Ns>(ns))...
@@ -46,15 +38,7 @@ struct pupple : pupple_impl<std::make_index_sequence<sizeof...(Params)>, Params.
 {
     using Base = pupple_impl<std::make_index_sequence<sizeof...(Params)>, Params...>;
 
-    template <typename Other> requires(std::same_as<typename tmp::decay<Other>::type, pupple<Params...>>)
-    constexpr pupple(Other&& other) : Base(from_other{}, std::forward<Other>(other))
-    {
-    }
-
-    template <typename... Ns>
-    constexpr pupple(Ns&&... ns) : Base(std::forward<Ns>(ns)...)
-    {
-    }
+    using Base::Base;
 };
 
 template<std::size_t I, typename... Ts>
