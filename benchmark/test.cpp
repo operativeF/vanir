@@ -7,17 +7,24 @@ import Pupple.Algorithm;
 
 import std.core;
 
+static constexpr std::tuple cc_stda{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"};
+static constexpr std::tuple cc_stdb{"bubsy", 3.0, 5, 10.0, 99, "values", "genos", "pulses", 32, 'a', 7, 44, -10, "gary the snail"};
+
+static constexpr Tuple cc_ppa{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"};
+static constexpr Tuple cc_ppb{"bubsy", 3.0, 5, 10.0, 99, "values", "genos", "pulses", 32, 'a', 7, 44, -10, "gary the snail"};
+
 int main() {
+    // tuple construction
+    // Construction is done in place.
     ankerl::nanobench::Bench().run("std::tuple construction", [] {
-        std::tuple d{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"};
-        ankerl::nanobench::doNotOptimizeAway(d);
+        ankerl::nanobench::doNotOptimizeAway(std::tuple{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"});
     });
 
     ankerl::nanobench::Bench().run("Tuple construction", [] {
-        Tuple dd{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"};
-        ankerl::nanobench::doNotOptimizeAway(dd);
+        ankerl::nanobench::doNotOptimizeAway(Tuple{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"});
     });
 
+    // tuple swapping
     std::tuple aa{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"};
     std::tuple bb{"bubsy", 3.0, 5, 10.0, 99, "values", "genos", "pulses", 32, 'a', 7, 44, -10, "gary the snail"};
     ankerl::nanobench::Bench().run("std::tuple swap", [&] {
@@ -34,24 +41,14 @@ int main() {
         swap(dd, ee);
     });
 
-    std::tuple cc_stda{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"};
-    std::tuple cc_stdb{"bubsy", 3.0, 5, 10.0, 99, "values", "genos", "pulses", 32, 'a', 7, 44, -10, "gary the snail"};
-    ankerl::nanobench::Bench().run("std::tuple concatenation", [&] {
-        ankerl::nanobench::doNotOptimizeAway(cc_stda);
-        ankerl::nanobench::doNotOptimizeAway(cc_stdb);
-        auto stdpupcat = std::tuple_cat(cc_stda, cc_stdb);
-
-        ankerl::nanobench::doNotOptimizeAway(stdpupcat);
+    // tuple concatenation
+    // copies in static constexpr tuples to prevent benchmarking the construction
+    // of said tuples.
+    ankerl::nanobench::Bench().run("std::tuple concatenation", [=] {
+        ankerl::nanobench::doNotOptimizeAway(std::tuple_cat(cc_stda, cc_stdb));
     });
 
-    Tuple cc_ppa{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"};
-    Tuple cc_ppb{"bubsy", 3.0, 5, 10.0, 99, "values", "genos", "pulses", 32, 'a', 7, 44, -10, "gary the snail"};
-    ankerl::nanobench::Bench().run("Tuple concatenation", [&] {
-        ankerl::nanobench::doNotOptimizeAway(cc_ppa);
-        ankerl::nanobench::doNotOptimizeAway(cc_ppb);
-
-        auto pupcat = pupple_cat(cc_ppa, cc_ppb);
-
-        ankerl::nanobench::doNotOptimizeAway(pupcat);
+    ankerl::nanobench::Bench().run("Tuple concatenation", [=] {
+        ankerl::nanobench::doNotOptimizeAway(pupple_cat(cc_ppa, cc_ppb));
     });
 }

@@ -127,7 +127,7 @@ constexpr auto pupple_cat_impl(std::index_sequence<Ns...>, TupleTs&&... tps)
     return []<typename FullTuple, std::size_t... Is, std::size_t... Js>
         (FullTuple&& ft, std::index_sequence<Is...>, std::index_sequence<Js...>)
         {
-            return Tuple{get<Is>(get<Js>(ft))...};
+            return Tuple{get<Is>(get<Js>(std::forward<FullTuple>(ft)))...};
         } (Tuple{std::forward<TupleTs>(tps)...}, ts_seq, cc_seq);
 }
 

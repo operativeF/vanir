@@ -47,25 +47,31 @@ using indexed_at = tmp::call_<tmp::index_<tmp::sizet_<I>>, Ts...>;
 template<typename... Params>
 constexpr auto make_pupple(Params&&... params)
 {
-    return pupple<typename tmp::decay<decltype(params)>::type...>(std::forward<Params>(params)...);
+    return pupple<typename tmp::decay<Params>::type...>(std::forward<Params>(params)...);
 }
 
 template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
-constexpr const auto& get(const pupple<Ts...>& t) noexcept
+constexpr const VT& get(const pupple<Ts...>& t) noexcept
 {
-    return get(static_cast<pupple_element<I, VT> const&>(t));
+    return get(static_cast<const pupple_element<I, VT>&>(t));
 }
 
 template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
-constexpr auto& get(pupple<Ts...>& t) noexcept
+constexpr VT& get(pupple<Ts...>& t) noexcept
 {
     return get(static_cast<pupple_element<I, VT>&>(t));
 }
 
 template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
-constexpr auto get(pupple<Ts...>&& t) noexcept
+constexpr VT&& get(pupple<Ts...>&& t) noexcept
 {
-    return get(std::move(static_cast<pupple_element<I, VT>>(t)));
+    return get(static_cast<pupple_element<I, VT>&&>(t));
+}
+
+template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
+constexpr const VT&& get(const pupple<Ts...>&& t) noexcept
+{
+    return get(static_cast<const pupple_element<I, VT>&&>(t));
 }
 
 template<std::size_t I, std::size_t... Is>
@@ -105,26 +111,32 @@ struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
         >, tmp::list_<tmp::sizet_<Is>...>, tmp::list_<Ts...>>;
 
     template<typename... Params>
-    constexpr PuppleBase(pupple<Params...>&& p)
+    constexpr PuppleBase(Params&&... params)
+        : PuppleBase{pupple<typename tmp::decay<Params>::type...>(std::forward<Params>(params)...)}
+    {
+    }
+    
+    template<typename... Params>
+    explicit constexpr PuppleBase(pupple<Params...>&& p)
         : m_pupple{static_cast<indexed_at<Is, Params...>&&>(get<Is>(p))...}
     {
     }
 
     template<typename... Params>
-    constexpr PuppleBase(Params&&... params)
-        : PuppleBase{make_pupple(std::move(params)...)}
+    explicit constexpr PuppleBase(const pupple<Params...>&& p)
+        : m_pupple{static_cast<const indexed_at<Is, Params...>&&>(get<Is>(p))...}
     {
     }
 
     template<typename... Params>
-    constexpr PuppleBase(const pupple<Params...>& p)
+    explicit constexpr PuppleBase(pupple<Params...>& p)
+        : m_pupple{static_cast<indexed_at<Is, Params...>&>(get<Is>(p))...}
+    {
+    }
+
+    template<typename... Params>
+    explicit constexpr PuppleBase(const pupple<Params...>& p)
         : m_pupple{static_cast<const indexed_at<Is, Params...>&>(get<Is>(p))...}
-    {
-    }
-
-    template<typename... Params>
-    constexpr PuppleBase(const Params&... params)
-        : PuppleBase{pupple{params...}}
     {
     }
 
@@ -200,7 +212,7 @@ template<class... Ts>
 Tuple(Ts... ts) -> Tuple<Ts...>;
 
 template<std::size_t I, typename... Us>
-constexpr auto get(const Tuple<Us...>& pup) noexcept
+constexpr const auto& get(const Tuple<Us...>& pup) noexcept
 {
     return get<Tuple<Us...>::template actual_index_v<I>>(pup.m_pupple);
 }
@@ -212,15 +224,15 @@ constexpr auto& get(Tuple<Us...>& pup) noexcept
 }
 
 template<std::size_t I, typename... Us>
-constexpr auto get(Tuple<Us...>&& pup) noexcept
+constexpr auto&& get(Tuple<Us...>&& pup) noexcept
 {
-    return get<Tuple<Us...>::template actual_index_v<I>>(std::move(pup.m_pupple));
+    return get<Tuple<Us...>::template actual_index_v<I>>(pup.m_pupple);
 }
 
 template<std::size_t I, typename... Us>
-constexpr auto get(const Tuple<Us...>&& pup) noexcept
+constexpr const auto&& get(const Tuple<Us...>&& pup) noexcept
 {
-    return get<Tuple<Us...>::template actual_index_v<I>>(std::move(pup.m_pupple));
+    return get<Tuple<Us...>::template actual_index_v<I>>(pup.m_pupple);
 }
 
 template <class F, class T>
