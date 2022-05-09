@@ -33,8 +33,6 @@ export
 template<std::size_t Key, typename Value, typename IV = PuppleDataT<Value>>
 struct pupple_element : IV
 {
-    constexpr pupple_element() = default;
-
     template<typename OV = Value>
     explicit(!std::convertible_to<OV, Value>) constexpr pupple_element(const OV& v)
         noexcept(std::is_nothrow_copy_constructible<OV>)

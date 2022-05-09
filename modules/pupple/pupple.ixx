@@ -20,14 +20,12 @@ namespace tmp = boost::tmp;
 template<typename... Ts>
 struct pupple_impl;
 
-struct from_other {};
+struct from_other;
 
 template<std::size_t... Indices, typename... Params>
 struct pupple_impl<std::index_sequence<Indices...>, Params...>
         : pupple_element<Indices, Params>...
 {
-    constexpr pupple_impl() = default;
-
     template<typename Other>
     explicit constexpr pupple_impl(from_other, Other&& other) : pupple_element<Indices, Params>(
             get<Indices>(std::move(other)))...
@@ -36,15 +34,12 @@ struct pupple_impl<std::index_sequence<Indices...>, Params...>
 
     template<typename... Ns>
     constexpr pupple_impl(Ns&&... ns)
-            : pupple_element<Indices, Params>(std::move(ns))...
+            : pupple_element<Indices, Params>(std::forward<Ns>(ns))...
     {
     }
 
     auto operator<=>(const pupple_impl&) const = default;
 };
-
-template <typename... Params>
-struct pupple;
 
 template<typename... Params>
 struct pupple : pupple_impl<std::make_index_sequence<sizeof...(Params)>, Params...>
@@ -52,12 +47,12 @@ struct pupple : pupple_impl<std::make_index_sequence<sizeof...(Params)>, Params.
     using Base = pupple_impl<std::make_index_sequence<sizeof...(Params)>, Params...>;
 
     template <typename Other> requires(std::same_as<typename tmp::decay<Other>::type, pupple<Params...>>)
-    constexpr pupple(Other&& other) : Base(from_other{}, std::move(other))
+    constexpr pupple(Other&& other) : Base(from_other{}, std::forward<Other>(other))
     {
     }
 
     template <typename... Ns>
-    constexpr pupple(Ns&&... ns) : Base(std::move(ns)...)
+    constexpr pupple(Ns&&... ns) : Base(std::forward<Ns>(ns)...)
     {
     }
 };
@@ -89,9 +84,6 @@ constexpr auto get(pupple<Ts...>&& t) noexcept
     return get(std::move(static_cast<pupple_element<I, VT>>(t)));
 }
 
-template<typename Mapping, typename Pupple>
-struct PuppleBase {};
-
 template<std::size_t I, std::size_t... Is>
 using actual_index = tmp::call_<tmp::find_if_<tmp::is_<tmp::sizet_<I>>>, tmp::sizet_<Is>...>;
 
@@ -104,6 +96,9 @@ struct is_indexed_type
     template<typename InputType>
     using f = tmp::call_<tmp::ui1_<tmp::is_<TypeToFind>>, InputType>;
 };
+
+template<typename Mapping, typename Pupple>
+struct PuppleBase;
 
 template<std::size_t... Is, typename... Ts>
 struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
@@ -124,8 +119,6 @@ struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
                 >
             >
         >, tmp::list_<tmp::sizet_<Is>...>, tmp::list_<Ts...>>;
-
-    constexpr PuppleBase() = default;
 
     template<typename... Params>
     constexpr PuppleBase(pupple<Params...>&& p)
@@ -218,10 +211,9 @@ struct Tuple<>
     }
 };
 
-} // export
-
-export
-{
+// Deduction Guides
+template<class... Ts>
+Tuple(Ts... ts) -> Tuple<Ts...>;
 
 template<std::size_t I, typename... Us>
 constexpr auto get(const Tuple<Us...>& pup) noexcept
@@ -246,10 +238,6 @@ constexpr auto get(const Tuple<Us...>&& pup) noexcept
 {
     return get<Tuple<Us...>::template actual_index_v<I>>(std::move(pup.m_pupple));
 }
-
-// CTAD
-template<class... Ts>
-Tuple(Ts... ts) -> Tuple<Ts...>;
 
 template <class F, class T>
 constexpr decltype(auto) tapply(F&& f, T&& t)

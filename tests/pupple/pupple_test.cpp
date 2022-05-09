@@ -24,6 +24,43 @@ namespace tmp = boost::tmp;
 static_assert(std::is_trivially_constructible_v<Tuple<>>, "Empty Tuple should be trivially constructible.");
 static_assert(std::is_nothrow_constructible_v<Tuple<>>, "Empty Tuple should be nothrow constructible.");
 
+ut::suite TestPuppleComparisons = []
+{
+    using namespace ut;
+
+    "Compare empty Tuples"_test = []
+    {
+        auto EmptyTupleA = Tuple{};
+        auto EmptyTupleB = Tuple{};
+
+        expect(EmptyTupleA == EmptyTupleB);
+    };
+
+    "Compare Tuples lexicographically"_test = []
+    {
+        auto TupleA = Tuple{2, 4, 7};
+        auto TupleB = Tuple{1, 3, 4};
+        auto TupleC = Tuple{2, 4, 6};
+        auto TupleD = TupleA;
+
+        auto TupleDouble = Tuple{2.0, 4.0, 7.1};
+
+        expect(TupleA != TupleB);
+        expect(TupleA != TupleC);
+
+        expect(TupleA > TupleC);
+        expect(TupleC <= TupleA);
+        
+        expect(TupleA == TupleD);
+        expect(TupleA <= TupleD);
+        expect(TupleA >= TupleD);
+
+        // FIXME: Needs generalized comparison operators in order to work.
+        // expect(TupleA != TupleDouble);
+        // expect(TupleA < TupleDouble);
+    };
+};
+
 ut::suite TestPuppleElementTypes = []
 {
     using namespace ut;
