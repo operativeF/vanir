@@ -55,9 +55,8 @@ ut::suite TestPuppleComparisons = []
         expect(TupleA <= TupleD);
         expect(TupleA >= TupleD);
 
-        // FIXME: Needs generalized comparison operators in order to work.
-        // expect(TupleA != TupleDouble);
-        // expect(TupleA < TupleDouble);
+        expect(TupleA != TupleDouble);
+        expect(TupleA < TupleDouble);
     };
 };
 

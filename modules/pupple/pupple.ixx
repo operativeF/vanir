@@ -29,8 +29,6 @@ struct pupple_impl<std::index_sequence<Indices...>, Params...>
             : pupple_element<Indices, Params>(std::forward<Ns>(ns))...
     {
     }
-
-    auto operator<=>(const pupple_impl&) const = default;
 };
 
 template<typename... Params>
@@ -87,6 +85,49 @@ struct is_indexed_type
     using f = tmp::call_<tmp::ui1_<tmp::is_<TypeToFind>>, InputType>;
 };
 
+template<class T>
+concept BooleanTestableImpl = std::convertible_to<T, bool>;
+
+template<class T>
+concept BooleanTestable = BooleanTestableImpl<T> && requires(T&& t)
+{
+    { !static_cast<T&&>(t) } -> BooleanTestableImpl;
+};
+
+struct synth_three_way
+{
+    template<typename T, typename U>
+    constexpr auto operator()(const T& Left, const U& Right)
+        requires requires {
+            { Left < Right } -> BooleanTestable;
+            { Right < Left } -> BooleanTestable;
+        }
+    {
+        if constexpr(std::three_way_comparable_with<T, U>)
+        {
+            return Left <=> Right;
+        }
+        else
+        {
+            if(Left < Right)
+            {
+                return std::weak_ordering::less;
+            }
+            else if (Right < Left)
+            {
+                return std::weak_ordering::greater;
+            }
+            else
+            {
+                return std::weak_ordering::equivalent;
+            }
+        }
+    }
+};
+
+template<class T, class U = T>
+using synth_three_way_result = decltype(synth_three_way{}(std::declval<T&>(), std::declval<U&>()));
+
 template<typename Mapping, typename Pupple>
 struct PuppleBase;
 
@@ -139,8 +180,6 @@ struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
         : m_pupple{static_cast<const indexed_at<Is, Params...>&>(get<Is>(p))...}
     {
     }
-
-    auto operator<=>(const PuppleBase&) const = default;
     
     pupple<Ts...> m_pupple;
 };
@@ -192,6 +231,21 @@ template<typename... Ts>
 struct Tuple : remap_by_size_<Ts...>
 {
     using remap_by_size_<Ts...>::remap_by_size_;
+
+    template <class... Others, std::size_t... Is>
+    constexpr bool equals(const Tuple<Others...>& Right, std::index_sequence<Is...>) const
+    {
+        return ((get<Is>(this->m_pupple) == get<Is>(Right.m_pupple)) && ...);
+    }
+
+    template<typename... Others, std::size_t... Is>
+    constexpr auto three_way_comp(const Tuple<Others...>& Right, std::index_sequence<Is...>) const
+    {
+        std::common_comparison_category_t<synth_three_way_result<Ts, Others>...> c;
+        std::ignore = (((c = synth_three_way{}(get<Is>(this->m_pupple), get<Is>(Right.m_pupple))) != 0) || ...);
+
+        return c;
+    }
 };
 
 template<>
@@ -202,10 +256,25 @@ struct Tuple<>
         return true;
     }
 
-    [[nodiscard]] constexpr std::strong_ordering operator<=>(const Tuple&) const noexcept {
+    [[nodiscard]] constexpr std::strong_ordering three_way_comp(const Tuple&, std::index_sequence<>) const noexcept
+    {
         return std::strong_ordering::equal;
     }
 };
+
+template <class... Ts, class... Us>
+[[nodiscard]] constexpr auto operator<=>(const Tuple<Ts...>& Left, const Tuple<Us...>& Right)
+{
+    static_assert(sizeof...(Ts) == sizeof...(Us), "cannot compare tuples of different sizes");
+    return Left.three_way_comp(Right, std::index_sequence_for<Ts...>{});
+}
+
+template <class... Ts, class... Us>
+[[nodiscard]] constexpr bool operator==(const Tuple<Ts...>& Left, const Tuple<Us...>& Right)
+{
+    static_assert(sizeof...(Ts) == sizeof...(Us), "cannot compare tuples of different sizes");
+    return Left.equals(Right, std::index_sequence_for<Ts...>{});
+}
 
 // Deduction Guides
 template<class... Ts>

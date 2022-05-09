@@ -13,6 +13,9 @@ static constexpr std::tuple cc_stdb{"bubsy", 3.0, 5, 10.0, 99, "values", "genos"
 static constexpr Tuple cc_ppa{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"};
 static constexpr Tuple cc_ppb{"bubsy", 3.0, 5, 10.0, 99, "values", "genos", "pulses", 32, 'a', 7, 44, -10, "gary the snail"};
 
+static constexpr Tuple almost_equal_tuple{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the bobster"};
+static constexpr std::tuple almost_equal_std{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the bobster"};
+
 int main() {
     // tuple construction
     // Construction is done in place.
@@ -50,5 +53,23 @@ int main() {
 
     ankerl::nanobench::Bench().run("Tuple concatenation", [=] {
         ankerl::nanobench::doNotOptimizeAway(pupple_cat(cc_ppa, cc_ppb));
+    });
+
+    // tuple comparison
+    ankerl::nanobench::Bench().run("std::tuple equals", [=] {
+        ankerl::nanobench::doNotOptimizeAway(cc_stda == cc_stda);
+    });
+
+    ankerl::nanobench::Bench().run("Tuple equals", [=] {
+        ankerl::nanobench::doNotOptimizeAway(cc_ppa == cc_ppa);
+    });
+
+    // tuple comparison
+    ankerl::nanobench::Bench().run("std::tuple not equals", [=] {
+        ankerl::nanobench::doNotOptimizeAway(cc_stda != almost_equal_std);
+    });
+
+    ankerl::nanobench::Bench().run("Tuple not equals", [=] {
+        ankerl::nanobench::doNotOptimizeAway(cc_ppa != almost_equal_tuple);
     });
 }
