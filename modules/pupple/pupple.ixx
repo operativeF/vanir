@@ -140,20 +140,24 @@ struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
     template<std::size_t I>
     using type_at_index = tmp::call_<tmp::index_<tmp::sizet_<I>>, Ts...>;
 
+    template<typename... Ts>
+    using sequence_from_params = std::index_sequence<Ts::value...>;
+
+    // TODO: Multiple types
+    // TODO: What if empty?
     template<typename T>
     using get_indexes_of_type = tmp::call_<
         tmp::zip_<tmp::listify_,
             tmp::filter_<typename tmp::lift_<is_indexed_type<T>::template f>,
                 tmp::transform_<tmp::ui0_<>,
-                    tmp::transform_<tmp::lift_<actual_index_t>
-                    >
+                    tmp::lift_<sequence_from_params>
                 >
             >
         >, tmp::list_<tmp::sizet_<Is>...>, tmp::list_<Ts...>>;
 
     template<typename... Params>
     constexpr PuppleBase(Params&&... params)
-        : PuppleBase{pupple<typename tmp::decay<Params>::type...>(std::forward<Params>(params)...)}
+        : PuppleBase{pupple<Params...>(std::forward<Params>(params)...)}
     {
     }
     
@@ -163,24 +167,6 @@ struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
     {
     }
 
-    template<typename... Params>
-    explicit constexpr PuppleBase(const pupple<Params...>&& p)
-        : m_pupple{static_cast<const indexed_at<Is, Params...>&&>(get<Is>(p))...}
-    {
-    }
-
-    template<typename... Params>
-    explicit constexpr PuppleBase(pupple<Params...>& p)
-        : m_pupple{static_cast<indexed_at<Is, Params...>&>(get<Is>(p))...}
-    {
-    }
-
-    template<typename... Params>
-    explicit constexpr PuppleBase(const pupple<Params...>& p)
-        : m_pupple{static_cast<const indexed_at<Is, Params...>&>(get<Is>(p))...}
-    {
-    }
-    
     pupple<Ts...> m_pupple;
 };
 

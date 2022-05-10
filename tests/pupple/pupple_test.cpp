@@ -34,6 +34,7 @@ ut::suite TestPuppleComparisons = []
         auto EmptyTupleB = Tuple{};
 
         expect(EmptyTupleA == EmptyTupleB);
+        expect(EmptyTupleA >= EmptyTupleB);
     };
 
     "Compare Tuples lexicographically"_test = []
@@ -57,6 +58,7 @@ ut::suite TestPuppleComparisons = []
 
         expect(TupleA != TupleDouble);
         expect(TupleA < TupleDouble);
+        expect(TupleDouble > TupleA);
     };
 };
 
@@ -131,6 +133,20 @@ ut::suite MakePuppleTest = []
     };
 
     auto madeP = make_from_pupple<constrFromTuple>(tupleToMakeFrom);
+};
+
+ut::suite GatherTypesPuppleTest = []
+{
+    using namespace ut;
+
+    "Gather single type from Tuple"_test = []
+    {
+        auto mixed_tuple = Tuple{1.0, 1, 3.0, 4};
+
+        auto just_ints = gather<int>(mixed_tuple);
+
+        expect(just_ints == Tuple{1, 4});
+    };
 };
 
 ut::suite StructuredBindingPuppleTest = []

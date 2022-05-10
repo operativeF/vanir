@@ -90,10 +90,12 @@ ut::suite ConcatPuppleTest = []
 
     auto pcat = pupple_cat(newtup, othertup);
     auto ecat = pupple_cat(emptytup, othertup);
+    auto plus_cat = newtup + othertup;
     // expect(sizeof(cpptuple) == 24) << fmt::format("{}", sizeof(cpptuple));
     expect(sizeof(newtup) == 16) << fmt::format("{}", sizeof(newtup));
     expect(sizeof(pcat) == 32) << fmt::format("{}", sizeof(newtup) + sizeof(othertup));
     expect(ecat == othertup);
+    expect(plus_cat == pcat);
 
     "Verify data alignments"_test = []
     {

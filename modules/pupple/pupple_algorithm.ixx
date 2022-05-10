@@ -23,7 +23,7 @@ constexpr T make_from_pupple_impl(P&& t, std::index_sequence<Is...>)
 {
     return T(get<Is>(std::forward<P>(t))...);
 }
-
+    
 template<typename TP>
 using tuple_indexer = std::make_index_sequence<std::tuple_size_v<TP>>;
 
@@ -52,6 +52,19 @@ template<typename T>
 constexpr std::index_sequence<> concat_sequences(std::index_sequence<>)
 {
     return {};
+}
+
+template<typename... TupleTs, std::size_t... Ns>
+constexpr auto pupple_cat_impl(std::index_sequence<Ns...>, TupleTs&&... tps)
+{
+    auto cc_seq = concat_sequences(repeated_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>, Ns>{}...);
+    auto ts_seq = concat_sequences(std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>>{}...);
+
+    return []<typename FullTuple, std::size_t... Is, std::size_t... Js>
+        (FullTuple&& ft, std::index_sequence<Is...>, std::index_sequence<Js...>)
+        {
+            return Tuple{get<Is>(get<Js>(std::forward<FullTuple>(ft)))...};
+        } (Tuple{std::forward<TupleTs>(tps)...}, ts_seq, cc_seq);
 }
 
 export
@@ -118,23 +131,30 @@ constexpr void swap(const Tuple<Ts...>& a, const Tuple<Ts...>& b) noexcept((std:
 }
 
 // Concatenation
-template<typename... TupleTs, std::size_t... Ns>
-constexpr auto pupple_cat_impl(std::index_sequence<Ns...>, TupleTs&&... tps)
-{
-    auto cc_seq = concat_sequences(repeated_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>, Ns>{}...);
-    auto ts_seq = concat_sequences(std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>>{}...);
-
-    return []<typename FullTuple, std::size_t... Is, std::size_t... Js>
-        (FullTuple&& ft, std::index_sequence<Is...>, std::index_sequence<Js...>)
-        {
-            return Tuple{get<Is>(get<Js>(std::forward<FullTuple>(ft)))...};
-        } (Tuple{std::forward<TupleTs>(tps)...}, ts_seq, cc_seq);
-}
-
 template<typename... TupleTs>
 constexpr auto pupple_cat(TupleTs&&... tps)
 {
     return pupple_cat_impl(std::index_sequence_for<TupleTs...>{}, std::forward<TupleTs>(tps)...);
+}
+
+// Concatenation operator+
+template<typename TupleLeft, typename TupleRight>
+constexpr auto operator+(TupleLeft&& left, TupleRight&& right)
+{
+    return pupple_cat(std::forward<TupleLeft>(left), std::forward<TupleRight>(right));
+}
+
+// Gather
+template<typename GatherType, typename TupleT>
+constexpr auto gather(TupleT&& tps)
+{
+    using gather_indexes = std::remove_reference_t<TupleT>::template get_indexes_of_type<GatherType>;
+
+    return []<typename TT, std::size_t... Is>
+    (TT&& tt, std::index_sequence<Is...>)
+    {
+        return Tuple{get<Is>(std::forward<TT>(tt))...};
+    } (std::forward<TupleT>(tps), gather_indexes{});
 }
 
 } // export
