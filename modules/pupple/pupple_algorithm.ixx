@@ -48,6 +48,12 @@ constexpr auto concat_sequences(std::index_sequence<Is...>, std::index_sequence<
     return concat_sequences(std::index_sequence<Is..., Js...>{}, Others{}...);
 }
 
+template<std::size_t... Is>
+constexpr std::index_sequence<Is...> concat_sequences(std::index_sequence<Is...>)
+{
+    return {};
+}
+
 template<typename T>
 constexpr std::index_sequence<> concat_sequences(std::index_sequence<>)
 {
@@ -145,16 +151,19 @@ constexpr auto operator+(TupleLeft&& left, TupleRight&& right)
 }
 
 // Gather
-template<typename GatherType, typename TupleT>
-constexpr auto gather(TupleT&& tps)
+template<typename GatherType, typename... GatherTypes>
+constexpr auto gather(auto&& tps)
 {
-    using gather_indexes = std::remove_reference_t<TupleT>::template get_indexes_of_type<GatherType>;
+    // UNUSUAL: Brace initialization doesn't work here; only parentheses.
+    auto concatted = concat_sequences(
+        std::remove_reference_t<decltype(tps)>::template get_indexes_of_type<GatherType>(),
+        std::remove_reference_t<decltype(tps)>::template get_indexes_of_type<GatherTypes>()...);
 
     return []<typename TT, std::size_t... Is>
     (TT&& tt, std::index_sequence<Is...>)
     {
         return Tuple{get<Is>(std::forward<TT>(tt))...};
-    } (std::forward<TupleT>(tps), gather_indexes{});
+    } (std::forward<decltype(tps)>(tps), concatted);
 }
 
 } // export

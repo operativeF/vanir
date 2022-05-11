@@ -146,6 +146,12 @@ ut::suite GatherTypesPuppleTest = []
         auto just_ints = gather<int>(mixed_tuple);
 
         expect(just_ints == Tuple{1, 4});
+
+        auto very_mixed_tuple = Tuple{'c', 1.0, 1, "find them!"};
+
+        auto just_nums = gather<double, int>(very_mixed_tuple);
+
+        expect(just_nums == Tuple{1.0, 1});
     };
 };
 
