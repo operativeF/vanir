@@ -47,12 +47,15 @@ int main() {
     // tuple concatenation
     // copies in static constexpr tuples to prevent benchmarking the construction
     // of said tuples.
+    // FIXME: Unsure of accuracy of concatenation benchmarks.
     ankerl::nanobench::Bench().run("std::tuple concatenation", [=] {
-        ankerl::nanobench::doNotOptimizeAway(std::tuple_cat(cc_stda, cc_stdb));
+        auto tuplecat = std::tuple_cat(cc_stda, cc_stdb);
+        ankerl::nanobench::doNotOptimizeAway(tuplecat);
     });
 
     ankerl::nanobench::Bench().run("Tuple concatenation", [=] {
-        ankerl::nanobench::doNotOptimizeAway(pupple_cat(cc_ppa, cc_ppb));
+        auto pupcat = pupple_cat(cc_ppa, cc_ppb);
+        ankerl::nanobench::doNotOptimizeAway(pupcat);
     });
 
     // tuple comparison
