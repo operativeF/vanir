@@ -10,6 +10,7 @@ set(TMP_FUSION_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tmp/fusion)
 set(TMP_SEQ_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tmp/sequence)
 set(TMP_MAIN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tmp)
 set(PUPPLE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/pupple)
+set(TMP_UNITS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tmp_units)
 
 set(TMP_ALGO_IXX
     ${TMP_ALGO_DIR}/all_of.ixx
@@ -168,4 +169,27 @@ target_link_libraries(nilbase
     PRIVATE
         nil_tmp
         fmt::fmt
+)
+
+set(TMP_UNITS_ENGINE_IXX
+    ${TMP_UNITS_DIR}/engine/base.ixx
+    ${TMP_UNITS_DIR}/engine/conversions.ixx
+    ${TMP_UNITS_DIR}/engine/evaluators.ixx
+    ${TMP_UNITS_DIR}/engine/forward_types.ixx
+    ${TMP_UNITS_DIR}/engine/type_dispatcher.ixx
+)
+
+set(TMP_UNITS_IXX
+    ${TMP_UNITS_DIR}/units/anything.ixx
+)
+
+add_library(tmp_units_lib
+    STATIC
+        ${TMP_UNITS_ENGINE_IXX}
+        ${TMP_UNITS_IXX}
+)
+
+target_link_libraries(tmp_units_lib
+    PRIVATE
+        nil_tmp
 )
