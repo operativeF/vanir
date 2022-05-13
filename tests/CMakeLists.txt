@@ -32,10 +32,13 @@ target_link_libraries(niltest
 
 add_executable(tmp_unit_test
     tmp_units/test.cpp
+    metatest/metatest.ixx
 )
 
 target_link_libraries(tmp_unit_test
     PRIVATE
+        nilbase
         nil_tmp
+        fmt::fmt
         tmp_units_lib
 )

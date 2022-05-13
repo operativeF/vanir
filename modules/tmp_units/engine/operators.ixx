@@ -14,8 +14,7 @@ import Boost.TMP.Units.Engine.Base;
 import Boost.TMP.Units.Engine.Evaluators;
 
 export namespace potato::units {
-	using namespace boost::tmp;
-
+	namespace tmp = boost::tmp;
 	// Addition and subtraction need to be done in a different way for floating point and integers.
 	// Floating point need to be scaled in a way that is correct.
 	// 1.0_mA + 1.0_A -> 1.001_A
@@ -30,32 +29,30 @@ export namespace potato::units {
 	// 2.) Scale the largest unit to the smaller one, if necessary.
 
 	namespace detail {
-
 		template <typename A, typename B>
-		using scales = list_<A, B>;
+		using scales = tmp::list_<A, B>;
 	
 		template <typename T>
-		using IsLongDouble = call_<is_<long double>, typename T::numer_type>;
+		using IsLongDouble = tmp::call_<tmp::is_<long double>, typename T::numer_type>;
 
 		template <typename T, typename U>
-		using check_if_ld = if_<is_<long double>, always_<false_>, always_<true_>>;
+		using check_if_ld = tmp::if_<tmp::is_<long double>, tmp::always_<tmp::false_>, tmp::always_<tmp::true_>>;
 
 		template <typename T, typename U>
 		using check_ratio_greater = std::ratio_greater<typename T::mod_ratio, typename U::mod_ratio>;
 
 		template <typename T, typename U>
-		using get_scale = call_<
-				if_<lift_<check_if_ld>,
-					if_<lift_<check_ratio_greater>, // Floating-Point, scale to largest
-						always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>, // Scale U (B) to the largest
-						always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>  // Scale T (A) to the largest
+		using get_scale = tmp::call_<
+				tmp::if_<tmp::lift_<check_if_ld>,
+					tmp::if_<tmp::lift_<check_ratio_greater>, // Floating-Point, scale to largest
+						tmp::always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>, // Scale U (B) to the largest
+						tmp::always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>  // Scale T (A) to the largest
 					>,
-					if_<lift_<check_ratio_greater>, // Integer, scale to smallest
-						always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,  // Scale U (B) to the smallest
-						always_<std::ratio_divide<typename U::mod_ratio, typename T::mod_ratio>> // Scale T (A) to the smallest
+					tmp::if_<tmp::lift_<check_ratio_greater>, // Integer, scale to smallest
+						tmp::always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,  // Scale U (B) to the smallest
+						tmp::always_<std::ratio_divide<typename U::mod_ratio, typename T::mod_ratio>> // Scale T (A) to the smallest
 					>
-				>, T, U
-			>;
+				>, T, U>;
 	} // namespace detail
 
 	template <typename T>
@@ -66,18 +63,20 @@ export namespace potato::units {
 	// TODO: This is valid only for long double, must be specialized for integers.
 	template <typename T, typename U>
 	constexpr auto operator+(const T& aVal, const U& bVal) -> try_type_lookup<add_type<T, U>> {
-		using aVal_scale = call_<if_<lift_<std::ratio_greater>,
-										always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
-										if_<lift_<std::ratio_less>,
-											always_<std::ratio_divide<typename U::mod_ratio, typename T::mod_ratio>>,
-											always_<unity_ratio>>>,
-									typename T::mod_ratio, typename U::mod_ratio>;
-		using bVal_scale = call_<if_<lift_<std::ratio_greater>,
-										always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
-										if_<lift_<std::ratio_less>,
-											always_<std::ratio_divide<typename U::mod_ratio, typename T::mod_ratio>>,
-											always_<unity_ratio>>>,
-									typename T::mod_ratio, typename U::mod_ratio>;
+		using aVal_scale = tmp::call_<
+			tmp::if_<tmp::lift_<std::ratio_greater>,
+				tmp::always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
+				tmp::if_<tmp::lift_<std::ratio_less>,
+					tmp::always_<std::ratio_divide<typename U::mod_ratio, typename T::mod_ratio>>,
+					tmp::always_<unity_ratio>>
+			>, typename T::mod_ratio, typename U::mod_ratio>;
+		using bVal_scale = tmp::call_<
+			tmp::if_<tmp::lift_<std::ratio_greater>,
+				tmp::always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
+				tmp::if_<tmp::lift_<std::ratio_less>,
+					tmp::always_<std::ratio_divide<typename U::mod_ratio, typename T::mod_ratio>>,
+					tmp::always_<unity_ratio>>
+			>, typename T::mod_ratio, typename U::mod_ratio>;
 		return (aVal.value * aVal_scale::num * bVal_scale::num) / (aVal_scale::den * bVal_scale::den) +
 				(bVal.value * bVal_scale::num * bVal_scale::num) / (aVal_scale::den * bVal_scale::den);
 	}
@@ -97,18 +96,20 @@ export namespace potato::units {
 
 	template <typename T, typename U>
 	constexpr auto operator-(const T& aVal, const U& bVal) -> try_type_lookup<U> {
-		using aVal_scale = call_<if_<lift_<std::ratio_greater>,
-										always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
-										if_<lift_<std::ratio_less>,
-											always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
-											always_<unity_ratio>>>,
-									typename T::mod_ratio, typename U::mod_ratio>;
-		using bVal_scale = call_<if_<lift_<std::ratio_greater>,
-										always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
-										if_<lift_<std::ratio_less>,
-											always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
-											always_<unity_ratio>>>,
-									typename U::mod_ratio, typename T::mod_ratio>;
+		using aVal_scale = tmp::call_<
+			tmp::if_<tmp::lift_<std::ratio_greater>,
+				tmp::always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
+				tmp::if_<tmp::lift_<std::ratio_less>,
+					tmp::always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
+					tmp::always_<unity_ratio>>
+			>, typename T::mod_ratio, typename U::mod_ratio>;
+		using bVal_scale = tmp::call_<
+			tmp::if_<tmp::lift_<std::ratio_greater>,
+				tmp::always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
+				tmp::if_<tmp::lift_<std::ratio_less>,
+					tmp::always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
+					tmp::always_<unity_ratio>>
+			>, typename U::mod_ratio, typename T::mod_ratio>;
 		return (aVal.value * aVal_scale::num * bVal_scale::num) / (aVal_scale::den * bVal_scale::den) -
 				(bVal.value * bVal_scale::num * bVal_scale::num) / (aVal_scale::den * bVal_scale::den);
 	}
@@ -121,10 +122,10 @@ export namespace potato::units {
 	template <typename T, typename U>
 	constexpr auto operator*(const T& aVal, const U& bVal)
 			-> try_type_lookup<multi_type<T, U>> {
-		using unitless_multiply = call_<
-				if_<is_<long double>,
-					always_<std::ratio_multiply<typename T::mod_ratio, typename U::mod_ratio>>,
-					always_<unity_ratio>>,
+		using unitless_multiply = tmp::call_<
+				tmp::if_<tmp::is_<long double>,
+					tmp::always_<std::ratio_multiply<typename T::mod_ratio, typename U::mod_ratio>>,
+					tmp::always_<unity_ratio>>,
 				try_type_lookup<multi_type<T, U>>>;
 		return (aVal.value * bVal.value) * (unitless_multiply::num / unitless_multiply::den);
 	}
@@ -141,10 +142,10 @@ export namespace potato::units {
 
 	template <typename T, typename U>
 	constexpr auto operator/(const T& aVal, const U& bVal) -> try_type_lookup<div_type<T, U>> {
-		using unitless_divide = call_<
-				if_<is_<long double>,
-					always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
-					always_<unity_ratio>>,
+		using unitless_divide = tmp::call_<
+				tmp::if_<tmp::is_<long double>,
+					tmp::always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
+					tmp::always_<unity_ratio>>,
 				try_type_lookup<div_type<T, U>>>;
 		return (aVal.value / bVal.value) * (unitless_divide::num / unitless_divide::den);
 	}
@@ -159,11 +160,9 @@ export namespace potato::units {
 		return aVal / bVal.value;
 	}
 
-	template <typename T, typename U>
+	template <typename T, typename U> requires(std::same_as<typename T::impl, typename U::impl>)
 	constexpr bool operator==(const T& aVal, const U& bVal) {
 		// Check if both have same underlying type
-		static_assert(std::is_same_v<typename T::impl, typename U::impl>,
-						"Underlying types need to be the same.");
 		// TODO: Normalize to unit that would increase dynamic range
 		// Convert to SI if comparing between imperial and SI units
 		auto aVal_ = convertTo<T>()(aVal);
@@ -199,8 +198,7 @@ export namespace potato::units {
 	template <typename T, typename U>
 	constexpr bool operator>(const T& aVal, const U& bVal) {
 		// Check if both have same underlying type
-		static_assert(std::is_same_v<typename T::impl, typename U::impl>,
-						"Underlying types need to be the same.");
+
 		// TODO: Normalize to unit that would increase dynamic range
 		auto aVal_ = convertTo<T>()(aVal);
 		auto bVal_ = convertTo<T>()(bVal);
