@@ -29,3 +29,13 @@ target_link_libraries(niltest
         Boost::nowide
         fmt::fmt
 )
+
+add_executable(tmp_unit_test
+    tmp_units/test.cpp
+)
+
+target_link_libraries(tmp_unit_test
+    PRIVATE
+        nil_tmp
+        tmp_units_lib
+)

@@ -20,7 +20,7 @@ export import Boost.TMP.Algorithm.RangeMath;
 export import Boost.TMP.Algorithm.RemoveIf;
 export import Boost.TMP.Algorithm.RemovePairs;
 // export import Boost.TMP.Algorithm.Repeat;
-// export import Boost.TMP.Algorithm.ReplaceIf;
+export import Boost.TMP.Algorithm.ReplaceIf;
 export import Boost.TMP.Algorithm.Sort;
 // export import Boost.TMP.Algorithm.SymmetricDifference;
 export import Boost.TMP.Algorithm.Transform;

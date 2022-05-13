@@ -31,6 +31,7 @@ set(TMP_ALGO_IXX
     ${TMP_ALGO_DIR}/range_math.ixx
     ${TMP_ALGO_DIR}/remove_if.ixx
     ${TMP_ALGO_DIR}/remove_pairs.ixx
+    ${TMP_ALGO_DIR}/replace_if.ixx
     ${TMP_ALGO_DIR}/sort.ixx
     ${TMP_ALGO_DIR}/transform.ixx
     ${TMP_ALGO_DIR}/tmp_algorithm.ixx
@@ -45,6 +46,7 @@ set(TMP_MAIN_IXX
     ${TMP_MAIN_DIR}/identity.ixx
     ${TMP_MAIN_DIR}/if.ixx
     ${TMP_MAIN_DIR}/lift.ixx
+    ${TMP_MAIN_DIR}/list_operations.ixx
     ${TMP_MAIN_DIR}/logic.ixx
     ${TMP_MAIN_DIR}/pack.ixx
     ${TMP_MAIN_DIR}/tmp_base.ixx
@@ -175,13 +177,13 @@ set(TMP_UNITS_ENGINE_IXX
     ${TMP_UNITS_DIR}/engine/base.ixx
     ${TMP_UNITS_DIR}/engine/conversions.ixx
     ${TMP_UNITS_DIR}/engine/evaluators.ixx
+    ${TMP_UNITS_DIR}/engine/operators.ixx
     ${TMP_UNITS_DIR}/engine/type_dispatcher.ixx
     ${TMP_UNITS_DIR}/engine/tmp_all_units.ixx
 )
 
 set(TMP_UNITS_ANY_IXX
     ${TMP_UNITS_DIR}/units/anything.ixx
-    ${TMP_UNITS_DIR}/units/base_unit.ixx
 )
 
 set(TMP_UNITS_BASE_SI_IXX

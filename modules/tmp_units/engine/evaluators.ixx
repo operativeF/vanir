@@ -111,26 +111,24 @@ export namespace potato::units {
 		template <typename T, typename U>
 		using add_type = typename dispatcher<typename U::impl>::template f<select_prefix_ld<T, U>, decltype(U::value)>;
 
-		// template <typename F, typename G>
-		// using multiplier = call_<set_multiplier_<>, F, G>;
+		template <typename F, typename G>
+		using multiplier = call_<set_multiplier_<>, F, G>;
 
-		// template <typename T, typename U>
-		// using multi_type = typename dispatcher<multiplier<typename T::impl, typename U::impl>>::template f<std::ratio_multiply<typename T::mod_ratio, typename U::mod_ratio>, decltype(U::value)>;
+		template <typename T, typename U>
+		using multi_type = typename dispatcher<multiplier<typename T::impl, typename U::impl>>::template f<std::ratio_multiply<typename T::mod_ratio, typename U::mod_ratio>, decltype(U::value)>;
 
-		// template <typename F, typename G>
-		// using quotient = call_<set_divisor_<>, F, G>;
+		template <typename F, typename G>
+		using quotient = call_<set_divisor_<>, F, G>;
 
-		// template <typename T, typename U>
-		// using div_type = typename dispatcher<quotient<typename T::impl, typename U::impl>>::template f<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>, decltype(U::value)>;
+		template <typename T, typename U>
+		using div_type = typename dispatcher<quotient<typename T::impl, typename U::impl>>::template f<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>, decltype(U::value)>;
 
-		struct dummy{};
+		template <typename F>
+		using swap_invert = call_<unpack_<replace_if_<list_<dummy>, is_<list_<>>, swap_<replace_if_<list_<>, is_<list_<dummy>>>>>>, F>;
 
-		// template <typename F>
-		// using swap_invert = call_<unpack_<replace_if_<list_<dummy>, is_<list_<>>, swap_<replace_if_<list_<>, is_<list_<dummy>>>>>>, F>;
+		template <typename F>
+		using invert_ratio = typename std::ratio<F::den, F::num>;
 
-		// template <typename F>
-		// using invert_ratio = typename std::ratio<F::den, F::num>;
-
-		// template <typename T>
-		// using inverter = typename dispatcher<swap_invert<typename T::impl>>::template f<invert_ratio<typename T::mod_ratio>, decltype(T::value)>;
+		template <typename T>
+		using inverter = typename dispatcher<swap_invert<typename T::impl>>::template f<invert_ratio<typename T::mod_ratio>, decltype(T::value)>;
 } // namespace potato::units

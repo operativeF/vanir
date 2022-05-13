@@ -79,7 +79,6 @@ def generateUnitModuleFiles(unit_name):
         f"export module Boost.TMP.Units.Unit.{unit_name.title()};\n\n" \
         f"import Boost.TMP;\n" \
         f"import Boost.TMP.Units.Engine.Base;\n" \
-        F"import Boost.TMP.Units.BaseUnit;\n" \
         f"\n" \
         f"import std.core;\n" \
         f"\n"
@@ -87,7 +86,7 @@ def generateUnitModuleFiles(unit_name):
 def generateUnitBeginNamespace():
     return \
         f"export namespace potato::units {{\n" \
-        f"{' ':>4}using namespace boost::tmp;\n" \
+        f"{' ':>4}namespace tmp = boost::tmp;\n" \
         f"\n"
 
 def generateUnitStruct(unit_name, pretty, impl_numer, impl_denom):
@@ -97,32 +96,26 @@ def generateUnitStruct(unit_name, pretty, impl_numer, impl_denom):
         impl_denom = ""
     if pretty is None:
         pretty = "N/A"
-    
+
     return \
         f"{' ':>4}template <typename RatioTypeT, typename P>\n" \
-        f"{' ':>4}struct {unit_name}_impl : base_unit_<RatioTypeT, P> {{\n" \
-        f"\n" \
-        f"{' ':>8}using base_unit_<RatioTypeT, P>::base_unit_;\n" \
-        f"{' ':>8}template <typename U, typename R>\n" \
-        f"{' ':>8}constexpr const {unit_name}_impl<RatioTypeT, P>(const {unit_name}_impl<U, R>& other) {{\n" \
-        f"{' ':>12}using scale_greater = call_<if_<lift_<std::ratio_greater>,\n" \
-        f"{' ':>16}always_<std::ratio_divide<U, RatioTypeT>>,\n" \
-        f"{' ':>16}always_<unity_ratio>>,\n" \
-        f"{' ':>16}RatioTypeT, U>;\n" \
-        f"{' ':>12}using scale_lesser = call_<if_<lift_<std::ratio_less>,\n" \
-        f"{' ':>16}always_<std::ratio_divide<RatioTypeT, U>>,\n" \
-        f"{' ':>16}always_<unity_ratio>>,\n" \
-        f"{' ':>16}RatioTypeT, U>;\n" \
-        f"{' ':>12}this->value = (other.value * scale_greater::num * scale_lesser::den) / (scale_greater::den * scale_lesser::num);\n" \
-        f"{' ':>8}}}\n" \
+        f"{' ':>4}struct {unit_name}_impl {{\n" \
         f"\n" \
         f"{' ':>8}static constexpr auto pretty = \"{pretty}\";\n" \
+        f"{' ':>8}using DerivedValueType = tmp::call_<\n" \
+        f"{' ':>12}tmp::if_<tmp::is_<std::uint64_t>,\n" \
+        f"{' ':>16}tmp::always_<std::int64_t>,\n" \
+        f"{' ':>16}tmp::always_<long double>\n" \
+        f"{' ':>12}>, P>;\n\n" \
+        f"{' ':>8}using mod_ratio  = RatioTypeT;\n" \
+        f"{' ':>8}using value_type = DerivedValueType;\n" \
+        f"{' ':>8}using numer_type = DerivedValueType;\n" \
+        f"{' ':>8}using impl       = tmp::list_<tmp::list_<{impl_numer}>, tmp::list_<{impl_denom}>>;\n" \
         f"\n" \
-        f"{' ':>8}using is_any_impl = false_;\n" \
+        f"{' ':>8}constexpr {unit_name}_impl(value_type val) : value{{val}} {{}}\n\n" \
+        f"{' ':>8}using is_any_impl = tmp::false_;\n" \
         f"\n" \
-        f"{' ':>8}using mod_ratio = RatioTypeT;\n" \
-        f"{' ':>8}using numer_type = base_unit_<RatioTypeT, P>::value_type;\n" \
-        f"{' ':>8}using impl      = list_<list_<{impl_numer}>, list_<{impl_denom}>>;\n" \
+        f"{' ':>8}value_type value{{}};\n" \
         f"{' ':>4}}};\n" \
         f"\n"
 
@@ -224,7 +217,7 @@ def generateDispatcherIncludeFiles():
         f"import Boost.TMP;\n" \
         f"\n" \
         f"import Boost.TMP.Units;\n" \
-        f"import Boost.TMP.Units.Base;\n" \
+        f"import Boost.TMP.Units.Engine.Base;\n" \
         f"\n" \
         f"import std.core;\n" \
         f"\n"

@@ -9,37 +9,32 @@ export module Boost.TMP.Units.Unit.Newton_Per_Second;
 
 import Boost.TMP;
 import Boost.TMP.Units.Engine.Base;
-import Boost.TMP.Units.BaseUnit;
 
 import std.core;
 
 export namespace potato::units {
-    using namespace boost::tmp;
+    namespace tmp = boost::tmp;
 
     template <typename RatioTypeT, typename P>
-    struct newton_per_second_impl : base_unit_<RatioTypeT, P> {
-
-        using base_unit_<RatioTypeT, P>::base_unit_;
-        template <typename U, typename R>
-        constexpr const newton_per_second_impl<RatioTypeT, P>(const newton_per_second_impl<U, R>& other) {
-            using scale_greater = call_<if_<lift_<std::ratio_greater>,
-                always_<std::ratio_divide<U, RatioTypeT>>,
-                always_<unity_ratio>>,
-                RatioTypeT, U>;
-            using scale_lesser = call_<if_<lift_<std::ratio_less>,
-                always_<std::ratio_divide<RatioTypeT, U>>,
-                always_<unity_ratio>>,
-                RatioTypeT, U>;
-            this->value = (other.value * scale_greater::num * scale_lesser::den) / (scale_greater::den * scale_lesser::num);
-        }
+    struct newton_per_second_impl {
 
         static constexpr auto pretty = "N/s";
+        using DerivedValueType = tmp::call_<
+            tmp::if_<tmp::is_<std::uint64_t>,
+                tmp::always_<std::int64_t>,
+                tmp::always_<long double>
+            >, P>;
 
-        using is_any_impl = false_;
+        using mod_ratio  = RatioTypeT;
+        using value_type = DerivedValueType;
+        using numer_type = DerivedValueType;
+        using impl       = tmp::list_<tmp::list_<meter_l, gram_l>, tmp::list_<second_l, second_l, second_l>>;
 
-        using mod_ratio = RatioTypeT;
-        using numer_type = base_unit_<RatioTypeT, P>::value_type;
-        using impl      = list_<list_<meter_l, gram_l>, list_<second_l, second_l, second_l>>;
+        constexpr newton_per_second_impl(value_type val) : value{val} {}
+
+        using is_any_impl = tmp::false_;
+
+        value_type value{};
     };
 
     using exanewton_per_second_ld    =     newton_per_second_impl<std::exa, long double>;

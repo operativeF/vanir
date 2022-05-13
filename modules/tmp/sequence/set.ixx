@@ -10,6 +10,7 @@ export module Boost.TMP.Sequence.Set;
 
 import Boost.TMP.Base.Call;
 import Boost.TMP.Base.If;
+import Boost.TMP.Base.ListOperations;
 import Boost.TMP.Base.Vocabulary;
 
 import Boost.TMP.Algorithm.Flatten;
@@ -74,6 +75,12 @@ export namespace boost::tmp {
 		template<typename C = listify_>
 		struct set_denom_ {};
 
+		template<typename C = listify_>
+		struct set_multiplier_ {};
+
+		template<typename C = listify_>
+		struct set_divisor_ {};
+		
 		template<typename C = listify_>
 		struct set_quotient_ {};
 
@@ -209,6 +216,52 @@ export namespace boost::tmp {
 
 			template<typename T, typename U>
 			using comp_join = call_<join_<>, T, U>;
+
+			template<unsigned N, typename C>
+			struct dispatch<N, set_multiplier_<C>> {
+				template<typename T, typename U>
+				using f =
+				call_<
+				unpack_<
+					tee_<
+						tee_<
+							i0_<>,
+							i2_<>,
+							join_<>
+						>,
+						tee_<
+							i1_<>,
+							i3_<>,
+							join_<>
+						>,
+						lift_<full_divide_lists, C>
+					>
+				>, comp_join<T, U>
+				>;
+			};
+
+			template<unsigned N, typename C>
+			struct dispatch<N, set_divisor_<C>> {
+				template<typename T, typename U>
+				using f =
+				call_<
+				unpack_<
+					tee_<
+						tee_<
+							i0_<>,
+							i3_<>,
+							join_<>
+						>,
+						tee_<
+							i1_<>,
+							i2_<>,
+							join_<>
+						>,
+						lift_<full_divide_lists, C>
+					>
+				>, comp_join<T, U>
+				>;
+			};
 
 			template<std::size_t N, typename C>
 			struct dispatch<N, set_quotient_<C>> {

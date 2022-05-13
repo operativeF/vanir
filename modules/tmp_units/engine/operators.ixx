@@ -10,8 +10,8 @@ export module Boost.TMP.Units.Engine.Operators;
 import std.core;
 
 import Boost.TMP;
-import Boost.TMP.Units.Base;
-import Boost.TMP.Units.Evaluators;
+import Boost.TMP.Units.Engine.Base;
+import Boost.TMP.Units.Engine.Evaluators;
 
 export namespace potato::units {
 	using namespace boost::tmp;
