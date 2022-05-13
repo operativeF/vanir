@@ -54,6 +54,28 @@ add_executable(tmp_test
     tmp/each_test.ixx
     tmp/erase_test.ixx
     tmp/extrema_test.ixx
+    tmp/filter_test.ixx
+    tmp/find_if_test.ixx
+    tmp/flatten_test.ixx
+    tmp/fold_left_test.ixx
+    tmp/fold_right_test.ixx
+    tmp/index_test.ixx
+    tmp/insert_test.ixx
+    tmp/join_test.ixx
+    tmp/logic_test.ixx
+    tmp/none_of_test.ixx
+    tmp/partition_test.ixx
+    tmp/pop_front_test.ixx
+    tmp/product_test.ixx
+    tmp/push_back_test.ixx
+    tmp/push_front_test.ixx
+    tmp/range_math_test.ixx
+    tmp/remove_if_test.ixx
+    tmp/repeat_test.ixx
+    tmp/replace_if_test.ixx
+    tmp/reverse_test.ixx
+    tmp/rotate_test.ixx
+    tmp/set_test.ixx
     tmp/size_test.ixx
     tmp/sort_test.ixx
     tmp/swap_test.ixx

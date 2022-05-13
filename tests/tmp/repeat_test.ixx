@@ -1,5 +1,5 @@
 //  Copyright 2018-2019 Odin Holmes.
-//						Thomas Figueroa.
+//			  2022 Thomas Figueroa.
 //
 //  Distributed under the Boost Software License, Version 1.0.
 //
@@ -7,8 +7,11 @@
 //  http://www.boost.org/LICENSE_1_0.txt
 
 
-#include <boost/tmp/algorithm/repeat.hpp>
-#include "test_util.hpp"
+export module Boost.TMP.Test.Repeat;
+
+import Boost.TMP;
+
+using namespace boost::tmp;
 
 namespace repeat_test {
 	using namespace boost::tmp;

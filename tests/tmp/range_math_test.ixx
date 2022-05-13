@@ -1,15 +1,18 @@
 //  Copyright 2018-2019 Odin Holmes.
-//						Thomas Figueroa.
+//		      2022 Thomas Figueroa.
 //
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
 //  http://www.boost.org/LICENSE_1_0.txt
 
-#include <boost/tmp.hpp>
-#include "test_util.hpp"
+export module Boost.TMP.Test.RangeMath;
 
-namespace range_math_test {
+import Boost.TMP;
+
+using namespace boost::tmp;
+
+export namespace range_math_test {
 
 	using alist = list_<int_<-2>, int_<100>, int_<4>, int_<500>>;
 	using blist = list_<int_<10>, int_<20>, int_<5>, int_<1>>;

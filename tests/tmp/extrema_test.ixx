@@ -12,8 +12,6 @@ import Boost.TMP;
 
 using namespace boost::tmp;
 
-using namespace boost::tmp;
-
 export namespace extrema_test {
 	using alist = list_<int_<6>, int_<5>, int_<11>>;
 	using blist = list_<int_<11>, int_<6>, int_<5>>;

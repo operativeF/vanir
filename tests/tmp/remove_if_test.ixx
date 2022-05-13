@@ -5,10 +5,13 @@
 //  See accompanying file LICENSE_1_0.txt or copy at
 //  http://www.boost.org/LICENSE_1_0.txt
 
-#include <boost/tmp.hpp>
-#include "test_util.hpp"
+export module Boost.TMP.Test.RemoveIf;
 
-namespace remove_if_test {
+import Boost.TMP;
+
+using namespace boost::tmp;
+
+export namespace remove_if_test {
 	template <typename T>
 	using is_even = bool_<(T::value % 2 == 0)>;
 
