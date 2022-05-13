@@ -64,16 +64,9 @@ def loadUnitWorkbook():
         }
         SI_Base_Units_dict[unit_name] = unit_
 
-def generateIfDef(unit_name):
-    unit_name_upper = unit_name.upper()
-    return \
-        f"#ifndef POTATO_UNITS_{unit_name_upper}_HPP_INCLUDED\n" \
-        f"#define POTATO_UNITS_{unit_name_upper}_HPP_INCLUDED\n" \
-        f"\n"
-
 def generateHeader(author_name):
     return \
-        f"//  Copyright 2019 {author_name}.\n" \
+        f"//  Copyright 2019-2022 {author_name}.\n" \
         f"//\n" \
         f"//  Distributed under the Boost Software License, Version 1.0.\n" \
         f"//\n" \
@@ -81,19 +74,20 @@ def generateHeader(author_name):
         f"//  http://www.boost.org/LICENSE_1_0.txt\n" \
         f"\n"
 
-def generateUnitIncludeFiles():
+def generateUnitModuleFiles(unit_name):
     return \
-        f"#include <ratio>\n" \
+        f"export module Boost.TMP.Units.Unit.{unit_name.title()};\n\n" \
+        f"import Boost.TMP;\n" \
+        f"import Boost.TMP.Units.Engine.Base;\n" \
+        F"import Boost.TMP.Units.BaseUnit;\n" \
         f"\n" \
-        f"#include <boost/tmp/vocabulary.hpp>\n" \
-        f"#include <potato/engine/base.hpp>\n" \
+        f"import std.core;\n" \
         f"\n"
 
 def generateUnitBeginNamespace():
     return \
-        f"namespace potato {{\n" \
-        f"{' ':>4}namespace units {{\n" \
-        f"{' ':>8}using namespace boost::tmp;\n" \
+        f"export namespace potato::units {{\n" \
+        f"{' ':>4}using namespace boost::tmp;\n" \
         f"\n"
 
 def generateUnitStruct(unit_name, pretty, impl_numer, impl_denom):
@@ -105,37 +99,31 @@ def generateUnitStruct(unit_name, pretty, impl_numer, impl_denom):
         pretty = "N/A"
     
     return \
-        f"{' ':>8}template <typename T, typename P>\n" \
-        f"{' ':>8}struct {unit_name}_impl {{\n" \
-        f"{' ':>12}// Deduce value to determine correct stored value.\n" \
-        f"{' ':>12}using DV = call_<if_<is_<unsigned long long>, always_<long long>, always_<P>>, P>;\n" \
+        f"{' ':>4}template <typename RatioTypeT, typename P>\n" \
+        f"{' ':>4}struct {unit_name}_impl : base_unit_<RatioTypeT, P> {{\n" \
         f"\n" \
-        f"{' ':>12}constexpr {unit_name}_impl<T, P>() : value(0) {{}}\n" \
-        f"{' ':>12}constexpr {unit_name}_impl<T, P>(DV val) : value(val) {{}}\n" \
+        f"{' ':>8}using base_unit_<RatioTypeT, P>::base_unit_;\n" \
+        f"{' ':>8}template <typename U, typename R>\n" \
+        f"{' ':>8}constexpr const {unit_name}_impl<RatioTypeT, P>(const {unit_name}_impl<U, R>& other) {{\n" \
+        f"{' ':>12}using scale_greater = call_<if_<lift_<std::ratio_greater>,\n" \
+        f"{' ':>16}always_<std::ratio_divide<U, RatioTypeT>>,\n" \
+        f"{' ':>16}always_<unity_ratio>>,\n" \
+        f"{' ':>16}RatioTypeT, U>;\n" \
+        f"{' ':>12}using scale_lesser = call_<if_<lift_<std::ratio_less>,\n" \
+        f"{' ':>16}always_<std::ratio_divide<RatioTypeT, U>>,\n" \
+        f"{' ':>16}always_<unity_ratio>>,\n" \
+        f"{' ':>16}RatioTypeT, U>;\n" \
+        f"{' ':>12}this->value = (other.value * scale_greater::num * scale_lesser::den) / (scale_greater::den * scale_lesser::num);\n" \
+        f"{' ':>8}}}\n" \
         f"\n" \
-        f"{' ':>12}template <typename U, typename R>\n" \
-        f"{' ':>12}constexpr const {unit_name}_impl<T, P>(const {unit_name}_impl<U, R>& other) {{\n" \
-        f"{' ':>16}using scale_greater = call_<if_<lift_<std::ratio_greater>,\n" \
-        f"{' ':>20}always_<std::ratio_divide<U, T>>,\n" \
-        f"{' ':>20}always_<unity_ratio>>,\n" \
-        f"{' ':>20}T, U>;\n" \
-        f"{' ':>16}using scale_lesser = call_<if_<lift_<std::ratio_less>,\n" \
-        f"{' ':>20}always_<std::ratio_divide<T, U>>,\n" \
-        f"{' ':>20}always_<unity_ratio>>,\n" \
-        f"{' ':>20}T, U>;\n" \
-        f"{' ':>16}value = (other.value * scale_greater::num * scale_lesser::den) / (scale_greater::den * scale_lesser::num);\n" \
-        f"{' ':>12}}}\n" \
+        f"{' ':>8}static constexpr auto pretty = \"{pretty}\";\n" \
         f"\n" \
-        f"{' ':>12}DV value = 0;\n" \
+        f"{' ':>8}using is_any_impl = false_;\n" \
         f"\n" \
-        f"{' ':>12}static constexpr auto pretty = \"{pretty}\";\n" \
-        f"\n" \
-        f"{' ':>12}using is_any_impl = false_;\n" \
-        f"\n" \
-        f"{' ':>12}using mod_ratio = T;\n" \
-        f"{' ':>12}using numer_type = DV;\n" \
-        f"{' ':>12}using impl      = list_<list_<{impl_numer}>, list_<{impl_denom}>>;\n" \
-        f"{' ':>8}}};\n" \
+        f"{' ':>8}using mod_ratio = RatioTypeT;\n" \
+        f"{' ':>8}using numer_type = base_unit_<RatioTypeT, P>::value_type;\n" \
+        f"{' ':>8}using impl      = list_<list_<{impl_numer}>, list_<{impl_denom}>>;\n" \
+        f"{' ':>4}}};\n" \
         f"\n"
 
 def generatePrefixedUnit(unit_name, unit_prefix, unit_suffix, unit_numerical_type):
@@ -165,7 +153,7 @@ def generatePrefixedUnit(unit_name, unit_prefix, unit_suffix, unit_numerical_typ
     else:
         unit_pre = f"{unit_prefix}{unit_name}"
     return \
-        f"{' ':>8}using {unit_pre}{unit_suffix} {'=':^8} {unit_name}_impl<{unit_prefix_type_}, {unit_numerical_type}>;\n"
+        f"{' ':>4}using {unit_pre}{unit_suffix} {'=':^8} {unit_name}_impl<{unit_prefix_type_}, {unit_numerical_type}>;\n"
 
 def generateUnitOperator(unit_name, unit_prefix, unit_suffix, unit_numerical_type, unit_prefix_symbol, unit_symbol):
     if unit_prefix is None:
@@ -203,24 +191,18 @@ def generateUnitOperator(unit_name, unit_prefix, unit_suffix, unit_numerical_typ
         unit_name = f"{unit_prefix}{unit_name}"
         unit_symbol_mod = f"{unit_prefix_symbol}{unit_symbol}"
     return \
-        f"{' ':>8}constexpr {unit_name}{unit_suffix} operator\"\"_{unit_symbol_mod}({unit_numerical_type} val) {{\n" \
-        f"{' ':>12}return static_cast<{unit_name}{unit_suffix}>(val);\n" \
-        f"{' ':>8}}}\n"
+        f"{' ':>4}constexpr {unit_name}{unit_suffix} operator\"\"_{unit_symbol_mod}({unit_numerical_type} val) {{\n" \
+        f"{' ':>8}return static_cast<{unit_name}{unit_suffix}>(val);\n" \
+        f"{' ':>4}}}\n"
 
 def generateUnitEndNamespace():
     return \
-        f"{' ':>4}}} // namespace units\n" \
-        f"}} // namespace potato\n\n"
-
-def generateEndIf(unit_name):
-    unit_name_upper = unit_name.upper()
-    return f"#endif // POTATO_UNITS_{unit_name_upper}_HPP_INCLUDED"
+        f"}} // namespace potato::units\n"
 
 def generateUnitFile(unit_name, unit_type, unit_symbol="", pretty="", impl_numer="", impl_denom=""):
-    with open(f"{unit_type}.hpp", "w", encoding="utf8") as file:
-        file.write(generateIfDef(unit_type))
+    with open(f"{unit_type}.ixx", "w", encoding="utf8") as file:
         file.write(generateHeader("Thomas Figueroa")) # For now.
-        file.write(generateUnitIncludeFiles())
+        file.write(generateUnitModuleFiles(unit_name))
         file.write(generateUnitBeginNamespace())
         file.write(generateUnitStruct(unit_name, pretty, impl_numer, impl_denom))
         for prefix_, vals in prefixes_dict.items():
@@ -234,29 +216,29 @@ def generateUnitFile(unit_name, unit_type, unit_symbol="", pretty="", impl_numer
             file.write(generateUnitOperator(unit_name, prefix_, "_ull", "unsigned long long", vals['Symbol'], unit_symbol))
         file.write('\n')
         file.write(generateUnitEndNamespace())
-        file.write(generateEndIf(unit_name))
 
 def generateDispatcherIncludeFiles():
     return \
-        f"#include <ratio>\n" \
         f"\n" \
-        f"#include <boost/tmp/vocabulary.hpp>\n" \
+        f"export module Boost.TMP.Units.Engine.TypeDispatcher;\n\n" \
+        f"import Boost.TMP;\n" \
         f"\n" \
-        f"#include <potato/forward_types.hpp>\n" \
-        f"#include <potato/engine/base.hpp>\n" \
+        f"import Boost.TMP.Units;\n" \
+        f"import Boost.TMP.Units.Base;\n" \
+        f"\n" \
+        f"import std.core;\n" \
         f"\n"
 
 def generateDispatcherBeginNamespace():
     return \
-        f"namespace potato {{\n" \
-        f"{' ':>4}namespace units {{\n" \
-        f"{' ':>8}using namespace boost::tmp;\n" \
+        f"export namespace potato::units {{\n" \
+        f"{' ':>4}using namespace boost::tmp;\n" \
         f"\n"
 
 def generateDispatcherMainStruct():
     return \
-        f"{' ':>8}template <typename L, typename... Ls>\n" \
-        f"{' ':>8}struct dispatcher;\n" \
+        f"{' ':>4}template <typename L, typename... Ls>\n" \
+        f"{' ':>4}struct dispatcher;\n" \
         f"\n"
 
 # TODO: Multiple types for the same basic type (length: imperial, SI)
@@ -267,42 +249,41 @@ def generateDispatcherStruct(unit_name, unit_type, unit_symbol="", pretty="", im
         impl_denom = ""
     
     return \
-        f"{' ':>8}// {unit_type}\n" \
-        f"{' ':>8}template <>\n" \
-        f"{' ':>8}struct dispatcher<list_<list_<{impl_numer}>, list_<{impl_denom}>>> {{\n" \
-        f"{' ':>12}template <typename T, typename P>\n" \
-        f"{' ':>12}using f = {unit_name}_impl<T, P>;\n" \
-        f"{' ':>8}}};\n" \
+        f"{' ':>4}// {unit_type}\n" \
+        f"{' ':>4}template <>\n" \
+        f"{' ':>4}struct dispatcher<list_<list_<{impl_numer}>, list_<{impl_denom}>>> {{\n" \
+        f"{' ':>8}template <typename T, typename P>\n" \
+        f"{' ':>8}using f = {unit_name}_impl<T, P>;\n" \
+        f"{' ':>4}}};\n" \
         f"\n"
 
 def generateUnitlessStruct():
     return \
-        f"{' ':>8}// Unitless\n" \
-		f"{' ':>8}template <>\n" \
-		f"{' ':>8}struct dispatcher<list_<list_<>, list_<>>> {{\n" \
-		f"{' ':>12}template <typename T, typename P>\n" \
-		f"{' ':>12}using f = P;\n" \
-		f"{' ':>8}}};\n" \
+        f"{' ':>4}// Unitless\n" \
+		f"{' ':>4}template <>\n" \
+		f"{' ':>4}struct dispatcher<list_<list_<>, list_<>>> {{\n" \
+		f"{' ':>8}template <typename T, typename P>\n" \
+		f"{' ':>8}using f = P;\n" \
+		f"{' ':>4}}};\n" \
         f"\n"
 
 def generateAnythingStructs():
     return \
-        f"{' ':>8}template <typename Anything>\n" \
-        f"{' ':>8}struct dispatcher<Anything> {{\n" \
-        f"{' ':>12}template <typename T, typename P>\n" \
-        f"{' ':>12}using f = anything_impl<T, P, Anything>;\n" \
-        f"{' ':>8}}};\n" \
+        f"{' ':>4}template <typename Anything>\n" \
+        f"{' ':>4}struct dispatcher<Anything> {{\n" \
+        f"{' ':>8}template <typename T, typename P>\n" \
+        f"{' ':>8}using f = anything_impl<T, P, Anything>;\n" \
+        f"{' ':>4}}};\n" \
         f"\n" \
-        f"{' ':>8}template <typename Anything>\n" \
-        f"{' ':>8}struct dispatcher<list_<Anything>> {{\n" \
-        f"{' ':>12}template <typename T, typename P>\n" \
-        f"{' ':>12}using f = anything_impl<T, P, Anything>;\n" \
-        f"{' ':>8}}};\n" \
+        f"{' ':>4}template <typename Anything>\n" \
+        f"{' ':>4}struct dispatcher<list_<Anything>> {{\n" \
+        f"{' ':>8}template <typename T, typename P>\n" \
+        f"{' ':>8}using f = anything_impl<T, P, Anything>;\n" \
+        f"{' ':>4}}};\n" \
         f"\n"
 
 def generateTypeDispatcher():
-    with open(f"type_dispatcher.hpp", "w", encoding="utf8") as file:
-        file.write(generateIfDef("DISPATCHER"))
+    with open(f"type_dispatcher.ixx", "w", encoding="utf8") as file:
         file.write(generateHeader("Thomas Figueroa"))
         file.write(generateDispatcherIncludeFiles())
         file.write(generateDispatcherBeginNamespace())
@@ -314,42 +295,35 @@ def generateTypeDispatcher():
             file.write(generateDispatcherStruct(*vals.values()))
         file.write(generateAnythingStructs())
         file.write(generateUnitEndNamespace())
-        file.write(generateEndIf("DISPATCHER"))
 
-def generateForwardType(unit_name, unit_type, unit_symbol="", pretty="", impl_numer="", impl_denom=""):
+def generateUnitModuleImport(unit_name, unit_type, unit_symbol="", pretty="", impl_numer="", impl_denom=""):
     return \
-        f"{' ':>8}template <typename T, typename P>\n" \
-        f"{' ':>8}struct {unit_name}_impl;\n" \
-        f"\n"
+        f"export import Boost.TMP.Units.Unit.{unit_name.title()};\n"
 
 def generateAnythingImplType():
     return \
-        f"{' ':>8}template <typename T, typename P, typename Impl>\n" \
-        f"{' ':>8}struct anything_impl;\n" \
+        f"{' ':>4}template <typename T, typename P, typename Impl>\n" \
+        f"{' ':>4}struct anything_impl;\n" \
         f"\n"
 
-def generateForwardTypes():
-    with open(f"forward_types.hpp", "w", encoding="utf8") as file:
-        file.write(generateIfDef("FORWARD_TYPES"))
+def generateAllUnitsModule():
+    with open(f"tmp_all_units.ixx", "w", encoding="utf8") as file:
         file.write(generateHeader("Thomas Figueroa"))
-        file.write(generateDispatcherBeginNamespace())
+        file.write(f"export module Boost.TMP.Units;\n\n")
         for keys, vals in SI_Base_Units_dict.items():
-            file.write(generateForwardType(*vals.values()))
+            file.write(generateUnitModuleImport(*vals.values()))
         for keys, vals in SI_Derived_Units_dict.items():
-            file.write(generateForwardType(*vals.values()))
-        file.write(generateAnythingImplType())
-        file.write(generateUnitEndNamespace())
-        file.write(generateEndIf("FORWARD_TYPES"))
+            file.write(generateUnitModuleImport(*vals.values()))
 
 loadUnitWorkbook()
 
-pathlib.Path('../include/potato/units/SI/base').mkdir(parents=True, exist_ok=True)
-pathlib.Path('../include/potato/units/SI/derived').mkdir(parents=True, exist_ok=True)
-pathlib.Path('../include/potato/engine').mkdir(parents=True, exist_ok=True)
+pathlib.Path('../units/SI/base').mkdir(parents=True, exist_ok=True)
+pathlib.Path('../units/SI/derived').mkdir(parents=True, exist_ok=True)
+pathlib.Path('../engine').mkdir(parents=True, exist_ok=True)
 
-si_base_path = pathlib.Path('../include/potato/units/SI/base')
-si_derived_path = pathlib.Path('../include/potato/units/SI/derived')
-units_engine = pathlib.Path('../include/potato/engine')
+si_base_path = pathlib.Path('../units/SI/base')
+si_derived_path = pathlib.Path('../units/SI/derived')
+units_engine = pathlib.Path('../engine')
 generator_directory = os.getcwd()
 
 # change to SI base directory
@@ -367,4 +341,4 @@ os.chdir(generator_directory)
 # change to engine directory
 os.chdir(units_engine)
 generateTypeDispatcher()
-generateForwardTypes()
+generateAllUnitsModule()

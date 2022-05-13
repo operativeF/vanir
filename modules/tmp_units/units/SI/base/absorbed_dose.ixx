@@ -5,44 +5,40 @@
 //  See accompanying file LICENSE_1_0.txt or copy an
 //  http://www.boost.org/LICENSE_1_0.txt
 
-export module Boost.TMP.Units.Unit.AbsorbedDose;
+export module Boost.TMP.Units.Unit.Gray;
 
 import Boost.TMP;
-import Boost.TMP.Units.Base;
+import Boost.TMP.Units.Engine.Base;
+import Boost.TMP.Units.BaseUnit;
 
 import std.core;
 
-namespace potato::units {
+export namespace potato::units {
     using namespace boost::tmp;
 
-    template <typename T, typename P>
-    struct gray_impl {
-        // Deduce value to determine correct stored value.
-        using DV = call_<if_<is_<unsigned long long>, always_<long long>, always_<P>>, P>;
+    template <typename RatioTypeT, typename P>
+    struct gray_impl : base_unit_<RatioTypeT, P> {
 
-        constexpr gray_impl<T, P>() : value(0) {}
-        constexpr gray_impl<T, P>(DV val) : value(val) {}
-
+        using base_unit_<RatioTypeT, P>::base_unit_;
         template <typename U, typename R>
-        constexpr const gray_impl<T, P>(const gray_impl<U, R>& other) {
+        constexpr const gray_impl<RatioTypeT, P>(const gray_impl<U, R>& other) {
             using scale_greater = call_<if_<lift_<std::ratio_greater>,
-                always_<std::ratio_divide<U, T>>,
+                always_<std::ratio_divide<U, RatioTypeT>>,
                 always_<unity_ratio>>,
-                T, U>;
+                RatioTypeT, U>;
             using scale_lesser = call_<if_<lift_<std::ratio_less>,
-                always_<std::ratio_divide<T, U>>,
+                always_<std::ratio_divide<RatioTypeT, U>>,
                 always_<unity_ratio>>,
-                T, U>;
-            value = (other.value * scale_greater::num * scale_lesser::den) / (scale_greater::den * scale_lesser::num);
+                RatioTypeT, U>;
+            this->value = (other.value * scale_greater::num * scale_lesser::den) / (scale_greater::den * scale_lesser::num);
         }
-
-        DV value = 0;
 
         static constexpr auto pretty = "Gy";
 
         using is_any_impl = false_;
 
-        using mod_ratio = T;
+        using mod_ratio = RatioTypeT;
+        using numer_type = base_unit_<RatioTypeT, P>::value_type;
         using impl      = list_<list_<meter_l, meter_l>, list_<second_l, second_l>>;
     };
 
@@ -183,4 +179,5 @@ namespace potato::units {
     constexpr attogray_ull operator""_aGy(unsigned long long val) {
         return static_cast<attogray_ull>(val);
     }
+
 } // namespace potato::units
