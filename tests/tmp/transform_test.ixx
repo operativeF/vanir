@@ -1,14 +1,17 @@
 //  Copyright 2018-2019 Odin Holmes.
-//
+//            2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
 //  http://www.boost.org/LICENSE_1_0.txt
 
-#include <boost/tmp.hpp>
-#include "test_util.hpp"
+export module Boost.TMP.Test.Transform;
 
-namespace transform_test {
+import Boost.TMP;
+
+using namespace boost::tmp;
+
+export namespace transform_test {
 	int run() {
 		// using rhs = make_sequence_<identity_, transform_<listify_>>;
 		// using lhs = make_sequence_<listify_>;

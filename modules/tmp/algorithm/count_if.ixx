@@ -25,7 +25,7 @@ import std.core;
 #endif
 
 /// \brief Given a predicate F, check the variadic parameter pack passed in and count
-/// each time that the predicate holds true. Returns n counts as uint_<n>.
+/// each time that the predicate holds true. Returns n counts as sizet_<n>.
 /// \example
 ///
 export namespace boost::tmp {

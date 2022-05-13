@@ -5,17 +5,7 @@
 //  See accompanying file LICENSE_1_0.txt or copy at
 //  http://www.boost.org/LICENSE_1_0.txt
 
-import Boost.TMP.Units;
-import Boost.TMP.Units.Engine.Evaluators;
-import Boost.TMP.Units.Engine.Conversions;
-import Boost.TMP.Units.Engine.Operators;
-import Boost.TMP.Units.Engine.TypeDispatcher;
-import Boost.TMP.Units.Engine.Base;
-
-import std.core;
-
 import Nil.MetaTest;
-
 import fmt;
 
 namespace ut = boost::ut;

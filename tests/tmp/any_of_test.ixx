@@ -1,19 +1,18 @@
-#ifndef BOOST_TMP_ANY_OF_TEST_HPP_INCLUDED
-#define BOOST_TMP_ANY_OF_TEST_HPP_INCLUDED
-
 //  Copyright 2018-2019 Odin Holmes.
-//						Thomas Figueroa.
+//			  2022 Thomas Figueroa.
 //
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
 //  http://www.boost.org/LICENSE_1_0.txt
 
-#include <boost/tmp.hpp>
-#include "test_util.hpp"
+export module Boost.TMP.Test.AnyOf;
 
-namespace any_of_test {
-	
+import Boost.TMP;
+
+using namespace boost::tmp;
+
+export namespace any_of_test {
     template <typename T>
 	using is_even = bool_<(T::value % 2 == 0)>;
 
@@ -44,5 +43,3 @@ namespace any_of_test {
         return 0;
 	}
 } // namespace any_of_test
-
-#endif

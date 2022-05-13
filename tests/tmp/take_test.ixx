@@ -1,14 +1,17 @@
 //  Copyright 2018-2019 Odin Holmes.
-//
+//            2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
 //  http://www.boost.org/LICENSE_1_0.txt
 
-#include <boost/tmp.hpp>
-#include "test_util.hpp"
+export module Boost.TMP.Test.Take;
 
-namespace take_test {
+import Boost.TMP;
+
+using namespace boost::tmp;
+
+export namespace take_test {
 	template <int>
 	struct x;
 
@@ -19,7 +22,6 @@ namespace take_test {
 	using result2 = call_<unpack_<take_<uint_<9>>>, xs0>;
 
 	int run() {
-
 		return 0;
 	}
 } // namespace take_test

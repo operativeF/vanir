@@ -26,4 +26,12 @@ export namespace potato::units {
         struct steradian_l  : boost::tmp::uint_<9> {};
         struct decay_l      : boost::tmp::uint_<10> {}; // For use with becquerels to disambiguate from hertz.
         struct dummy	    : boost::tmp::uint_<11> {};
+
+        template<typename T>
+        concept Unitable = requires
+        {
+            T::value_type;
+            T::impl;
+            requires std::integral<typename T::value_type> || std::floating_point<typename T::value_type>;
+        };
 } // namespace potato::units

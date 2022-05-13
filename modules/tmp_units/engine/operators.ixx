@@ -55,13 +55,13 @@ export namespace potato::units {
 				>, T, U>;
 	} // namespace detail
 
-	template <typename T>
-	constexpr auto operator+(const T& aVal, const T& bVal) -> try_type_lookup<add_type<T, T>>{
+	template<Unitable T>
+	constexpr auto operator+(T&& aVal, T&& bVal) -> try_type_lookup<add_type<T, T>>{
 		return aVal.value + bVal.value;
 	}
 	
 	// TODO: This is valid only for long double, must be specialized for integers.
-	template <typename T, typename U>
+	template <Unitable T, Unitable U>
 	constexpr auto operator+(const T& aVal, const U& bVal) -> try_type_lookup<add_type<T, U>> {
 		using aVal_scale = tmp::call_<
 			tmp::if_<tmp::lift_<std::ratio_greater>,
@@ -89,12 +89,12 @@ export namespace potato::units {
 	//     return ((aScale::num * aVal.value) / aScale::den) + ((bScale::num * bVal.value) / bScale::den);
 	// }
 
-	template <typename T>
+	template <Unitable T>
 	constexpr T operator-(const T& aVal, const T& bVal) {
 		return aVal.value - bVal.value;
 	}
 
-	template <typename T, typename U>
+	template <Unitable T, Unitable U>
 	constexpr auto operator-(const T& aVal, const U& bVal) -> try_type_lookup<U> {
 		using aVal_scale = tmp::call_<
 			tmp::if_<tmp::lift_<std::ratio_greater>,
@@ -119,9 +119,8 @@ export namespace potato::units {
 		return -aVal.value;
 	}
 
-	template <typename T, typename U>
-	constexpr auto operator*(const T& aVal, const U& bVal)
-			-> try_type_lookup<multi_type<T, U>> {
+	template <Unitable T, Unitable U>
+	constexpr auto operator*(const T& aVal, const U& bVal) -> try_type_lookup<multi_type<T, U>> {
 		using unitless_multiply = tmp::call_<
 				tmp::if_<tmp::is_<long double>,
 					tmp::always_<std::ratio_multiply<typename T::mod_ratio, typename U::mod_ratio>>,
@@ -160,7 +159,7 @@ export namespace potato::units {
 		return aVal / bVal.value;
 	}
 
-	template <typename T, typename U> requires(std::same_as<typename T::impl, typename U::impl>)
+	template <typename T, typename U>
 	constexpr bool operator==(const T& aVal, const U& bVal) {
 		// Check if both have same underlying type
 		// TODO: Normalize to unit that would increase dynamic range

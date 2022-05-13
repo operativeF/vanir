@@ -28,7 +28,7 @@ import Boost.TMP.Sequence.Unpack;
 
 export namespace boost::tmp {
 	template <typename T>
-	using is_empty = call_<unpack_<size_<is_<uint_<0>>>>, T>;
+	using is_empty = call_<unpack_<size_<is_<sizet_<0>>>>, T>;
 
 	namespace detail {
 		template <typename T, typename U>

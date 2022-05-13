@@ -1,16 +1,20 @@
 //  Copyright 2018-2019 Odin Holmes.
-//						Thomas Figueroa.
+//			  2022 Thomas Figueroa.
 //
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
 //  http://www.boost.org/LICENSE_1_0.txt
 
-#include <boost/tmp.hpp>
-#include <boost/tmp_units/composite.hpp>
-#include "test_util.hpp"
+export module Boost.TMP.Test.AllOf;
 
-namespace all_of_test {
+import Boost.TMP;
+
+import std.core;
+
+using namespace boost::tmp;
+
+export namespace all_of_test {
     template <typename T>
 	using is_even = bool_<(T::value % 2 == 0)>;
 
@@ -23,8 +27,6 @@ namespace all_of_test {
 	using list_A = list_<list_<uint_<1>>, list_<uint_<2>>>;
 	using list_B = list_<list_<uint_<3>>, list_<uint_<4>>>;
 	using list_C = list_<uint_<2>, uint_<2>, uint_<2>, uint_<1>>;
-
-	using new_list = call_<divide_units_<>, list_A, list_B>;
 
 	using aalist = list_<uint_<1>, uint_<2>, uint_<3>, uint_<9>>;
 	using bblist = list_<uint_<2>, uint_<1>, uint_<7>, uint_<4>, uint_<3>>;
