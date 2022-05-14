@@ -179,11 +179,13 @@ set(TMP_UNITS_ENGINE_IXX
     ${TMP_UNITS_DIR}/engine/evaluators.ixx
     ${TMP_UNITS_DIR}/engine/operators.ixx
     ${TMP_UNITS_DIR}/engine/type_dispatcher.ixx
-    ${TMP_UNITS_DIR}/engine/tmp_all_units.ixx
+    ${TMP_UNITS_DIR}/engine/engine_tmp.ixx
 )
 
 set(TMP_UNITS_ANY_IXX
     ${TMP_UNITS_DIR}/units/anything.ixx
+    ${TMP_UNITS_DIR}/units/tmp_all_units.ixx
+    ${TMP_UNITS_DIR}/tmp_units.ixx
 )
 
 set(TMP_UNITS_BASE_SI_IXX

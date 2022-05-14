@@ -5,7 +5,7 @@
 //  See accompanying file LICENSE_1_0.txt or copy an
 //  http://www.boost.org/LICENSE_1_0.txt
 
-export module Boost.TMP.Units;
+export module Boost.TMP.Units.AllUnits;
 
 export import Boost.TMP.Units.Unit.Gray;
 export import Boost.TMP.Units.Unit.Mole;
