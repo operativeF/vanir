@@ -12,8 +12,13 @@ import Boost.TMP.Units.Engine.Base;
 
 import std.core;
 
+namespace tmp = boost::tmp;
 export namespace potato::units {
-    namespace tmp = boost::tmp;
+
+    using newton_meter_second_per_kilogram_tag_t = tmp::list_<tmp::list_<meter_l, meter_l>, tmp::list_<second_l>>;
+
+    template<typename T>
+    concept Newton_Meter_Second_Per_KilogramC = std::same_as<typename T::impl, newton_meter_second_per_kilogram_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct newton_meter_second_per_kilogram_impl {
@@ -28,7 +33,7 @@ export namespace potato::units {
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
         using numer_type = DerivedValueType;
-        using impl       = tmp::list_<tmp::list_<meter_l, meter_l>, tmp::list_<second_l>>;
+        using impl       = newton_meter_second_per_kilogram_tag_t;
 
         constexpr newton_meter_second_per_kilogram_impl(value_type val) : value{val} {}
 

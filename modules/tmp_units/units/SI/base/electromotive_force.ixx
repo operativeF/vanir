@@ -12,8 +12,13 @@ import Boost.TMP.Units.Engine.Base;
 
 import std.core;
 
+namespace tmp = boost::tmp;
 export namespace potato::units {
-    namespace tmp = boost::tmp;
+
+    using volt_tag_t = tmp::list_<tmp::list_<meter_l, meter_l, gram_l>, tmp::list_<second_l, second_l, second_l, ampere_l>>;
+
+    template<typename T>
+    concept VoltC = std::same_as<typename T::impl, volt_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct volt_impl {
@@ -28,7 +33,7 @@ export namespace potato::units {
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
         using numer_type = DerivedValueType;
-        using impl       = tmp::list_<tmp::list_<meter_l, meter_l, gram_l>, tmp::list_<second_l, second_l, second_l, ampere_l>>;
+        using impl       = volt_tag_t;
 
         constexpr volt_impl(value_type val) : value{val} {}
 

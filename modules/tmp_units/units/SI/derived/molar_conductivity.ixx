@@ -12,8 +12,13 @@ import Boost.TMP.Units.Engine.Base;
 
 import std.core;
 
+namespace tmp = boost::tmp;
 export namespace potato::units {
-    namespace tmp = boost::tmp;
+
+    using siemens_square_meter_per_mole_tag_t = tmp::list_<tmp::list_<second_l, second_l, second_l, ampere_l, ampere_l>, tmp::list_<gram_l, mole_l>>;
+
+    template<typename T>
+    concept Siemens_Square_Meter_Per_MoleC = std::same_as<typename T::impl, siemens_square_meter_per_mole_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct siemens_square_meter_per_mole_impl {
@@ -28,7 +33,7 @@ export namespace potato::units {
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
         using numer_type = DerivedValueType;
-        using impl       = tmp::list_<tmp::list_<second_l, second_l, second_l, ampere_l, ampere_l>, tmp::list_<gram_l, mole_l>>;
+        using impl       = siemens_square_meter_per_mole_tag_t;
 
         constexpr siemens_square_meter_per_mole_impl(value_type val) : value{val} {}
 

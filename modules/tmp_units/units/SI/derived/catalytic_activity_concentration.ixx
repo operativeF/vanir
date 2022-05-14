@@ -12,8 +12,13 @@ import Boost.TMP.Units.Engine.Base;
 
 import std.core;
 
+namespace tmp = boost::tmp;
 export namespace potato::units {
-    namespace tmp = boost::tmp;
+
+    using katal_per_cubic_meter_tag_t = tmp::list_<tmp::list_<mole_l>, tmp::list_<meter_l, meter_l, meter_l, second_l>>;
+
+    template<typename T>
+    concept Katal_Per_Cubic_MeterC = std::same_as<typename T::impl, katal_per_cubic_meter_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct katal_per_cubic_meter_impl {
@@ -28,7 +33,7 @@ export namespace potato::units {
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
         using numer_type = DerivedValueType;
-        using impl       = tmp::list_<tmp::list_<mole_l>, tmp::list_<meter_l, meter_l, meter_l, second_l>>;
+        using impl       = katal_per_cubic_meter_tag_t;
 
         constexpr katal_per_cubic_meter_impl(value_type val) : value{val} {}
 

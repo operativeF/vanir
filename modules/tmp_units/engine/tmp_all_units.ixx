@@ -7,8 +7,6 @@
 
 export module Boost.TMP.Units;
 
-export import Boost.TMP.Units.Anything;
-
 export import Boost.TMP.Units.Unit.Gray;
 export import Boost.TMP.Units.Unit.Mole;
 export import Boost.TMP.Units.Unit.Farad;

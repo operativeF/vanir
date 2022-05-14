@@ -83,10 +83,20 @@ def generateUnitModuleFiles(unit_name):
         f"import std.core;\n" \
         f"\n"
 
-def generateUnitBeginNamespace():
+def generateUnitBeginNamespace(unit_type, impl_numer, impl_denom):
+    if impl_numer is None:
+        impl_numer = ""
+    if impl_denom is None:
+        impl_denom = ""
+
     return \
+        f"namespace tmp = boost::tmp;\n" \
         f"export namespace potato::units {{\n" \
-        f"{' ':>4}namespace tmp = boost::tmp;\n" \
+        f"\n" \
+        f"{' ':>4}using {unit_type}_tag_t = tmp::list_<tmp::list_<{impl_numer}>, tmp::list_<{impl_denom}>>;\n" \
+        f"\n" \
+        f"{' ':>4}template<typename T>\n" \
+        f"{' ':>4}concept {unit_type.title()}C = std::same_as<typename T::impl, {unit_type}_tag_t>;\n" \
         f"\n"
 
 def generateUnitStruct(unit_name, pretty, impl_numer, impl_denom):
@@ -110,7 +120,7 @@ def generateUnitStruct(unit_name, pretty, impl_numer, impl_denom):
         f"{' ':>8}using mod_ratio  = RatioTypeT;\n" \
         f"{' ':>8}using value_type = DerivedValueType;\n" \
         f"{' ':>8}using numer_type = DerivedValueType;\n" \
-        f"{' ':>8}using impl       = tmp::list_<tmp::list_<{impl_numer}>, tmp::list_<{impl_denom}>>;\n" \
+        f"{' ':>8}using impl       = {unit_name}_tag_t;\n" \
         f"\n" \
         f"{' ':>8}constexpr {unit_name}_impl(value_type val) : value{{val}} {{}}\n\n" \
         f"{' ':>8}using is_any_impl = tmp::false_;\n" \
@@ -196,7 +206,7 @@ def generateUnitFile(unit_name, unit_type, unit_symbol="", pretty="", impl_numer
     with open(f"{unit_type}.ixx", "w", encoding="utf8") as file:
         file.write(generateHeader("Thomas Figueroa")) # For now.
         file.write(generateUnitModuleFiles(unit_name))
-        file.write(generateUnitBeginNamespace())
+        file.write(generateUnitBeginNamespace(unit_name, impl_numer, impl_denom))
         file.write(generateUnitStruct(unit_name, pretty, impl_numer, impl_denom))
         for prefix_, vals in prefixes_dict.items():
             file.write(generatePrefixedUnit(unit_name, prefix_, "_ld", "long double"))
@@ -218,6 +228,7 @@ def generateDispatcherIncludeFiles():
         f"\n" \
         f"import Boost.TMP.Units;\n" \
         f"import Boost.TMP.Units.Engine.Base;\n" \
+        f"import Boost.TMP.Units.Anything;\n" \
         f"\n" \
         f"import std.core;\n" \
         f"\n"

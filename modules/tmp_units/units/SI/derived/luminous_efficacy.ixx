@@ -12,8 +12,13 @@ import Boost.TMP.Units.Engine.Base;
 
 import std.core;
 
+namespace tmp = boost::tmp;
 export namespace potato::units {
-    namespace tmp = boost::tmp;
+
+    using lumen_per_watt_tag_t = tmp::list_<tmp::list_<second_l, second_l, second_l, candela_l>, tmp::list_<meter_l, meter_l, gram_l>>;
+
+    template<typename T>
+    concept Lumen_Per_WattC = std::same_as<typename T::impl, lumen_per_watt_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct lumen_per_watt_impl {
@@ -28,7 +33,7 @@ export namespace potato::units {
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
         using numer_type = DerivedValueType;
-        using impl       = tmp::list_<tmp::list_<second_l, second_l, second_l, candela_l>, tmp::list_<meter_l, meter_l, gram_l>>;
+        using impl       = lumen_per_watt_tag_t;
 
         constexpr lumen_per_watt_impl(value_type val) : value{val} {}
 

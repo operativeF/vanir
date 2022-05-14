@@ -12,8 +12,13 @@ import Boost.TMP.Units.Engine.Base;
 
 import std.core;
 
+namespace tmp = boost::tmp;
 export namespace potato::units {
-    namespace tmp = boost::tmp;
+
+    using ampere_per_meter_tag_t = tmp::list_<tmp::list_<ampere_l>, tmp::list_<meter_l>>;
+
+    template<typename T>
+    concept Ampere_Per_MeterC = std::same_as<typename T::impl, ampere_per_meter_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct ampere_per_meter_impl {
@@ -28,7 +33,7 @@ export namespace potato::units {
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
         using numer_type = DerivedValueType;
-        using impl       = tmp::list_<tmp::list_<ampere_l>, tmp::list_<meter_l>>;
+        using impl       = ampere_per_meter_tag_t;
 
         constexpr ampere_per_meter_impl(value_type val) : value{val} {}
 

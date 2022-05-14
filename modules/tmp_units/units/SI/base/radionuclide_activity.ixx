@@ -12,8 +12,13 @@ import Boost.TMP.Units.Engine.Base;
 
 import std.core;
 
+namespace tmp = boost::tmp;
 export namespace potato::units {
-    namespace tmp = boost::tmp;
+
+    using becquerel_tag_t = tmp::list_<tmp::list_<>, tmp::list_<decay_l>>;
+
+    template<typename T>
+    concept BecquerelC = std::same_as<typename T::impl, becquerel_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct becquerel_impl {
@@ -28,7 +33,7 @@ export namespace potato::units {
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
         using numer_type = DerivedValueType;
-        using impl       = tmp::list_<tmp::list_<>, tmp::list_<decay_l>>;
+        using impl       = becquerel_tag_t;
 
         constexpr becquerel_impl(value_type val) : value{val} {}
 

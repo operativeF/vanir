@@ -12,8 +12,13 @@ import Boost.TMP.Units.Engine.Base;
 
 import std.core;
 
+namespace tmp = boost::tmp;
 export namespace potato::units {
-    namespace tmp = boost::tmp;
+
+    using joule_per_kilogram_kelvin_tag_t = tmp::list_<tmp::list_<meter_l, meter_l>, tmp::list_<second_l, second_l, kelvin_l>>;
+
+    template<typename T>
+    concept Joule_Per_Kilogram_KelvinC = std::same_as<typename T::impl, joule_per_kilogram_kelvin_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct joule_per_kilogram_kelvin_impl {
@@ -28,7 +33,7 @@ export namespace potato::units {
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
         using numer_type = DerivedValueType;
-        using impl       = tmp::list_<tmp::list_<meter_l, meter_l>, tmp::list_<second_l, second_l, kelvin_l>>;
+        using impl       = joule_per_kilogram_kelvin_tag_t;
 
         constexpr joule_per_kilogram_kelvin_impl(value_type val) : value{val} {}
 

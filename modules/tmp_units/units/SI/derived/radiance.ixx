@@ -12,8 +12,13 @@ import Boost.TMP.Units.Engine.Base;
 
 import std.core;
 
+namespace tmp = boost::tmp;
 export namespace potato::units {
-    namespace tmp = boost::tmp;
+
+    using watt_per_steradian_square_meter_tag_t = tmp::list_<tmp::list_<gram_l>, tmp::list_<second_l, second_l, second_l, steradian_l>>;
+
+    template<typename T>
+    concept Watt_Per_Steradian_Square_MeterC = std::same_as<typename T::impl, watt_per_steradian_square_meter_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct watt_per_steradian_square_meter_impl {
@@ -28,7 +33,7 @@ export namespace potato::units {
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
         using numer_type = DerivedValueType;
-        using impl       = tmp::list_<tmp::list_<gram_l>, tmp::list_<second_l, second_l, second_l, steradian_l>>;
+        using impl       = watt_per_steradian_square_meter_tag_t;
 
         constexpr watt_per_steradian_square_meter_impl(value_type val) : value{val} {}
 

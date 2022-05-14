@@ -10,24 +10,29 @@ export module Boost.TMP.Units.Anything;
 import Boost.TMP;
 import Boost.TMP.Units.Engine.Base;
 
+import std.core;
+
+namespace tmp = boost::tmp;
+
 export namespace potato::units {
-	template <typename T, typename P, typename Impl>
+	template <typename RatioTypeT, typename P, typename Impl>
 	struct anything_impl {
-		constexpr anything_impl<T, P, Impl>() : value(0) {
-		}
-		constexpr anything_impl<T, P, Impl>(P val) : value(val) {
-		}
 
-		template <typename E>
-		constexpr auto operator=(E expression) -> decltype(try_type_lookup<E>) {
-			return { expression.value };
-		}
+		using DerivedValueType = tmp::call_<
+            tmp::if_<tmp::is_<std::uint64_t>,
+                tmp::always_<std::int64_t>,
+                tmp::always_<long double>
+            >, P>;
 
-		P value;
+        using mod_ratio  = RatioTypeT;
+        using value_type = DerivedValueType;
+        using numer_type = DerivedValueType;
+
+		constexpr anything_impl(value_type val) : value{val} {}
+
+		value_type value;
 
 		using is_any_impl = boost::tmp::true_;
-
-		using mod_ratio = T;
 
 		using impl = Impl;
 	};

@@ -12,8 +12,13 @@ import Boost.TMP.Units.Engine.Base;
 
 import std.core;
 
+namespace tmp = boost::tmp;
 export namespace potato::units {
-    namespace tmp = boost::tmp;
+
+    using radian_tag_t = tmp::list_<tmp::list_<radian_l>, tmp::list_<>>;
+
+    template<typename T>
+    concept RadianC = std::same_as<typename T::impl, radian_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct radian_impl {
@@ -28,7 +33,7 @@ export namespace potato::units {
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
         using numer_type = DerivedValueType;
-        using impl       = tmp::list_<tmp::list_<radian_l>, tmp::list_<>>;
+        using impl       = radian_tag_t;
 
         constexpr radian_impl(value_type val) : value{val} {}
 

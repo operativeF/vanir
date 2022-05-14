@@ -12,8 +12,13 @@ import Boost.TMP.Units.Engine.Base;
 
 import std.core;
 
+namespace tmp = boost::tmp;
 export namespace potato::units {
-    namespace tmp = boost::tmp;
+
+    using coulomb_per_cubic_meter_tag_t = tmp::list_<tmp::list_<second_l, ampere_l>, tmp::list_<meter_l, meter_l, meter_l>>;
+
+    template<typename T>
+    concept Coulomb_Per_Cubic_MeterC = std::same_as<typename T::impl, coulomb_per_cubic_meter_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct coulomb_per_cubic_meter_impl {
@@ -28,7 +33,7 @@ export namespace potato::units {
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
         using numer_type = DerivedValueType;
-        using impl       = tmp::list_<tmp::list_<second_l, ampere_l>, tmp::list_<meter_l, meter_l, meter_l>>;
+        using impl       = coulomb_per_cubic_meter_tag_t;
 
         constexpr coulomb_per_cubic_meter_impl(value_type val) : value{val} {}
 
