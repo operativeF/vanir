@@ -7,8 +7,5 @@
 
 export module Boost.TMP.Units.Engine;
 
-export import Boost.TMP.Units.Engine.Base;
 export import Boost.TMP.Units.Engine.Conversions;
-export import Boost.TMP.Units.Engine.Evaluators;
 export import Boost.TMP.Units.Engine.Operators;
-export import Boost.TMP.Units.Engine.TypeDispatcher;
