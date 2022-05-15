@@ -32,7 +32,7 @@ namespace boost::tmp {
 
 		template <typename T>
 		using maybe_impl =
-			    typename maybe_test_impl<std::is_same<T, nothing_>::value>::template f<T>;
+			    typename maybe_test_impl<std::is_same_v<T, nothing_>>::template f<T>;
 
 		template <typename F, typename... Ts> // workaround for old clang
 		struct call_impl {
