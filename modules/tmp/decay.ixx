@@ -16,26 +16,26 @@ import std.core;
 #endif
 
 export namespace boost::tmp {
-		template <typename T, typename U = typename std::remove_reference_t<T>>
-		struct decay {
-			using type = std::remove_cv_t<U>;
-		};
+	template <typename T, typename U = typename std::remove_reference_t<T>>
+	struct decay {
+		using type = std::remove_cv_t<U>;
+	};
 
-		template <typename T, typename U>
-		struct decay<T, U[]> {
-			using type = U*;
-		};
-		template <typename T, typename U, std::size_t N>
-		struct decay<T, U[N]> {
-			using type = U*;
-		};
+	template <typename T, typename U>
+	struct decay<T, U[]> {
+		using type = U*;
+	};
+	template <typename T, typename U, std::size_t N>
+	struct decay<T, U[N]> {
+		using type = U*;
+	};
 
-		template <typename T, typename R, typename... A>
-		struct decay<T, R(A...)> {
-			using type = R(*)(A...);
-		};
-		template <typename T, typename R, typename... A>
-		struct decay<T, R(A..., ...)> {
-			using type = R(*)(A..., ...);
-		};
+	template <typename T, typename R, typename... A>
+	struct decay<T, R(A...)> {
+		using type = R(*)(A...);
+	};
+	template <typename T, typename R, typename... A>
+	struct decay<T, R(A..., ...)> {
+		using type = R(*)(A..., ...);
+	};
 } // export namespace boost::tmp

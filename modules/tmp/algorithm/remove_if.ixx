@@ -28,12 +28,13 @@ import std.core;
 
 /// \brief Given a predicate F, check the variadic parameter pack passed in
 /// and remove the value if the predicate holds true.
-export namespace boost::tmp {
-		template <typename F, typename C = listify_>
-		struct remove_if_ {};
-		namespace detail {
-			template <std::size_t N, typename F, typename C>
-			struct dispatch<N, remove_if_<F, C>>
-			    : dispatch<N, transform_<if_<F, always_<list_<>>, listify_>, join_<C>>> {};
-		} // namespace detail
-} // export namespace boost::tmp
+namespace boost::tmp {
+	export template <typename F, typename C = listify_>
+	struct remove_if_ {};
+
+	namespace detail {
+		template <std::size_t N, typename F, typename C>
+		struct dispatch<N, remove_if_<F, C>>
+			: dispatch<N, transform_<if_<F, always_<list_<>>, listify_>, join_<C>>> {};
+	} // namespace detail
+} // namespace boost::tmp

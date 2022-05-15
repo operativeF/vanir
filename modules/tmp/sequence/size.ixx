@@ -19,14 +19,15 @@ import std;
 import std.core;
 #endif
 
-export namespace boost::tmp {
-		template <typename C = identity_>
-		struct size_ {};
-		namespace detail {
-			template <std::size_t N, typename C>
-			struct dispatch<N, size_<C>> {
-				template <typename... Ls>
-				using f = typename dispatch<1, C>::template f<sizet_<sizeof...(Ls)>>;
-			};
-		} // namespace detail
-} // export namespace boost::tmp
+namespace boost::tmp {
+	export template <typename C = identity_>
+	struct size_ {};
+
+	namespace detail {
+		template <std::size_t N, typename C>
+		struct dispatch<N, size_<C>> {
+			template <typename... Ls>
+			using f = typename dispatch<1, C>::template f<sizet_<sizeof...(Ls)>>;
+		};
+	} // namespace detail
+} // namespace boost::tmp

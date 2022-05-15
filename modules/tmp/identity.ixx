@@ -9,21 +9,21 @@ export module Boost.TMP.Base.Identity;
 
 import Boost.TMP.Detail;
 
-export namespace boost::tmp {
-		struct identity_ {};
+namespace boost::tmp {
+	export struct identity_ {};
 #ifdef BOOST_TMP_CPP14
-		namespace fusion {
-			template <>
-			struct rebind<identity_> {
-				using type = identity_;
-			};
-		} // namespace fusion
+	namespace fusion {
+		template <>
+		struct rebind<identity_> {
+			using type = identity_;
+		};
+	} // namespace fusion
 #endif
-		namespace detail {
-			template <>
-			struct dispatch<1, identity_> {
-				template <typename T>
-				using f = T;
-			};
-		} // namespace detail
-} // export namespace boost::tmp
+	namespace detail {
+		template <>
+		struct dispatch<1, identity_> {
+			template <typename T>
+			using f = T;
+		};
+	} // namespace detail
+} // namespace boost::tmp

@@ -25,23 +25,23 @@ import std.core;
 // Given a variadic parameter pack, remove the nth value in the pack.
 // Reduces the size of the list by 1 as a result.
 // FIXME: Add constraints so negative numbers aren't possible?
-export namespace boost::tmp {
-		template <typename N = sizet_<0>, typename C = listify_>
-		struct erase_ {};
+namespace boost::tmp {
+	export template <typename N = sizet_<0>, typename C = listify_>
+	struct erase_ {};
 
-		namespace detail {
-			template <std::size_t N, typename I, typename C>
-			struct dispatch<N, erase_<I, C>> {
-				template <typename... Ts>
-				using f = typename dispatch<
-				        N,
-				        rotate_<I, pop_front_<rotate_<sizet_<(sizeof...(Ts) - I::value - 1)>, C>>>>::
-				        template f<Ts...>;
-			};
-			template <typename I, typename C>
-			struct dispatch<0, erase_<I, C>> {
-				template <typename... Ts>
-				using f = typename dispatch<1, C>::template f<nothing_>;
-			};
-		} // namespace detail
-} // export namespace boost::tmp
+	namespace detail {
+		template <std::size_t N, typename I, typename C>
+		struct dispatch<N, erase_<I, C>> {
+			template <typename... Ts>
+			using f = typename dispatch<
+				    N,
+				    rotate_<I, pop_front_<rotate_<sizet_<(sizeof...(Ts) - I::value - 1)>, C>>>>::
+				    template f<Ts...>;
+		};
+		template <typename I, typename C>
+		struct dispatch<0, erase_<I, C>> {
+			template <typename... Ts>
+			using f = typename dispatch<1, C>::template f<nothing_>;
+		};
+	} // namespace detail
+} // namespace boost::tmp

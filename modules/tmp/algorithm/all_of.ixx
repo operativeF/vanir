@@ -20,13 +20,13 @@ import std;
 import std.core;
 #endif
 
-export namespace boost::tmp {
-		template <typename F, typename C = identity_>
-		struct all_of_;
+namespace boost::tmp {
+	export template <typename F, typename C = identity_>
+	struct all_of_ {};
 		
-		namespace detail {
-			template <std::size_t N, typename F, typename C>
-			struct dispatch<N, all_of_<F, C>>
-                : dispatch<N, and_<F, C>> {};
-		} // namespace detail
-} // export namespace boost::tmp
+	namespace detail {
+		template <std::size_t N, typename F, typename C>
+		struct dispatch<N, all_of_<F, C>>
+            : dispatch<N, and_<F, C>> {};
+	} // namespace detail
+} // namespace boost::tmp

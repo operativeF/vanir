@@ -21,12 +21,12 @@ import std;
 import std.core;
 #endif
 
-export namespace boost::tmp {
-		template <typename V, typename C = identity_>
-		struct contains_;
+namespace boost::tmp {
+	export template <typename V, typename C = identity_>
+	struct contains_ {};
 
-		namespace detail {
-			template <std::size_t N, typename V, typename C>
-			struct dispatch<N, contains_<V, C>> : dispatch<N, or_<is_<V>, C>> {};
-		} // namespace detail
-} // export namespace boost::tmp
+	namespace detail {
+		template <std::size_t N, typename V, typename C>
+		struct dispatch<N, contains_<V, C>> : dispatch<N, or_<is_<V>, C>> {};
+	} // namespace detail
+} // namespace boost::tmp

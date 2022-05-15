@@ -13,24 +13,25 @@ import Boost.TMP.Base.Vocabulary;
 
 import Boost.TMP.Detail.Dispatch;
 
-export namespace boost::tmp {
-		/// \brief
-		template <typename C = identity_>
-		struct container_ {};
-		namespace detail {
-			template <typename L, typename C>
-			struct container_impl {
-				using type = typename dispatch<1, C>::template f<nothing_>;
-			};
-			template <template <typename...> class Seq, typename C, typename... Ls>
-			struct container_impl<Seq<Ls...>, C> {
-				using type = typename dispatch<1, C>::template f<lift_<Seq>>;
-			};
+namespace boost::tmp {
+	/// \brief
+	export template <typename C = identity_>
+	struct container_ {};
 
-			template <typename C>
-			struct dispatch<1, container_<C>> {
-				template <typename L>
-				using f = typename detail::container_impl<L, C>::type;
-			};
-		} // namespace detail
-} // export namespace boost::tmp
+	namespace detail {
+		template <typename L, typename C>
+		struct container_impl {
+			using type = typename dispatch<1, C>::template f<nothing_>;
+		};
+		template <template <typename...> class Seq, typename C, typename... Ls>
+		struct container_impl<Seq<Ls...>, C> {
+			using type = typename dispatch<1, C>::template f<lift_<Seq>>;
+		};
+
+		template <typename C>
+		struct dispatch<1, container_<C>> {
+			template <typename L>
+			using f = typename detail::container_impl<L, C>::type;
+		};
+	} // namespace detail
+} // namespace boost::tmp

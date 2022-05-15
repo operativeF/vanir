@@ -24,14 +24,14 @@ import std;
 import std.core;
 #endif
 
-export namespace boost::tmp {
-		template <typename F, typename C = identity_>
-		struct none_of_;
+namespace boost::tmp {
+	export template <typename F, typename C = identity_>
+	struct none_of_ {};
 
-		// @TODO: Make this shorting.
-		namespace detail {
-			template <std::size_t N, typename F, typename C>
-			struct dispatch<N, none_of_<F, C>>
-                : dispatch<N, and_<F, not_<C>>> {};
-		} // namespace detail
-} // export namespace boost::tmp
+	// @TODO: Make this shorting.
+	namespace detail {
+		template <std::size_t N, typename F, typename C>
+		struct dispatch<N, none_of_<F, C>>
+            : dispatch<N, and_<F, not_<C>>> {};
+	} // namespace detail
+} // namespace boost::tmp

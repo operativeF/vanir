@@ -22,8 +22,8 @@ import std.core;
 
 /// \brief Given a variadic parameter pack, replace every value that fulfills
 /// the predicate F with the value Input.
-export namespace boost::tmp {
-	template <typename Input, typename F, typename C = listify_>
+namespace boost::tmp {
+	export template <typename Input, typename F, typename C = listify_>
 	struct replace_if_ {};
 
 	namespace detail {

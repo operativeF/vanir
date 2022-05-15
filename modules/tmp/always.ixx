@@ -18,15 +18,15 @@ import std;
 import std.core;
 #endif
 
-export namespace boost::tmp {
-		template <typename T, typename C = identity_>
-		struct always_ {};
+namespace boost::tmp {
+	export template <typename T, typename C = identity_>
+	struct always_ {};
 
-		namespace detail {
-			template <std::size_t N, typename T, typename C>
-			struct dispatch<N, always_<T, C>> {
-				template <typename...>
-				using f = typename dispatch<1, C>::template f<T>;
-			};
-		} // namespace detail
-} // export namespace boost::tmp
+	namespace detail {
+		template <std::size_t N, typename T, typename C>
+		struct dispatch<N, always_<T, C>> {
+			template <typename...>
+			using f = typename dispatch<1, C>::template f<T>;
+		};
+	} // namespace detail
+} // namespace boost::tmp
