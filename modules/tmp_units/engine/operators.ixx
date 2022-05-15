@@ -48,18 +48,18 @@ export namespace potato::units {
 	template<typename T, typename U>
 	using scale_sub_op = tmp::call_<
 		tmp::if_<tmp::lift_<std::ratio_greater>,
-			tmp::always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
+			tmp::always_<unity_ratio>,
 			tmp::if_<tmp::lift_<std::ratio_less>,
 				tmp::always_<std::ratio_divide<typename T::mod_ratio, typename U::mod_ratio>>,
 				tmp::always_<unity_ratio>>
 		>, typename T::mod_ratio, typename U::mod_ratio>;
 
 	template <Unitable T, Unitable U>
-	constexpr auto operator-(const T& aVal, const U& bVal) -> try_type_lookup<U> {
+	constexpr auto operator-(const T& aVal, const U& bVal) -> try_type_lookup<add_type<T, U>> {
 		using aVal_scale = scale_sub_op<T, U>;
 		using bVal_scale = scale_sub_op<U, T>;
-		return (aVal.value * aVal_scale::num * bVal_scale::num) / (aVal_scale::den * bVal_scale::den) -
-				(bVal.value * bVal_scale::num * bVal_scale::num) / (aVal_scale::den * bVal_scale::den);
+		return (aVal.value * aVal_scale::num) / (aVal_scale::den) -
+			   (bVal.value * bVal_scale::num) / (bVal_scale::den);
 	}
 
 	template <typename T>
@@ -113,7 +113,7 @@ export namespace potato::units {
 		return aVal / bVal.value;
 	}
 
-	template <typename T, typename U>
+	template <Unitable T, Unitable U> requires(std::same_as<typename T::impl, typename U::impl>)
 	constexpr bool operator==(const T& aVal, const U& bVal) {
 		// Check if both have same underlying type
 		// TODO: Normalize to unit that would increase dynamic range
@@ -124,63 +124,13 @@ export namespace potato::units {
 		return (aVal_.value == bVal_.value);
 	}
 
-	template <typename T, typename U>
-	constexpr bool operator!=(const T& aVal, const U& bVal) {
-		// Check if both have same underlying type
-		static_assert(std::is_same_v<typename T::impl, typename U::impl>,
-						"Underlying types need to be the same.");
+	template<Unitable T, Unitable U> requires(std::same_as<typename T::impl, typename U::impl>)
+	constexpr auto operator<=>(const T& lhs, const U& rhs) {
 		// TODO: Normalize to unit that would increase dynamic range
-		auto aVal_ = convertTo<T>()(aVal);
-		auto bVal_ = convertTo<T>()(bVal);
+		auto lhs_cv = convertTo<T>()(lhs);
+		auto rhs_cv = convertTo<T>()(rhs);
 
-		return (aVal_.value != bVal_.value);
-	}
-
-	template <typename T, typename U>
-	constexpr bool operator<(const T& aVal, const U& bVal) {
-		// Check if both have same underlying type
-		static_assert(std::is_same_v<typename T::impl, typename U::impl>,
-						"Underlying types need to be the same.");
-		// TODO: Normalize to unit that would increase dynamic range
-		auto aVal_ = convertTo<T>()(aVal);
-		auto bVal_ = convertTo<T>()(bVal);
-
-		return (aVal_.value < bVal_.value);
-	}
-
-	template <typename T, typename U>
-	constexpr bool operator>(const T& aVal, const U& bVal) {
-		// Check if both have same underlying type
-
-		// TODO: Normalize to unit that would increase dynamic range
-		auto aVal_ = convertTo<T>()(aVal);
-		auto bVal_ = convertTo<T>()(bVal);
-
-		return (aVal_.value > bVal_.value);
-	}
-
-	template <typename T, typename U>
-	constexpr bool operator>=(const T& aVal, const U& bVal) {
-		// Check if both have same underlying type
-		static_assert(std::is_same_v<typename T::impl, typename U::impl>,
-						"Underlying types need to be the same.");
-		// TODO: Normalize to unit that would increase dynamic range
-		auto aVal_ = convertTo<T>()(aVal);
-		auto bVal_ = convertTo<T>()(bVal);
-
-		return (aVal_.value >= bVal_.value);
-	}
-
-	template <typename T, typename U>
-	constexpr bool operator<=(const T& aVal, const U& bVal) {
-		// Check if both have same underlying type
-		static_assert(std::is_same_v<typename T::impl, typename U::impl>,
-						"Underlying types need to be the same.");
-		// TODO: Normalize to unit that would increase dynamic range
-		auto aVal_ = convertTo<T>()(aVal);
-		auto bVal_ = convertTo<T>()(bVal);
-
-		return (aVal_.value <= bVal_.value);
+		return lhs_cv.value <=> rhs_cv.value;
 	}
 
 	template <typename T>

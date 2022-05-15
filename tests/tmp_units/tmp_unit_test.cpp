@@ -87,7 +87,7 @@ ut::suite TmpUnitOperationsTests = []
         expect((1 / (1 / neg_one_volt)) == -1.0_V);
     };
 
-    "Binary Math Operators on Scaled Units"_test = [&]
+    "Addition Ops on Scaled Units"_test = [&]
     {
         auto one_millivolt = 1.0_mV;
         auto one_volt = 1.0_V;
@@ -117,7 +117,25 @@ ut::suite TmpUnitOperationsTests = []
 
         expect(one_mV_kV == 1.000001_kV) << one_mV_kV.value;
         expect(one_kV_mV == 1.000001_kV) << one_kV_mV.value;
-    }; 
+    };
+
+    "Subtraction Ops on Scaled Units"_test = [&]
+    {
+        auto one_millivolt = 1.0_mV;
+        auto one_volt = 1.0_V;
+        auto one_kilovolt = 1.0_kV;
+        auto one_microvolt = 1.0_uV;
+
+        auto one_V_minus_one_mV = one_volt - one_millivolt;
+        auto one_mV_minus_one_V = one_millivolt - one_volt;
+        auto one_kV_minus_one_V = one_kilovolt - one_volt;
+        auto one_V_minus_one_kV = one_volt - one_kilovolt;
+
+        expect(one_V_minus_one_mV == 0.999_V) << one_V_minus_one_mV.value;
+        expect(one_mV_minus_one_V == -0.999_V) << one_mV_minus_one_V.value;
+        expect(one_kV_minus_one_V == 999.0_V) << one_kV_minus_one_V.value;
+        expect(one_V_minus_one_kV == -999.0_V) << one_V_minus_one_kV.value;
+    };
 
     "Operations Resulting in Conversions"_test = [&]
     {
