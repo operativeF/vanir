@@ -26,7 +26,6 @@ namespace boost::tmp {
 	struct result_ {};
 
 	namespace detail {
-#ifndef BOOST_TMP_CLANG_ARITY_BUGh
 		template <template <typename...> class F, typename C>
 		struct dispatch<1, lift_<F, C>> {
 			template <typename T>
@@ -47,7 +46,6 @@ namespace boost::tmp {
 			template <typename T0, typename T1, typename T2, typename T3>
 			using f = typename dispatch<1, C>::template f<F<T0, T1, T2, T3>>;
 		};
-#endif
 		template <std::size_t N, template <typename...> class F, typename C>
 		struct dispatch<N, lift_<F, C>> {
 			template <typename... Ts>

@@ -27,12 +27,14 @@ set(TMP_ALGO_IXX
     ${TMP_ALGO_DIR}/gather.ixx
     ${TMP_ALGO_DIR}/none_of.ixx
     ${TMP_ALGO_DIR}/pairing.ixx
+    ${TMP_ALGO_DIR}/partition.ixx
     ${TMP_ALGO_DIR}/product.ixx
     ${TMP_ALGO_DIR}/range_math.ixx
     ${TMP_ALGO_DIR}/remove_if.ixx
     ${TMP_ALGO_DIR}/remove_pairs.ixx
     ${TMP_ALGO_DIR}/replace_if.ixx
     ${TMP_ALGO_DIR}/sort.ixx
+    ${TMP_ALGO_DIR}/symmetric_difference.ixx
     ${TMP_ALGO_DIR}/transform.ixx
     ${TMP_ALGO_DIR}/tmp_algorithm.ixx
 )

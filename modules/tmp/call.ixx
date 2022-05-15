@@ -40,22 +40,17 @@ namespace boost::tmp {
 		};
 	} // namespace detail
 
-#if defined(BOOST_TMP_CLANG_ARITY_BUG)
-	export template <typename T, typename... Ts>
-	using call_ = typename detail::call_impl<T, Ts...>::type;
-#else
 	export template <typename F, typename... Ts>
 	using call_ = typename detail::dispatch<detail::find_dispatch(sizeof...(Ts)),
 		                                    F>::template f<Ts...>;
-#endif
+
 	export template <typename T, typename... Ts>
 	using call_t = typename detail::dispatch<detail::find_dispatch(sizeof...(Ts)),
 		                                        T>::template f<Ts...>::type;
-#if defined(__cpp_variable_templates)
+
 	export template <typename T, typename... Ts>
 	constexpr auto call_v =
 		    detail::dispatch<detail::find_dispatch(sizeof...(Ts)), T>::template f<Ts...>::value;
-#endif
 
 	export template <typename C = identity_>
 	struct call_f_ {};
@@ -79,10 +74,8 @@ namespace boost::tmp {
 		    detail::maybe_impl<typename detail::dispatch<detail::find_dispatch(sizeof...(Ts)),
 		                                                    T>::template f<Ts...>::type>;
 
-#if defined(__cpp_variable_templates)
 	export template <typename T, typename... Ts>
 	constexpr auto maybe_v =
 		    detail::maybe_impl<typename detail::dispatch<detail::find_dispatch(sizeof...(Ts)),
 		                                                    T>::template f<Ts...>>::value;
-#endif
 } // namespace boost::tmp

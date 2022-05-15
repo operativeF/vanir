@@ -20,12 +20,6 @@ import std;
 import std.core;
 #endif
 
-#if defined(__has_builtin)
-#if __has_builtin(__type_pack_element)
-#define BOOST_TMP_USE_TYPE_PACK_ELEMENT_INTRINSIC
-#endif
-#endif
-
 namespace boost::tmp {
 	/// \brief Given a predicate P, if true, return T, and if false, return F.
 	export template <typename P, typename T, typename F = always_<nothing_>>
@@ -87,11 +81,7 @@ namespace boost::tmp {
 		template <template <typename...> class P>
 		struct dispatch<1, if_<lift_<P>, listify_, always_<list_<>>>> {
 			template <typename U>
-#if defined(BOOST_TMP_USE_TYPE_PACK_ELEMENT_INTRINSIC)
-			using f = __type_pack_element<(P<U>::value != 0), list_<U>, list_<>>;
-#else
 			using f = typename if_impl<P<U>::value>::template f<list_<U>, list_<>>;
-#endif
 		};
 	} // namespace detail
 } // namespace boost::tmp

@@ -1,4 +1,4 @@
-//  Copyright 2019-2021 Thomas Figueroa.
+//  Copyright 2019-2022 Thomas Figueroa.
 //  Distributed under the Boost Software License, Version 1.0.
 //
 //  See accompanying file LICENSE_1_0.txt or copy at
@@ -6,7 +6,11 @@
 
 export module Boost.TMP.Algorithm.SymmetricDiff;
 
+import Boost.TMP.Base.Vocabulary;
+
 import Boost.TMP.Detail.Dispatch;
+
+import Boost.TMP.Sequence.Join;
 
 namespace boost::tmp {
 	// Returns a single list where common elements from both are removed.
