@@ -7,6 +7,9 @@
 
 export module Boost.TMP.Sequence.Index;
 
+import Boost.TMP.Detail;
+
+import Boost.TMP.Base.Identity;
 import Boost.TMP.Base.Vocabulary;
 
 import Boost.TMP.Sequence.Drop;

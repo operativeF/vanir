@@ -8,6 +8,7 @@
 export module Boost.TMP.Base.Call;
 
 import Boost.TMP.Detail.Dispatch;
+import Boost.TMP.Base.Identity;
 import Boost.TMP.Base.Vocabulary;
 
 #ifdef __GNUC__

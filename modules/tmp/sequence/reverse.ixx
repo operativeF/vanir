@@ -8,6 +8,7 @@
 export module Boost.TMP.Sequence.Reverse;
 
 import Boost.TMP.Base.Lift;
+import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Detail.Dispatch;
 
 #ifdef __GNUC__

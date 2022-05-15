@@ -17,8 +17,6 @@ export namespace boost::tmp {
 		/// \brief
 		template <typename C = identity_>
 		struct container_ {};
-		template <template <typename...> class W, typename C = identity_>
-		using container_is_ = container_<is_<lift_<W>, C>>;
 		namespace detail {
 			template <typename L, typename C>
 			struct container_impl {

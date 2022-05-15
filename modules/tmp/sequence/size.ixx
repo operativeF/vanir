@@ -7,6 +7,7 @@
 
 export module Boost.TMP.Sequence.Size;
 
+import Boost.TMP.Base.Identity;
 import Boost.TMP.Base.Vocabulary;
 import Boost.TMP.Detail.Dispatch;
 
