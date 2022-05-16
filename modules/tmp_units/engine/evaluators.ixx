@@ -150,4 +150,57 @@ export namespace potato::units {
 
 	template <typename T>
 	using inverter = typename dispatcher<swap_invert<typename T::impl>>::template f<invert_ratio<typename T::mod_ratio>, decltype(T::value)>;
+
+
+	// New evaluators
+	template<typename... Ts>
+	struct FullDims_ {};
+
+	template<typename UnitType, typename Ratio>
+	struct UnitDims
+	{
+		using ratio = Ratio;
+		using type  = UnitType;
+	};
+
+	template<typename Ratio>
+	struct Meter : UnitDims<meter_l, Ratio> { template<typename T> using Base = Meter<T>; };
+
+	template<typename Ratio>
+	struct Second : UnitDims<second_l, Ratio> { template<typename T> using Base = Second<T>; };
+
+	template<typename Ratio>
+	struct Gram : UnitDims<gram_l, Ratio> { template<typename T> using Base = Gram<T>; };
+
+	template<typename Ratio>
+	struct Mole : UnitDims<mole_l, Ratio> { template<typename T> using Base = Mole<T>; };
+
+	template<typename Ratio>
+	struct Ampere : UnitDims<ampere_l, Ratio> { template<typename T> using Base = Ampere<T>; };
+
+	template<typename Ratio>
+	struct Kelvin : UnitDims<kelvin_l, Ratio> { template<typename T> using Base = Kelvin<T>; };
+
+	template<typename Ratio>
+	struct Candela : UnitDims<candela_l, Ratio> { template<typename T> using Base = Candela<T>; };
+
+	template<typename Ratio>
+	struct Radian : UnitDims<radian_l, Ratio> { template<typename T> using Base = Radian<T>; };
+
+	template<typename Ratio>
+	struct Steradian : UnitDims<steradian_l, Ratio> { template<typename T> using Base = Steradian<T>; };
+
+	template<typename Ratio>
+	struct Decay : UnitDims<decay_l, Ratio> { template<typename T> using Base = Decay<T>; };
+
+	using FullBaseDims = FullDims_<
+		Meter<tmp::int_<0>>, Second<tmp::int_<0>>, Gram<tmp::int_<0>>, Mole<tmp::int_<0>>, Ampere<tmp::int_<0>>,
+		Kelvin<tmp::int_<0>>, Candela<tmp::int_<0>>, Radian<tmp::int_<0>>, Steradian<tmp::int_<0>>, Decay<tmp::int_<0>>>;
+
+	template<typename UnitL, typename UnitR>
+	using add_dim = typename UnitL::template Base<tmp::int_<(UnitL::ratio::value + UnitR::ratio::value)>>;
+
+	// Test this.
+	using added_dims = add_dim<Meter<tmp::int_<2>>, Meter<tmp::int_<1>>>;
+
 } // namespace potato::units
