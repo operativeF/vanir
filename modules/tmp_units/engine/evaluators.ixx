@@ -193,14 +193,23 @@ export namespace potato::units {
 	template<typename Ratio>
 	struct Decay : UnitDims<decay_l, Ratio> { template<typename T> using Base = Decay<T>; };
 
-	using FullBaseDims = FullDims_<
-		Meter<tmp::int_<0>>, Second<tmp::int_<0>>, Gram<tmp::int_<0>>, Mole<tmp::int_<0>>, Ampere<tmp::int_<0>>,
-		Kelvin<tmp::int_<0>>, Candela<tmp::int_<0>>, Radian<tmp::int_<0>>, Steradian<tmp::int_<0>>, Decay<tmp::int_<0>>>;
+	using FullBaseDims = tmp::list_<
+		Meter<std::ratio<3, 1>>, Second<std::ratio<3, 1>>, Gram<std::ratio<3, 1>>, Mole<std::ratio<3, 1>>, Ampere<std::ratio<3, 1>>,
+		Kelvin<std::ratio<3, 1>>, Candela<std::ratio<3, 1>>, Radian<std::ratio<3, 1>>, Steradian<std::ratio<3, 1>>, Decay<std::ratio<3, 1>>>;
 
 	template<typename UnitL, typename UnitR>
-	using add_dim = typename UnitL::template Base<tmp::int_<(UnitL::ratio::value + UnitR::ratio::value)>>;
+	using multiplied_dimensions = typename UnitL::template Base<std::ratio_add<typename UnitL::ratio, typename UnitR::ratio>>;
 
-	// Test this.
-	using added_dims = add_dim<Meter<tmp::int_<2>>, Meter<tmp::int_<1>>>;
+	template<typename UnitT, typename I>
+	using exponentiated_dimensions = typename UnitT::template Base<std::ratio_multiply<I, typename UnitT::ratio>>;
+
+	template<typename UnitL, typename UnitR>
+	using divided_dimensions = typename UnitL::template Base<std::ratio_subtract<typename UnitL::ratio, typename UnitR::ratio>>;
+
+	using OtherDims = tmp::list_<
+		Meter<std::ratio<2, 1>>, Second<std::ratio<2, 1>>, Gram<std::ratio<2, 1>>, Mole<std::ratio<2, 1>>, Ampere<std::ratio<-2, 1>>,
+		Kelvin<std::ratio<2, 1>>, Candela<std::ratio<2, 1>>, Radian<std::ratio<2, 1>>, Steradian<std::ratio<2, 1>>, Decay<std::ratio<2, 1>>>;
+
+	using zipped_units = tmp::call_<tmp::zip_<tmp::lift_<multiplied_dimensions>>, FullBaseDims, OtherDims>::value;
 
 } // namespace potato::units
