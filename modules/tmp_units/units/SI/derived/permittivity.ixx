@@ -15,10 +15,19 @@ import std.core;
 namespace tmp = boost::tmp;
 export namespace potato::units {
 
-    using farad_per_meter_tag_t = tmp::list_<tmp::list_<second_l, second_l, second_l, second_l, ampere_l, ampere_l>, tmp::list_<meter_l, meter_l, meter_l, gram_l>>;
+    using permittivity_tag_t = tmp::list_<Length<std::ratio<-3, 1>>,
+                                         Time<std::ratio<4, 1>>,
+                                         Mass<std::ratio<-1, 1>>,
+                                         AmountOfSubstance<std::ratio<0, 1>>,
+                                         ElectricCurrent<std::ratio<2, 1>>,
+                                         ThermodynamicTemperature<std::ratio<0, 1>>,
+                                         LuminousIntensity<std::ratio<0, 1>>,
+                                         Radian<std::ratio<0, 1>>,
+                                         Steradian<std::ratio<0, 1>>,
+                                         Decay<std::ratio<0, 1>>>;
 
     template<typename T>
-    concept Farad_Per_MeterC = std::same_as<typename T::impl, farad_per_meter_tag_t>;
+    concept Farad_Per_MeterC = std::same_as<typename T::impl, permittivity_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct farad_per_meter_impl {
@@ -32,8 +41,7 @@ export namespace potato::units {
 
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
-        using numer_type = DerivedValueType;
-        using impl       = farad_per_meter_tag_t;
+        using impl       = permittivity_tag_t;
 
         constexpr farad_per_meter_impl(value_type val) : value{val} {}
 

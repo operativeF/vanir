@@ -15,10 +15,19 @@ import std.core;
 namespace tmp = boost::tmp;
 export namespace potato::units {
 
-    using watt_per_meter_kelvin_tag_t = tmp::list_<tmp::list_<meter_l, gram_l>, tmp::list_<second_l, second_l, second_l, kelvin_l>>;
+    using thermal_conductivity_tag_t = tmp::list_<Length<std::ratio<1, 1>>,
+                                         Time<std::ratio<-3, 1>>,
+                                         Mass<std::ratio<1, 1>>,
+                                         AmountOfSubstance<std::ratio<0, 1>>,
+                                         ElectricCurrent<std::ratio<0, 1>>,
+                                         ThermodynamicTemperature<std::ratio<1, 1>>,
+                                         LuminousIntensity<std::ratio<0, 1>>,
+                                         Radian<std::ratio<0, 1>>,
+                                         Steradian<std::ratio<0, 1>>,
+                                         Decay<std::ratio<0, 1>>>;
 
     template<typename T>
-    concept Watt_Per_Meter_KelvinC = std::same_as<typename T::impl, watt_per_meter_kelvin_tag_t>;
+    concept Watt_Per_Meter_KelvinC = std::same_as<typename T::impl, thermal_conductivity_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct watt_per_meter_kelvin_impl {
@@ -32,8 +41,7 @@ export namespace potato::units {
 
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
-        using numer_type = DerivedValueType;
-        using impl       = watt_per_meter_kelvin_tag_t;
+        using impl       = thermal_conductivity_tag_t;
 
         constexpr watt_per_meter_kelvin_impl(value_type val) : value{val} {}
 

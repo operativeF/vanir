@@ -15,10 +15,19 @@ import std.core;
 namespace tmp = boost::tmp;
 export namespace potato::units {
 
-    using siemens_square_meter_per_mole_tag_t = tmp::list_<tmp::list_<second_l, second_l, second_l, ampere_l, ampere_l>, tmp::list_<gram_l, mole_l>>;
+    using molar_conductivity_tag_t = tmp::list_<Length<std::ratio<0, 1>>,
+                                         Time<std::ratio<3, 1>>,
+                                         Mass<std::ratio<-1, 1>>,
+                                         AmountOfSubstance<std::ratio<-1, 1>>,
+                                         ElectricCurrent<std::ratio<2, 1>>,
+                                         ThermodynamicTemperature<std::ratio<0, 1>>,
+                                         LuminousIntensity<std::ratio<0, 1>>,
+                                         Radian<std::ratio<0, 1>>,
+                                         Steradian<std::ratio<0, 1>>,
+                                         Decay<std::ratio<0, 1>>>;
 
     template<typename T>
-    concept Siemens_Square_Meter_Per_MoleC = std::same_as<typename T::impl, siemens_square_meter_per_mole_tag_t>;
+    concept Siemens_Square_Meter_Per_MoleC = std::same_as<typename T::impl, molar_conductivity_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct siemens_square_meter_per_mole_impl {
@@ -32,8 +41,7 @@ export namespace potato::units {
 
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
-        using numer_type = DerivedValueType;
-        using impl       = siemens_square_meter_per_mole_tag_t;
+        using impl       = molar_conductivity_tag_t;
 
         constexpr siemens_square_meter_per_mole_impl(value_type val) : value{val} {}
 

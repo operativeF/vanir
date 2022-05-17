@@ -47,8 +47,16 @@ def loadUnitWorkbook():
             "Type": row[1],
             "Symbol": row[2],
             "Pretty": row[3],
-            "Impl_Num": row[4],
-            "Impl_Den": row[5]
+            "Length": row[4],
+            "Time": row[5],
+            "Mass": row[6],
+            "AmountOfSubstance": row[7],
+            "ElectricCurrent": row[8],
+            "ThermodynamicTemperature": row[9],
+            "LuminousIntensity": row[10],
+            "Radian": row[11],
+            "Steradian": row[12],
+            "Decay": row[13]
         }
         SI_Derived_Units_dict[unit_name] = unit_
 
@@ -59,8 +67,16 @@ def loadUnitWorkbook():
             "Type": row[1],
             "Symbol": row[2],
             "Pretty": row[3],
-            "Impl_Num": row[4],
-            "Impl_Den": row[5]
+            "Length": row[4],
+            "Time": row[5],
+            "Mass": row[6],
+            "AmountOfSubstance": row[7],
+            "ElectricCurrent": row[8],
+            "ThermodynamicTemperature": row[9],
+            "LuminousIntensity": row[10],
+            "Radian": row[11],
+            "Steradian": row[12],
+            "Decay": row[13]
         }
         SI_Base_Units_dict[unit_name] = unit_
 
@@ -83,30 +99,27 @@ def generateUnitModuleFiles(unit_name):
         f"import std.core;\n" \
         f"\n"
 
-def generateUnitBeginNamespace(unit_type, impl_numer, impl_denom):
-    if impl_numer is None:
-        impl_numer = ""
-    if impl_denom is None:
-        impl_denom = ""
-
+def generateUnitBeginNamespace(unit_name, unit_type, unit_symbol, pretty, i_length, i_time, i_mass, i_substance, i_current, i_temp, i_luminous, i_radian, i_steradian, i_decay):
     return \
         f"namespace tmp = boost::tmp;\n" \
         f"export namespace potato::units {{\n" \
         f"\n" \
-        f"{' ':>4}using {unit_type}_tag_t = tmp::list_<tmp::list_<{impl_numer}>, tmp::list_<{impl_denom}>>;\n" \
+        f"{' ':>4}using {unit_type}_tag_t = tmp::list_<Length<std::ratio<{i_length}, 1>>,\n" \
+        f"{' ':>4}                                     Time<std::ratio<{i_time}, 1>>,\n" \
+        f"{' ':>4}                                     Mass<std::ratio<{i_mass}, 1>>,\n" \
+        f"{' ':>4}                                     AmountOfSubstance<std::ratio<{i_substance}, 1>>,\n" \
+        f"{' ':>4}                                     ElectricCurrent<std::ratio<{i_current}, 1>>,\n" \
+        f"{' ':>4}                                     ThermodynamicTemperature<std::ratio<{i_temp}, 1>>,\n" \
+        f"{' ':>4}                                     LuminousIntensity<std::ratio<{i_luminous}, 1>>,\n" \
+        f"{' ':>4}                                     Radian<std::ratio<{i_radian}, 1>>,\n" \
+        f"{' ':>4}                                     Steradian<std::ratio<{i_steradian}, 1>>,\n" \
+        f"{' ':>4}                                     Decay<std::ratio<{i_decay}, 1>>>;\n" \
         f"\n" \
         f"{' ':>4}template<typename T>\n" \
-        f"{' ':>4}concept {unit_type.title()}C = std::same_as<typename T::impl, {unit_type}_tag_t>;\n" \
+        f"{' ':>4}concept {unit_name.title()}C = std::same_as<typename T::impl, {unit_type}_tag_t>;\n" \
         f"\n"
 
-def generateUnitStruct(unit_name, pretty, impl_numer, impl_denom):
-    if impl_numer is None:
-        impl_numer = ""
-    if impl_denom is None:
-        impl_denom = ""
-    if pretty is None:
-        pretty = "N/A"
-
+def generateUnitStruct(unit_name, unit_type, pretty):
     return \
         f"{' ':>4}template <typename RatioTypeT, typename P>\n" \
         f"{' ':>4}struct {unit_name}_impl {{\n" \
@@ -119,8 +132,7 @@ def generateUnitStruct(unit_name, pretty, impl_numer, impl_denom):
         f"{' ':>12}>, P>;\n\n" \
         f"{' ':>8}using mod_ratio  = RatioTypeT;\n" \
         f"{' ':>8}using value_type = DerivedValueType;\n" \
-        f"{' ':>8}using numer_type = DerivedValueType;\n" \
-        f"{' ':>8}using impl       = {unit_name}_tag_t;\n" \
+        f"{' ':>8}using impl       = {unit_type}_tag_t;\n" \
         f"\n" \
         f"{' ':>8}constexpr {unit_name}_impl(value_type val) : value{{val}} {{}}\n\n" \
         f"{' ':>8}using is_any_impl = tmp::false_;\n" \
@@ -202,12 +214,12 @@ def generateUnitEndNamespace():
     return \
         f"}} // namespace potato::units\n"
 
-def generateUnitFile(unit_name, unit_type, unit_symbol="", pretty="", impl_numer="", impl_denom=""):
+def generateUnitFile(unit_name, unit_type, unit_symbol="", pretty="", i_length="", i_time="", i_mass="", i_substance="", i_current="", i_temp="", i_luminous="", i_radian="", i_steradian="", i_decay=""):
     with open(f"{unit_type}.ixx", "w", encoding="utf8") as file:
         file.write(generateHeader("Thomas Figueroa")) # For now.
         file.write(generateUnitModuleFiles(unit_name))
-        file.write(generateUnitBeginNamespace(unit_name, impl_numer, impl_denom))
-        file.write(generateUnitStruct(unit_name, pretty, impl_numer, impl_denom))
+        file.write(generateUnitBeginNamespace(unit_name, unit_type, unit_symbol, pretty, i_length, i_time, i_mass, i_substance, i_current, i_temp, i_luminous, i_radian, i_steradian, i_decay))
+        file.write(generateUnitStruct(unit_name, unit_type, pretty))
         for prefix_, vals in prefixes_dict.items():
             file.write(generatePrefixedUnit(unit_name, prefix_, "_ld", "long double"))
         for prefix_, vals in prefixes_dict.items():
@@ -226,7 +238,7 @@ def generateDispatcherIncludeFiles():
         f"export module Boost.TMP.Units.Engine.TypeDispatcher;\n\n" \
         f"import Boost.TMP;\n" \
         f"\n" \
-        f"import Boost.TMP.Units;\n" \
+        f"import Boost.TMP.Units.AllUnits;\n" \
         f"import Boost.TMP.Units.Engine.Base;\n" \
         f"import Boost.TMP.Units.Anything;\n" \
         f"\n" \
@@ -246,16 +258,11 @@ def generateDispatcherMainStruct():
         f"\n"
 
 # TODO: Multiple types for the same basic type (length: imperial, SI)
-def generateDispatcherStruct(unit_name, unit_type, unit_symbol="", pretty="", impl_numer="", impl_denom=""):
-    if impl_numer is None:
-        impl_numer = ""
-    if impl_denom is None:
-        impl_denom = ""
-    
+def generateDispatcherStruct(unit_name, unit_type, unit_symbol="", pretty="", i_length="", i_time="", i_mass="", i_substance="", i_current="", i_temp="", i_luminous="", i_radian="", i_steradian="", i_decay=""):
     return \
         f"{' ':>4}// {unit_type}\n" \
         f"{' ':>4}template <>\n" \
-        f"{' ':>4}struct dispatcher<list_<list_<{impl_numer}>, list_<{impl_denom}>>> {{\n" \
+        f"{' ':>4}struct dispatcher<{unit_type}_tag_t> {{\n" \
         f"{' ':>8}template <typename T, typename P>\n" \
         f"{' ':>8}using f = {unit_name}_impl<T, P>;\n" \
         f"{' ':>4}}};\n" \
@@ -265,7 +272,7 @@ def generateUnitlessStruct():
     return \
         f"{' ':>4}// Unitless\n" \
 		f"{' ':>4}template <>\n" \
-		f"{' ':>4}struct dispatcher<list_<list_<>, list_<>>> {{\n" \
+		f"{' ':>4}struct dispatcher<list_<>> {{\n" \
 		f"{' ':>8}template <typename T, typename P>\n" \
 		f"{' ':>8}using f = P;\n" \
 		f"{' ':>4}}};\n" \
@@ -300,7 +307,7 @@ def generateTypeDispatcher():
         file.write(generateAnythingStructs())
         file.write(generateUnitEndNamespace())
 
-def generateUnitModuleImport(unit_name, unit_type, unit_symbol="", pretty="", impl_numer="", impl_denom=""):
+def generateUnitModuleImport(unit_name, unit_type, unit_symbol="", pretty="", i_length="", i_time="", i_mass="", i_substance="", i_current="", i_temp="", i_luminous="", i_radian="", i_steradian="", i_decay=""):
     return \
         f"export import Boost.TMP.Units.Unit.{unit_name.title()};\n"
 

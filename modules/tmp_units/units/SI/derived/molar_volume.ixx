@@ -15,10 +15,19 @@ import std.core;
 namespace tmp = boost::tmp;
 export namespace potato::units {
 
-    using cubic_meter_per_mole_tag_t = tmp::list_<tmp::list_<meter_l, meter_l, meter_l>, tmp::list_<mole_l>>;
+    using molar_volume_tag_t = tmp::list_<Length<std::ratio<3, 1>>,
+                                         Time<std::ratio<0, 1>>,
+                                         Mass<std::ratio<0, 1>>,
+                                         AmountOfSubstance<std::ratio<-1, 1>>,
+                                         ElectricCurrent<std::ratio<0, 1>>,
+                                         ThermodynamicTemperature<std::ratio<0, 1>>,
+                                         LuminousIntensity<std::ratio<0, 1>>,
+                                         Radian<std::ratio<0, 1>>,
+                                         Steradian<std::ratio<0, 1>>,
+                                         Decay<std::ratio<0, 1>>>;
 
     template<typename T>
-    concept Cubic_Meter_Per_MoleC = std::same_as<typename T::impl, cubic_meter_per_mole_tag_t>;
+    concept Cubic_Meter_Per_MoleC = std::same_as<typename T::impl, molar_volume_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct cubic_meter_per_mole_impl {
@@ -32,8 +41,7 @@ export namespace potato::units {
 
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
-        using numer_type = DerivedValueType;
-        using impl       = cubic_meter_per_mole_tag_t;
+        using impl       = molar_volume_tag_t;
 
         constexpr cubic_meter_per_mole_impl(value_type val) : value{val} {}
 

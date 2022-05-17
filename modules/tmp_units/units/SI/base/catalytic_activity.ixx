@@ -15,10 +15,19 @@ import std.core;
 namespace tmp = boost::tmp;
 export namespace potato::units {
 
-    using katal_tag_t = tmp::list_<tmp::list_<mole_l>, tmp::list_<second_l>>;
+    using catalytic_activity_tag_t = tmp::list_<Length<std::ratio<0, 1>>,
+                                         Time<std::ratio<-1, 1>>,
+                                         Mass<std::ratio<0, 1>>,
+                                         AmountOfSubstance<std::ratio<1, 1>>,
+                                         ElectricCurrent<std::ratio<0, 1>>,
+                                         ThermodynamicTemperature<std::ratio<0, 1>>,
+                                         LuminousIntensity<std::ratio<0, 1>>,
+                                         Radian<std::ratio<0, 1>>,
+                                         Steradian<std::ratio<0, 1>>,
+                                         Decay<std::ratio<0, 1>>>;
 
     template<typename T>
-    concept KatalC = std::same_as<typename T::impl, katal_tag_t>;
+    concept KatalC = std::same_as<typename T::impl, catalytic_activity_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct katal_impl {
@@ -32,8 +41,7 @@ export namespace potato::units {
 
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
-        using numer_type = DerivedValueType;
-        using impl       = katal_tag_t;
+        using impl       = catalytic_activity_tag_t;
 
         constexpr katal_impl(value_type val) : value{val} {}
 

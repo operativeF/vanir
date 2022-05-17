@@ -15,10 +15,19 @@ import std.core;
 namespace tmp = boost::tmp;
 export namespace potato::units {
 
-    using henry_per_meter_tag_t = tmp::list_<tmp::list_<meter_l, gram_l>, tmp::list_<second_l, second_l, ampere_l, ampere_l>>;
+    using permeability_tag_t = tmp::list_<Length<std::ratio<1, 1>>,
+                                         Time<std::ratio<-2, 1>>,
+                                         Mass<std::ratio<1, 1>>,
+                                         AmountOfSubstance<std::ratio<0, 1>>,
+                                         ElectricCurrent<std::ratio<-2, 1>>,
+                                         ThermodynamicTemperature<std::ratio<0, 1>>,
+                                         LuminousIntensity<std::ratio<0, 1>>,
+                                         Radian<std::ratio<0, 1>>,
+                                         Steradian<std::ratio<0, 1>>,
+                                         Decay<std::ratio<0, 1>>>;
 
     template<typename T>
-    concept Henry_Per_MeterC = std::same_as<typename T::impl, henry_per_meter_tag_t>;
+    concept Henry_Per_MeterC = std::same_as<typename T::impl, permeability_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct henry_per_meter_impl {
@@ -32,8 +41,7 @@ export namespace potato::units {
 
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
-        using numer_type = DerivedValueType;
-        using impl       = henry_per_meter_tag_t;
+        using impl       = permeability_tag_t;
 
         constexpr henry_per_meter_impl(value_type val) : value{val} {}
 

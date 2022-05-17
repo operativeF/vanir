@@ -16,10 +16,16 @@ import std.core;
 
 namespace ut = boost::ut;
 
-constexpr auto getVoltageDrop(potato::units::OhmC auto resistance, potato::units::AmpereC auto current)
+using namespace potato::units;
+
+constexpr auto getVoltageDrop(OhmC auto resistance, AmpereC auto current)
 {
     return resistance * current;
 }
+
+static constexpr auto vd_across = getVoltageDrop(10.0_ohm, 1.0_A);
+
+static_assert(vd_across == 10.0_V);
 
 ut::suite TmpUnitOperationsTests = []
 {

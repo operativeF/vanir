@@ -15,10 +15,19 @@ import std.core;
 namespace tmp = boost::tmp;
 export namespace potato::units {
 
-    using lumen_second_tag_t = tmp::list_<tmp::list_<second_l, candela_l>, tmp::list_<>>;
+    using luminous_energy_tag_t = tmp::list_<Length<std::ratio<0, 1>>,
+                                         Time<std::ratio<1, 1>>,
+                                         Mass<std::ratio<0, 1>>,
+                                         AmountOfSubstance<std::ratio<0, 1>>,
+                                         ElectricCurrent<std::ratio<0, 1>>,
+                                         ThermodynamicTemperature<std::ratio<0, 1>>,
+                                         LuminousIntensity<std::ratio<1, 1>>,
+                                         Radian<std::ratio<0, 1>>,
+                                         Steradian<std::ratio<0, 1>>,
+                                         Decay<std::ratio<0, 1>>>;
 
     template<typename T>
-    concept Lumen_SecondC = std::same_as<typename T::impl, lumen_second_tag_t>;
+    concept Lumen_SecondC = std::same_as<typename T::impl, luminous_energy_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct lumen_second_impl {
@@ -32,8 +41,7 @@ export namespace potato::units {
 
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
-        using numer_type = DerivedValueType;
-        using impl       = lumen_second_tag_t;
+        using impl       = luminous_energy_tag_t;
 
         constexpr lumen_second_impl(value_type val) : value{val} {}
 

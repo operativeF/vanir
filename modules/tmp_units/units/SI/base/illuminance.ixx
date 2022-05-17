@@ -15,10 +15,19 @@ import std.core;
 namespace tmp = boost::tmp;
 export namespace potato::units {
 
-    using lux_tag_t = tmp::list_<tmp::list_<candela_l>, tmp::list_<meter_l, meter_l>>;
+    using illuminance_tag_t = tmp::list_<Length<std::ratio<-2, 1>>,
+                                         Time<std::ratio<0, 1>>,
+                                         Mass<std::ratio<0, 1>>,
+                                         AmountOfSubstance<std::ratio<0, 1>>,
+                                         ElectricCurrent<std::ratio<0, 1>>,
+                                         ThermodynamicTemperature<std::ratio<0, 1>>,
+                                         LuminousIntensity<std::ratio<1, 1>>,
+                                         Radian<std::ratio<0, 1>>,
+                                         Steradian<std::ratio<0, 1>>,
+                                         Decay<std::ratio<0, 1>>>;
 
     template<typename T>
-    concept LuxC = std::same_as<typename T::impl, lux_tag_t>;
+    concept LuxC = std::same_as<typename T::impl, illuminance_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct lux_impl {
@@ -32,8 +41,7 @@ export namespace potato::units {
 
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
-        using numer_type = DerivedValueType;
-        using impl       = lux_tag_t;
+        using impl       = illuminance_tag_t;
 
         constexpr lux_impl(value_type val) : value{val} {}
 

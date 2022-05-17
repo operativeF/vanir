@@ -15,10 +15,19 @@ import std.core;
 namespace tmp = boost::tmp;
 export namespace potato::units {
 
-    using candela_tag_t = tmp::list_<tmp::list_<candela_l>, tmp::list_<>>;
+    using luminous_intensity_tag_t = tmp::list_<Length<std::ratio<0, 1>>,
+                                         Time<std::ratio<0, 1>>,
+                                         Mass<std::ratio<0, 1>>,
+                                         AmountOfSubstance<std::ratio<0, 1>>,
+                                         ElectricCurrent<std::ratio<0, 1>>,
+                                         ThermodynamicTemperature<std::ratio<0, 1>>,
+                                         LuminousIntensity<std::ratio<1, 1>>,
+                                         Radian<std::ratio<0, 1>>,
+                                         Steradian<std::ratio<0, 1>>,
+                                         Decay<std::ratio<0, 1>>>;
 
     template<typename T>
-    concept CandelaC = std::same_as<typename T::impl, candela_tag_t>;
+    concept CandelaC = std::same_as<typename T::impl, luminous_intensity_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct candela_impl {
@@ -32,8 +41,7 @@ export namespace potato::units {
 
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
-        using numer_type = DerivedValueType;
-        using impl       = candela_tag_t;
+        using impl       = luminous_intensity_tag_t;
 
         constexpr candela_impl(value_type val) : value{val} {}
 

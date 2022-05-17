@@ -15,10 +15,19 @@ import std.core;
 namespace tmp = boost::tmp;
 export namespace potato::units {
 
-    using joule_per_square_meter_second_tag_t = tmp::list_<tmp::list_<gram_l>, tmp::list_<second_l, second_l, second_l>>;
+    using energy_flux_density_tag_t = tmp::list_<Length<std::ratio<0, 1>>,
+                                         Time<std::ratio<-3, 1>>,
+                                         Mass<std::ratio<1, 1>>,
+                                         AmountOfSubstance<std::ratio<0, 1>>,
+                                         ElectricCurrent<std::ratio<0, 1>>,
+                                         ThermodynamicTemperature<std::ratio<0, 1>>,
+                                         LuminousIntensity<std::ratio<0, 1>>,
+                                         Radian<std::ratio<0, 1>>,
+                                         Steradian<std::ratio<0, 1>>,
+                                         Decay<std::ratio<0, 1>>>;
 
     template<typename T>
-    concept Joule_Per_Square_Meter_SecondC = std::same_as<typename T::impl, joule_per_square_meter_second_tag_t>;
+    concept Joule_Per_Square_Meter_SecondC = std::same_as<typename T::impl, energy_flux_density_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct joule_per_square_meter_second_impl {
@@ -32,8 +41,7 @@ export namespace potato::units {
 
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
-        using numer_type = DerivedValueType;
-        using impl       = joule_per_square_meter_second_tag_t;
+        using impl       = energy_flux_density_tag_t;
 
         constexpr joule_per_square_meter_second_impl(value_type val) : value{val} {}
 

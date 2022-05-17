@@ -15,10 +15,19 @@ import std.core;
 namespace tmp = boost::tmp;
 export namespace potato::units {
 
-    using watt_per_steradian_tag_t = tmp::list_<tmp::list_<meter_l, meter_l, gram_l>, tmp::list_<second_l, second_l, second_l, steradian_l>>;
+    using radiant_intensity_tag_t = tmp::list_<Length<std::ratio<2, 1>>,
+                                         Time<std::ratio<-3, 1>>,
+                                         Mass<std::ratio<1, 1>>,
+                                         AmountOfSubstance<std::ratio<0, 1>>,
+                                         ElectricCurrent<std::ratio<0, 1>>,
+                                         ThermodynamicTemperature<std::ratio<0, 1>>,
+                                         LuminousIntensity<std::ratio<0, 1>>,
+                                         Radian<std::ratio<0, 1>>,
+                                         Steradian<std::ratio<1, 1>>,
+                                         Decay<std::ratio<0, 1>>>;
 
     template<typename T>
-    concept Watt_Per_SteradianC = std::same_as<typename T::impl, watt_per_steradian_tag_t>;
+    concept Watt_Per_SteradianC = std::same_as<typename T::impl, radiant_intensity_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct watt_per_steradian_impl {
@@ -32,8 +41,7 @@ export namespace potato::units {
 
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
-        using numer_type = DerivedValueType;
-        using impl       = watt_per_steradian_tag_t;
+        using impl       = radiant_intensity_tag_t;
 
         constexpr watt_per_steradian_impl(value_type val) : value{val} {}
 

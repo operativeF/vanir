@@ -15,10 +15,19 @@ import std.core;
 namespace tmp = boost::tmp;
 export namespace potato::units {
 
-    using second_tag_t = tmp::list_<tmp::list_<second_l>, tmp::list_<>>;
+    using time_tag_t = tmp::list_<Length<std::ratio<0, 1>>,
+                                         Time<std::ratio<1, 1>>,
+                                         Mass<std::ratio<0, 1>>,
+                                         AmountOfSubstance<std::ratio<0, 1>>,
+                                         ElectricCurrent<std::ratio<0, 1>>,
+                                         ThermodynamicTemperature<std::ratio<0, 1>>,
+                                         LuminousIntensity<std::ratio<0, 1>>,
+                                         Radian<std::ratio<0, 1>>,
+                                         Steradian<std::ratio<0, 1>>,
+                                         Decay<std::ratio<0, 1>>>;
 
     template<typename T>
-    concept SecondC = std::same_as<typename T::impl, second_tag_t>;
+    concept SecondC = std::same_as<typename T::impl, time_tag_t>;
 
     template <typename RatioTypeT, typename P>
     struct second_impl {
@@ -32,8 +41,7 @@ export namespace potato::units {
 
         using mod_ratio  = RatioTypeT;
         using value_type = DerivedValueType;
-        using numer_type = DerivedValueType;
-        using impl       = second_tag_t;
+        using impl       = time_tag_t;
 
         constexpr second_impl(value_type val) : value{val} {}
 
