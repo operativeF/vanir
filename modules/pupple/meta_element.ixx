@@ -25,7 +25,12 @@ template<typename T>
 using IsEmptyAndInheritible = tmp::bool_<(std::is_empty_v<T> && !std::is_final_v<T>)>;
 
 template<typename T>
-using PuppleDataT = tmp::call_<tmp::if_<tmp::lift_<IsEmptyAndInheritible>, tmp::identity_, tmp::always_<pupple_data<T>>>, T>;
+using PuppleDataT = tmp::call_<
+    tmp::if_<
+        tmp::lift_<IsEmptyAndInheritible>,
+        tmp::identity_,
+        tmp::always_<pupple_data<T>>
+    >, T>;
 
 export
 {

@@ -37,7 +37,8 @@ template<std::size_t N, std::size_t V>
 using repeated_sequence = decltype(make_repeated_sequence<V>(std::make_index_sequence<N>{}));
 
 template<std::size_t... Is, std::size_t... Js>
-constexpr std::index_sequence<Is..., Js...> concat_sequences(std::index_sequence<Is...>, std::index_sequence<Js...>)
+constexpr std::index_sequence<Is..., Js...> concat_sequences(std::index_sequence<Is...>,
+                                                             std::index_sequence<Js...>)
 {
     return {};
 }
@@ -63,14 +64,18 @@ constexpr std::index_sequence<> concat_sequences(std::index_sequence<>)
 template<typename... TupleTs, std::size_t... Ns>
 constexpr auto pupple_cat_impl(std::index_sequence<Ns...>, TupleTs&&... tps)
 {
-    auto cc_seq = concat_sequences(repeated_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>, Ns>{}...);
-    auto ts_seq = concat_sequences(std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>>{}...);
+    auto cc_seq = concat_sequences(
+        repeated_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>, Ns>{}...);
+    auto ts_seq = concat_sequences(
+        std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>>{}...);
 
     return []<typename FullTuple, std::size_t... Is, std::size_t... Js>
         (FullTuple&& ft, std::index_sequence<Is...>, std::index_sequence<Js...>)
         {
             return Tuple{get<Is>(get<Js>(std::forward<FullTuple>(ft)))...};
-        } (Tuple{std::forward<TupleTs>(tps)...}, ts_seq, cc_seq);
+        } (Tuple{std::forward<TupleTs>(tps)...},
+           ts_seq,
+           cc_seq);
 }
 
 export
@@ -95,10 +100,13 @@ namespace std
 template<typename TupleT, typename... Us>
 constexpr auto append(TupleT&& elements, Us&&... params) noexcept
 {
-    return []<typename TP, typename... Params, std::size_t... Is>(TP&& tp, std::index_sequence<Is...>, Params&&... ps)
+    return []<typename TP, typename... Params, std::size_t... Is>
+        (TP&& tp, std::index_sequence<Is...>, Params&&... ps)
         {
             return Tuple{get<Is>(tp)..., std::forward<Params>(ps)...};
-        } (std::forward<TupleT>(elements), tuple_indexer<std::remove_reference_t<TupleT>>{}, std::forward<Us>(params)...);
+        } (std::forward<TupleT>(elements),
+           tuple_indexer<std::remove_reference_t<TupleT>>{},
+           std::forward<Us>(params)...);
 }
 
 template<class T, class P>
@@ -117,7 +125,8 @@ constexpr Tuple<Ts&&...> forward_as_pupple(Ts&&... ts) noexcept // TODO: Conditi
 
 // Swapping
 template<std::swappable... Ts>
-constexpr void swap(Tuple<Ts...>& a, Tuple<Ts...>& b) noexcept((std::is_nothrow_swappable_v<Ts> && ...))
+constexpr void swap(Tuple<Ts...>& a, Tuple<Ts...>& b)
+    noexcept((std::is_nothrow_swappable_v<Ts> && ...))
 {
     using tuple_type = Tuple<Ts...>;
 
@@ -127,7 +136,8 @@ constexpr void swap(Tuple<Ts...>& a, Tuple<Ts...>& b) noexcept((std::is_nothrow_
 }
 
 template<std::swappable... Ts>
-constexpr void swap(const Tuple<Ts...>& a, const Tuple<Ts...>& b) noexcept((std::is_nothrow_swappable_v<const Ts> && ...))
+constexpr void swap(const Tuple<Ts...>& a, const Tuple<Ts...>& b)
+    noexcept((std::is_nothrow_swappable_v<const Ts> && ...))
 {
     using tuple_type = Tuple<Ts...>;
 
@@ -163,7 +173,8 @@ constexpr auto gather(auto&& tps)
     (TT&& tt, std::index_sequence<Is...>)
     {
         return Tuple{get<Is>(std::forward<TT>(tt))...};
-    } (std::forward<decltype(tps)>(tps), concatted);
+    } (std::forward<decltype(tps)>(tps),
+       concatted);
 }
 
 } // export
