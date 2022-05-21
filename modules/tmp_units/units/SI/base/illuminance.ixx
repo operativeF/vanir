@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtolux_ull    =     lux_impl<std::femto, unsigned long long>;
     using attolux_ull    =     lux_impl<std::atto, unsigned long long>;
 
-    constexpr exalux_ld operator""_Elx(long double val) {
+    consteval exalux_ld operator""_Elx(long double val) {
         return static_cast<exalux_ld>(val);
     }
-    constexpr petalux_ld operator""_Plx(long double val) {
+    consteval petalux_ld operator""_Plx(long double val) {
         return static_cast<petalux_ld>(val);
     }
-    constexpr teralux_ld operator""_Tlx(long double val) {
+    consteval teralux_ld operator""_Tlx(long double val) {
         return static_cast<teralux_ld>(val);
     }
-    constexpr gigalux_ld operator""_Glx(long double val) {
+    consteval gigalux_ld operator""_Glx(long double val) {
         return static_cast<gigalux_ld>(val);
     }
-    constexpr megalux_ld operator""_Mlx(long double val) {
+    consteval megalux_ld operator""_Mlx(long double val) {
         return static_cast<megalux_ld>(val);
     }
-    constexpr kilolux_ld operator""_klx(long double val) {
+    consteval kilolux_ld operator""_klx(long double val) {
         return static_cast<kilolux_ld>(val);
     }
-    constexpr hectolux_ld operator""_hlx(long double val) {
+    consteval hectolux_ld operator""_hlx(long double val) {
         return static_cast<hectolux_ld>(val);
     }
-    constexpr decalux_ld operator""_dalx(long double val) {
+    consteval decalux_ld operator""_dalx(long double val) {
         return static_cast<decalux_ld>(val);
     }
-    constexpr lux_ld operator""_lx(long double val) {
+    consteval lux_ld operator""_lx(long double val) {
         return static_cast<lux_ld>(val);
     }
-    constexpr decilux_ld operator""_dlx(long double val) {
+    consteval decilux_ld operator""_dlx(long double val) {
         return static_cast<decilux_ld>(val);
     }
-    constexpr centilux_ld operator""_clx(long double val) {
+    consteval centilux_ld operator""_clx(long double val) {
         return static_cast<centilux_ld>(val);
     }
-    constexpr millilux_ld operator""_mlx(long double val) {
+    consteval millilux_ld operator""_mlx(long double val) {
         return static_cast<millilux_ld>(val);
     }
-    constexpr microlux_ld operator""_ulx(long double val) {
+    consteval microlux_ld operator""_ulx(long double val) {
         return static_cast<microlux_ld>(val);
     }
-    constexpr nanolux_ld operator""_nlx(long double val) {
+    consteval nanolux_ld operator""_nlx(long double val) {
         return static_cast<nanolux_ld>(val);
     }
-    constexpr picolux_ld operator""_plx(long double val) {
+    consteval picolux_ld operator""_plx(long double val) {
         return static_cast<picolux_ld>(val);
     }
-    constexpr femtolux_ld operator""_flx(long double val) {
+    consteval femtolux_ld operator""_flx(long double val) {
         return static_cast<femtolux_ld>(val);
     }
-    constexpr attolux_ld operator""_alx(long double val) {
+    consteval attolux_ld operator""_alx(long double val) {
         return static_cast<attolux_ld>(val);
     }
-    constexpr exalux_ull operator""_Elx(unsigned long long val) {
+    consteval exalux_ull operator""_Elx(unsigned long long val) {
         return static_cast<exalux_ull>(val);
     }
-    constexpr petalux_ull operator""_Plx(unsigned long long val) {
+    consteval petalux_ull operator""_Plx(unsigned long long val) {
         return static_cast<petalux_ull>(val);
     }
-    constexpr teralux_ull operator""_Tlx(unsigned long long val) {
+    consteval teralux_ull operator""_Tlx(unsigned long long val) {
         return static_cast<teralux_ull>(val);
     }
-    constexpr gigalux_ull operator""_Glx(unsigned long long val) {
+    consteval gigalux_ull operator""_Glx(unsigned long long val) {
         return static_cast<gigalux_ull>(val);
     }
-    constexpr megalux_ull operator""_Mlx(unsigned long long val) {
+    consteval megalux_ull operator""_Mlx(unsigned long long val) {
         return static_cast<megalux_ull>(val);
     }
-    constexpr kilolux_ull operator""_klx(unsigned long long val) {
+    consteval kilolux_ull operator""_klx(unsigned long long val) {
         return static_cast<kilolux_ull>(val);
     }
-    constexpr hectolux_ull operator""_hlx(unsigned long long val) {
+    consteval hectolux_ull operator""_hlx(unsigned long long val) {
         return static_cast<hectolux_ull>(val);
     }
-    constexpr decalux_ull operator""_dalx(unsigned long long val) {
+    consteval decalux_ull operator""_dalx(unsigned long long val) {
         return static_cast<decalux_ull>(val);
     }
-    constexpr lux_ull operator""_lx(unsigned long long val) {
+    consteval lux_ull operator""_lx(unsigned long long val) {
         return static_cast<lux_ull>(val);
     }
-    constexpr decilux_ull operator""_dlx(unsigned long long val) {
+    consteval decilux_ull operator""_dlx(unsigned long long val) {
         return static_cast<decilux_ull>(val);
     }
-    constexpr centilux_ull operator""_clx(unsigned long long val) {
+    consteval centilux_ull operator""_clx(unsigned long long val) {
         return static_cast<centilux_ull>(val);
     }
-    constexpr millilux_ull operator""_mlx(unsigned long long val) {
+    consteval millilux_ull operator""_mlx(unsigned long long val) {
         return static_cast<millilux_ull>(val);
     }
-    constexpr microlux_ull operator""_ulx(unsigned long long val) {
+    consteval microlux_ull operator""_ulx(unsigned long long val) {
         return static_cast<microlux_ull>(val);
     }
-    constexpr nanolux_ull operator""_nlx(unsigned long long val) {
+    consteval nanolux_ull operator""_nlx(unsigned long long val) {
         return static_cast<nanolux_ull>(val);
     }
-    constexpr picolux_ull operator""_plx(unsigned long long val) {
+    consteval picolux_ull operator""_plx(unsigned long long val) {
         return static_cast<picolux_ull>(val);
     }
-    constexpr femtolux_ull operator""_flx(unsigned long long val) {
+    consteval femtolux_ull operator""_flx(unsigned long long val) {
         return static_cast<femtolux_ull>(val);
     }
-    constexpr attolux_ull operator""_alx(unsigned long long val) {
+    consteval attolux_ull operator""_alx(unsigned long long val) {
         return static_cast<attolux_ull>(val);
     }
 

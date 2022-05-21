@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtometer_ull    =     meter_impl<std::femto, unsigned long long>;
     using attometer_ull    =     meter_impl<std::atto, unsigned long long>;
 
-    constexpr exameter_ld operator""_Em(long double val) {
+    consteval exameter_ld operator""_Em(long double val) {
         return static_cast<exameter_ld>(val);
     }
-    constexpr petameter_ld operator""_Pm(long double val) {
+    consteval petameter_ld operator""_Pm(long double val) {
         return static_cast<petameter_ld>(val);
     }
-    constexpr terameter_ld operator""_Tm(long double val) {
+    consteval terameter_ld operator""_Tm(long double val) {
         return static_cast<terameter_ld>(val);
     }
-    constexpr gigameter_ld operator""_Gm(long double val) {
+    consteval gigameter_ld operator""_Gm(long double val) {
         return static_cast<gigameter_ld>(val);
     }
-    constexpr megameter_ld operator""_Mm(long double val) {
+    consteval megameter_ld operator""_Mm(long double val) {
         return static_cast<megameter_ld>(val);
     }
-    constexpr kilometer_ld operator""_km(long double val) {
+    consteval kilometer_ld operator""_km(long double val) {
         return static_cast<kilometer_ld>(val);
     }
-    constexpr hectometer_ld operator""_hm(long double val) {
+    consteval hectometer_ld operator""_hm(long double val) {
         return static_cast<hectometer_ld>(val);
     }
-    constexpr decameter_ld operator""_dam(long double val) {
+    consteval decameter_ld operator""_dam(long double val) {
         return static_cast<decameter_ld>(val);
     }
-    constexpr meter_ld operator""_m(long double val) {
+    consteval meter_ld operator""_m(long double val) {
         return static_cast<meter_ld>(val);
     }
-    constexpr decimeter_ld operator""_dm(long double val) {
+    consteval decimeter_ld operator""_dm(long double val) {
         return static_cast<decimeter_ld>(val);
     }
-    constexpr centimeter_ld operator""_cm(long double val) {
+    consteval centimeter_ld operator""_cm(long double val) {
         return static_cast<centimeter_ld>(val);
     }
-    constexpr millimeter_ld operator""_mm(long double val) {
+    consteval millimeter_ld operator""_mm(long double val) {
         return static_cast<millimeter_ld>(val);
     }
-    constexpr micrometer_ld operator""_um(long double val) {
+    consteval micrometer_ld operator""_um(long double val) {
         return static_cast<micrometer_ld>(val);
     }
-    constexpr nanometer_ld operator""_nm(long double val) {
+    consteval nanometer_ld operator""_nm(long double val) {
         return static_cast<nanometer_ld>(val);
     }
-    constexpr picometer_ld operator""_pm(long double val) {
+    consteval picometer_ld operator""_pm(long double val) {
         return static_cast<picometer_ld>(val);
     }
-    constexpr femtometer_ld operator""_fm(long double val) {
+    consteval femtometer_ld operator""_fm(long double val) {
         return static_cast<femtometer_ld>(val);
     }
-    constexpr attometer_ld operator""_am(long double val) {
+    consteval attometer_ld operator""_am(long double val) {
         return static_cast<attometer_ld>(val);
     }
-    constexpr exameter_ull operator""_Em(unsigned long long val) {
+    consteval exameter_ull operator""_Em(unsigned long long val) {
         return static_cast<exameter_ull>(val);
     }
-    constexpr petameter_ull operator""_Pm(unsigned long long val) {
+    consteval petameter_ull operator""_Pm(unsigned long long val) {
         return static_cast<petameter_ull>(val);
     }
-    constexpr terameter_ull operator""_Tm(unsigned long long val) {
+    consteval terameter_ull operator""_Tm(unsigned long long val) {
         return static_cast<terameter_ull>(val);
     }
-    constexpr gigameter_ull operator""_Gm(unsigned long long val) {
+    consteval gigameter_ull operator""_Gm(unsigned long long val) {
         return static_cast<gigameter_ull>(val);
     }
-    constexpr megameter_ull operator""_Mm(unsigned long long val) {
+    consteval megameter_ull operator""_Mm(unsigned long long val) {
         return static_cast<megameter_ull>(val);
     }
-    constexpr kilometer_ull operator""_km(unsigned long long val) {
+    consteval kilometer_ull operator""_km(unsigned long long val) {
         return static_cast<kilometer_ull>(val);
     }
-    constexpr hectometer_ull operator""_hm(unsigned long long val) {
+    consteval hectometer_ull operator""_hm(unsigned long long val) {
         return static_cast<hectometer_ull>(val);
     }
-    constexpr decameter_ull operator""_dam(unsigned long long val) {
+    consteval decameter_ull operator""_dam(unsigned long long val) {
         return static_cast<decameter_ull>(val);
     }
-    constexpr meter_ull operator""_m(unsigned long long val) {
+    consteval meter_ull operator""_m(unsigned long long val) {
         return static_cast<meter_ull>(val);
     }
-    constexpr decimeter_ull operator""_dm(unsigned long long val) {
+    consteval decimeter_ull operator""_dm(unsigned long long val) {
         return static_cast<decimeter_ull>(val);
     }
-    constexpr centimeter_ull operator""_cm(unsigned long long val) {
+    consteval centimeter_ull operator""_cm(unsigned long long val) {
         return static_cast<centimeter_ull>(val);
     }
-    constexpr millimeter_ull operator""_mm(unsigned long long val) {
+    consteval millimeter_ull operator""_mm(unsigned long long val) {
         return static_cast<millimeter_ull>(val);
     }
-    constexpr micrometer_ull operator""_um(unsigned long long val) {
+    consteval micrometer_ull operator""_um(unsigned long long val) {
         return static_cast<micrometer_ull>(val);
     }
-    constexpr nanometer_ull operator""_nm(unsigned long long val) {
+    consteval nanometer_ull operator""_nm(unsigned long long val) {
         return static_cast<nanometer_ull>(val);
     }
-    constexpr picometer_ull operator""_pm(unsigned long long val) {
+    consteval picometer_ull operator""_pm(unsigned long long val) {
         return static_cast<picometer_ull>(val);
     }
-    constexpr femtometer_ull operator""_fm(unsigned long long val) {
+    consteval femtometer_ull operator""_fm(unsigned long long val) {
         return static_cast<femtometer_ull>(val);
     }
-    constexpr attometer_ull operator""_am(unsigned long long val) {
+    consteval attometer_ull operator""_am(unsigned long long val) {
         return static_cast<attometer_ull>(val);
     }
 

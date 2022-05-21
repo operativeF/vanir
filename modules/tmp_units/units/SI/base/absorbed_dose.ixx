@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtogray_ull    =     gray_impl<std::femto, unsigned long long>;
     using attogray_ull    =     gray_impl<std::atto, unsigned long long>;
 
-    constexpr exagray_ld operator""_EGy(long double val) {
+    consteval exagray_ld operator""_EGy(long double val) {
         return static_cast<exagray_ld>(val);
     }
-    constexpr petagray_ld operator""_PGy(long double val) {
+    consteval petagray_ld operator""_PGy(long double val) {
         return static_cast<petagray_ld>(val);
     }
-    constexpr teragray_ld operator""_TGy(long double val) {
+    consteval teragray_ld operator""_TGy(long double val) {
         return static_cast<teragray_ld>(val);
     }
-    constexpr gigagray_ld operator""_GGy(long double val) {
+    consteval gigagray_ld operator""_GGy(long double val) {
         return static_cast<gigagray_ld>(val);
     }
-    constexpr megagray_ld operator""_MGy(long double val) {
+    consteval megagray_ld operator""_MGy(long double val) {
         return static_cast<megagray_ld>(val);
     }
-    constexpr kilogray_ld operator""_kGy(long double val) {
+    consteval kilogray_ld operator""_kGy(long double val) {
         return static_cast<kilogray_ld>(val);
     }
-    constexpr hectogray_ld operator""_hGy(long double val) {
+    consteval hectogray_ld operator""_hGy(long double val) {
         return static_cast<hectogray_ld>(val);
     }
-    constexpr decagray_ld operator""_daGy(long double val) {
+    consteval decagray_ld operator""_daGy(long double val) {
         return static_cast<decagray_ld>(val);
     }
-    constexpr gray_ld operator""_Gy(long double val) {
+    consteval gray_ld operator""_Gy(long double val) {
         return static_cast<gray_ld>(val);
     }
-    constexpr decigray_ld operator""_dGy(long double val) {
+    consteval decigray_ld operator""_dGy(long double val) {
         return static_cast<decigray_ld>(val);
     }
-    constexpr centigray_ld operator""_cGy(long double val) {
+    consteval centigray_ld operator""_cGy(long double val) {
         return static_cast<centigray_ld>(val);
     }
-    constexpr milligray_ld operator""_mGy(long double val) {
+    consteval milligray_ld operator""_mGy(long double val) {
         return static_cast<milligray_ld>(val);
     }
-    constexpr microgray_ld operator""_uGy(long double val) {
+    consteval microgray_ld operator""_uGy(long double val) {
         return static_cast<microgray_ld>(val);
     }
-    constexpr nanogray_ld operator""_nGy(long double val) {
+    consteval nanogray_ld operator""_nGy(long double val) {
         return static_cast<nanogray_ld>(val);
     }
-    constexpr picogray_ld operator""_pGy(long double val) {
+    consteval picogray_ld operator""_pGy(long double val) {
         return static_cast<picogray_ld>(val);
     }
-    constexpr femtogray_ld operator""_fGy(long double val) {
+    consteval femtogray_ld operator""_fGy(long double val) {
         return static_cast<femtogray_ld>(val);
     }
-    constexpr attogray_ld operator""_aGy(long double val) {
+    consteval attogray_ld operator""_aGy(long double val) {
         return static_cast<attogray_ld>(val);
     }
-    constexpr exagray_ull operator""_EGy(unsigned long long val) {
+    consteval exagray_ull operator""_EGy(unsigned long long val) {
         return static_cast<exagray_ull>(val);
     }
-    constexpr petagray_ull operator""_PGy(unsigned long long val) {
+    consteval petagray_ull operator""_PGy(unsigned long long val) {
         return static_cast<petagray_ull>(val);
     }
-    constexpr teragray_ull operator""_TGy(unsigned long long val) {
+    consteval teragray_ull operator""_TGy(unsigned long long val) {
         return static_cast<teragray_ull>(val);
     }
-    constexpr gigagray_ull operator""_GGy(unsigned long long val) {
+    consteval gigagray_ull operator""_GGy(unsigned long long val) {
         return static_cast<gigagray_ull>(val);
     }
-    constexpr megagray_ull operator""_MGy(unsigned long long val) {
+    consteval megagray_ull operator""_MGy(unsigned long long val) {
         return static_cast<megagray_ull>(val);
     }
-    constexpr kilogray_ull operator""_kGy(unsigned long long val) {
+    consteval kilogray_ull operator""_kGy(unsigned long long val) {
         return static_cast<kilogray_ull>(val);
     }
-    constexpr hectogray_ull operator""_hGy(unsigned long long val) {
+    consteval hectogray_ull operator""_hGy(unsigned long long val) {
         return static_cast<hectogray_ull>(val);
     }
-    constexpr decagray_ull operator""_daGy(unsigned long long val) {
+    consteval decagray_ull operator""_daGy(unsigned long long val) {
         return static_cast<decagray_ull>(val);
     }
-    constexpr gray_ull operator""_Gy(unsigned long long val) {
+    consteval gray_ull operator""_Gy(unsigned long long val) {
         return static_cast<gray_ull>(val);
     }
-    constexpr decigray_ull operator""_dGy(unsigned long long val) {
+    consteval decigray_ull operator""_dGy(unsigned long long val) {
         return static_cast<decigray_ull>(val);
     }
-    constexpr centigray_ull operator""_cGy(unsigned long long val) {
+    consteval centigray_ull operator""_cGy(unsigned long long val) {
         return static_cast<centigray_ull>(val);
     }
-    constexpr milligray_ull operator""_mGy(unsigned long long val) {
+    consteval milligray_ull operator""_mGy(unsigned long long val) {
         return static_cast<milligray_ull>(val);
     }
-    constexpr microgray_ull operator""_uGy(unsigned long long val) {
+    consteval microgray_ull operator""_uGy(unsigned long long val) {
         return static_cast<microgray_ull>(val);
     }
-    constexpr nanogray_ull operator""_nGy(unsigned long long val) {
+    consteval nanogray_ull operator""_nGy(unsigned long long val) {
         return static_cast<nanogray_ull>(val);
     }
-    constexpr picogray_ull operator""_pGy(unsigned long long val) {
+    consteval picogray_ull operator""_pGy(unsigned long long val) {
         return static_cast<picogray_ull>(val);
     }
-    constexpr femtogray_ull operator""_fGy(unsigned long long val) {
+    consteval femtogray_ull operator""_fGy(unsigned long long val) {
         return static_cast<femtogray_ull>(val);
     }
-    constexpr attogray_ull operator""_aGy(unsigned long long val) {
+    consteval attogray_ull operator""_aGy(unsigned long long val) {
         return static_cast<attogray_ull>(val);
     }
 

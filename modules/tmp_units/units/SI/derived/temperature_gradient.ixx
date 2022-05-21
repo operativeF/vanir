@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtokelvin_per_watt_ull    =     kelvin_per_watt_impl<std::femto, unsigned long long>;
     using attokelvin_per_watt_ull    =     kelvin_per_watt_impl<std::atto, unsigned long long>;
 
-    constexpr exakelvin_per_watt_ld operator""_EK_per_W(long double val) {
+    consteval exakelvin_per_watt_ld operator""_EK_per_W(long double val) {
         return static_cast<exakelvin_per_watt_ld>(val);
     }
-    constexpr petakelvin_per_watt_ld operator""_PK_per_W(long double val) {
+    consteval petakelvin_per_watt_ld operator""_PK_per_W(long double val) {
         return static_cast<petakelvin_per_watt_ld>(val);
     }
-    constexpr terakelvin_per_watt_ld operator""_TK_per_W(long double val) {
+    consteval terakelvin_per_watt_ld operator""_TK_per_W(long double val) {
         return static_cast<terakelvin_per_watt_ld>(val);
     }
-    constexpr gigakelvin_per_watt_ld operator""_GK_per_W(long double val) {
+    consteval gigakelvin_per_watt_ld operator""_GK_per_W(long double val) {
         return static_cast<gigakelvin_per_watt_ld>(val);
     }
-    constexpr megakelvin_per_watt_ld operator""_MK_per_W(long double val) {
+    consteval megakelvin_per_watt_ld operator""_MK_per_W(long double val) {
         return static_cast<megakelvin_per_watt_ld>(val);
     }
-    constexpr kilokelvin_per_watt_ld operator""_kK_per_W(long double val) {
+    consteval kilokelvin_per_watt_ld operator""_kK_per_W(long double val) {
         return static_cast<kilokelvin_per_watt_ld>(val);
     }
-    constexpr hectokelvin_per_watt_ld operator""_hK_per_W(long double val) {
+    consteval hectokelvin_per_watt_ld operator""_hK_per_W(long double val) {
         return static_cast<hectokelvin_per_watt_ld>(val);
     }
-    constexpr decakelvin_per_watt_ld operator""_daK_per_W(long double val) {
+    consteval decakelvin_per_watt_ld operator""_daK_per_W(long double val) {
         return static_cast<decakelvin_per_watt_ld>(val);
     }
-    constexpr kelvin_per_watt_ld operator""_K_per_W(long double val) {
+    consteval kelvin_per_watt_ld operator""_K_per_W(long double val) {
         return static_cast<kelvin_per_watt_ld>(val);
     }
-    constexpr decikelvin_per_watt_ld operator""_dK_per_W(long double val) {
+    consteval decikelvin_per_watt_ld operator""_dK_per_W(long double val) {
         return static_cast<decikelvin_per_watt_ld>(val);
     }
-    constexpr centikelvin_per_watt_ld operator""_cK_per_W(long double val) {
+    consteval centikelvin_per_watt_ld operator""_cK_per_W(long double val) {
         return static_cast<centikelvin_per_watt_ld>(val);
     }
-    constexpr millikelvin_per_watt_ld operator""_mK_per_W(long double val) {
+    consteval millikelvin_per_watt_ld operator""_mK_per_W(long double val) {
         return static_cast<millikelvin_per_watt_ld>(val);
     }
-    constexpr microkelvin_per_watt_ld operator""_uK_per_W(long double val) {
+    consteval microkelvin_per_watt_ld operator""_uK_per_W(long double val) {
         return static_cast<microkelvin_per_watt_ld>(val);
     }
-    constexpr nanokelvin_per_watt_ld operator""_nK_per_W(long double val) {
+    consteval nanokelvin_per_watt_ld operator""_nK_per_W(long double val) {
         return static_cast<nanokelvin_per_watt_ld>(val);
     }
-    constexpr picokelvin_per_watt_ld operator""_pK_per_W(long double val) {
+    consteval picokelvin_per_watt_ld operator""_pK_per_W(long double val) {
         return static_cast<picokelvin_per_watt_ld>(val);
     }
-    constexpr femtokelvin_per_watt_ld operator""_fK_per_W(long double val) {
+    consteval femtokelvin_per_watt_ld operator""_fK_per_W(long double val) {
         return static_cast<femtokelvin_per_watt_ld>(val);
     }
-    constexpr attokelvin_per_watt_ld operator""_aK_per_W(long double val) {
+    consteval attokelvin_per_watt_ld operator""_aK_per_W(long double val) {
         return static_cast<attokelvin_per_watt_ld>(val);
     }
-    constexpr exakelvin_per_watt_ull operator""_EK_per_W(unsigned long long val) {
+    consteval exakelvin_per_watt_ull operator""_EK_per_W(unsigned long long val) {
         return static_cast<exakelvin_per_watt_ull>(val);
     }
-    constexpr petakelvin_per_watt_ull operator""_PK_per_W(unsigned long long val) {
+    consteval petakelvin_per_watt_ull operator""_PK_per_W(unsigned long long val) {
         return static_cast<petakelvin_per_watt_ull>(val);
     }
-    constexpr terakelvin_per_watt_ull operator""_TK_per_W(unsigned long long val) {
+    consteval terakelvin_per_watt_ull operator""_TK_per_W(unsigned long long val) {
         return static_cast<terakelvin_per_watt_ull>(val);
     }
-    constexpr gigakelvin_per_watt_ull operator""_GK_per_W(unsigned long long val) {
+    consteval gigakelvin_per_watt_ull operator""_GK_per_W(unsigned long long val) {
         return static_cast<gigakelvin_per_watt_ull>(val);
     }
-    constexpr megakelvin_per_watt_ull operator""_MK_per_W(unsigned long long val) {
+    consteval megakelvin_per_watt_ull operator""_MK_per_W(unsigned long long val) {
         return static_cast<megakelvin_per_watt_ull>(val);
     }
-    constexpr kilokelvin_per_watt_ull operator""_kK_per_W(unsigned long long val) {
+    consteval kilokelvin_per_watt_ull operator""_kK_per_W(unsigned long long val) {
         return static_cast<kilokelvin_per_watt_ull>(val);
     }
-    constexpr hectokelvin_per_watt_ull operator""_hK_per_W(unsigned long long val) {
+    consteval hectokelvin_per_watt_ull operator""_hK_per_W(unsigned long long val) {
         return static_cast<hectokelvin_per_watt_ull>(val);
     }
-    constexpr decakelvin_per_watt_ull operator""_daK_per_W(unsigned long long val) {
+    consteval decakelvin_per_watt_ull operator""_daK_per_W(unsigned long long val) {
         return static_cast<decakelvin_per_watt_ull>(val);
     }
-    constexpr kelvin_per_watt_ull operator""_K_per_W(unsigned long long val) {
+    consteval kelvin_per_watt_ull operator""_K_per_W(unsigned long long val) {
         return static_cast<kelvin_per_watt_ull>(val);
     }
-    constexpr decikelvin_per_watt_ull operator""_dK_per_W(unsigned long long val) {
+    consteval decikelvin_per_watt_ull operator""_dK_per_W(unsigned long long val) {
         return static_cast<decikelvin_per_watt_ull>(val);
     }
-    constexpr centikelvin_per_watt_ull operator""_cK_per_W(unsigned long long val) {
+    consteval centikelvin_per_watt_ull operator""_cK_per_W(unsigned long long val) {
         return static_cast<centikelvin_per_watt_ull>(val);
     }
-    constexpr millikelvin_per_watt_ull operator""_mK_per_W(unsigned long long val) {
+    consteval millikelvin_per_watt_ull operator""_mK_per_W(unsigned long long val) {
         return static_cast<millikelvin_per_watt_ull>(val);
     }
-    constexpr microkelvin_per_watt_ull operator""_uK_per_W(unsigned long long val) {
+    consteval microkelvin_per_watt_ull operator""_uK_per_W(unsigned long long val) {
         return static_cast<microkelvin_per_watt_ull>(val);
     }
-    constexpr nanokelvin_per_watt_ull operator""_nK_per_W(unsigned long long val) {
+    consteval nanokelvin_per_watt_ull operator""_nK_per_W(unsigned long long val) {
         return static_cast<nanokelvin_per_watt_ull>(val);
     }
-    constexpr picokelvin_per_watt_ull operator""_pK_per_W(unsigned long long val) {
+    consteval picokelvin_per_watt_ull operator""_pK_per_W(unsigned long long val) {
         return static_cast<picokelvin_per_watt_ull>(val);
     }
-    constexpr femtokelvin_per_watt_ull operator""_fK_per_W(unsigned long long val) {
+    consteval femtokelvin_per_watt_ull operator""_fK_per_W(unsigned long long val) {
         return static_cast<femtokelvin_per_watt_ull>(val);
     }
-    constexpr attokelvin_per_watt_ull operator""_aK_per_W(unsigned long long val) {
+    consteval attokelvin_per_watt_ull operator""_aK_per_W(unsigned long long val) {
         return static_cast<attokelvin_per_watt_ull>(val);
     }
 

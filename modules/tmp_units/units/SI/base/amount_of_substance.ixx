@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtomole_ull    =     mole_impl<std::femto, unsigned long long>;
     using attomole_ull    =     mole_impl<std::atto, unsigned long long>;
 
-    constexpr examole_ld operator""_Emol(long double val) {
+    consteval examole_ld operator""_Emol(long double val) {
         return static_cast<examole_ld>(val);
     }
-    constexpr petamole_ld operator""_Pmol(long double val) {
+    consteval petamole_ld operator""_Pmol(long double val) {
         return static_cast<petamole_ld>(val);
     }
-    constexpr teramole_ld operator""_Tmol(long double val) {
+    consteval teramole_ld operator""_Tmol(long double val) {
         return static_cast<teramole_ld>(val);
     }
-    constexpr gigamole_ld operator""_Gmol(long double val) {
+    consteval gigamole_ld operator""_Gmol(long double val) {
         return static_cast<gigamole_ld>(val);
     }
-    constexpr megamole_ld operator""_Mmol(long double val) {
+    consteval megamole_ld operator""_Mmol(long double val) {
         return static_cast<megamole_ld>(val);
     }
-    constexpr kilomole_ld operator""_kmol(long double val) {
+    consteval kilomole_ld operator""_kmol(long double val) {
         return static_cast<kilomole_ld>(val);
     }
-    constexpr hectomole_ld operator""_hmol(long double val) {
+    consteval hectomole_ld operator""_hmol(long double val) {
         return static_cast<hectomole_ld>(val);
     }
-    constexpr decamole_ld operator""_damol(long double val) {
+    consteval decamole_ld operator""_damol(long double val) {
         return static_cast<decamole_ld>(val);
     }
-    constexpr mole_ld operator""_mol(long double val) {
+    consteval mole_ld operator""_mol(long double val) {
         return static_cast<mole_ld>(val);
     }
-    constexpr decimole_ld operator""_dmol(long double val) {
+    consteval decimole_ld operator""_dmol(long double val) {
         return static_cast<decimole_ld>(val);
     }
-    constexpr centimole_ld operator""_cmol(long double val) {
+    consteval centimole_ld operator""_cmol(long double val) {
         return static_cast<centimole_ld>(val);
     }
-    constexpr millimole_ld operator""_mmol(long double val) {
+    consteval millimole_ld operator""_mmol(long double val) {
         return static_cast<millimole_ld>(val);
     }
-    constexpr micromole_ld operator""_umol(long double val) {
+    consteval micromole_ld operator""_umol(long double val) {
         return static_cast<micromole_ld>(val);
     }
-    constexpr nanomole_ld operator""_nmol(long double val) {
+    consteval nanomole_ld operator""_nmol(long double val) {
         return static_cast<nanomole_ld>(val);
     }
-    constexpr picomole_ld operator""_pmol(long double val) {
+    consteval picomole_ld operator""_pmol(long double val) {
         return static_cast<picomole_ld>(val);
     }
-    constexpr femtomole_ld operator""_fmol(long double val) {
+    consteval femtomole_ld operator""_fmol(long double val) {
         return static_cast<femtomole_ld>(val);
     }
-    constexpr attomole_ld operator""_amol(long double val) {
+    consteval attomole_ld operator""_amol(long double val) {
         return static_cast<attomole_ld>(val);
     }
-    constexpr examole_ull operator""_Emol(unsigned long long val) {
+    consteval examole_ull operator""_Emol(unsigned long long val) {
         return static_cast<examole_ull>(val);
     }
-    constexpr petamole_ull operator""_Pmol(unsigned long long val) {
+    consteval petamole_ull operator""_Pmol(unsigned long long val) {
         return static_cast<petamole_ull>(val);
     }
-    constexpr teramole_ull operator""_Tmol(unsigned long long val) {
+    consteval teramole_ull operator""_Tmol(unsigned long long val) {
         return static_cast<teramole_ull>(val);
     }
-    constexpr gigamole_ull operator""_Gmol(unsigned long long val) {
+    consteval gigamole_ull operator""_Gmol(unsigned long long val) {
         return static_cast<gigamole_ull>(val);
     }
-    constexpr megamole_ull operator""_Mmol(unsigned long long val) {
+    consteval megamole_ull operator""_Mmol(unsigned long long val) {
         return static_cast<megamole_ull>(val);
     }
-    constexpr kilomole_ull operator""_kmol(unsigned long long val) {
+    consteval kilomole_ull operator""_kmol(unsigned long long val) {
         return static_cast<kilomole_ull>(val);
     }
-    constexpr hectomole_ull operator""_hmol(unsigned long long val) {
+    consteval hectomole_ull operator""_hmol(unsigned long long val) {
         return static_cast<hectomole_ull>(val);
     }
-    constexpr decamole_ull operator""_damol(unsigned long long val) {
+    consteval decamole_ull operator""_damol(unsigned long long val) {
         return static_cast<decamole_ull>(val);
     }
-    constexpr mole_ull operator""_mol(unsigned long long val) {
+    consteval mole_ull operator""_mol(unsigned long long val) {
         return static_cast<mole_ull>(val);
     }
-    constexpr decimole_ull operator""_dmol(unsigned long long val) {
+    consteval decimole_ull operator""_dmol(unsigned long long val) {
         return static_cast<decimole_ull>(val);
     }
-    constexpr centimole_ull operator""_cmol(unsigned long long val) {
+    consteval centimole_ull operator""_cmol(unsigned long long val) {
         return static_cast<centimole_ull>(val);
     }
-    constexpr millimole_ull operator""_mmol(unsigned long long val) {
+    consteval millimole_ull operator""_mmol(unsigned long long val) {
         return static_cast<millimole_ull>(val);
     }
-    constexpr micromole_ull operator""_umol(unsigned long long val) {
+    consteval micromole_ull operator""_umol(unsigned long long val) {
         return static_cast<micromole_ull>(val);
     }
-    constexpr nanomole_ull operator""_nmol(unsigned long long val) {
+    consteval nanomole_ull operator""_nmol(unsigned long long val) {
         return static_cast<nanomole_ull>(val);
     }
-    constexpr picomole_ull operator""_pmol(unsigned long long val) {
+    consteval picomole_ull operator""_pmol(unsigned long long val) {
         return static_cast<picomole_ull>(val);
     }
-    constexpr femtomole_ull operator""_fmol(unsigned long long val) {
+    consteval femtomole_ull operator""_fmol(unsigned long long val) {
         return static_cast<femtomole_ull>(val);
     }
-    constexpr attomole_ull operator""_amol(unsigned long long val) {
+    consteval attomole_ull operator""_amol(unsigned long long val) {
         return static_cast<attomole_ull>(val);
     }
 

@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtotesla_meter_ull    =     tesla_meter_impl<std::femto, unsigned long long>;
     using attotesla_meter_ull    =     tesla_meter_impl<std::atto, unsigned long long>;
 
-    constexpr exatesla_meter_ld operator""_ET_m(long double val) {
+    consteval exatesla_meter_ld operator""_ET_m(long double val) {
         return static_cast<exatesla_meter_ld>(val);
     }
-    constexpr petatesla_meter_ld operator""_PT_m(long double val) {
+    consteval petatesla_meter_ld operator""_PT_m(long double val) {
         return static_cast<petatesla_meter_ld>(val);
     }
-    constexpr teratesla_meter_ld operator""_TT_m(long double val) {
+    consteval teratesla_meter_ld operator""_TT_m(long double val) {
         return static_cast<teratesla_meter_ld>(val);
     }
-    constexpr gigatesla_meter_ld operator""_GT_m(long double val) {
+    consteval gigatesla_meter_ld operator""_GT_m(long double val) {
         return static_cast<gigatesla_meter_ld>(val);
     }
-    constexpr megatesla_meter_ld operator""_MT_m(long double val) {
+    consteval megatesla_meter_ld operator""_MT_m(long double val) {
         return static_cast<megatesla_meter_ld>(val);
     }
-    constexpr kilotesla_meter_ld operator""_kT_m(long double val) {
+    consteval kilotesla_meter_ld operator""_kT_m(long double val) {
         return static_cast<kilotesla_meter_ld>(val);
     }
-    constexpr hectotesla_meter_ld operator""_hT_m(long double val) {
+    consteval hectotesla_meter_ld operator""_hT_m(long double val) {
         return static_cast<hectotesla_meter_ld>(val);
     }
-    constexpr decatesla_meter_ld operator""_daT_m(long double val) {
+    consteval decatesla_meter_ld operator""_daT_m(long double val) {
         return static_cast<decatesla_meter_ld>(val);
     }
-    constexpr tesla_meter_ld operator""_T_m(long double val) {
+    consteval tesla_meter_ld operator""_T_m(long double val) {
         return static_cast<tesla_meter_ld>(val);
     }
-    constexpr decitesla_meter_ld operator""_dT_m(long double val) {
+    consteval decitesla_meter_ld operator""_dT_m(long double val) {
         return static_cast<decitesla_meter_ld>(val);
     }
-    constexpr centitesla_meter_ld operator""_cT_m(long double val) {
+    consteval centitesla_meter_ld operator""_cT_m(long double val) {
         return static_cast<centitesla_meter_ld>(val);
     }
-    constexpr millitesla_meter_ld operator""_mT_m(long double val) {
+    consteval millitesla_meter_ld operator""_mT_m(long double val) {
         return static_cast<millitesla_meter_ld>(val);
     }
-    constexpr microtesla_meter_ld operator""_uT_m(long double val) {
+    consteval microtesla_meter_ld operator""_uT_m(long double val) {
         return static_cast<microtesla_meter_ld>(val);
     }
-    constexpr nanotesla_meter_ld operator""_nT_m(long double val) {
+    consteval nanotesla_meter_ld operator""_nT_m(long double val) {
         return static_cast<nanotesla_meter_ld>(val);
     }
-    constexpr picotesla_meter_ld operator""_pT_m(long double val) {
+    consteval picotesla_meter_ld operator""_pT_m(long double val) {
         return static_cast<picotesla_meter_ld>(val);
     }
-    constexpr femtotesla_meter_ld operator""_fT_m(long double val) {
+    consteval femtotesla_meter_ld operator""_fT_m(long double val) {
         return static_cast<femtotesla_meter_ld>(val);
     }
-    constexpr attotesla_meter_ld operator""_aT_m(long double val) {
+    consteval attotesla_meter_ld operator""_aT_m(long double val) {
         return static_cast<attotesla_meter_ld>(val);
     }
-    constexpr exatesla_meter_ull operator""_ET_m(unsigned long long val) {
+    consteval exatesla_meter_ull operator""_ET_m(unsigned long long val) {
         return static_cast<exatesla_meter_ull>(val);
     }
-    constexpr petatesla_meter_ull operator""_PT_m(unsigned long long val) {
+    consteval petatesla_meter_ull operator""_PT_m(unsigned long long val) {
         return static_cast<petatesla_meter_ull>(val);
     }
-    constexpr teratesla_meter_ull operator""_TT_m(unsigned long long val) {
+    consteval teratesla_meter_ull operator""_TT_m(unsigned long long val) {
         return static_cast<teratesla_meter_ull>(val);
     }
-    constexpr gigatesla_meter_ull operator""_GT_m(unsigned long long val) {
+    consteval gigatesla_meter_ull operator""_GT_m(unsigned long long val) {
         return static_cast<gigatesla_meter_ull>(val);
     }
-    constexpr megatesla_meter_ull operator""_MT_m(unsigned long long val) {
+    consteval megatesla_meter_ull operator""_MT_m(unsigned long long val) {
         return static_cast<megatesla_meter_ull>(val);
     }
-    constexpr kilotesla_meter_ull operator""_kT_m(unsigned long long val) {
+    consteval kilotesla_meter_ull operator""_kT_m(unsigned long long val) {
         return static_cast<kilotesla_meter_ull>(val);
     }
-    constexpr hectotesla_meter_ull operator""_hT_m(unsigned long long val) {
+    consteval hectotesla_meter_ull operator""_hT_m(unsigned long long val) {
         return static_cast<hectotesla_meter_ull>(val);
     }
-    constexpr decatesla_meter_ull operator""_daT_m(unsigned long long val) {
+    consteval decatesla_meter_ull operator""_daT_m(unsigned long long val) {
         return static_cast<decatesla_meter_ull>(val);
     }
-    constexpr tesla_meter_ull operator""_T_m(unsigned long long val) {
+    consteval tesla_meter_ull operator""_T_m(unsigned long long val) {
         return static_cast<tesla_meter_ull>(val);
     }
-    constexpr decitesla_meter_ull operator""_dT_m(unsigned long long val) {
+    consteval decitesla_meter_ull operator""_dT_m(unsigned long long val) {
         return static_cast<decitesla_meter_ull>(val);
     }
-    constexpr centitesla_meter_ull operator""_cT_m(unsigned long long val) {
+    consteval centitesla_meter_ull operator""_cT_m(unsigned long long val) {
         return static_cast<centitesla_meter_ull>(val);
     }
-    constexpr millitesla_meter_ull operator""_mT_m(unsigned long long val) {
+    consteval millitesla_meter_ull operator""_mT_m(unsigned long long val) {
         return static_cast<millitesla_meter_ull>(val);
     }
-    constexpr microtesla_meter_ull operator""_uT_m(unsigned long long val) {
+    consteval microtesla_meter_ull operator""_uT_m(unsigned long long val) {
         return static_cast<microtesla_meter_ull>(val);
     }
-    constexpr nanotesla_meter_ull operator""_nT_m(unsigned long long val) {
+    consteval nanotesla_meter_ull operator""_nT_m(unsigned long long val) {
         return static_cast<nanotesla_meter_ull>(val);
     }
-    constexpr picotesla_meter_ull operator""_pT_m(unsigned long long val) {
+    consteval picotesla_meter_ull operator""_pT_m(unsigned long long val) {
         return static_cast<picotesla_meter_ull>(val);
     }
-    constexpr femtotesla_meter_ull operator""_fT_m(unsigned long long val) {
+    consteval femtotesla_meter_ull operator""_fT_m(unsigned long long val) {
         return static_cast<femtotesla_meter_ull>(val);
     }
-    constexpr attotesla_meter_ull operator""_aT_m(unsigned long long val) {
+    consteval attotesla_meter_ull operator""_aT_m(unsigned long long val) {
         return static_cast<attotesla_meter_ull>(val);
     }
 

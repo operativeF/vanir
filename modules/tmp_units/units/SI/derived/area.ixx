@@ -85,106 +85,106 @@ export namespace potato::units {
     using square_femtometer_ull    =     square_meter_impl<std::femto, unsigned long long>;
     using square_attometer_ull    =     square_meter_impl<std::atto, unsigned long long>;
 
-    constexpr square_exameter_ld operator""_sq_Em(long double val) {
+    consteval square_exameter_ld operator""_sq_Em(long double val) {
         return static_cast<square_exameter_ld>(val);
     }
-    constexpr square_petameter_ld operator""_sq_Pm(long double val) {
+    consteval square_petameter_ld operator""_sq_Pm(long double val) {
         return static_cast<square_petameter_ld>(val);
     }
-    constexpr square_terameter_ld operator""_sq_Tm(long double val) {
+    consteval square_terameter_ld operator""_sq_Tm(long double val) {
         return static_cast<square_terameter_ld>(val);
     }
-    constexpr square_gigameter_ld operator""_sq_Gm(long double val) {
+    consteval square_gigameter_ld operator""_sq_Gm(long double val) {
         return static_cast<square_gigameter_ld>(val);
     }
-    constexpr square_megameter_ld operator""_sq_Mm(long double val) {
+    consteval square_megameter_ld operator""_sq_Mm(long double val) {
         return static_cast<square_megameter_ld>(val);
     }
-    constexpr square_kilometer_ld operator""_sq_km(long double val) {
+    consteval square_kilometer_ld operator""_sq_km(long double val) {
         return static_cast<square_kilometer_ld>(val);
     }
-    constexpr square_hectometer_ld operator""_sq_hm(long double val) {
+    consteval square_hectometer_ld operator""_sq_hm(long double val) {
         return static_cast<square_hectometer_ld>(val);
     }
-    constexpr square_decameter_ld operator""_sq_dam(long double val) {
+    consteval square_decameter_ld operator""_sq_dam(long double val) {
         return static_cast<square_decameter_ld>(val);
     }
-    constexpr square_meter_ld operator""_sq_m(long double val) {
+    consteval square_meter_ld operator""_sq_m(long double val) {
         return static_cast<square_meter_ld>(val);
     }
-    constexpr square_decimeter_ld operator""_sq_dm(long double val) {
+    consteval square_decimeter_ld operator""_sq_dm(long double val) {
         return static_cast<square_decimeter_ld>(val);
     }
-    constexpr square_centimeter_ld operator""_sq_cm(long double val) {
+    consteval square_centimeter_ld operator""_sq_cm(long double val) {
         return static_cast<square_centimeter_ld>(val);
     }
-    constexpr square_millimeter_ld operator""_sq_mm(long double val) {
+    consteval square_millimeter_ld operator""_sq_mm(long double val) {
         return static_cast<square_millimeter_ld>(val);
     }
-    constexpr square_micrometer_ld operator""_sq_um(long double val) {
+    consteval square_micrometer_ld operator""_sq_um(long double val) {
         return static_cast<square_micrometer_ld>(val);
     }
-    constexpr square_nanometer_ld operator""_sq_nm(long double val) {
+    consteval square_nanometer_ld operator""_sq_nm(long double val) {
         return static_cast<square_nanometer_ld>(val);
     }
-    constexpr square_picometer_ld operator""_sq_pm(long double val) {
+    consteval square_picometer_ld operator""_sq_pm(long double val) {
         return static_cast<square_picometer_ld>(val);
     }
-    constexpr square_femtometer_ld operator""_sq_fm(long double val) {
+    consteval square_femtometer_ld operator""_sq_fm(long double val) {
         return static_cast<square_femtometer_ld>(val);
     }
-    constexpr square_attometer_ld operator""_sq_am(long double val) {
+    consteval square_attometer_ld operator""_sq_am(long double val) {
         return static_cast<square_attometer_ld>(val);
     }
-    constexpr square_exameter_ull operator""_sq_Em(unsigned long long val) {
+    consteval square_exameter_ull operator""_sq_Em(unsigned long long val) {
         return static_cast<square_exameter_ull>(val);
     }
-    constexpr square_petameter_ull operator""_sq_Pm(unsigned long long val) {
+    consteval square_petameter_ull operator""_sq_Pm(unsigned long long val) {
         return static_cast<square_petameter_ull>(val);
     }
-    constexpr square_terameter_ull operator""_sq_Tm(unsigned long long val) {
+    consteval square_terameter_ull operator""_sq_Tm(unsigned long long val) {
         return static_cast<square_terameter_ull>(val);
     }
-    constexpr square_gigameter_ull operator""_sq_Gm(unsigned long long val) {
+    consteval square_gigameter_ull operator""_sq_Gm(unsigned long long val) {
         return static_cast<square_gigameter_ull>(val);
     }
-    constexpr square_megameter_ull operator""_sq_Mm(unsigned long long val) {
+    consteval square_megameter_ull operator""_sq_Mm(unsigned long long val) {
         return static_cast<square_megameter_ull>(val);
     }
-    constexpr square_kilometer_ull operator""_sq_km(unsigned long long val) {
+    consteval square_kilometer_ull operator""_sq_km(unsigned long long val) {
         return static_cast<square_kilometer_ull>(val);
     }
-    constexpr square_hectometer_ull operator""_sq_hm(unsigned long long val) {
+    consteval square_hectometer_ull operator""_sq_hm(unsigned long long val) {
         return static_cast<square_hectometer_ull>(val);
     }
-    constexpr square_decameter_ull operator""_sq_dam(unsigned long long val) {
+    consteval square_decameter_ull operator""_sq_dam(unsigned long long val) {
         return static_cast<square_decameter_ull>(val);
     }
-    constexpr square_meter_ull operator""_sq_m(unsigned long long val) {
+    consteval square_meter_ull operator""_sq_m(unsigned long long val) {
         return static_cast<square_meter_ull>(val);
     }
-    constexpr square_decimeter_ull operator""_sq_dm(unsigned long long val) {
+    consteval square_decimeter_ull operator""_sq_dm(unsigned long long val) {
         return static_cast<square_decimeter_ull>(val);
     }
-    constexpr square_centimeter_ull operator""_sq_cm(unsigned long long val) {
+    consteval square_centimeter_ull operator""_sq_cm(unsigned long long val) {
         return static_cast<square_centimeter_ull>(val);
     }
-    constexpr square_millimeter_ull operator""_sq_mm(unsigned long long val) {
+    consteval square_millimeter_ull operator""_sq_mm(unsigned long long val) {
         return static_cast<square_millimeter_ull>(val);
     }
-    constexpr square_micrometer_ull operator""_sq_um(unsigned long long val) {
+    consteval square_micrometer_ull operator""_sq_um(unsigned long long val) {
         return static_cast<square_micrometer_ull>(val);
     }
-    constexpr square_nanometer_ull operator""_sq_nm(unsigned long long val) {
+    consteval square_nanometer_ull operator""_sq_nm(unsigned long long val) {
         return static_cast<square_nanometer_ull>(val);
     }
-    constexpr square_picometer_ull operator""_sq_pm(unsigned long long val) {
+    consteval square_picometer_ull operator""_sq_pm(unsigned long long val) {
         return static_cast<square_picometer_ull>(val);
     }
-    constexpr square_femtometer_ull operator""_sq_fm(unsigned long long val) {
+    consteval square_femtometer_ull operator""_sq_fm(unsigned long long val) {
         return static_cast<square_femtometer_ull>(val);
     }
-    constexpr square_attometer_ull operator""_sq_am(unsigned long long val) {
+    consteval square_attometer_ull operator""_sq_am(unsigned long long val) {
         return static_cast<square_attometer_ull>(val);
     }
 

@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtojoule_second_ull    =     joule_second_impl<std::femto, unsigned long long>;
     using attojoule_second_ull    =     joule_second_impl<std::atto, unsigned long long>;
 
-    constexpr exajoule_second_ld operator""_EJ_s(long double val) {
+    consteval exajoule_second_ld operator""_EJ_s(long double val) {
         return static_cast<exajoule_second_ld>(val);
     }
-    constexpr petajoule_second_ld operator""_PJ_s(long double val) {
+    consteval petajoule_second_ld operator""_PJ_s(long double val) {
         return static_cast<petajoule_second_ld>(val);
     }
-    constexpr terajoule_second_ld operator""_TJ_s(long double val) {
+    consteval terajoule_second_ld operator""_TJ_s(long double val) {
         return static_cast<terajoule_second_ld>(val);
     }
-    constexpr gigajoule_second_ld operator""_GJ_s(long double val) {
+    consteval gigajoule_second_ld operator""_GJ_s(long double val) {
         return static_cast<gigajoule_second_ld>(val);
     }
-    constexpr megajoule_second_ld operator""_MJ_s(long double val) {
+    consteval megajoule_second_ld operator""_MJ_s(long double val) {
         return static_cast<megajoule_second_ld>(val);
     }
-    constexpr kilojoule_second_ld operator""_kJ_s(long double val) {
+    consteval kilojoule_second_ld operator""_kJ_s(long double val) {
         return static_cast<kilojoule_second_ld>(val);
     }
-    constexpr hectojoule_second_ld operator""_hJ_s(long double val) {
+    consteval hectojoule_second_ld operator""_hJ_s(long double val) {
         return static_cast<hectojoule_second_ld>(val);
     }
-    constexpr decajoule_second_ld operator""_daJ_s(long double val) {
+    consteval decajoule_second_ld operator""_daJ_s(long double val) {
         return static_cast<decajoule_second_ld>(val);
     }
-    constexpr joule_second_ld operator""_J_s(long double val) {
+    consteval joule_second_ld operator""_J_s(long double val) {
         return static_cast<joule_second_ld>(val);
     }
-    constexpr decijoule_second_ld operator""_dJ_s(long double val) {
+    consteval decijoule_second_ld operator""_dJ_s(long double val) {
         return static_cast<decijoule_second_ld>(val);
     }
-    constexpr centijoule_second_ld operator""_cJ_s(long double val) {
+    consteval centijoule_second_ld operator""_cJ_s(long double val) {
         return static_cast<centijoule_second_ld>(val);
     }
-    constexpr millijoule_second_ld operator""_mJ_s(long double val) {
+    consteval millijoule_second_ld operator""_mJ_s(long double val) {
         return static_cast<millijoule_second_ld>(val);
     }
-    constexpr microjoule_second_ld operator""_uJ_s(long double val) {
+    consteval microjoule_second_ld operator""_uJ_s(long double val) {
         return static_cast<microjoule_second_ld>(val);
     }
-    constexpr nanojoule_second_ld operator""_nJ_s(long double val) {
+    consteval nanojoule_second_ld operator""_nJ_s(long double val) {
         return static_cast<nanojoule_second_ld>(val);
     }
-    constexpr picojoule_second_ld operator""_pJ_s(long double val) {
+    consteval picojoule_second_ld operator""_pJ_s(long double val) {
         return static_cast<picojoule_second_ld>(val);
     }
-    constexpr femtojoule_second_ld operator""_fJ_s(long double val) {
+    consteval femtojoule_second_ld operator""_fJ_s(long double val) {
         return static_cast<femtojoule_second_ld>(val);
     }
-    constexpr attojoule_second_ld operator""_aJ_s(long double val) {
+    consteval attojoule_second_ld operator""_aJ_s(long double val) {
         return static_cast<attojoule_second_ld>(val);
     }
-    constexpr exajoule_second_ull operator""_EJ_s(unsigned long long val) {
+    consteval exajoule_second_ull operator""_EJ_s(unsigned long long val) {
         return static_cast<exajoule_second_ull>(val);
     }
-    constexpr petajoule_second_ull operator""_PJ_s(unsigned long long val) {
+    consteval petajoule_second_ull operator""_PJ_s(unsigned long long val) {
         return static_cast<petajoule_second_ull>(val);
     }
-    constexpr terajoule_second_ull operator""_TJ_s(unsigned long long val) {
+    consteval terajoule_second_ull operator""_TJ_s(unsigned long long val) {
         return static_cast<terajoule_second_ull>(val);
     }
-    constexpr gigajoule_second_ull operator""_GJ_s(unsigned long long val) {
+    consteval gigajoule_second_ull operator""_GJ_s(unsigned long long val) {
         return static_cast<gigajoule_second_ull>(val);
     }
-    constexpr megajoule_second_ull operator""_MJ_s(unsigned long long val) {
+    consteval megajoule_second_ull operator""_MJ_s(unsigned long long val) {
         return static_cast<megajoule_second_ull>(val);
     }
-    constexpr kilojoule_second_ull operator""_kJ_s(unsigned long long val) {
+    consteval kilojoule_second_ull operator""_kJ_s(unsigned long long val) {
         return static_cast<kilojoule_second_ull>(val);
     }
-    constexpr hectojoule_second_ull operator""_hJ_s(unsigned long long val) {
+    consteval hectojoule_second_ull operator""_hJ_s(unsigned long long val) {
         return static_cast<hectojoule_second_ull>(val);
     }
-    constexpr decajoule_second_ull operator""_daJ_s(unsigned long long val) {
+    consteval decajoule_second_ull operator""_daJ_s(unsigned long long val) {
         return static_cast<decajoule_second_ull>(val);
     }
-    constexpr joule_second_ull operator""_J_s(unsigned long long val) {
+    consteval joule_second_ull operator""_J_s(unsigned long long val) {
         return static_cast<joule_second_ull>(val);
     }
-    constexpr decijoule_second_ull operator""_dJ_s(unsigned long long val) {
+    consteval decijoule_second_ull operator""_dJ_s(unsigned long long val) {
         return static_cast<decijoule_second_ull>(val);
     }
-    constexpr centijoule_second_ull operator""_cJ_s(unsigned long long val) {
+    consteval centijoule_second_ull operator""_cJ_s(unsigned long long val) {
         return static_cast<centijoule_second_ull>(val);
     }
-    constexpr millijoule_second_ull operator""_mJ_s(unsigned long long val) {
+    consteval millijoule_second_ull operator""_mJ_s(unsigned long long val) {
         return static_cast<millijoule_second_ull>(val);
     }
-    constexpr microjoule_second_ull operator""_uJ_s(unsigned long long val) {
+    consteval microjoule_second_ull operator""_uJ_s(unsigned long long val) {
         return static_cast<microjoule_second_ull>(val);
     }
-    constexpr nanojoule_second_ull operator""_nJ_s(unsigned long long val) {
+    consteval nanojoule_second_ull operator""_nJ_s(unsigned long long val) {
         return static_cast<nanojoule_second_ull>(val);
     }
-    constexpr picojoule_second_ull operator""_pJ_s(unsigned long long val) {
+    consteval picojoule_second_ull operator""_pJ_s(unsigned long long val) {
         return static_cast<picojoule_second_ull>(val);
     }
-    constexpr femtojoule_second_ull operator""_fJ_s(unsigned long long val) {
+    consteval femtojoule_second_ull operator""_fJ_s(unsigned long long val) {
         return static_cast<femtojoule_second_ull>(val);
     }
-    constexpr attojoule_second_ull operator""_aJ_s(unsigned long long val) {
+    consteval attojoule_second_ull operator""_aJ_s(unsigned long long val) {
         return static_cast<attojoule_second_ull>(val);
     }
 

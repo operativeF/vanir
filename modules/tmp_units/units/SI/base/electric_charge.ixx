@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtocoulomb_ull    =     coulomb_impl<std::femto, unsigned long long>;
     using attocoulomb_ull    =     coulomb_impl<std::atto, unsigned long long>;
 
-    constexpr exacoulomb_ld operator""_EC(long double val) {
+    consteval exacoulomb_ld operator""_EC(long double val) {
         return static_cast<exacoulomb_ld>(val);
     }
-    constexpr petacoulomb_ld operator""_PC(long double val) {
+    consteval petacoulomb_ld operator""_PC(long double val) {
         return static_cast<petacoulomb_ld>(val);
     }
-    constexpr teracoulomb_ld operator""_TC(long double val) {
+    consteval teracoulomb_ld operator""_TC(long double val) {
         return static_cast<teracoulomb_ld>(val);
     }
-    constexpr gigacoulomb_ld operator""_GC(long double val) {
+    consteval gigacoulomb_ld operator""_GC(long double val) {
         return static_cast<gigacoulomb_ld>(val);
     }
-    constexpr megacoulomb_ld operator""_MC(long double val) {
+    consteval megacoulomb_ld operator""_MC(long double val) {
         return static_cast<megacoulomb_ld>(val);
     }
-    constexpr kilocoulomb_ld operator""_kC(long double val) {
+    consteval kilocoulomb_ld operator""_kC(long double val) {
         return static_cast<kilocoulomb_ld>(val);
     }
-    constexpr hectocoulomb_ld operator""_hC(long double val) {
+    consteval hectocoulomb_ld operator""_hC(long double val) {
         return static_cast<hectocoulomb_ld>(val);
     }
-    constexpr decacoulomb_ld operator""_daC(long double val) {
+    consteval decacoulomb_ld operator""_daC(long double val) {
         return static_cast<decacoulomb_ld>(val);
     }
-    constexpr coulomb_ld operator""_C(long double val) {
+    consteval coulomb_ld operator""_C(long double val) {
         return static_cast<coulomb_ld>(val);
     }
-    constexpr decicoulomb_ld operator""_dC(long double val) {
+    consteval decicoulomb_ld operator""_dC(long double val) {
         return static_cast<decicoulomb_ld>(val);
     }
-    constexpr centicoulomb_ld operator""_cC(long double val) {
+    consteval centicoulomb_ld operator""_cC(long double val) {
         return static_cast<centicoulomb_ld>(val);
     }
-    constexpr millicoulomb_ld operator""_mC(long double val) {
+    consteval millicoulomb_ld operator""_mC(long double val) {
         return static_cast<millicoulomb_ld>(val);
     }
-    constexpr microcoulomb_ld operator""_uC(long double val) {
+    consteval microcoulomb_ld operator""_uC(long double val) {
         return static_cast<microcoulomb_ld>(val);
     }
-    constexpr nanocoulomb_ld operator""_nC(long double val) {
+    consteval nanocoulomb_ld operator""_nC(long double val) {
         return static_cast<nanocoulomb_ld>(val);
     }
-    constexpr picocoulomb_ld operator""_pC(long double val) {
+    consteval picocoulomb_ld operator""_pC(long double val) {
         return static_cast<picocoulomb_ld>(val);
     }
-    constexpr femtocoulomb_ld operator""_fC(long double val) {
+    consteval femtocoulomb_ld operator""_fC(long double val) {
         return static_cast<femtocoulomb_ld>(val);
     }
-    constexpr attocoulomb_ld operator""_aC(long double val) {
+    consteval attocoulomb_ld operator""_aC(long double val) {
         return static_cast<attocoulomb_ld>(val);
     }
-    constexpr exacoulomb_ull operator""_EC(unsigned long long val) {
+    consteval exacoulomb_ull operator""_EC(unsigned long long val) {
         return static_cast<exacoulomb_ull>(val);
     }
-    constexpr petacoulomb_ull operator""_PC(unsigned long long val) {
+    consteval petacoulomb_ull operator""_PC(unsigned long long val) {
         return static_cast<petacoulomb_ull>(val);
     }
-    constexpr teracoulomb_ull operator""_TC(unsigned long long val) {
+    consteval teracoulomb_ull operator""_TC(unsigned long long val) {
         return static_cast<teracoulomb_ull>(val);
     }
-    constexpr gigacoulomb_ull operator""_GC(unsigned long long val) {
+    consteval gigacoulomb_ull operator""_GC(unsigned long long val) {
         return static_cast<gigacoulomb_ull>(val);
     }
-    constexpr megacoulomb_ull operator""_MC(unsigned long long val) {
+    consteval megacoulomb_ull operator""_MC(unsigned long long val) {
         return static_cast<megacoulomb_ull>(val);
     }
-    constexpr kilocoulomb_ull operator""_kC(unsigned long long val) {
+    consteval kilocoulomb_ull operator""_kC(unsigned long long val) {
         return static_cast<kilocoulomb_ull>(val);
     }
-    constexpr hectocoulomb_ull operator""_hC(unsigned long long val) {
+    consteval hectocoulomb_ull operator""_hC(unsigned long long val) {
         return static_cast<hectocoulomb_ull>(val);
     }
-    constexpr decacoulomb_ull operator""_daC(unsigned long long val) {
+    consteval decacoulomb_ull operator""_daC(unsigned long long val) {
         return static_cast<decacoulomb_ull>(val);
     }
-    constexpr coulomb_ull operator""_C(unsigned long long val) {
+    consteval coulomb_ull operator""_C(unsigned long long val) {
         return static_cast<coulomb_ull>(val);
     }
-    constexpr decicoulomb_ull operator""_dC(unsigned long long val) {
+    consteval decicoulomb_ull operator""_dC(unsigned long long val) {
         return static_cast<decicoulomb_ull>(val);
     }
-    constexpr centicoulomb_ull operator""_cC(unsigned long long val) {
+    consteval centicoulomb_ull operator""_cC(unsigned long long val) {
         return static_cast<centicoulomb_ull>(val);
     }
-    constexpr millicoulomb_ull operator""_mC(unsigned long long val) {
+    consteval millicoulomb_ull operator""_mC(unsigned long long val) {
         return static_cast<millicoulomb_ull>(val);
     }
-    constexpr microcoulomb_ull operator""_uC(unsigned long long val) {
+    consteval microcoulomb_ull operator""_uC(unsigned long long val) {
         return static_cast<microcoulomb_ull>(val);
     }
-    constexpr nanocoulomb_ull operator""_nC(unsigned long long val) {
+    consteval nanocoulomb_ull operator""_nC(unsigned long long val) {
         return static_cast<nanocoulomb_ull>(val);
     }
-    constexpr picocoulomb_ull operator""_pC(unsigned long long val) {
+    consteval picocoulomb_ull operator""_pC(unsigned long long val) {
         return static_cast<picocoulomb_ull>(val);
     }
-    constexpr femtocoulomb_ull operator""_fC(unsigned long long val) {
+    consteval femtocoulomb_ull operator""_fC(unsigned long long val) {
         return static_cast<femtocoulomb_ull>(val);
     }
-    constexpr attocoulomb_ull operator""_aC(unsigned long long val) {
+    consteval attocoulomb_ull operator""_aC(unsigned long long val) {
         return static_cast<attocoulomb_ull>(val);
     }
 

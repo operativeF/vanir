@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtobecquerel_ull    =     becquerel_impl<std::femto, unsigned long long>;
     using attobecquerel_ull    =     becquerel_impl<std::atto, unsigned long long>;
 
-    constexpr exabecquerel_ld operator""_EBq(long double val) {
+    consteval exabecquerel_ld operator""_EBq(long double val) {
         return static_cast<exabecquerel_ld>(val);
     }
-    constexpr petabecquerel_ld operator""_PBq(long double val) {
+    consteval petabecquerel_ld operator""_PBq(long double val) {
         return static_cast<petabecquerel_ld>(val);
     }
-    constexpr terabecquerel_ld operator""_TBq(long double val) {
+    consteval terabecquerel_ld operator""_TBq(long double val) {
         return static_cast<terabecquerel_ld>(val);
     }
-    constexpr gigabecquerel_ld operator""_GBq(long double val) {
+    consteval gigabecquerel_ld operator""_GBq(long double val) {
         return static_cast<gigabecquerel_ld>(val);
     }
-    constexpr megabecquerel_ld operator""_MBq(long double val) {
+    consteval megabecquerel_ld operator""_MBq(long double val) {
         return static_cast<megabecquerel_ld>(val);
     }
-    constexpr kilobecquerel_ld operator""_kBq(long double val) {
+    consteval kilobecquerel_ld operator""_kBq(long double val) {
         return static_cast<kilobecquerel_ld>(val);
     }
-    constexpr hectobecquerel_ld operator""_hBq(long double val) {
+    consteval hectobecquerel_ld operator""_hBq(long double val) {
         return static_cast<hectobecquerel_ld>(val);
     }
-    constexpr decabecquerel_ld operator""_daBq(long double val) {
+    consteval decabecquerel_ld operator""_daBq(long double val) {
         return static_cast<decabecquerel_ld>(val);
     }
-    constexpr becquerel_ld operator""_Bq(long double val) {
+    consteval becquerel_ld operator""_Bq(long double val) {
         return static_cast<becquerel_ld>(val);
     }
-    constexpr decibecquerel_ld operator""_dBq(long double val) {
+    consteval decibecquerel_ld operator""_dBq(long double val) {
         return static_cast<decibecquerel_ld>(val);
     }
-    constexpr centibecquerel_ld operator""_cBq(long double val) {
+    consteval centibecquerel_ld operator""_cBq(long double val) {
         return static_cast<centibecquerel_ld>(val);
     }
-    constexpr millibecquerel_ld operator""_mBq(long double val) {
+    consteval millibecquerel_ld operator""_mBq(long double val) {
         return static_cast<millibecquerel_ld>(val);
     }
-    constexpr microbecquerel_ld operator""_uBq(long double val) {
+    consteval microbecquerel_ld operator""_uBq(long double val) {
         return static_cast<microbecquerel_ld>(val);
     }
-    constexpr nanobecquerel_ld operator""_nBq(long double val) {
+    consteval nanobecquerel_ld operator""_nBq(long double val) {
         return static_cast<nanobecquerel_ld>(val);
     }
-    constexpr picobecquerel_ld operator""_pBq(long double val) {
+    consteval picobecquerel_ld operator""_pBq(long double val) {
         return static_cast<picobecquerel_ld>(val);
     }
-    constexpr femtobecquerel_ld operator""_fBq(long double val) {
+    consteval femtobecquerel_ld operator""_fBq(long double val) {
         return static_cast<femtobecquerel_ld>(val);
     }
-    constexpr attobecquerel_ld operator""_aBq(long double val) {
+    consteval attobecquerel_ld operator""_aBq(long double val) {
         return static_cast<attobecquerel_ld>(val);
     }
-    constexpr exabecquerel_ull operator""_EBq(unsigned long long val) {
+    consteval exabecquerel_ull operator""_EBq(unsigned long long val) {
         return static_cast<exabecquerel_ull>(val);
     }
-    constexpr petabecquerel_ull operator""_PBq(unsigned long long val) {
+    consteval petabecquerel_ull operator""_PBq(unsigned long long val) {
         return static_cast<petabecquerel_ull>(val);
     }
-    constexpr terabecquerel_ull operator""_TBq(unsigned long long val) {
+    consteval terabecquerel_ull operator""_TBq(unsigned long long val) {
         return static_cast<terabecquerel_ull>(val);
     }
-    constexpr gigabecquerel_ull operator""_GBq(unsigned long long val) {
+    consteval gigabecquerel_ull operator""_GBq(unsigned long long val) {
         return static_cast<gigabecquerel_ull>(val);
     }
-    constexpr megabecquerel_ull operator""_MBq(unsigned long long val) {
+    consteval megabecquerel_ull operator""_MBq(unsigned long long val) {
         return static_cast<megabecquerel_ull>(val);
     }
-    constexpr kilobecquerel_ull operator""_kBq(unsigned long long val) {
+    consteval kilobecquerel_ull operator""_kBq(unsigned long long val) {
         return static_cast<kilobecquerel_ull>(val);
     }
-    constexpr hectobecquerel_ull operator""_hBq(unsigned long long val) {
+    consteval hectobecquerel_ull operator""_hBq(unsigned long long val) {
         return static_cast<hectobecquerel_ull>(val);
     }
-    constexpr decabecquerel_ull operator""_daBq(unsigned long long val) {
+    consteval decabecquerel_ull operator""_daBq(unsigned long long val) {
         return static_cast<decabecquerel_ull>(val);
     }
-    constexpr becquerel_ull operator""_Bq(unsigned long long val) {
+    consteval becquerel_ull operator""_Bq(unsigned long long val) {
         return static_cast<becquerel_ull>(val);
     }
-    constexpr decibecquerel_ull operator""_dBq(unsigned long long val) {
+    consteval decibecquerel_ull operator""_dBq(unsigned long long val) {
         return static_cast<decibecquerel_ull>(val);
     }
-    constexpr centibecquerel_ull operator""_cBq(unsigned long long val) {
+    consteval centibecquerel_ull operator""_cBq(unsigned long long val) {
         return static_cast<centibecquerel_ull>(val);
     }
-    constexpr millibecquerel_ull operator""_mBq(unsigned long long val) {
+    consteval millibecquerel_ull operator""_mBq(unsigned long long val) {
         return static_cast<millibecquerel_ull>(val);
     }
-    constexpr microbecquerel_ull operator""_uBq(unsigned long long val) {
+    consteval microbecquerel_ull operator""_uBq(unsigned long long val) {
         return static_cast<microbecquerel_ull>(val);
     }
-    constexpr nanobecquerel_ull operator""_nBq(unsigned long long val) {
+    consteval nanobecquerel_ull operator""_nBq(unsigned long long val) {
         return static_cast<nanobecquerel_ull>(val);
     }
-    constexpr picobecquerel_ull operator""_pBq(unsigned long long val) {
+    consteval picobecquerel_ull operator""_pBq(unsigned long long val) {
         return static_cast<picobecquerel_ull>(val);
     }
-    constexpr femtobecquerel_ull operator""_fBq(unsigned long long val) {
+    consteval femtobecquerel_ull operator""_fBq(unsigned long long val) {
         return static_cast<femtobecquerel_ull>(val);
     }
-    constexpr attobecquerel_ull operator""_aBq(unsigned long long val) {
+    consteval attobecquerel_ull operator""_aBq(unsigned long long val) {
         return static_cast<attobecquerel_ull>(val);
     }
 

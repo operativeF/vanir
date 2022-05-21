@@ -85,106 +85,106 @@ export namespace potato::units {
     using cubic_femtometer_ull    =     cubic_meter_impl<std::femto, unsigned long long>;
     using cubic_attometer_ull    =     cubic_meter_impl<std::atto, unsigned long long>;
 
-    constexpr cubic_exameter_ld operator""_cubic_Em(long double val) {
+    consteval cubic_exameter_ld operator""_cubic_Em(long double val) {
         return static_cast<cubic_exameter_ld>(val);
     }
-    constexpr cubic_petameter_ld operator""_cubic_Pm(long double val) {
+    consteval cubic_petameter_ld operator""_cubic_Pm(long double val) {
         return static_cast<cubic_petameter_ld>(val);
     }
-    constexpr cubic_terameter_ld operator""_cubic_Tm(long double val) {
+    consteval cubic_terameter_ld operator""_cubic_Tm(long double val) {
         return static_cast<cubic_terameter_ld>(val);
     }
-    constexpr cubic_gigameter_ld operator""_cubic_Gm(long double val) {
+    consteval cubic_gigameter_ld operator""_cubic_Gm(long double val) {
         return static_cast<cubic_gigameter_ld>(val);
     }
-    constexpr cubic_megameter_ld operator""_cubic_Mm(long double val) {
+    consteval cubic_megameter_ld operator""_cubic_Mm(long double val) {
         return static_cast<cubic_megameter_ld>(val);
     }
-    constexpr cubic_kilometer_ld operator""_cubic_km(long double val) {
+    consteval cubic_kilometer_ld operator""_cubic_km(long double val) {
         return static_cast<cubic_kilometer_ld>(val);
     }
-    constexpr cubic_hectometer_ld operator""_cubic_hm(long double val) {
+    consteval cubic_hectometer_ld operator""_cubic_hm(long double val) {
         return static_cast<cubic_hectometer_ld>(val);
     }
-    constexpr cubic_decameter_ld operator""_cubic_dam(long double val) {
+    consteval cubic_decameter_ld operator""_cubic_dam(long double val) {
         return static_cast<cubic_decameter_ld>(val);
     }
-    constexpr cubic_meter_ld operator""_cubic_m(long double val) {
+    consteval cubic_meter_ld operator""_cubic_m(long double val) {
         return static_cast<cubic_meter_ld>(val);
     }
-    constexpr cubic_decimeter_ld operator""_cubic_dm(long double val) {
+    consteval cubic_decimeter_ld operator""_cubic_dm(long double val) {
         return static_cast<cubic_decimeter_ld>(val);
     }
-    constexpr cubic_centimeter_ld operator""_cubic_cm(long double val) {
+    consteval cubic_centimeter_ld operator""_cubic_cm(long double val) {
         return static_cast<cubic_centimeter_ld>(val);
     }
-    constexpr cubic_millimeter_ld operator""_cubic_mm(long double val) {
+    consteval cubic_millimeter_ld operator""_cubic_mm(long double val) {
         return static_cast<cubic_millimeter_ld>(val);
     }
-    constexpr cubic_micrometer_ld operator""_cubic_um(long double val) {
+    consteval cubic_micrometer_ld operator""_cubic_um(long double val) {
         return static_cast<cubic_micrometer_ld>(val);
     }
-    constexpr cubic_nanometer_ld operator""_cubic_nm(long double val) {
+    consteval cubic_nanometer_ld operator""_cubic_nm(long double val) {
         return static_cast<cubic_nanometer_ld>(val);
     }
-    constexpr cubic_picometer_ld operator""_cubic_pm(long double val) {
+    consteval cubic_picometer_ld operator""_cubic_pm(long double val) {
         return static_cast<cubic_picometer_ld>(val);
     }
-    constexpr cubic_femtometer_ld operator""_cubic_fm(long double val) {
+    consteval cubic_femtometer_ld operator""_cubic_fm(long double val) {
         return static_cast<cubic_femtometer_ld>(val);
     }
-    constexpr cubic_attometer_ld operator""_cubic_am(long double val) {
+    consteval cubic_attometer_ld operator""_cubic_am(long double val) {
         return static_cast<cubic_attometer_ld>(val);
     }
-    constexpr cubic_exameter_ull operator""_cubic_Em(unsigned long long val) {
+    consteval cubic_exameter_ull operator""_cubic_Em(unsigned long long val) {
         return static_cast<cubic_exameter_ull>(val);
     }
-    constexpr cubic_petameter_ull operator""_cubic_Pm(unsigned long long val) {
+    consteval cubic_petameter_ull operator""_cubic_Pm(unsigned long long val) {
         return static_cast<cubic_petameter_ull>(val);
     }
-    constexpr cubic_terameter_ull operator""_cubic_Tm(unsigned long long val) {
+    consteval cubic_terameter_ull operator""_cubic_Tm(unsigned long long val) {
         return static_cast<cubic_terameter_ull>(val);
     }
-    constexpr cubic_gigameter_ull operator""_cubic_Gm(unsigned long long val) {
+    consteval cubic_gigameter_ull operator""_cubic_Gm(unsigned long long val) {
         return static_cast<cubic_gigameter_ull>(val);
     }
-    constexpr cubic_megameter_ull operator""_cubic_Mm(unsigned long long val) {
+    consteval cubic_megameter_ull operator""_cubic_Mm(unsigned long long val) {
         return static_cast<cubic_megameter_ull>(val);
     }
-    constexpr cubic_kilometer_ull operator""_cubic_km(unsigned long long val) {
+    consteval cubic_kilometer_ull operator""_cubic_km(unsigned long long val) {
         return static_cast<cubic_kilometer_ull>(val);
     }
-    constexpr cubic_hectometer_ull operator""_cubic_hm(unsigned long long val) {
+    consteval cubic_hectometer_ull operator""_cubic_hm(unsigned long long val) {
         return static_cast<cubic_hectometer_ull>(val);
     }
-    constexpr cubic_decameter_ull operator""_cubic_dam(unsigned long long val) {
+    consteval cubic_decameter_ull operator""_cubic_dam(unsigned long long val) {
         return static_cast<cubic_decameter_ull>(val);
     }
-    constexpr cubic_meter_ull operator""_cubic_m(unsigned long long val) {
+    consteval cubic_meter_ull operator""_cubic_m(unsigned long long val) {
         return static_cast<cubic_meter_ull>(val);
     }
-    constexpr cubic_decimeter_ull operator""_cubic_dm(unsigned long long val) {
+    consteval cubic_decimeter_ull operator""_cubic_dm(unsigned long long val) {
         return static_cast<cubic_decimeter_ull>(val);
     }
-    constexpr cubic_centimeter_ull operator""_cubic_cm(unsigned long long val) {
+    consteval cubic_centimeter_ull operator""_cubic_cm(unsigned long long val) {
         return static_cast<cubic_centimeter_ull>(val);
     }
-    constexpr cubic_millimeter_ull operator""_cubic_mm(unsigned long long val) {
+    consteval cubic_millimeter_ull operator""_cubic_mm(unsigned long long val) {
         return static_cast<cubic_millimeter_ull>(val);
     }
-    constexpr cubic_micrometer_ull operator""_cubic_um(unsigned long long val) {
+    consteval cubic_micrometer_ull operator""_cubic_um(unsigned long long val) {
         return static_cast<cubic_micrometer_ull>(val);
     }
-    constexpr cubic_nanometer_ull operator""_cubic_nm(unsigned long long val) {
+    consteval cubic_nanometer_ull operator""_cubic_nm(unsigned long long val) {
         return static_cast<cubic_nanometer_ull>(val);
     }
-    constexpr cubic_picometer_ull operator""_cubic_pm(unsigned long long val) {
+    consteval cubic_picometer_ull operator""_cubic_pm(unsigned long long val) {
         return static_cast<cubic_picometer_ull>(val);
     }
-    constexpr cubic_femtometer_ull operator""_cubic_fm(unsigned long long val) {
+    consteval cubic_femtometer_ull operator""_cubic_fm(unsigned long long val) {
         return static_cast<cubic_femtometer_ull>(val);
     }
-    constexpr cubic_attometer_ull operator""_cubic_am(unsigned long long val) {
+    consteval cubic_attometer_ull operator""_cubic_am(unsigned long long val) {
         return static_cast<cubic_attometer_ull>(val);
     }
 

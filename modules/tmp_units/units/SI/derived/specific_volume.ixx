@@ -85,106 +85,106 @@ export namespace potato::units {
     using cubic_femtometer_per_kilogram_ull    =     cubic_meter_per_kilogram_impl<std::femto, unsigned long long>;
     using cubic_attometer_per_kilogram_ull    =     cubic_meter_per_kilogram_impl<std::atto, unsigned long long>;
 
-    constexpr cubic_exameter_per_kilogram_ld operator""_cubic_Em_per_kg(long double val) {
+    consteval cubic_exameter_per_kilogram_ld operator""_cubic_Em_per_kg(long double val) {
         return static_cast<cubic_exameter_per_kilogram_ld>(val);
     }
-    constexpr cubic_petameter_per_kilogram_ld operator""_cubic_Pm_per_kg(long double val) {
+    consteval cubic_petameter_per_kilogram_ld operator""_cubic_Pm_per_kg(long double val) {
         return static_cast<cubic_petameter_per_kilogram_ld>(val);
     }
-    constexpr cubic_terameter_per_kilogram_ld operator""_cubic_Tm_per_kg(long double val) {
+    consteval cubic_terameter_per_kilogram_ld operator""_cubic_Tm_per_kg(long double val) {
         return static_cast<cubic_terameter_per_kilogram_ld>(val);
     }
-    constexpr cubic_gigameter_per_kilogram_ld operator""_cubic_Gm_per_kg(long double val) {
+    consteval cubic_gigameter_per_kilogram_ld operator""_cubic_Gm_per_kg(long double val) {
         return static_cast<cubic_gigameter_per_kilogram_ld>(val);
     }
-    constexpr cubic_megameter_per_kilogram_ld operator""_cubic_Mm_per_kg(long double val) {
+    consteval cubic_megameter_per_kilogram_ld operator""_cubic_Mm_per_kg(long double val) {
         return static_cast<cubic_megameter_per_kilogram_ld>(val);
     }
-    constexpr cubic_kilometer_per_kilogram_ld operator""_cubic_km_per_kg(long double val) {
+    consteval cubic_kilometer_per_kilogram_ld operator""_cubic_km_per_kg(long double val) {
         return static_cast<cubic_kilometer_per_kilogram_ld>(val);
     }
-    constexpr cubic_hectometer_per_kilogram_ld operator""_cubic_hm_per_kg(long double val) {
+    consteval cubic_hectometer_per_kilogram_ld operator""_cubic_hm_per_kg(long double val) {
         return static_cast<cubic_hectometer_per_kilogram_ld>(val);
     }
-    constexpr cubic_decameter_per_kilogram_ld operator""_cubic_dam_per_kg(long double val) {
+    consteval cubic_decameter_per_kilogram_ld operator""_cubic_dam_per_kg(long double val) {
         return static_cast<cubic_decameter_per_kilogram_ld>(val);
     }
-    constexpr cubic_meter_per_kilogram_ld operator""_cubic_m_per_kg(long double val) {
+    consteval cubic_meter_per_kilogram_ld operator""_cubic_m_per_kg(long double val) {
         return static_cast<cubic_meter_per_kilogram_ld>(val);
     }
-    constexpr cubic_decimeter_per_kilogram_ld operator""_cubic_dm_per_kg(long double val) {
+    consteval cubic_decimeter_per_kilogram_ld operator""_cubic_dm_per_kg(long double val) {
         return static_cast<cubic_decimeter_per_kilogram_ld>(val);
     }
-    constexpr cubic_centimeter_per_kilogram_ld operator""_cubic_cm_per_kg(long double val) {
+    consteval cubic_centimeter_per_kilogram_ld operator""_cubic_cm_per_kg(long double val) {
         return static_cast<cubic_centimeter_per_kilogram_ld>(val);
     }
-    constexpr cubic_millimeter_per_kilogram_ld operator""_cubic_mm_per_kg(long double val) {
+    consteval cubic_millimeter_per_kilogram_ld operator""_cubic_mm_per_kg(long double val) {
         return static_cast<cubic_millimeter_per_kilogram_ld>(val);
     }
-    constexpr cubic_micrometer_per_kilogram_ld operator""_cubic_um_per_kg(long double val) {
+    consteval cubic_micrometer_per_kilogram_ld operator""_cubic_um_per_kg(long double val) {
         return static_cast<cubic_micrometer_per_kilogram_ld>(val);
     }
-    constexpr cubic_nanometer_per_kilogram_ld operator""_cubic_nm_per_kg(long double val) {
+    consteval cubic_nanometer_per_kilogram_ld operator""_cubic_nm_per_kg(long double val) {
         return static_cast<cubic_nanometer_per_kilogram_ld>(val);
     }
-    constexpr cubic_picometer_per_kilogram_ld operator""_cubic_pm_per_kg(long double val) {
+    consteval cubic_picometer_per_kilogram_ld operator""_cubic_pm_per_kg(long double val) {
         return static_cast<cubic_picometer_per_kilogram_ld>(val);
     }
-    constexpr cubic_femtometer_per_kilogram_ld operator""_cubic_fm_per_kg(long double val) {
+    consteval cubic_femtometer_per_kilogram_ld operator""_cubic_fm_per_kg(long double val) {
         return static_cast<cubic_femtometer_per_kilogram_ld>(val);
     }
-    constexpr cubic_attometer_per_kilogram_ld operator""_cubic_am_per_kg(long double val) {
+    consteval cubic_attometer_per_kilogram_ld operator""_cubic_am_per_kg(long double val) {
         return static_cast<cubic_attometer_per_kilogram_ld>(val);
     }
-    constexpr cubic_exameter_per_kilogram_ull operator""_cubic_Em_per_kg(unsigned long long val) {
+    consteval cubic_exameter_per_kilogram_ull operator""_cubic_Em_per_kg(unsigned long long val) {
         return static_cast<cubic_exameter_per_kilogram_ull>(val);
     }
-    constexpr cubic_petameter_per_kilogram_ull operator""_cubic_Pm_per_kg(unsigned long long val) {
+    consteval cubic_petameter_per_kilogram_ull operator""_cubic_Pm_per_kg(unsigned long long val) {
         return static_cast<cubic_petameter_per_kilogram_ull>(val);
     }
-    constexpr cubic_terameter_per_kilogram_ull operator""_cubic_Tm_per_kg(unsigned long long val) {
+    consteval cubic_terameter_per_kilogram_ull operator""_cubic_Tm_per_kg(unsigned long long val) {
         return static_cast<cubic_terameter_per_kilogram_ull>(val);
     }
-    constexpr cubic_gigameter_per_kilogram_ull operator""_cubic_Gm_per_kg(unsigned long long val) {
+    consteval cubic_gigameter_per_kilogram_ull operator""_cubic_Gm_per_kg(unsigned long long val) {
         return static_cast<cubic_gigameter_per_kilogram_ull>(val);
     }
-    constexpr cubic_megameter_per_kilogram_ull operator""_cubic_Mm_per_kg(unsigned long long val) {
+    consteval cubic_megameter_per_kilogram_ull operator""_cubic_Mm_per_kg(unsigned long long val) {
         return static_cast<cubic_megameter_per_kilogram_ull>(val);
     }
-    constexpr cubic_kilometer_per_kilogram_ull operator""_cubic_km_per_kg(unsigned long long val) {
+    consteval cubic_kilometer_per_kilogram_ull operator""_cubic_km_per_kg(unsigned long long val) {
         return static_cast<cubic_kilometer_per_kilogram_ull>(val);
     }
-    constexpr cubic_hectometer_per_kilogram_ull operator""_cubic_hm_per_kg(unsigned long long val) {
+    consteval cubic_hectometer_per_kilogram_ull operator""_cubic_hm_per_kg(unsigned long long val) {
         return static_cast<cubic_hectometer_per_kilogram_ull>(val);
     }
-    constexpr cubic_decameter_per_kilogram_ull operator""_cubic_dam_per_kg(unsigned long long val) {
+    consteval cubic_decameter_per_kilogram_ull operator""_cubic_dam_per_kg(unsigned long long val) {
         return static_cast<cubic_decameter_per_kilogram_ull>(val);
     }
-    constexpr cubic_meter_per_kilogram_ull operator""_cubic_m_per_kg(unsigned long long val) {
+    consteval cubic_meter_per_kilogram_ull operator""_cubic_m_per_kg(unsigned long long val) {
         return static_cast<cubic_meter_per_kilogram_ull>(val);
     }
-    constexpr cubic_decimeter_per_kilogram_ull operator""_cubic_dm_per_kg(unsigned long long val) {
+    consteval cubic_decimeter_per_kilogram_ull operator""_cubic_dm_per_kg(unsigned long long val) {
         return static_cast<cubic_decimeter_per_kilogram_ull>(val);
     }
-    constexpr cubic_centimeter_per_kilogram_ull operator""_cubic_cm_per_kg(unsigned long long val) {
+    consteval cubic_centimeter_per_kilogram_ull operator""_cubic_cm_per_kg(unsigned long long val) {
         return static_cast<cubic_centimeter_per_kilogram_ull>(val);
     }
-    constexpr cubic_millimeter_per_kilogram_ull operator""_cubic_mm_per_kg(unsigned long long val) {
+    consteval cubic_millimeter_per_kilogram_ull operator""_cubic_mm_per_kg(unsigned long long val) {
         return static_cast<cubic_millimeter_per_kilogram_ull>(val);
     }
-    constexpr cubic_micrometer_per_kilogram_ull operator""_cubic_um_per_kg(unsigned long long val) {
+    consteval cubic_micrometer_per_kilogram_ull operator""_cubic_um_per_kg(unsigned long long val) {
         return static_cast<cubic_micrometer_per_kilogram_ull>(val);
     }
-    constexpr cubic_nanometer_per_kilogram_ull operator""_cubic_nm_per_kg(unsigned long long val) {
+    consteval cubic_nanometer_per_kilogram_ull operator""_cubic_nm_per_kg(unsigned long long val) {
         return static_cast<cubic_nanometer_per_kilogram_ull>(val);
     }
-    constexpr cubic_picometer_per_kilogram_ull operator""_cubic_pm_per_kg(unsigned long long val) {
+    consteval cubic_picometer_per_kilogram_ull operator""_cubic_pm_per_kg(unsigned long long val) {
         return static_cast<cubic_picometer_per_kilogram_ull>(val);
     }
-    constexpr cubic_femtometer_per_kilogram_ull operator""_cubic_fm_per_kg(unsigned long long val) {
+    consteval cubic_femtometer_per_kilogram_ull operator""_cubic_fm_per_kg(unsigned long long val) {
         return static_cast<cubic_femtometer_per_kilogram_ull>(val);
     }
-    constexpr cubic_attometer_per_kilogram_ull operator""_cubic_am_per_kg(unsigned long long val) {
+    consteval cubic_attometer_per_kilogram_ull operator""_cubic_am_per_kg(unsigned long long val) {
         return static_cast<cubic_attometer_per_kilogram_ull>(val);
     }
 

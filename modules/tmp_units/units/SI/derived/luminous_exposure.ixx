@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtolux_second_ull    =     lux_second_impl<std::femto, unsigned long long>;
     using attolux_second_ull    =     lux_second_impl<std::atto, unsigned long long>;
 
-    constexpr exalux_second_ld operator""_Es_cd_per_sq_m(long double val) {
+    consteval exalux_second_ld operator""_Es_cd_per_sq_m(long double val) {
         return static_cast<exalux_second_ld>(val);
     }
-    constexpr petalux_second_ld operator""_Ps_cd_per_sq_m(long double val) {
+    consteval petalux_second_ld operator""_Ps_cd_per_sq_m(long double val) {
         return static_cast<petalux_second_ld>(val);
     }
-    constexpr teralux_second_ld operator""_Ts_cd_per_sq_m(long double val) {
+    consteval teralux_second_ld operator""_Ts_cd_per_sq_m(long double val) {
         return static_cast<teralux_second_ld>(val);
     }
-    constexpr gigalux_second_ld operator""_Gs_cd_per_sq_m(long double val) {
+    consteval gigalux_second_ld operator""_Gs_cd_per_sq_m(long double val) {
         return static_cast<gigalux_second_ld>(val);
     }
-    constexpr megalux_second_ld operator""_Ms_cd_per_sq_m(long double val) {
+    consteval megalux_second_ld operator""_Ms_cd_per_sq_m(long double val) {
         return static_cast<megalux_second_ld>(val);
     }
-    constexpr kilolux_second_ld operator""_ks_cd_per_sq_m(long double val) {
+    consteval kilolux_second_ld operator""_ks_cd_per_sq_m(long double val) {
         return static_cast<kilolux_second_ld>(val);
     }
-    constexpr hectolux_second_ld operator""_hs_cd_per_sq_m(long double val) {
+    consteval hectolux_second_ld operator""_hs_cd_per_sq_m(long double val) {
         return static_cast<hectolux_second_ld>(val);
     }
-    constexpr decalux_second_ld operator""_das_cd_per_sq_m(long double val) {
+    consteval decalux_second_ld operator""_das_cd_per_sq_m(long double val) {
         return static_cast<decalux_second_ld>(val);
     }
-    constexpr lux_second_ld operator""_s_cd_per_sq_m(long double val) {
+    consteval lux_second_ld operator""_s_cd_per_sq_m(long double val) {
         return static_cast<lux_second_ld>(val);
     }
-    constexpr decilux_second_ld operator""_ds_cd_per_sq_m(long double val) {
+    consteval decilux_second_ld operator""_ds_cd_per_sq_m(long double val) {
         return static_cast<decilux_second_ld>(val);
     }
-    constexpr centilux_second_ld operator""_cs_cd_per_sq_m(long double val) {
+    consteval centilux_second_ld operator""_cs_cd_per_sq_m(long double val) {
         return static_cast<centilux_second_ld>(val);
     }
-    constexpr millilux_second_ld operator""_ms_cd_per_sq_m(long double val) {
+    consteval millilux_second_ld operator""_ms_cd_per_sq_m(long double val) {
         return static_cast<millilux_second_ld>(val);
     }
-    constexpr microlux_second_ld operator""_us_cd_per_sq_m(long double val) {
+    consteval microlux_second_ld operator""_us_cd_per_sq_m(long double val) {
         return static_cast<microlux_second_ld>(val);
     }
-    constexpr nanolux_second_ld operator""_ns_cd_per_sq_m(long double val) {
+    consteval nanolux_second_ld operator""_ns_cd_per_sq_m(long double val) {
         return static_cast<nanolux_second_ld>(val);
     }
-    constexpr picolux_second_ld operator""_ps_cd_per_sq_m(long double val) {
+    consteval picolux_second_ld operator""_ps_cd_per_sq_m(long double val) {
         return static_cast<picolux_second_ld>(val);
     }
-    constexpr femtolux_second_ld operator""_fs_cd_per_sq_m(long double val) {
+    consteval femtolux_second_ld operator""_fs_cd_per_sq_m(long double val) {
         return static_cast<femtolux_second_ld>(val);
     }
-    constexpr attolux_second_ld operator""_as_cd_per_sq_m(long double val) {
+    consteval attolux_second_ld operator""_as_cd_per_sq_m(long double val) {
         return static_cast<attolux_second_ld>(val);
     }
-    constexpr exalux_second_ull operator""_Es_cd_per_sq_m(unsigned long long val) {
+    consteval exalux_second_ull operator""_Es_cd_per_sq_m(unsigned long long val) {
         return static_cast<exalux_second_ull>(val);
     }
-    constexpr petalux_second_ull operator""_Ps_cd_per_sq_m(unsigned long long val) {
+    consteval petalux_second_ull operator""_Ps_cd_per_sq_m(unsigned long long val) {
         return static_cast<petalux_second_ull>(val);
     }
-    constexpr teralux_second_ull operator""_Ts_cd_per_sq_m(unsigned long long val) {
+    consteval teralux_second_ull operator""_Ts_cd_per_sq_m(unsigned long long val) {
         return static_cast<teralux_second_ull>(val);
     }
-    constexpr gigalux_second_ull operator""_Gs_cd_per_sq_m(unsigned long long val) {
+    consteval gigalux_second_ull operator""_Gs_cd_per_sq_m(unsigned long long val) {
         return static_cast<gigalux_second_ull>(val);
     }
-    constexpr megalux_second_ull operator""_Ms_cd_per_sq_m(unsigned long long val) {
+    consteval megalux_second_ull operator""_Ms_cd_per_sq_m(unsigned long long val) {
         return static_cast<megalux_second_ull>(val);
     }
-    constexpr kilolux_second_ull operator""_ks_cd_per_sq_m(unsigned long long val) {
+    consteval kilolux_second_ull operator""_ks_cd_per_sq_m(unsigned long long val) {
         return static_cast<kilolux_second_ull>(val);
     }
-    constexpr hectolux_second_ull operator""_hs_cd_per_sq_m(unsigned long long val) {
+    consteval hectolux_second_ull operator""_hs_cd_per_sq_m(unsigned long long val) {
         return static_cast<hectolux_second_ull>(val);
     }
-    constexpr decalux_second_ull operator""_das_cd_per_sq_m(unsigned long long val) {
+    consteval decalux_second_ull operator""_das_cd_per_sq_m(unsigned long long val) {
         return static_cast<decalux_second_ull>(val);
     }
-    constexpr lux_second_ull operator""_s_cd_per_sq_m(unsigned long long val) {
+    consteval lux_second_ull operator""_s_cd_per_sq_m(unsigned long long val) {
         return static_cast<lux_second_ull>(val);
     }
-    constexpr decilux_second_ull operator""_ds_cd_per_sq_m(unsigned long long val) {
+    consteval decilux_second_ull operator""_ds_cd_per_sq_m(unsigned long long val) {
         return static_cast<decilux_second_ull>(val);
     }
-    constexpr centilux_second_ull operator""_cs_cd_per_sq_m(unsigned long long val) {
+    consteval centilux_second_ull operator""_cs_cd_per_sq_m(unsigned long long val) {
         return static_cast<centilux_second_ull>(val);
     }
-    constexpr millilux_second_ull operator""_ms_cd_per_sq_m(unsigned long long val) {
+    consteval millilux_second_ull operator""_ms_cd_per_sq_m(unsigned long long val) {
         return static_cast<millilux_second_ull>(val);
     }
-    constexpr microlux_second_ull operator""_us_cd_per_sq_m(unsigned long long val) {
+    consteval microlux_second_ull operator""_us_cd_per_sq_m(unsigned long long val) {
         return static_cast<microlux_second_ull>(val);
     }
-    constexpr nanolux_second_ull operator""_ns_cd_per_sq_m(unsigned long long val) {
+    consteval nanolux_second_ull operator""_ns_cd_per_sq_m(unsigned long long val) {
         return static_cast<nanolux_second_ull>(val);
     }
-    constexpr picolux_second_ull operator""_ps_cd_per_sq_m(unsigned long long val) {
+    consteval picolux_second_ull operator""_ps_cd_per_sq_m(unsigned long long val) {
         return static_cast<picolux_second_ull>(val);
     }
-    constexpr femtolux_second_ull operator""_fs_cd_per_sq_m(unsigned long long val) {
+    consteval femtolux_second_ull operator""_fs_cd_per_sq_m(unsigned long long val) {
         return static_cast<femtolux_second_ull>(val);
     }
-    constexpr attolux_second_ull operator""_as_cd_per_sq_m(unsigned long long val) {
+    consteval attolux_second_ull operator""_as_cd_per_sq_m(unsigned long long val) {
         return static_cast<attolux_second_ull>(val);
     }
 

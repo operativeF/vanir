@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtoohm_meter_ull    =     ohm_meter_impl<std::femto, unsigned long long>;
     using attoohm_meter_ull    =     ohm_meter_impl<std::atto, unsigned long long>;
 
-    constexpr exaohm_meter_ld operator""_Eohm_m(long double val) {
+    consteval exaohm_meter_ld operator""_Eohm_m(long double val) {
         return static_cast<exaohm_meter_ld>(val);
     }
-    constexpr petaohm_meter_ld operator""_Pohm_m(long double val) {
+    consteval petaohm_meter_ld operator""_Pohm_m(long double val) {
         return static_cast<petaohm_meter_ld>(val);
     }
-    constexpr teraohm_meter_ld operator""_Tohm_m(long double val) {
+    consteval teraohm_meter_ld operator""_Tohm_m(long double val) {
         return static_cast<teraohm_meter_ld>(val);
     }
-    constexpr gigaohm_meter_ld operator""_Gohm_m(long double val) {
+    consteval gigaohm_meter_ld operator""_Gohm_m(long double val) {
         return static_cast<gigaohm_meter_ld>(val);
     }
-    constexpr megaohm_meter_ld operator""_Mohm_m(long double val) {
+    consteval megaohm_meter_ld operator""_Mohm_m(long double val) {
         return static_cast<megaohm_meter_ld>(val);
     }
-    constexpr kiloohm_meter_ld operator""_kohm_m(long double val) {
+    consteval kiloohm_meter_ld operator""_kohm_m(long double val) {
         return static_cast<kiloohm_meter_ld>(val);
     }
-    constexpr hectoohm_meter_ld operator""_hohm_m(long double val) {
+    consteval hectoohm_meter_ld operator""_hohm_m(long double val) {
         return static_cast<hectoohm_meter_ld>(val);
     }
-    constexpr decaohm_meter_ld operator""_daohm_m(long double val) {
+    consteval decaohm_meter_ld operator""_daohm_m(long double val) {
         return static_cast<decaohm_meter_ld>(val);
     }
-    constexpr ohm_meter_ld operator""_ohm_m(long double val) {
+    consteval ohm_meter_ld operator""_ohm_m(long double val) {
         return static_cast<ohm_meter_ld>(val);
     }
-    constexpr deciohm_meter_ld operator""_dohm_m(long double val) {
+    consteval deciohm_meter_ld operator""_dohm_m(long double val) {
         return static_cast<deciohm_meter_ld>(val);
     }
-    constexpr centiohm_meter_ld operator""_cohm_m(long double val) {
+    consteval centiohm_meter_ld operator""_cohm_m(long double val) {
         return static_cast<centiohm_meter_ld>(val);
     }
-    constexpr milliohm_meter_ld operator""_mohm_m(long double val) {
+    consteval milliohm_meter_ld operator""_mohm_m(long double val) {
         return static_cast<milliohm_meter_ld>(val);
     }
-    constexpr microohm_meter_ld operator""_uohm_m(long double val) {
+    consteval microohm_meter_ld operator""_uohm_m(long double val) {
         return static_cast<microohm_meter_ld>(val);
     }
-    constexpr nanoohm_meter_ld operator""_nohm_m(long double val) {
+    consteval nanoohm_meter_ld operator""_nohm_m(long double val) {
         return static_cast<nanoohm_meter_ld>(val);
     }
-    constexpr picoohm_meter_ld operator""_pohm_m(long double val) {
+    consteval picoohm_meter_ld operator""_pohm_m(long double val) {
         return static_cast<picoohm_meter_ld>(val);
     }
-    constexpr femtoohm_meter_ld operator""_fohm_m(long double val) {
+    consteval femtoohm_meter_ld operator""_fohm_m(long double val) {
         return static_cast<femtoohm_meter_ld>(val);
     }
-    constexpr attoohm_meter_ld operator""_aohm_m(long double val) {
+    consteval attoohm_meter_ld operator""_aohm_m(long double val) {
         return static_cast<attoohm_meter_ld>(val);
     }
-    constexpr exaohm_meter_ull operator""_Eohm_m(unsigned long long val) {
+    consteval exaohm_meter_ull operator""_Eohm_m(unsigned long long val) {
         return static_cast<exaohm_meter_ull>(val);
     }
-    constexpr petaohm_meter_ull operator""_Pohm_m(unsigned long long val) {
+    consteval petaohm_meter_ull operator""_Pohm_m(unsigned long long val) {
         return static_cast<petaohm_meter_ull>(val);
     }
-    constexpr teraohm_meter_ull operator""_Tohm_m(unsigned long long val) {
+    consteval teraohm_meter_ull operator""_Tohm_m(unsigned long long val) {
         return static_cast<teraohm_meter_ull>(val);
     }
-    constexpr gigaohm_meter_ull operator""_Gohm_m(unsigned long long val) {
+    consteval gigaohm_meter_ull operator""_Gohm_m(unsigned long long val) {
         return static_cast<gigaohm_meter_ull>(val);
     }
-    constexpr megaohm_meter_ull operator""_Mohm_m(unsigned long long val) {
+    consteval megaohm_meter_ull operator""_Mohm_m(unsigned long long val) {
         return static_cast<megaohm_meter_ull>(val);
     }
-    constexpr kiloohm_meter_ull operator""_kohm_m(unsigned long long val) {
+    consteval kiloohm_meter_ull operator""_kohm_m(unsigned long long val) {
         return static_cast<kiloohm_meter_ull>(val);
     }
-    constexpr hectoohm_meter_ull operator""_hohm_m(unsigned long long val) {
+    consteval hectoohm_meter_ull operator""_hohm_m(unsigned long long val) {
         return static_cast<hectoohm_meter_ull>(val);
     }
-    constexpr decaohm_meter_ull operator""_daohm_m(unsigned long long val) {
+    consteval decaohm_meter_ull operator""_daohm_m(unsigned long long val) {
         return static_cast<decaohm_meter_ull>(val);
     }
-    constexpr ohm_meter_ull operator""_ohm_m(unsigned long long val) {
+    consteval ohm_meter_ull operator""_ohm_m(unsigned long long val) {
         return static_cast<ohm_meter_ull>(val);
     }
-    constexpr deciohm_meter_ull operator""_dohm_m(unsigned long long val) {
+    consteval deciohm_meter_ull operator""_dohm_m(unsigned long long val) {
         return static_cast<deciohm_meter_ull>(val);
     }
-    constexpr centiohm_meter_ull operator""_cohm_m(unsigned long long val) {
+    consteval centiohm_meter_ull operator""_cohm_m(unsigned long long val) {
         return static_cast<centiohm_meter_ull>(val);
     }
-    constexpr milliohm_meter_ull operator""_mohm_m(unsigned long long val) {
+    consteval milliohm_meter_ull operator""_mohm_m(unsigned long long val) {
         return static_cast<milliohm_meter_ull>(val);
     }
-    constexpr microohm_meter_ull operator""_uohm_m(unsigned long long val) {
+    consteval microohm_meter_ull operator""_uohm_m(unsigned long long val) {
         return static_cast<microohm_meter_ull>(val);
     }
-    constexpr nanoohm_meter_ull operator""_nohm_m(unsigned long long val) {
+    consteval nanoohm_meter_ull operator""_nohm_m(unsigned long long val) {
         return static_cast<nanoohm_meter_ull>(val);
     }
-    constexpr picoohm_meter_ull operator""_pohm_m(unsigned long long val) {
+    consteval picoohm_meter_ull operator""_pohm_m(unsigned long long val) {
         return static_cast<picoohm_meter_ull>(val);
     }
-    constexpr femtoohm_meter_ull operator""_fohm_m(unsigned long long val) {
+    consteval femtoohm_meter_ull operator""_fohm_m(unsigned long long val) {
         return static_cast<femtoohm_meter_ull>(val);
     }
-    constexpr attoohm_meter_ull operator""_aohm_m(unsigned long long val) {
+    consteval attoohm_meter_ull operator""_aohm_m(unsigned long long val) {
         return static_cast<attoohm_meter_ull>(val);
     }
 

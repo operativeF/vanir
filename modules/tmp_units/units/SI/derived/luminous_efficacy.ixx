@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtolumen_per_watt_ull    =     lumen_per_watt_impl<std::femto, unsigned long long>;
     using attolumen_per_watt_ull    =     lumen_per_watt_impl<std::atto, unsigned long long>;
 
-    constexpr exalumen_per_watt_ld operator""_Elm_per_W(long double val) {
+    consteval exalumen_per_watt_ld operator""_Elm_per_W(long double val) {
         return static_cast<exalumen_per_watt_ld>(val);
     }
-    constexpr petalumen_per_watt_ld operator""_Plm_per_W(long double val) {
+    consteval petalumen_per_watt_ld operator""_Plm_per_W(long double val) {
         return static_cast<petalumen_per_watt_ld>(val);
     }
-    constexpr teralumen_per_watt_ld operator""_Tlm_per_W(long double val) {
+    consteval teralumen_per_watt_ld operator""_Tlm_per_W(long double val) {
         return static_cast<teralumen_per_watt_ld>(val);
     }
-    constexpr gigalumen_per_watt_ld operator""_Glm_per_W(long double val) {
+    consteval gigalumen_per_watt_ld operator""_Glm_per_W(long double val) {
         return static_cast<gigalumen_per_watt_ld>(val);
     }
-    constexpr megalumen_per_watt_ld operator""_Mlm_per_W(long double val) {
+    consteval megalumen_per_watt_ld operator""_Mlm_per_W(long double val) {
         return static_cast<megalumen_per_watt_ld>(val);
     }
-    constexpr kilolumen_per_watt_ld operator""_klm_per_W(long double val) {
+    consteval kilolumen_per_watt_ld operator""_klm_per_W(long double val) {
         return static_cast<kilolumen_per_watt_ld>(val);
     }
-    constexpr hectolumen_per_watt_ld operator""_hlm_per_W(long double val) {
+    consteval hectolumen_per_watt_ld operator""_hlm_per_W(long double val) {
         return static_cast<hectolumen_per_watt_ld>(val);
     }
-    constexpr decalumen_per_watt_ld operator""_dalm_per_W(long double val) {
+    consteval decalumen_per_watt_ld operator""_dalm_per_W(long double val) {
         return static_cast<decalumen_per_watt_ld>(val);
     }
-    constexpr lumen_per_watt_ld operator""_lm_per_W(long double val) {
+    consteval lumen_per_watt_ld operator""_lm_per_W(long double val) {
         return static_cast<lumen_per_watt_ld>(val);
     }
-    constexpr decilumen_per_watt_ld operator""_dlm_per_W(long double val) {
+    consteval decilumen_per_watt_ld operator""_dlm_per_W(long double val) {
         return static_cast<decilumen_per_watt_ld>(val);
     }
-    constexpr centilumen_per_watt_ld operator""_clm_per_W(long double val) {
+    consteval centilumen_per_watt_ld operator""_clm_per_W(long double val) {
         return static_cast<centilumen_per_watt_ld>(val);
     }
-    constexpr millilumen_per_watt_ld operator""_mlm_per_W(long double val) {
+    consteval millilumen_per_watt_ld operator""_mlm_per_W(long double val) {
         return static_cast<millilumen_per_watt_ld>(val);
     }
-    constexpr microlumen_per_watt_ld operator""_ulm_per_W(long double val) {
+    consteval microlumen_per_watt_ld operator""_ulm_per_W(long double val) {
         return static_cast<microlumen_per_watt_ld>(val);
     }
-    constexpr nanolumen_per_watt_ld operator""_nlm_per_W(long double val) {
+    consteval nanolumen_per_watt_ld operator""_nlm_per_W(long double val) {
         return static_cast<nanolumen_per_watt_ld>(val);
     }
-    constexpr picolumen_per_watt_ld operator""_plm_per_W(long double val) {
+    consteval picolumen_per_watt_ld operator""_plm_per_W(long double val) {
         return static_cast<picolumen_per_watt_ld>(val);
     }
-    constexpr femtolumen_per_watt_ld operator""_flm_per_W(long double val) {
+    consteval femtolumen_per_watt_ld operator""_flm_per_W(long double val) {
         return static_cast<femtolumen_per_watt_ld>(val);
     }
-    constexpr attolumen_per_watt_ld operator""_alm_per_W(long double val) {
+    consteval attolumen_per_watt_ld operator""_alm_per_W(long double val) {
         return static_cast<attolumen_per_watt_ld>(val);
     }
-    constexpr exalumen_per_watt_ull operator""_Elm_per_W(unsigned long long val) {
+    consteval exalumen_per_watt_ull operator""_Elm_per_W(unsigned long long val) {
         return static_cast<exalumen_per_watt_ull>(val);
     }
-    constexpr petalumen_per_watt_ull operator""_Plm_per_W(unsigned long long val) {
+    consteval petalumen_per_watt_ull operator""_Plm_per_W(unsigned long long val) {
         return static_cast<petalumen_per_watt_ull>(val);
     }
-    constexpr teralumen_per_watt_ull operator""_Tlm_per_W(unsigned long long val) {
+    consteval teralumen_per_watt_ull operator""_Tlm_per_W(unsigned long long val) {
         return static_cast<teralumen_per_watt_ull>(val);
     }
-    constexpr gigalumen_per_watt_ull operator""_Glm_per_W(unsigned long long val) {
+    consteval gigalumen_per_watt_ull operator""_Glm_per_W(unsigned long long val) {
         return static_cast<gigalumen_per_watt_ull>(val);
     }
-    constexpr megalumen_per_watt_ull operator""_Mlm_per_W(unsigned long long val) {
+    consteval megalumen_per_watt_ull operator""_Mlm_per_W(unsigned long long val) {
         return static_cast<megalumen_per_watt_ull>(val);
     }
-    constexpr kilolumen_per_watt_ull operator""_klm_per_W(unsigned long long val) {
+    consteval kilolumen_per_watt_ull operator""_klm_per_W(unsigned long long val) {
         return static_cast<kilolumen_per_watt_ull>(val);
     }
-    constexpr hectolumen_per_watt_ull operator""_hlm_per_W(unsigned long long val) {
+    consteval hectolumen_per_watt_ull operator""_hlm_per_W(unsigned long long val) {
         return static_cast<hectolumen_per_watt_ull>(val);
     }
-    constexpr decalumen_per_watt_ull operator""_dalm_per_W(unsigned long long val) {
+    consteval decalumen_per_watt_ull operator""_dalm_per_W(unsigned long long val) {
         return static_cast<decalumen_per_watt_ull>(val);
     }
-    constexpr lumen_per_watt_ull operator""_lm_per_W(unsigned long long val) {
+    consteval lumen_per_watt_ull operator""_lm_per_W(unsigned long long val) {
         return static_cast<lumen_per_watt_ull>(val);
     }
-    constexpr decilumen_per_watt_ull operator""_dlm_per_W(unsigned long long val) {
+    consteval decilumen_per_watt_ull operator""_dlm_per_W(unsigned long long val) {
         return static_cast<decilumen_per_watt_ull>(val);
     }
-    constexpr centilumen_per_watt_ull operator""_clm_per_W(unsigned long long val) {
+    consteval centilumen_per_watt_ull operator""_clm_per_W(unsigned long long val) {
         return static_cast<centilumen_per_watt_ull>(val);
     }
-    constexpr millilumen_per_watt_ull operator""_mlm_per_W(unsigned long long val) {
+    consteval millilumen_per_watt_ull operator""_mlm_per_W(unsigned long long val) {
         return static_cast<millilumen_per_watt_ull>(val);
     }
-    constexpr microlumen_per_watt_ull operator""_ulm_per_W(unsigned long long val) {
+    consteval microlumen_per_watt_ull operator""_ulm_per_W(unsigned long long val) {
         return static_cast<microlumen_per_watt_ull>(val);
     }
-    constexpr nanolumen_per_watt_ull operator""_nlm_per_W(unsigned long long val) {
+    consteval nanolumen_per_watt_ull operator""_nlm_per_W(unsigned long long val) {
         return static_cast<nanolumen_per_watt_ull>(val);
     }
-    constexpr picolumen_per_watt_ull operator""_plm_per_W(unsigned long long val) {
+    consteval picolumen_per_watt_ull operator""_plm_per_W(unsigned long long val) {
         return static_cast<picolumen_per_watt_ull>(val);
     }
-    constexpr femtolumen_per_watt_ull operator""_flm_per_W(unsigned long long val) {
+    consteval femtolumen_per_watt_ull operator""_flm_per_W(unsigned long long val) {
         return static_cast<femtolumen_per_watt_ull>(val);
     }
-    constexpr attolumen_per_watt_ull operator""_alm_per_W(unsigned long long val) {
+    consteval attolumen_per_watt_ull operator""_alm_per_W(unsigned long long val) {
         return static_cast<attolumen_per_watt_ull>(val);
     }
 

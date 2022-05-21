@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtocandela_ull    =     candela_impl<std::femto, unsigned long long>;
     using attocandela_ull    =     candela_impl<std::atto, unsigned long long>;
 
-    constexpr exacandela_ld operator""_Ecd(long double val) {
+    consteval exacandela_ld operator""_Ecd(long double val) {
         return static_cast<exacandela_ld>(val);
     }
-    constexpr petacandela_ld operator""_Pcd(long double val) {
+    consteval petacandela_ld operator""_Pcd(long double val) {
         return static_cast<petacandela_ld>(val);
     }
-    constexpr teracandela_ld operator""_Tcd(long double val) {
+    consteval teracandela_ld operator""_Tcd(long double val) {
         return static_cast<teracandela_ld>(val);
     }
-    constexpr gigacandela_ld operator""_Gcd(long double val) {
+    consteval gigacandela_ld operator""_Gcd(long double val) {
         return static_cast<gigacandela_ld>(val);
     }
-    constexpr megacandela_ld operator""_Mcd(long double val) {
+    consteval megacandela_ld operator""_Mcd(long double val) {
         return static_cast<megacandela_ld>(val);
     }
-    constexpr kilocandela_ld operator""_kcd(long double val) {
+    consteval kilocandela_ld operator""_kcd(long double val) {
         return static_cast<kilocandela_ld>(val);
     }
-    constexpr hectocandela_ld operator""_hcd(long double val) {
+    consteval hectocandela_ld operator""_hcd(long double val) {
         return static_cast<hectocandela_ld>(val);
     }
-    constexpr decacandela_ld operator""_dacd(long double val) {
+    consteval decacandela_ld operator""_dacd(long double val) {
         return static_cast<decacandela_ld>(val);
     }
-    constexpr candela_ld operator""_cd(long double val) {
+    consteval candela_ld operator""_cd(long double val) {
         return static_cast<candela_ld>(val);
     }
-    constexpr decicandela_ld operator""_dcd(long double val) {
+    consteval decicandela_ld operator""_dcd(long double val) {
         return static_cast<decicandela_ld>(val);
     }
-    constexpr centicandela_ld operator""_ccd(long double val) {
+    consteval centicandela_ld operator""_ccd(long double val) {
         return static_cast<centicandela_ld>(val);
     }
-    constexpr millicandela_ld operator""_mcd(long double val) {
+    consteval millicandela_ld operator""_mcd(long double val) {
         return static_cast<millicandela_ld>(val);
     }
-    constexpr microcandela_ld operator""_ucd(long double val) {
+    consteval microcandela_ld operator""_ucd(long double val) {
         return static_cast<microcandela_ld>(val);
     }
-    constexpr nanocandela_ld operator""_ncd(long double val) {
+    consteval nanocandela_ld operator""_ncd(long double val) {
         return static_cast<nanocandela_ld>(val);
     }
-    constexpr picocandela_ld operator""_pcd(long double val) {
+    consteval picocandela_ld operator""_pcd(long double val) {
         return static_cast<picocandela_ld>(val);
     }
-    constexpr femtocandela_ld operator""_fcd(long double val) {
+    consteval femtocandela_ld operator""_fcd(long double val) {
         return static_cast<femtocandela_ld>(val);
     }
-    constexpr attocandela_ld operator""_acd(long double val) {
+    consteval attocandela_ld operator""_acd(long double val) {
         return static_cast<attocandela_ld>(val);
     }
-    constexpr exacandela_ull operator""_Ecd(unsigned long long val) {
+    consteval exacandela_ull operator""_Ecd(unsigned long long val) {
         return static_cast<exacandela_ull>(val);
     }
-    constexpr petacandela_ull operator""_Pcd(unsigned long long val) {
+    consteval petacandela_ull operator""_Pcd(unsigned long long val) {
         return static_cast<petacandela_ull>(val);
     }
-    constexpr teracandela_ull operator""_Tcd(unsigned long long val) {
+    consteval teracandela_ull operator""_Tcd(unsigned long long val) {
         return static_cast<teracandela_ull>(val);
     }
-    constexpr gigacandela_ull operator""_Gcd(unsigned long long val) {
+    consteval gigacandela_ull operator""_Gcd(unsigned long long val) {
         return static_cast<gigacandela_ull>(val);
     }
-    constexpr megacandela_ull operator""_Mcd(unsigned long long val) {
+    consteval megacandela_ull operator""_Mcd(unsigned long long val) {
         return static_cast<megacandela_ull>(val);
     }
-    constexpr kilocandela_ull operator""_kcd(unsigned long long val) {
+    consteval kilocandela_ull operator""_kcd(unsigned long long val) {
         return static_cast<kilocandela_ull>(val);
     }
-    constexpr hectocandela_ull operator""_hcd(unsigned long long val) {
+    consteval hectocandela_ull operator""_hcd(unsigned long long val) {
         return static_cast<hectocandela_ull>(val);
     }
-    constexpr decacandela_ull operator""_dacd(unsigned long long val) {
+    consteval decacandela_ull operator""_dacd(unsigned long long val) {
         return static_cast<decacandela_ull>(val);
     }
-    constexpr candela_ull operator""_cd(unsigned long long val) {
+    consteval candela_ull operator""_cd(unsigned long long val) {
         return static_cast<candela_ull>(val);
     }
-    constexpr decicandela_ull operator""_dcd(unsigned long long val) {
+    consteval decicandela_ull operator""_dcd(unsigned long long val) {
         return static_cast<decicandela_ull>(val);
     }
-    constexpr centicandela_ull operator""_ccd(unsigned long long val) {
+    consteval centicandela_ull operator""_ccd(unsigned long long val) {
         return static_cast<centicandela_ull>(val);
     }
-    constexpr millicandela_ull operator""_mcd(unsigned long long val) {
+    consteval millicandela_ull operator""_mcd(unsigned long long val) {
         return static_cast<millicandela_ull>(val);
     }
-    constexpr microcandela_ull operator""_ucd(unsigned long long val) {
+    consteval microcandela_ull operator""_ucd(unsigned long long val) {
         return static_cast<microcandela_ull>(val);
     }
-    constexpr nanocandela_ull operator""_ncd(unsigned long long val) {
+    consteval nanocandela_ull operator""_ncd(unsigned long long val) {
         return static_cast<nanocandela_ull>(val);
     }
-    constexpr picocandela_ull operator""_pcd(unsigned long long val) {
+    consteval picocandela_ull operator""_pcd(unsigned long long val) {
         return static_cast<picocandela_ull>(val);
     }
-    constexpr femtocandela_ull operator""_fcd(unsigned long long val) {
+    consteval femtocandela_ull operator""_fcd(unsigned long long val) {
         return static_cast<femtocandela_ull>(val);
     }
-    constexpr attocandela_ull operator""_acd(unsigned long long val) {
+    consteval attocandela_ull operator""_acd(unsigned long long val) {
         return static_cast<attocandela_ull>(val);
     }
 

@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtohenry_ull    =     henry_impl<std::femto, unsigned long long>;
     using attohenry_ull    =     henry_impl<std::atto, unsigned long long>;
 
-    constexpr exahenry_ld operator""_EH(long double val) {
+    consteval exahenry_ld operator""_EH(long double val) {
         return static_cast<exahenry_ld>(val);
     }
-    constexpr petahenry_ld operator""_PH(long double val) {
+    consteval petahenry_ld operator""_PH(long double val) {
         return static_cast<petahenry_ld>(val);
     }
-    constexpr terahenry_ld operator""_TH(long double val) {
+    consteval terahenry_ld operator""_TH(long double val) {
         return static_cast<terahenry_ld>(val);
     }
-    constexpr gigahenry_ld operator""_GH(long double val) {
+    consteval gigahenry_ld operator""_GH(long double val) {
         return static_cast<gigahenry_ld>(val);
     }
-    constexpr megahenry_ld operator""_MH(long double val) {
+    consteval megahenry_ld operator""_MH(long double val) {
         return static_cast<megahenry_ld>(val);
     }
-    constexpr kilohenry_ld operator""_kH(long double val) {
+    consteval kilohenry_ld operator""_kH(long double val) {
         return static_cast<kilohenry_ld>(val);
     }
-    constexpr hectohenry_ld operator""_hH(long double val) {
+    consteval hectohenry_ld operator""_hH(long double val) {
         return static_cast<hectohenry_ld>(val);
     }
-    constexpr decahenry_ld operator""_daH(long double val) {
+    consteval decahenry_ld operator""_daH(long double val) {
         return static_cast<decahenry_ld>(val);
     }
-    constexpr henry_ld operator""_H(long double val) {
+    consteval henry_ld operator""_H(long double val) {
         return static_cast<henry_ld>(val);
     }
-    constexpr decihenry_ld operator""_dH(long double val) {
+    consteval decihenry_ld operator""_dH(long double val) {
         return static_cast<decihenry_ld>(val);
     }
-    constexpr centihenry_ld operator""_cH(long double val) {
+    consteval centihenry_ld operator""_cH(long double val) {
         return static_cast<centihenry_ld>(val);
     }
-    constexpr millihenry_ld operator""_mH(long double val) {
+    consteval millihenry_ld operator""_mH(long double val) {
         return static_cast<millihenry_ld>(val);
     }
-    constexpr microhenry_ld operator""_uH(long double val) {
+    consteval microhenry_ld operator""_uH(long double val) {
         return static_cast<microhenry_ld>(val);
     }
-    constexpr nanohenry_ld operator""_nH(long double val) {
+    consteval nanohenry_ld operator""_nH(long double val) {
         return static_cast<nanohenry_ld>(val);
     }
-    constexpr picohenry_ld operator""_pH(long double val) {
+    consteval picohenry_ld operator""_pH(long double val) {
         return static_cast<picohenry_ld>(val);
     }
-    constexpr femtohenry_ld operator""_fH(long double val) {
+    consteval femtohenry_ld operator""_fH(long double val) {
         return static_cast<femtohenry_ld>(val);
     }
-    constexpr attohenry_ld operator""_aH(long double val) {
+    consteval attohenry_ld operator""_aH(long double val) {
         return static_cast<attohenry_ld>(val);
     }
-    constexpr exahenry_ull operator""_EH(unsigned long long val) {
+    consteval exahenry_ull operator""_EH(unsigned long long val) {
         return static_cast<exahenry_ull>(val);
     }
-    constexpr petahenry_ull operator""_PH(unsigned long long val) {
+    consteval petahenry_ull operator""_PH(unsigned long long val) {
         return static_cast<petahenry_ull>(val);
     }
-    constexpr terahenry_ull operator""_TH(unsigned long long val) {
+    consteval terahenry_ull operator""_TH(unsigned long long val) {
         return static_cast<terahenry_ull>(val);
     }
-    constexpr gigahenry_ull operator""_GH(unsigned long long val) {
+    consteval gigahenry_ull operator""_GH(unsigned long long val) {
         return static_cast<gigahenry_ull>(val);
     }
-    constexpr megahenry_ull operator""_MH(unsigned long long val) {
+    consteval megahenry_ull operator""_MH(unsigned long long val) {
         return static_cast<megahenry_ull>(val);
     }
-    constexpr kilohenry_ull operator""_kH(unsigned long long val) {
+    consteval kilohenry_ull operator""_kH(unsigned long long val) {
         return static_cast<kilohenry_ull>(val);
     }
-    constexpr hectohenry_ull operator""_hH(unsigned long long val) {
+    consteval hectohenry_ull operator""_hH(unsigned long long val) {
         return static_cast<hectohenry_ull>(val);
     }
-    constexpr decahenry_ull operator""_daH(unsigned long long val) {
+    consteval decahenry_ull operator""_daH(unsigned long long val) {
         return static_cast<decahenry_ull>(val);
     }
-    constexpr henry_ull operator""_H(unsigned long long val) {
+    consteval henry_ull operator""_H(unsigned long long val) {
         return static_cast<henry_ull>(val);
     }
-    constexpr decihenry_ull operator""_dH(unsigned long long val) {
+    consteval decihenry_ull operator""_dH(unsigned long long val) {
         return static_cast<decihenry_ull>(val);
     }
-    constexpr centihenry_ull operator""_cH(unsigned long long val) {
+    consteval centihenry_ull operator""_cH(unsigned long long val) {
         return static_cast<centihenry_ull>(val);
     }
-    constexpr millihenry_ull operator""_mH(unsigned long long val) {
+    consteval millihenry_ull operator""_mH(unsigned long long val) {
         return static_cast<millihenry_ull>(val);
     }
-    constexpr microhenry_ull operator""_uH(unsigned long long val) {
+    consteval microhenry_ull operator""_uH(unsigned long long val) {
         return static_cast<microhenry_ull>(val);
     }
-    constexpr nanohenry_ull operator""_nH(unsigned long long val) {
+    consteval nanohenry_ull operator""_nH(unsigned long long val) {
         return static_cast<nanohenry_ull>(val);
     }
-    constexpr picohenry_ull operator""_pH(unsigned long long val) {
+    consteval picohenry_ull operator""_pH(unsigned long long val) {
         return static_cast<picohenry_ull>(val);
     }
-    constexpr femtohenry_ull operator""_fH(unsigned long long val) {
+    consteval femtohenry_ull operator""_fH(unsigned long long val) {
         return static_cast<femtohenry_ull>(val);
     }
-    constexpr attohenry_ull operator""_aH(unsigned long long val) {
+    consteval attohenry_ull operator""_aH(unsigned long long val) {
         return static_cast<attohenry_ull>(val);
     }
 

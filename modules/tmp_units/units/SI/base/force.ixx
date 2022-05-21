@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtonewton_ull    =     newton_impl<std::femto, unsigned long long>;
     using attonewton_ull    =     newton_impl<std::atto, unsigned long long>;
 
-    constexpr exanewton_ld operator""_EN(long double val) {
+    consteval exanewton_ld operator""_EN(long double val) {
         return static_cast<exanewton_ld>(val);
     }
-    constexpr petanewton_ld operator""_PN(long double val) {
+    consteval petanewton_ld operator""_PN(long double val) {
         return static_cast<petanewton_ld>(val);
     }
-    constexpr teranewton_ld operator""_TN(long double val) {
+    consteval teranewton_ld operator""_TN(long double val) {
         return static_cast<teranewton_ld>(val);
     }
-    constexpr giganewton_ld operator""_GN(long double val) {
+    consteval giganewton_ld operator""_GN(long double val) {
         return static_cast<giganewton_ld>(val);
     }
-    constexpr meganewton_ld operator""_MN(long double val) {
+    consteval meganewton_ld operator""_MN(long double val) {
         return static_cast<meganewton_ld>(val);
     }
-    constexpr kilonewton_ld operator""_kN(long double val) {
+    consteval kilonewton_ld operator""_kN(long double val) {
         return static_cast<kilonewton_ld>(val);
     }
-    constexpr hectonewton_ld operator""_hN(long double val) {
+    consteval hectonewton_ld operator""_hN(long double val) {
         return static_cast<hectonewton_ld>(val);
     }
-    constexpr decanewton_ld operator""_daN(long double val) {
+    consteval decanewton_ld operator""_daN(long double val) {
         return static_cast<decanewton_ld>(val);
     }
-    constexpr newton_ld operator""_N(long double val) {
+    consteval newton_ld operator""_N(long double val) {
         return static_cast<newton_ld>(val);
     }
-    constexpr decinewton_ld operator""_dN(long double val) {
+    consteval decinewton_ld operator""_dN(long double val) {
         return static_cast<decinewton_ld>(val);
     }
-    constexpr centinewton_ld operator""_cN(long double val) {
+    consteval centinewton_ld operator""_cN(long double val) {
         return static_cast<centinewton_ld>(val);
     }
-    constexpr millinewton_ld operator""_mN(long double val) {
+    consteval millinewton_ld operator""_mN(long double val) {
         return static_cast<millinewton_ld>(val);
     }
-    constexpr micronewton_ld operator""_uN(long double val) {
+    consteval micronewton_ld operator""_uN(long double val) {
         return static_cast<micronewton_ld>(val);
     }
-    constexpr nanonewton_ld operator""_nN(long double val) {
+    consteval nanonewton_ld operator""_nN(long double val) {
         return static_cast<nanonewton_ld>(val);
     }
-    constexpr piconewton_ld operator""_pN(long double val) {
+    consteval piconewton_ld operator""_pN(long double val) {
         return static_cast<piconewton_ld>(val);
     }
-    constexpr femtonewton_ld operator""_fN(long double val) {
+    consteval femtonewton_ld operator""_fN(long double val) {
         return static_cast<femtonewton_ld>(val);
     }
-    constexpr attonewton_ld operator""_aN(long double val) {
+    consteval attonewton_ld operator""_aN(long double val) {
         return static_cast<attonewton_ld>(val);
     }
-    constexpr exanewton_ull operator""_EN(unsigned long long val) {
+    consteval exanewton_ull operator""_EN(unsigned long long val) {
         return static_cast<exanewton_ull>(val);
     }
-    constexpr petanewton_ull operator""_PN(unsigned long long val) {
+    consteval petanewton_ull operator""_PN(unsigned long long val) {
         return static_cast<petanewton_ull>(val);
     }
-    constexpr teranewton_ull operator""_TN(unsigned long long val) {
+    consteval teranewton_ull operator""_TN(unsigned long long val) {
         return static_cast<teranewton_ull>(val);
     }
-    constexpr giganewton_ull operator""_GN(unsigned long long val) {
+    consteval giganewton_ull operator""_GN(unsigned long long val) {
         return static_cast<giganewton_ull>(val);
     }
-    constexpr meganewton_ull operator""_MN(unsigned long long val) {
+    consteval meganewton_ull operator""_MN(unsigned long long val) {
         return static_cast<meganewton_ull>(val);
     }
-    constexpr kilonewton_ull operator""_kN(unsigned long long val) {
+    consteval kilonewton_ull operator""_kN(unsigned long long val) {
         return static_cast<kilonewton_ull>(val);
     }
-    constexpr hectonewton_ull operator""_hN(unsigned long long val) {
+    consteval hectonewton_ull operator""_hN(unsigned long long val) {
         return static_cast<hectonewton_ull>(val);
     }
-    constexpr decanewton_ull operator""_daN(unsigned long long val) {
+    consteval decanewton_ull operator""_daN(unsigned long long val) {
         return static_cast<decanewton_ull>(val);
     }
-    constexpr newton_ull operator""_N(unsigned long long val) {
+    consteval newton_ull operator""_N(unsigned long long val) {
         return static_cast<newton_ull>(val);
     }
-    constexpr decinewton_ull operator""_dN(unsigned long long val) {
+    consteval decinewton_ull operator""_dN(unsigned long long val) {
         return static_cast<decinewton_ull>(val);
     }
-    constexpr centinewton_ull operator""_cN(unsigned long long val) {
+    consteval centinewton_ull operator""_cN(unsigned long long val) {
         return static_cast<centinewton_ull>(val);
     }
-    constexpr millinewton_ull operator""_mN(unsigned long long val) {
+    consteval millinewton_ull operator""_mN(unsigned long long val) {
         return static_cast<millinewton_ull>(val);
     }
-    constexpr micronewton_ull operator""_uN(unsigned long long val) {
+    consteval micronewton_ull operator""_uN(unsigned long long val) {
         return static_cast<micronewton_ull>(val);
     }
-    constexpr nanonewton_ull operator""_nN(unsigned long long val) {
+    consteval nanonewton_ull operator""_nN(unsigned long long val) {
         return static_cast<nanonewton_ull>(val);
     }
-    constexpr piconewton_ull operator""_pN(unsigned long long val) {
+    consteval piconewton_ull operator""_pN(unsigned long long val) {
         return static_cast<piconewton_ull>(val);
     }
-    constexpr femtonewton_ull operator""_fN(unsigned long long val) {
+    consteval femtonewton_ull operator""_fN(unsigned long long val) {
         return static_cast<femtonewton_ull>(val);
     }
-    constexpr attonewton_ull operator""_aN(unsigned long long val) {
+    consteval attonewton_ull operator""_aN(unsigned long long val) {
         return static_cast<attonewton_ull>(val);
     }
 

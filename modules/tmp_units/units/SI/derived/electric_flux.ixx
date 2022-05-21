@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtovolt_meter_ull    =     volt_meter_impl<std::femto, unsigned long long>;
     using attovolt_meter_ull    =     volt_meter_impl<std::atto, unsigned long long>;
 
-    constexpr exavolt_meter_ld operator""_EV_m(long double val) {
+    consteval exavolt_meter_ld operator""_EV_m(long double val) {
         return static_cast<exavolt_meter_ld>(val);
     }
-    constexpr petavolt_meter_ld operator""_PV_m(long double val) {
+    consteval petavolt_meter_ld operator""_PV_m(long double val) {
         return static_cast<petavolt_meter_ld>(val);
     }
-    constexpr teravolt_meter_ld operator""_TV_m(long double val) {
+    consteval teravolt_meter_ld operator""_TV_m(long double val) {
         return static_cast<teravolt_meter_ld>(val);
     }
-    constexpr gigavolt_meter_ld operator""_GV_m(long double val) {
+    consteval gigavolt_meter_ld operator""_GV_m(long double val) {
         return static_cast<gigavolt_meter_ld>(val);
     }
-    constexpr megavolt_meter_ld operator""_MV_m(long double val) {
+    consteval megavolt_meter_ld operator""_MV_m(long double val) {
         return static_cast<megavolt_meter_ld>(val);
     }
-    constexpr kilovolt_meter_ld operator""_kV_m(long double val) {
+    consteval kilovolt_meter_ld operator""_kV_m(long double val) {
         return static_cast<kilovolt_meter_ld>(val);
     }
-    constexpr hectovolt_meter_ld operator""_hV_m(long double val) {
+    consteval hectovolt_meter_ld operator""_hV_m(long double val) {
         return static_cast<hectovolt_meter_ld>(val);
     }
-    constexpr decavolt_meter_ld operator""_daV_m(long double val) {
+    consteval decavolt_meter_ld operator""_daV_m(long double val) {
         return static_cast<decavolt_meter_ld>(val);
     }
-    constexpr volt_meter_ld operator""_V_m(long double val) {
+    consteval volt_meter_ld operator""_V_m(long double val) {
         return static_cast<volt_meter_ld>(val);
     }
-    constexpr decivolt_meter_ld operator""_dV_m(long double val) {
+    consteval decivolt_meter_ld operator""_dV_m(long double val) {
         return static_cast<decivolt_meter_ld>(val);
     }
-    constexpr centivolt_meter_ld operator""_cV_m(long double val) {
+    consteval centivolt_meter_ld operator""_cV_m(long double val) {
         return static_cast<centivolt_meter_ld>(val);
     }
-    constexpr millivolt_meter_ld operator""_mV_m(long double val) {
+    consteval millivolt_meter_ld operator""_mV_m(long double val) {
         return static_cast<millivolt_meter_ld>(val);
     }
-    constexpr microvolt_meter_ld operator""_uV_m(long double val) {
+    consteval microvolt_meter_ld operator""_uV_m(long double val) {
         return static_cast<microvolt_meter_ld>(val);
     }
-    constexpr nanovolt_meter_ld operator""_nV_m(long double val) {
+    consteval nanovolt_meter_ld operator""_nV_m(long double val) {
         return static_cast<nanovolt_meter_ld>(val);
     }
-    constexpr picovolt_meter_ld operator""_pV_m(long double val) {
+    consteval picovolt_meter_ld operator""_pV_m(long double val) {
         return static_cast<picovolt_meter_ld>(val);
     }
-    constexpr femtovolt_meter_ld operator""_fV_m(long double val) {
+    consteval femtovolt_meter_ld operator""_fV_m(long double val) {
         return static_cast<femtovolt_meter_ld>(val);
     }
-    constexpr attovolt_meter_ld operator""_aV_m(long double val) {
+    consteval attovolt_meter_ld operator""_aV_m(long double val) {
         return static_cast<attovolt_meter_ld>(val);
     }
-    constexpr exavolt_meter_ull operator""_EV_m(unsigned long long val) {
+    consteval exavolt_meter_ull operator""_EV_m(unsigned long long val) {
         return static_cast<exavolt_meter_ull>(val);
     }
-    constexpr petavolt_meter_ull operator""_PV_m(unsigned long long val) {
+    consteval petavolt_meter_ull operator""_PV_m(unsigned long long val) {
         return static_cast<petavolt_meter_ull>(val);
     }
-    constexpr teravolt_meter_ull operator""_TV_m(unsigned long long val) {
+    consteval teravolt_meter_ull operator""_TV_m(unsigned long long val) {
         return static_cast<teravolt_meter_ull>(val);
     }
-    constexpr gigavolt_meter_ull operator""_GV_m(unsigned long long val) {
+    consteval gigavolt_meter_ull operator""_GV_m(unsigned long long val) {
         return static_cast<gigavolt_meter_ull>(val);
     }
-    constexpr megavolt_meter_ull operator""_MV_m(unsigned long long val) {
+    consteval megavolt_meter_ull operator""_MV_m(unsigned long long val) {
         return static_cast<megavolt_meter_ull>(val);
     }
-    constexpr kilovolt_meter_ull operator""_kV_m(unsigned long long val) {
+    consteval kilovolt_meter_ull operator""_kV_m(unsigned long long val) {
         return static_cast<kilovolt_meter_ull>(val);
     }
-    constexpr hectovolt_meter_ull operator""_hV_m(unsigned long long val) {
+    consteval hectovolt_meter_ull operator""_hV_m(unsigned long long val) {
         return static_cast<hectovolt_meter_ull>(val);
     }
-    constexpr decavolt_meter_ull operator""_daV_m(unsigned long long val) {
+    consteval decavolt_meter_ull operator""_daV_m(unsigned long long val) {
         return static_cast<decavolt_meter_ull>(val);
     }
-    constexpr volt_meter_ull operator""_V_m(unsigned long long val) {
+    consteval volt_meter_ull operator""_V_m(unsigned long long val) {
         return static_cast<volt_meter_ull>(val);
     }
-    constexpr decivolt_meter_ull operator""_dV_m(unsigned long long val) {
+    consteval decivolt_meter_ull operator""_dV_m(unsigned long long val) {
         return static_cast<decivolt_meter_ull>(val);
     }
-    constexpr centivolt_meter_ull operator""_cV_m(unsigned long long val) {
+    consteval centivolt_meter_ull operator""_cV_m(unsigned long long val) {
         return static_cast<centivolt_meter_ull>(val);
     }
-    constexpr millivolt_meter_ull operator""_mV_m(unsigned long long val) {
+    consteval millivolt_meter_ull operator""_mV_m(unsigned long long val) {
         return static_cast<millivolt_meter_ull>(val);
     }
-    constexpr microvolt_meter_ull operator""_uV_m(unsigned long long val) {
+    consteval microvolt_meter_ull operator""_uV_m(unsigned long long val) {
         return static_cast<microvolt_meter_ull>(val);
     }
-    constexpr nanovolt_meter_ull operator""_nV_m(unsigned long long val) {
+    consteval nanovolt_meter_ull operator""_nV_m(unsigned long long val) {
         return static_cast<nanovolt_meter_ull>(val);
     }
-    constexpr picovolt_meter_ull operator""_pV_m(unsigned long long val) {
+    consteval picovolt_meter_ull operator""_pV_m(unsigned long long val) {
         return static_cast<picovolt_meter_ull>(val);
     }
-    constexpr femtovolt_meter_ull operator""_fV_m(unsigned long long val) {
+    consteval femtovolt_meter_ull operator""_fV_m(unsigned long long val) {
         return static_cast<femtovolt_meter_ull>(val);
     }
-    constexpr attovolt_meter_ull operator""_aV_m(unsigned long long val) {
+    consteval attovolt_meter_ull operator""_aV_m(unsigned long long val) {
         return static_cast<attovolt_meter_ull>(val);
     }
 

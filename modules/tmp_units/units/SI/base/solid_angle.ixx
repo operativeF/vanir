@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtosteradian_ull    =     steradian_impl<std::femto, unsigned long long>;
     using attosteradian_ull    =     steradian_impl<std::atto, unsigned long long>;
 
-    constexpr exasteradian_ld operator""_Esr(long double val) {
+    consteval exasteradian_ld operator""_Esr(long double val) {
         return static_cast<exasteradian_ld>(val);
     }
-    constexpr petasteradian_ld operator""_Psr(long double val) {
+    consteval petasteradian_ld operator""_Psr(long double val) {
         return static_cast<petasteradian_ld>(val);
     }
-    constexpr terasteradian_ld operator""_Tsr(long double val) {
+    consteval terasteradian_ld operator""_Tsr(long double val) {
         return static_cast<terasteradian_ld>(val);
     }
-    constexpr gigasteradian_ld operator""_Gsr(long double val) {
+    consteval gigasteradian_ld operator""_Gsr(long double val) {
         return static_cast<gigasteradian_ld>(val);
     }
-    constexpr megasteradian_ld operator""_Msr(long double val) {
+    consteval megasteradian_ld operator""_Msr(long double val) {
         return static_cast<megasteradian_ld>(val);
     }
-    constexpr kilosteradian_ld operator""_ksr(long double val) {
+    consteval kilosteradian_ld operator""_ksr(long double val) {
         return static_cast<kilosteradian_ld>(val);
     }
-    constexpr hectosteradian_ld operator""_hsr(long double val) {
+    consteval hectosteradian_ld operator""_hsr(long double val) {
         return static_cast<hectosteradian_ld>(val);
     }
-    constexpr decasteradian_ld operator""_dasr(long double val) {
+    consteval decasteradian_ld operator""_dasr(long double val) {
         return static_cast<decasteradian_ld>(val);
     }
-    constexpr steradian_ld operator""_sr(long double val) {
+    consteval steradian_ld operator""_sr(long double val) {
         return static_cast<steradian_ld>(val);
     }
-    constexpr decisteradian_ld operator""_dsr(long double val) {
+    consteval decisteradian_ld operator""_dsr(long double val) {
         return static_cast<decisteradian_ld>(val);
     }
-    constexpr centisteradian_ld operator""_csr(long double val) {
+    consteval centisteradian_ld operator""_csr(long double val) {
         return static_cast<centisteradian_ld>(val);
     }
-    constexpr millisteradian_ld operator""_msr(long double val) {
+    consteval millisteradian_ld operator""_msr(long double val) {
         return static_cast<millisteradian_ld>(val);
     }
-    constexpr microsteradian_ld operator""_usr(long double val) {
+    consteval microsteradian_ld operator""_usr(long double val) {
         return static_cast<microsteradian_ld>(val);
     }
-    constexpr nanosteradian_ld operator""_nsr(long double val) {
+    consteval nanosteradian_ld operator""_nsr(long double val) {
         return static_cast<nanosteradian_ld>(val);
     }
-    constexpr picosteradian_ld operator""_psr(long double val) {
+    consteval picosteradian_ld operator""_psr(long double val) {
         return static_cast<picosteradian_ld>(val);
     }
-    constexpr femtosteradian_ld operator""_fsr(long double val) {
+    consteval femtosteradian_ld operator""_fsr(long double val) {
         return static_cast<femtosteradian_ld>(val);
     }
-    constexpr attosteradian_ld operator""_asr(long double val) {
+    consteval attosteradian_ld operator""_asr(long double val) {
         return static_cast<attosteradian_ld>(val);
     }
-    constexpr exasteradian_ull operator""_Esr(unsigned long long val) {
+    consteval exasteradian_ull operator""_Esr(unsigned long long val) {
         return static_cast<exasteradian_ull>(val);
     }
-    constexpr petasteradian_ull operator""_Psr(unsigned long long val) {
+    consteval petasteradian_ull operator""_Psr(unsigned long long val) {
         return static_cast<petasteradian_ull>(val);
     }
-    constexpr terasteradian_ull operator""_Tsr(unsigned long long val) {
+    consteval terasteradian_ull operator""_Tsr(unsigned long long val) {
         return static_cast<terasteradian_ull>(val);
     }
-    constexpr gigasteradian_ull operator""_Gsr(unsigned long long val) {
+    consteval gigasteradian_ull operator""_Gsr(unsigned long long val) {
         return static_cast<gigasteradian_ull>(val);
     }
-    constexpr megasteradian_ull operator""_Msr(unsigned long long val) {
+    consteval megasteradian_ull operator""_Msr(unsigned long long val) {
         return static_cast<megasteradian_ull>(val);
     }
-    constexpr kilosteradian_ull operator""_ksr(unsigned long long val) {
+    consteval kilosteradian_ull operator""_ksr(unsigned long long val) {
         return static_cast<kilosteradian_ull>(val);
     }
-    constexpr hectosteradian_ull operator""_hsr(unsigned long long val) {
+    consteval hectosteradian_ull operator""_hsr(unsigned long long val) {
         return static_cast<hectosteradian_ull>(val);
     }
-    constexpr decasteradian_ull operator""_dasr(unsigned long long val) {
+    consteval decasteradian_ull operator""_dasr(unsigned long long val) {
         return static_cast<decasteradian_ull>(val);
     }
-    constexpr steradian_ull operator""_sr(unsigned long long val) {
+    consteval steradian_ull operator""_sr(unsigned long long val) {
         return static_cast<steradian_ull>(val);
     }
-    constexpr decisteradian_ull operator""_dsr(unsigned long long val) {
+    consteval decisteradian_ull operator""_dsr(unsigned long long val) {
         return static_cast<decisteradian_ull>(val);
     }
-    constexpr centisteradian_ull operator""_csr(unsigned long long val) {
+    consteval centisteradian_ull operator""_csr(unsigned long long val) {
         return static_cast<centisteradian_ull>(val);
     }
-    constexpr millisteradian_ull operator""_msr(unsigned long long val) {
+    consteval millisteradian_ull operator""_msr(unsigned long long val) {
         return static_cast<millisteradian_ull>(val);
     }
-    constexpr microsteradian_ull operator""_usr(unsigned long long val) {
+    consteval microsteradian_ull operator""_usr(unsigned long long val) {
         return static_cast<microsteradian_ull>(val);
     }
-    constexpr nanosteradian_ull operator""_nsr(unsigned long long val) {
+    consteval nanosteradian_ull operator""_nsr(unsigned long long val) {
         return static_cast<nanosteradian_ull>(val);
     }
-    constexpr picosteradian_ull operator""_psr(unsigned long long val) {
+    consteval picosteradian_ull operator""_psr(unsigned long long val) {
         return static_cast<picosteradian_ull>(val);
     }
-    constexpr femtosteradian_ull operator""_fsr(unsigned long long val) {
+    consteval femtosteradian_ull operator""_fsr(unsigned long long val) {
         return static_cast<femtosteradian_ull>(val);
     }
-    constexpr attosteradian_ull operator""_asr(unsigned long long val) {
+    consteval attosteradian_ull operator""_asr(unsigned long long val) {
         return static_cast<attosteradian_ull>(val);
     }
 

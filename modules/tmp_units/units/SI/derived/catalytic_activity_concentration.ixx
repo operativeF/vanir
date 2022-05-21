@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtokatal_per_cubic_meter_ull    =     katal_per_cubic_meter_impl<std::femto, unsigned long long>;
     using attokatal_per_cubic_meter_ull    =     katal_per_cubic_meter_impl<std::atto, unsigned long long>;
 
-    constexpr exakatal_per_cubic_meter_ld operator""_Ekat_per_cubic_m(long double val) {
+    consteval exakatal_per_cubic_meter_ld operator""_Ekat_per_cubic_m(long double val) {
         return static_cast<exakatal_per_cubic_meter_ld>(val);
     }
-    constexpr petakatal_per_cubic_meter_ld operator""_Pkat_per_cubic_m(long double val) {
+    consteval petakatal_per_cubic_meter_ld operator""_Pkat_per_cubic_m(long double val) {
         return static_cast<petakatal_per_cubic_meter_ld>(val);
     }
-    constexpr terakatal_per_cubic_meter_ld operator""_Tkat_per_cubic_m(long double val) {
+    consteval terakatal_per_cubic_meter_ld operator""_Tkat_per_cubic_m(long double val) {
         return static_cast<terakatal_per_cubic_meter_ld>(val);
     }
-    constexpr gigakatal_per_cubic_meter_ld operator""_Gkat_per_cubic_m(long double val) {
+    consteval gigakatal_per_cubic_meter_ld operator""_Gkat_per_cubic_m(long double val) {
         return static_cast<gigakatal_per_cubic_meter_ld>(val);
     }
-    constexpr megakatal_per_cubic_meter_ld operator""_Mkat_per_cubic_m(long double val) {
+    consteval megakatal_per_cubic_meter_ld operator""_Mkat_per_cubic_m(long double val) {
         return static_cast<megakatal_per_cubic_meter_ld>(val);
     }
-    constexpr kilokatal_per_cubic_meter_ld operator""_kkat_per_cubic_m(long double val) {
+    consteval kilokatal_per_cubic_meter_ld operator""_kkat_per_cubic_m(long double val) {
         return static_cast<kilokatal_per_cubic_meter_ld>(val);
     }
-    constexpr hectokatal_per_cubic_meter_ld operator""_hkat_per_cubic_m(long double val) {
+    consteval hectokatal_per_cubic_meter_ld operator""_hkat_per_cubic_m(long double val) {
         return static_cast<hectokatal_per_cubic_meter_ld>(val);
     }
-    constexpr decakatal_per_cubic_meter_ld operator""_dakat_per_cubic_m(long double val) {
+    consteval decakatal_per_cubic_meter_ld operator""_dakat_per_cubic_m(long double val) {
         return static_cast<decakatal_per_cubic_meter_ld>(val);
     }
-    constexpr katal_per_cubic_meter_ld operator""_kat_per_cubic_m(long double val) {
+    consteval katal_per_cubic_meter_ld operator""_kat_per_cubic_m(long double val) {
         return static_cast<katal_per_cubic_meter_ld>(val);
     }
-    constexpr decikatal_per_cubic_meter_ld operator""_dkat_per_cubic_m(long double val) {
+    consteval decikatal_per_cubic_meter_ld operator""_dkat_per_cubic_m(long double val) {
         return static_cast<decikatal_per_cubic_meter_ld>(val);
     }
-    constexpr centikatal_per_cubic_meter_ld operator""_ckat_per_cubic_m(long double val) {
+    consteval centikatal_per_cubic_meter_ld operator""_ckat_per_cubic_m(long double val) {
         return static_cast<centikatal_per_cubic_meter_ld>(val);
     }
-    constexpr millikatal_per_cubic_meter_ld operator""_mkat_per_cubic_m(long double val) {
+    consteval millikatal_per_cubic_meter_ld operator""_mkat_per_cubic_m(long double val) {
         return static_cast<millikatal_per_cubic_meter_ld>(val);
     }
-    constexpr microkatal_per_cubic_meter_ld operator""_ukat_per_cubic_m(long double val) {
+    consteval microkatal_per_cubic_meter_ld operator""_ukat_per_cubic_m(long double val) {
         return static_cast<microkatal_per_cubic_meter_ld>(val);
     }
-    constexpr nanokatal_per_cubic_meter_ld operator""_nkat_per_cubic_m(long double val) {
+    consteval nanokatal_per_cubic_meter_ld operator""_nkat_per_cubic_m(long double val) {
         return static_cast<nanokatal_per_cubic_meter_ld>(val);
     }
-    constexpr picokatal_per_cubic_meter_ld operator""_pkat_per_cubic_m(long double val) {
+    consteval picokatal_per_cubic_meter_ld operator""_pkat_per_cubic_m(long double val) {
         return static_cast<picokatal_per_cubic_meter_ld>(val);
     }
-    constexpr femtokatal_per_cubic_meter_ld operator""_fkat_per_cubic_m(long double val) {
+    consteval femtokatal_per_cubic_meter_ld operator""_fkat_per_cubic_m(long double val) {
         return static_cast<femtokatal_per_cubic_meter_ld>(val);
     }
-    constexpr attokatal_per_cubic_meter_ld operator""_akat_per_cubic_m(long double val) {
+    consteval attokatal_per_cubic_meter_ld operator""_akat_per_cubic_m(long double val) {
         return static_cast<attokatal_per_cubic_meter_ld>(val);
     }
-    constexpr exakatal_per_cubic_meter_ull operator""_Ekat_per_cubic_m(unsigned long long val) {
+    consteval exakatal_per_cubic_meter_ull operator""_Ekat_per_cubic_m(unsigned long long val) {
         return static_cast<exakatal_per_cubic_meter_ull>(val);
     }
-    constexpr petakatal_per_cubic_meter_ull operator""_Pkat_per_cubic_m(unsigned long long val) {
+    consteval petakatal_per_cubic_meter_ull operator""_Pkat_per_cubic_m(unsigned long long val) {
         return static_cast<petakatal_per_cubic_meter_ull>(val);
     }
-    constexpr terakatal_per_cubic_meter_ull operator""_Tkat_per_cubic_m(unsigned long long val) {
+    consteval terakatal_per_cubic_meter_ull operator""_Tkat_per_cubic_m(unsigned long long val) {
         return static_cast<terakatal_per_cubic_meter_ull>(val);
     }
-    constexpr gigakatal_per_cubic_meter_ull operator""_Gkat_per_cubic_m(unsigned long long val) {
+    consteval gigakatal_per_cubic_meter_ull operator""_Gkat_per_cubic_m(unsigned long long val) {
         return static_cast<gigakatal_per_cubic_meter_ull>(val);
     }
-    constexpr megakatal_per_cubic_meter_ull operator""_Mkat_per_cubic_m(unsigned long long val) {
+    consteval megakatal_per_cubic_meter_ull operator""_Mkat_per_cubic_m(unsigned long long val) {
         return static_cast<megakatal_per_cubic_meter_ull>(val);
     }
-    constexpr kilokatal_per_cubic_meter_ull operator""_kkat_per_cubic_m(unsigned long long val) {
+    consteval kilokatal_per_cubic_meter_ull operator""_kkat_per_cubic_m(unsigned long long val) {
         return static_cast<kilokatal_per_cubic_meter_ull>(val);
     }
-    constexpr hectokatal_per_cubic_meter_ull operator""_hkat_per_cubic_m(unsigned long long val) {
+    consteval hectokatal_per_cubic_meter_ull operator""_hkat_per_cubic_m(unsigned long long val) {
         return static_cast<hectokatal_per_cubic_meter_ull>(val);
     }
-    constexpr decakatal_per_cubic_meter_ull operator""_dakat_per_cubic_m(unsigned long long val) {
+    consteval decakatal_per_cubic_meter_ull operator""_dakat_per_cubic_m(unsigned long long val) {
         return static_cast<decakatal_per_cubic_meter_ull>(val);
     }
-    constexpr katal_per_cubic_meter_ull operator""_kat_per_cubic_m(unsigned long long val) {
+    consteval katal_per_cubic_meter_ull operator""_kat_per_cubic_m(unsigned long long val) {
         return static_cast<katal_per_cubic_meter_ull>(val);
     }
-    constexpr decikatal_per_cubic_meter_ull operator""_dkat_per_cubic_m(unsigned long long val) {
+    consteval decikatal_per_cubic_meter_ull operator""_dkat_per_cubic_m(unsigned long long val) {
         return static_cast<decikatal_per_cubic_meter_ull>(val);
     }
-    constexpr centikatal_per_cubic_meter_ull operator""_ckat_per_cubic_m(unsigned long long val) {
+    consteval centikatal_per_cubic_meter_ull operator""_ckat_per_cubic_m(unsigned long long val) {
         return static_cast<centikatal_per_cubic_meter_ull>(val);
     }
-    constexpr millikatal_per_cubic_meter_ull operator""_mkat_per_cubic_m(unsigned long long val) {
+    consteval millikatal_per_cubic_meter_ull operator""_mkat_per_cubic_m(unsigned long long val) {
         return static_cast<millikatal_per_cubic_meter_ull>(val);
     }
-    constexpr microkatal_per_cubic_meter_ull operator""_ukat_per_cubic_m(unsigned long long val) {
+    consteval microkatal_per_cubic_meter_ull operator""_ukat_per_cubic_m(unsigned long long val) {
         return static_cast<microkatal_per_cubic_meter_ull>(val);
     }
-    constexpr nanokatal_per_cubic_meter_ull operator""_nkat_per_cubic_m(unsigned long long val) {
+    consteval nanokatal_per_cubic_meter_ull operator""_nkat_per_cubic_m(unsigned long long val) {
         return static_cast<nanokatal_per_cubic_meter_ull>(val);
     }
-    constexpr picokatal_per_cubic_meter_ull operator""_pkat_per_cubic_m(unsigned long long val) {
+    consteval picokatal_per_cubic_meter_ull operator""_pkat_per_cubic_m(unsigned long long val) {
         return static_cast<picokatal_per_cubic_meter_ull>(val);
     }
-    constexpr femtokatal_per_cubic_meter_ull operator""_fkat_per_cubic_m(unsigned long long val) {
+    consteval femtokatal_per_cubic_meter_ull operator""_fkat_per_cubic_m(unsigned long long val) {
         return static_cast<femtokatal_per_cubic_meter_ull>(val);
     }
-    constexpr attokatal_per_cubic_meter_ull operator""_akat_per_cubic_m(unsigned long long val) {
+    consteval attokatal_per_cubic_meter_ull operator""_akat_per_cubic_m(unsigned long long val) {
         return static_cast<attokatal_per_cubic_meter_ull>(val);
     }
 

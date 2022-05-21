@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtofarad_per_meter_ull    =     farad_per_meter_impl<std::femto, unsigned long long>;
     using attofarad_per_meter_ull    =     farad_per_meter_impl<std::atto, unsigned long long>;
 
-    constexpr exafarad_per_meter_ld operator""_EF_per_m(long double val) {
+    consteval exafarad_per_meter_ld operator""_EF_per_m(long double val) {
         return static_cast<exafarad_per_meter_ld>(val);
     }
-    constexpr petafarad_per_meter_ld operator""_PF_per_m(long double val) {
+    consteval petafarad_per_meter_ld operator""_PF_per_m(long double val) {
         return static_cast<petafarad_per_meter_ld>(val);
     }
-    constexpr terafarad_per_meter_ld operator""_TF_per_m(long double val) {
+    consteval terafarad_per_meter_ld operator""_TF_per_m(long double val) {
         return static_cast<terafarad_per_meter_ld>(val);
     }
-    constexpr gigafarad_per_meter_ld operator""_GF_per_m(long double val) {
+    consteval gigafarad_per_meter_ld operator""_GF_per_m(long double val) {
         return static_cast<gigafarad_per_meter_ld>(val);
     }
-    constexpr megafarad_per_meter_ld operator""_MF_per_m(long double val) {
+    consteval megafarad_per_meter_ld operator""_MF_per_m(long double val) {
         return static_cast<megafarad_per_meter_ld>(val);
     }
-    constexpr kilofarad_per_meter_ld operator""_kF_per_m(long double val) {
+    consteval kilofarad_per_meter_ld operator""_kF_per_m(long double val) {
         return static_cast<kilofarad_per_meter_ld>(val);
     }
-    constexpr hectofarad_per_meter_ld operator""_hF_per_m(long double val) {
+    consteval hectofarad_per_meter_ld operator""_hF_per_m(long double val) {
         return static_cast<hectofarad_per_meter_ld>(val);
     }
-    constexpr decafarad_per_meter_ld operator""_daF_per_m(long double val) {
+    consteval decafarad_per_meter_ld operator""_daF_per_m(long double val) {
         return static_cast<decafarad_per_meter_ld>(val);
     }
-    constexpr farad_per_meter_ld operator""_F_per_m(long double val) {
+    consteval farad_per_meter_ld operator""_F_per_m(long double val) {
         return static_cast<farad_per_meter_ld>(val);
     }
-    constexpr decifarad_per_meter_ld operator""_dF_per_m(long double val) {
+    consteval decifarad_per_meter_ld operator""_dF_per_m(long double val) {
         return static_cast<decifarad_per_meter_ld>(val);
     }
-    constexpr centifarad_per_meter_ld operator""_cF_per_m(long double val) {
+    consteval centifarad_per_meter_ld operator""_cF_per_m(long double val) {
         return static_cast<centifarad_per_meter_ld>(val);
     }
-    constexpr millifarad_per_meter_ld operator""_mF_per_m(long double val) {
+    consteval millifarad_per_meter_ld operator""_mF_per_m(long double val) {
         return static_cast<millifarad_per_meter_ld>(val);
     }
-    constexpr microfarad_per_meter_ld operator""_uF_per_m(long double val) {
+    consteval microfarad_per_meter_ld operator""_uF_per_m(long double val) {
         return static_cast<microfarad_per_meter_ld>(val);
     }
-    constexpr nanofarad_per_meter_ld operator""_nF_per_m(long double val) {
+    consteval nanofarad_per_meter_ld operator""_nF_per_m(long double val) {
         return static_cast<nanofarad_per_meter_ld>(val);
     }
-    constexpr picofarad_per_meter_ld operator""_pF_per_m(long double val) {
+    consteval picofarad_per_meter_ld operator""_pF_per_m(long double val) {
         return static_cast<picofarad_per_meter_ld>(val);
     }
-    constexpr femtofarad_per_meter_ld operator""_fF_per_m(long double val) {
+    consteval femtofarad_per_meter_ld operator""_fF_per_m(long double val) {
         return static_cast<femtofarad_per_meter_ld>(val);
     }
-    constexpr attofarad_per_meter_ld operator""_aF_per_m(long double val) {
+    consteval attofarad_per_meter_ld operator""_aF_per_m(long double val) {
         return static_cast<attofarad_per_meter_ld>(val);
     }
-    constexpr exafarad_per_meter_ull operator""_EF_per_m(unsigned long long val) {
+    consteval exafarad_per_meter_ull operator""_EF_per_m(unsigned long long val) {
         return static_cast<exafarad_per_meter_ull>(val);
     }
-    constexpr petafarad_per_meter_ull operator""_PF_per_m(unsigned long long val) {
+    consteval petafarad_per_meter_ull operator""_PF_per_m(unsigned long long val) {
         return static_cast<petafarad_per_meter_ull>(val);
     }
-    constexpr terafarad_per_meter_ull operator""_TF_per_m(unsigned long long val) {
+    consteval terafarad_per_meter_ull operator""_TF_per_m(unsigned long long val) {
         return static_cast<terafarad_per_meter_ull>(val);
     }
-    constexpr gigafarad_per_meter_ull operator""_GF_per_m(unsigned long long val) {
+    consteval gigafarad_per_meter_ull operator""_GF_per_m(unsigned long long val) {
         return static_cast<gigafarad_per_meter_ull>(val);
     }
-    constexpr megafarad_per_meter_ull operator""_MF_per_m(unsigned long long val) {
+    consteval megafarad_per_meter_ull operator""_MF_per_m(unsigned long long val) {
         return static_cast<megafarad_per_meter_ull>(val);
     }
-    constexpr kilofarad_per_meter_ull operator""_kF_per_m(unsigned long long val) {
+    consteval kilofarad_per_meter_ull operator""_kF_per_m(unsigned long long val) {
         return static_cast<kilofarad_per_meter_ull>(val);
     }
-    constexpr hectofarad_per_meter_ull operator""_hF_per_m(unsigned long long val) {
+    consteval hectofarad_per_meter_ull operator""_hF_per_m(unsigned long long val) {
         return static_cast<hectofarad_per_meter_ull>(val);
     }
-    constexpr decafarad_per_meter_ull operator""_daF_per_m(unsigned long long val) {
+    consteval decafarad_per_meter_ull operator""_daF_per_m(unsigned long long val) {
         return static_cast<decafarad_per_meter_ull>(val);
     }
-    constexpr farad_per_meter_ull operator""_F_per_m(unsigned long long val) {
+    consteval farad_per_meter_ull operator""_F_per_m(unsigned long long val) {
         return static_cast<farad_per_meter_ull>(val);
     }
-    constexpr decifarad_per_meter_ull operator""_dF_per_m(unsigned long long val) {
+    consteval decifarad_per_meter_ull operator""_dF_per_m(unsigned long long val) {
         return static_cast<decifarad_per_meter_ull>(val);
     }
-    constexpr centifarad_per_meter_ull operator""_cF_per_m(unsigned long long val) {
+    consteval centifarad_per_meter_ull operator""_cF_per_m(unsigned long long val) {
         return static_cast<centifarad_per_meter_ull>(val);
     }
-    constexpr millifarad_per_meter_ull operator""_mF_per_m(unsigned long long val) {
+    consteval millifarad_per_meter_ull operator""_mF_per_m(unsigned long long val) {
         return static_cast<millifarad_per_meter_ull>(val);
     }
-    constexpr microfarad_per_meter_ull operator""_uF_per_m(unsigned long long val) {
+    consteval microfarad_per_meter_ull operator""_uF_per_m(unsigned long long val) {
         return static_cast<microfarad_per_meter_ull>(val);
     }
-    constexpr nanofarad_per_meter_ull operator""_nF_per_m(unsigned long long val) {
+    consteval nanofarad_per_meter_ull operator""_nF_per_m(unsigned long long val) {
         return static_cast<nanofarad_per_meter_ull>(val);
     }
-    constexpr picofarad_per_meter_ull operator""_pF_per_m(unsigned long long val) {
+    consteval picofarad_per_meter_ull operator""_pF_per_m(unsigned long long val) {
         return static_cast<picofarad_per_meter_ull>(val);
     }
-    constexpr femtofarad_per_meter_ull operator""_fF_per_m(unsigned long long val) {
+    consteval femtofarad_per_meter_ull operator""_fF_per_m(unsigned long long val) {
         return static_cast<femtofarad_per_meter_ull>(val);
     }
-    constexpr attofarad_per_meter_ull operator""_aF_per_m(unsigned long long val) {
+    consteval attofarad_per_meter_ull operator""_aF_per_m(unsigned long long val) {
         return static_cast<attofarad_per_meter_ull>(val);
     }
 

@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtowatt_ull    =     watt_impl<std::femto, unsigned long long>;
     using attowatt_ull    =     watt_impl<std::atto, unsigned long long>;
 
-    constexpr exawatt_ld operator""_EW(long double val) {
+    consteval exawatt_ld operator""_EW(long double val) {
         return static_cast<exawatt_ld>(val);
     }
-    constexpr petawatt_ld operator""_PW(long double val) {
+    consteval petawatt_ld operator""_PW(long double val) {
         return static_cast<petawatt_ld>(val);
     }
-    constexpr terawatt_ld operator""_TW(long double val) {
+    consteval terawatt_ld operator""_TW(long double val) {
         return static_cast<terawatt_ld>(val);
     }
-    constexpr gigawatt_ld operator""_GW(long double val) {
+    consteval gigawatt_ld operator""_GW(long double val) {
         return static_cast<gigawatt_ld>(val);
     }
-    constexpr megawatt_ld operator""_MW(long double val) {
+    consteval megawatt_ld operator""_MW(long double val) {
         return static_cast<megawatt_ld>(val);
     }
-    constexpr kilowatt_ld operator""_kW(long double val) {
+    consteval kilowatt_ld operator""_kW(long double val) {
         return static_cast<kilowatt_ld>(val);
     }
-    constexpr hectowatt_ld operator""_hW(long double val) {
+    consteval hectowatt_ld operator""_hW(long double val) {
         return static_cast<hectowatt_ld>(val);
     }
-    constexpr decawatt_ld operator""_daW(long double val) {
+    consteval decawatt_ld operator""_daW(long double val) {
         return static_cast<decawatt_ld>(val);
     }
-    constexpr watt_ld operator""_W(long double val) {
+    consteval watt_ld operator""_W(long double val) {
         return static_cast<watt_ld>(val);
     }
-    constexpr deciwatt_ld operator""_dW(long double val) {
+    consteval deciwatt_ld operator""_dW(long double val) {
         return static_cast<deciwatt_ld>(val);
     }
-    constexpr centiwatt_ld operator""_cW(long double val) {
+    consteval centiwatt_ld operator""_cW(long double val) {
         return static_cast<centiwatt_ld>(val);
     }
-    constexpr milliwatt_ld operator""_mW(long double val) {
+    consteval milliwatt_ld operator""_mW(long double val) {
         return static_cast<milliwatt_ld>(val);
     }
-    constexpr microwatt_ld operator""_uW(long double val) {
+    consteval microwatt_ld operator""_uW(long double val) {
         return static_cast<microwatt_ld>(val);
     }
-    constexpr nanowatt_ld operator""_nW(long double val) {
+    consteval nanowatt_ld operator""_nW(long double val) {
         return static_cast<nanowatt_ld>(val);
     }
-    constexpr picowatt_ld operator""_pW(long double val) {
+    consteval picowatt_ld operator""_pW(long double val) {
         return static_cast<picowatt_ld>(val);
     }
-    constexpr femtowatt_ld operator""_fW(long double val) {
+    consteval femtowatt_ld operator""_fW(long double val) {
         return static_cast<femtowatt_ld>(val);
     }
-    constexpr attowatt_ld operator""_aW(long double val) {
+    consteval attowatt_ld operator""_aW(long double val) {
         return static_cast<attowatt_ld>(val);
     }
-    constexpr exawatt_ull operator""_EW(unsigned long long val) {
+    consteval exawatt_ull operator""_EW(unsigned long long val) {
         return static_cast<exawatt_ull>(val);
     }
-    constexpr petawatt_ull operator""_PW(unsigned long long val) {
+    consteval petawatt_ull operator""_PW(unsigned long long val) {
         return static_cast<petawatt_ull>(val);
     }
-    constexpr terawatt_ull operator""_TW(unsigned long long val) {
+    consteval terawatt_ull operator""_TW(unsigned long long val) {
         return static_cast<terawatt_ull>(val);
     }
-    constexpr gigawatt_ull operator""_GW(unsigned long long val) {
+    consteval gigawatt_ull operator""_GW(unsigned long long val) {
         return static_cast<gigawatt_ull>(val);
     }
-    constexpr megawatt_ull operator""_MW(unsigned long long val) {
+    consteval megawatt_ull operator""_MW(unsigned long long val) {
         return static_cast<megawatt_ull>(val);
     }
-    constexpr kilowatt_ull operator""_kW(unsigned long long val) {
+    consteval kilowatt_ull operator""_kW(unsigned long long val) {
         return static_cast<kilowatt_ull>(val);
     }
-    constexpr hectowatt_ull operator""_hW(unsigned long long val) {
+    consteval hectowatt_ull operator""_hW(unsigned long long val) {
         return static_cast<hectowatt_ull>(val);
     }
-    constexpr decawatt_ull operator""_daW(unsigned long long val) {
+    consteval decawatt_ull operator""_daW(unsigned long long val) {
         return static_cast<decawatt_ull>(val);
     }
-    constexpr watt_ull operator""_W(unsigned long long val) {
+    consteval watt_ull operator""_W(unsigned long long val) {
         return static_cast<watt_ull>(val);
     }
-    constexpr deciwatt_ull operator""_dW(unsigned long long val) {
+    consteval deciwatt_ull operator""_dW(unsigned long long val) {
         return static_cast<deciwatt_ull>(val);
     }
-    constexpr centiwatt_ull operator""_cW(unsigned long long val) {
+    consteval centiwatt_ull operator""_cW(unsigned long long val) {
         return static_cast<centiwatt_ull>(val);
     }
-    constexpr milliwatt_ull operator""_mW(unsigned long long val) {
+    consteval milliwatt_ull operator""_mW(unsigned long long val) {
         return static_cast<milliwatt_ull>(val);
     }
-    constexpr microwatt_ull operator""_uW(unsigned long long val) {
+    consteval microwatt_ull operator""_uW(unsigned long long val) {
         return static_cast<microwatt_ull>(val);
     }
-    constexpr nanowatt_ull operator""_nW(unsigned long long val) {
+    consteval nanowatt_ull operator""_nW(unsigned long long val) {
         return static_cast<nanowatt_ull>(val);
     }
-    constexpr picowatt_ull operator""_pW(unsigned long long val) {
+    consteval picowatt_ull operator""_pW(unsigned long long val) {
         return static_cast<picowatt_ull>(val);
     }
-    constexpr femtowatt_ull operator""_fW(unsigned long long val) {
+    consteval femtowatt_ull operator""_fW(unsigned long long val) {
         return static_cast<femtowatt_ull>(val);
     }
-    constexpr attowatt_ull operator""_aW(unsigned long long val) {
+    consteval attowatt_ull operator""_aW(unsigned long long val) {
         return static_cast<attowatt_ull>(val);
     }
 

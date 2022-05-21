@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtoampere_radian_ull    =     ampere_radian_impl<std::femto, unsigned long long>;
     using attoampere_radian_ull    =     ampere_radian_impl<std::atto, unsigned long long>;
 
-    constexpr exaampere_radian_ld operator""_EA_rad(long double val) {
+    consteval exaampere_radian_ld operator""_EA_rad(long double val) {
         return static_cast<exaampere_radian_ld>(val);
     }
-    constexpr petaampere_radian_ld operator""_PA_rad(long double val) {
+    consteval petaampere_radian_ld operator""_PA_rad(long double val) {
         return static_cast<petaampere_radian_ld>(val);
     }
-    constexpr teraampere_radian_ld operator""_TA_rad(long double val) {
+    consteval teraampere_radian_ld operator""_TA_rad(long double val) {
         return static_cast<teraampere_radian_ld>(val);
     }
-    constexpr gigaampere_radian_ld operator""_GA_rad(long double val) {
+    consteval gigaampere_radian_ld operator""_GA_rad(long double val) {
         return static_cast<gigaampere_radian_ld>(val);
     }
-    constexpr megaampere_radian_ld operator""_MA_rad(long double val) {
+    consteval megaampere_radian_ld operator""_MA_rad(long double val) {
         return static_cast<megaampere_radian_ld>(val);
     }
-    constexpr kiloampere_radian_ld operator""_kA_rad(long double val) {
+    consteval kiloampere_radian_ld operator""_kA_rad(long double val) {
         return static_cast<kiloampere_radian_ld>(val);
     }
-    constexpr hectoampere_radian_ld operator""_hA_rad(long double val) {
+    consteval hectoampere_radian_ld operator""_hA_rad(long double val) {
         return static_cast<hectoampere_radian_ld>(val);
     }
-    constexpr decaampere_radian_ld operator""_daA_rad(long double val) {
+    consteval decaampere_radian_ld operator""_daA_rad(long double val) {
         return static_cast<decaampere_radian_ld>(val);
     }
-    constexpr ampere_radian_ld operator""_A_rad(long double val) {
+    consteval ampere_radian_ld operator""_A_rad(long double val) {
         return static_cast<ampere_radian_ld>(val);
     }
-    constexpr deciampere_radian_ld operator""_dA_rad(long double val) {
+    consteval deciampere_radian_ld operator""_dA_rad(long double val) {
         return static_cast<deciampere_radian_ld>(val);
     }
-    constexpr centiampere_radian_ld operator""_cA_rad(long double val) {
+    consteval centiampere_radian_ld operator""_cA_rad(long double val) {
         return static_cast<centiampere_radian_ld>(val);
     }
-    constexpr milliampere_radian_ld operator""_mA_rad(long double val) {
+    consteval milliampere_radian_ld operator""_mA_rad(long double val) {
         return static_cast<milliampere_radian_ld>(val);
     }
-    constexpr microampere_radian_ld operator""_uA_rad(long double val) {
+    consteval microampere_radian_ld operator""_uA_rad(long double val) {
         return static_cast<microampere_radian_ld>(val);
     }
-    constexpr nanoampere_radian_ld operator""_nA_rad(long double val) {
+    consteval nanoampere_radian_ld operator""_nA_rad(long double val) {
         return static_cast<nanoampere_radian_ld>(val);
     }
-    constexpr picoampere_radian_ld operator""_pA_rad(long double val) {
+    consteval picoampere_radian_ld operator""_pA_rad(long double val) {
         return static_cast<picoampere_radian_ld>(val);
     }
-    constexpr femtoampere_radian_ld operator""_fA_rad(long double val) {
+    consteval femtoampere_radian_ld operator""_fA_rad(long double val) {
         return static_cast<femtoampere_radian_ld>(val);
     }
-    constexpr attoampere_radian_ld operator""_aA_rad(long double val) {
+    consteval attoampere_radian_ld operator""_aA_rad(long double val) {
         return static_cast<attoampere_radian_ld>(val);
     }
-    constexpr exaampere_radian_ull operator""_EA_rad(unsigned long long val) {
+    consteval exaampere_radian_ull operator""_EA_rad(unsigned long long val) {
         return static_cast<exaampere_radian_ull>(val);
     }
-    constexpr petaampere_radian_ull operator""_PA_rad(unsigned long long val) {
+    consteval petaampere_radian_ull operator""_PA_rad(unsigned long long val) {
         return static_cast<petaampere_radian_ull>(val);
     }
-    constexpr teraampere_radian_ull operator""_TA_rad(unsigned long long val) {
+    consteval teraampere_radian_ull operator""_TA_rad(unsigned long long val) {
         return static_cast<teraampere_radian_ull>(val);
     }
-    constexpr gigaampere_radian_ull operator""_GA_rad(unsigned long long val) {
+    consteval gigaampere_radian_ull operator""_GA_rad(unsigned long long val) {
         return static_cast<gigaampere_radian_ull>(val);
     }
-    constexpr megaampere_radian_ull operator""_MA_rad(unsigned long long val) {
+    consteval megaampere_radian_ull operator""_MA_rad(unsigned long long val) {
         return static_cast<megaampere_radian_ull>(val);
     }
-    constexpr kiloampere_radian_ull operator""_kA_rad(unsigned long long val) {
+    consteval kiloampere_radian_ull operator""_kA_rad(unsigned long long val) {
         return static_cast<kiloampere_radian_ull>(val);
     }
-    constexpr hectoampere_radian_ull operator""_hA_rad(unsigned long long val) {
+    consteval hectoampere_radian_ull operator""_hA_rad(unsigned long long val) {
         return static_cast<hectoampere_radian_ull>(val);
     }
-    constexpr decaampere_radian_ull operator""_daA_rad(unsigned long long val) {
+    consteval decaampere_radian_ull operator""_daA_rad(unsigned long long val) {
         return static_cast<decaampere_radian_ull>(val);
     }
-    constexpr ampere_radian_ull operator""_A_rad(unsigned long long val) {
+    consteval ampere_radian_ull operator""_A_rad(unsigned long long val) {
         return static_cast<ampere_radian_ull>(val);
     }
-    constexpr deciampere_radian_ull operator""_dA_rad(unsigned long long val) {
+    consteval deciampere_radian_ull operator""_dA_rad(unsigned long long val) {
         return static_cast<deciampere_radian_ull>(val);
     }
-    constexpr centiampere_radian_ull operator""_cA_rad(unsigned long long val) {
+    consteval centiampere_radian_ull operator""_cA_rad(unsigned long long val) {
         return static_cast<centiampere_radian_ull>(val);
     }
-    constexpr milliampere_radian_ull operator""_mA_rad(unsigned long long val) {
+    consteval milliampere_radian_ull operator""_mA_rad(unsigned long long val) {
         return static_cast<milliampere_radian_ull>(val);
     }
-    constexpr microampere_radian_ull operator""_uA_rad(unsigned long long val) {
+    consteval microampere_radian_ull operator""_uA_rad(unsigned long long val) {
         return static_cast<microampere_radian_ull>(val);
     }
-    constexpr nanoampere_radian_ull operator""_nA_rad(unsigned long long val) {
+    consteval nanoampere_radian_ull operator""_nA_rad(unsigned long long val) {
         return static_cast<nanoampere_radian_ull>(val);
     }
-    constexpr picoampere_radian_ull operator""_pA_rad(unsigned long long val) {
+    consteval picoampere_radian_ull operator""_pA_rad(unsigned long long val) {
         return static_cast<picoampere_radian_ull>(val);
     }
-    constexpr femtoampere_radian_ull operator""_fA_rad(unsigned long long val) {
+    consteval femtoampere_radian_ull operator""_fA_rad(unsigned long long val) {
         return static_cast<femtoampere_radian_ull>(val);
     }
-    constexpr attoampere_radian_ull operator""_aA_rad(unsigned long long val) {
+    consteval attoampere_radian_ull operator""_aA_rad(unsigned long long val) {
         return static_cast<attoampere_radian_ull>(val);
     }
 

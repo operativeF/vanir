@@ -85,106 +85,106 @@ export namespace potato::units {
     using siemens_square_femtometer_per_mole_ull    =     siemens_square_meter_per_mole_impl<std::femto, unsigned long long>;
     using siemens_square_attometer_per_mole_ull    =     siemens_square_meter_per_mole_impl<std::atto, unsigned long long>;
 
-    constexpr siemens_square_exameter_per_mole_ld operator""_S_sq_Em_per_mol(long double val) {
+    consteval siemens_square_exameter_per_mole_ld operator""_S_sq_Em_per_mol(long double val) {
         return static_cast<siemens_square_exameter_per_mole_ld>(val);
     }
-    constexpr siemens_square_petameter_per_mole_ld operator""_S_sq_Pm_per_mol(long double val) {
+    consteval siemens_square_petameter_per_mole_ld operator""_S_sq_Pm_per_mol(long double val) {
         return static_cast<siemens_square_petameter_per_mole_ld>(val);
     }
-    constexpr siemens_square_terameter_per_mole_ld operator""_S_sq_Tm_per_mol(long double val) {
+    consteval siemens_square_terameter_per_mole_ld operator""_S_sq_Tm_per_mol(long double val) {
         return static_cast<siemens_square_terameter_per_mole_ld>(val);
     }
-    constexpr siemens_square_gigameter_per_mole_ld operator""_S_sq_Gm_per_mol(long double val) {
+    consteval siemens_square_gigameter_per_mole_ld operator""_S_sq_Gm_per_mol(long double val) {
         return static_cast<siemens_square_gigameter_per_mole_ld>(val);
     }
-    constexpr siemens_square_megameter_per_mole_ld operator""_S_sq_Mm_per_mol(long double val) {
+    consteval siemens_square_megameter_per_mole_ld operator""_S_sq_Mm_per_mol(long double val) {
         return static_cast<siemens_square_megameter_per_mole_ld>(val);
     }
-    constexpr siemens_square_kilometer_per_mole_ld operator""_S_sq_km_per_mol(long double val) {
+    consteval siemens_square_kilometer_per_mole_ld operator""_S_sq_km_per_mol(long double val) {
         return static_cast<siemens_square_kilometer_per_mole_ld>(val);
     }
-    constexpr siemens_square_hectometer_per_mole_ld operator""_S_sq_hm_per_mol(long double val) {
+    consteval siemens_square_hectometer_per_mole_ld operator""_S_sq_hm_per_mol(long double val) {
         return static_cast<siemens_square_hectometer_per_mole_ld>(val);
     }
-    constexpr siemens_square_decameter_per_mole_ld operator""_S_sq_dam_per_mol(long double val) {
+    consteval siemens_square_decameter_per_mole_ld operator""_S_sq_dam_per_mol(long double val) {
         return static_cast<siemens_square_decameter_per_mole_ld>(val);
     }
-    constexpr siemens_square_meter_per_mole_ld operator""_S_sq_m_per_mol(long double val) {
+    consteval siemens_square_meter_per_mole_ld operator""_S_sq_m_per_mol(long double val) {
         return static_cast<siemens_square_meter_per_mole_ld>(val);
     }
-    constexpr siemens_square_decimeter_per_mole_ld operator""_S_sq_dm_per_mol(long double val) {
+    consteval siemens_square_decimeter_per_mole_ld operator""_S_sq_dm_per_mol(long double val) {
         return static_cast<siemens_square_decimeter_per_mole_ld>(val);
     }
-    constexpr siemens_square_centimeter_per_mole_ld operator""_S_sq_cm_per_mol(long double val) {
+    consteval siemens_square_centimeter_per_mole_ld operator""_S_sq_cm_per_mol(long double val) {
         return static_cast<siemens_square_centimeter_per_mole_ld>(val);
     }
-    constexpr siemens_square_millimeter_per_mole_ld operator""_S_sq_mm_per_mol(long double val) {
+    consteval siemens_square_millimeter_per_mole_ld operator""_S_sq_mm_per_mol(long double val) {
         return static_cast<siemens_square_millimeter_per_mole_ld>(val);
     }
-    constexpr siemens_square_micrometer_per_mole_ld operator""_S_sq_um_per_mol(long double val) {
+    consteval siemens_square_micrometer_per_mole_ld operator""_S_sq_um_per_mol(long double val) {
         return static_cast<siemens_square_micrometer_per_mole_ld>(val);
     }
-    constexpr siemens_square_nanometer_per_mole_ld operator""_S_sq_nm_per_mol(long double val) {
+    consteval siemens_square_nanometer_per_mole_ld operator""_S_sq_nm_per_mol(long double val) {
         return static_cast<siemens_square_nanometer_per_mole_ld>(val);
     }
-    constexpr siemens_square_picometer_per_mole_ld operator""_S_sq_pm_per_mol(long double val) {
+    consteval siemens_square_picometer_per_mole_ld operator""_S_sq_pm_per_mol(long double val) {
         return static_cast<siemens_square_picometer_per_mole_ld>(val);
     }
-    constexpr siemens_square_femtometer_per_mole_ld operator""_S_sq_fm_per_mol(long double val) {
+    consteval siemens_square_femtometer_per_mole_ld operator""_S_sq_fm_per_mol(long double val) {
         return static_cast<siemens_square_femtometer_per_mole_ld>(val);
     }
-    constexpr siemens_square_attometer_per_mole_ld operator""_S_sq_am_per_mol(long double val) {
+    consteval siemens_square_attometer_per_mole_ld operator""_S_sq_am_per_mol(long double val) {
         return static_cast<siemens_square_attometer_per_mole_ld>(val);
     }
-    constexpr siemens_square_exameter_per_mole_ull operator""_S_sq_Em_per_mol(unsigned long long val) {
+    consteval siemens_square_exameter_per_mole_ull operator""_S_sq_Em_per_mol(unsigned long long val) {
         return static_cast<siemens_square_exameter_per_mole_ull>(val);
     }
-    constexpr siemens_square_petameter_per_mole_ull operator""_S_sq_Pm_per_mol(unsigned long long val) {
+    consteval siemens_square_petameter_per_mole_ull operator""_S_sq_Pm_per_mol(unsigned long long val) {
         return static_cast<siemens_square_petameter_per_mole_ull>(val);
     }
-    constexpr siemens_square_terameter_per_mole_ull operator""_S_sq_Tm_per_mol(unsigned long long val) {
+    consteval siemens_square_terameter_per_mole_ull operator""_S_sq_Tm_per_mol(unsigned long long val) {
         return static_cast<siemens_square_terameter_per_mole_ull>(val);
     }
-    constexpr siemens_square_gigameter_per_mole_ull operator""_S_sq_Gm_per_mol(unsigned long long val) {
+    consteval siemens_square_gigameter_per_mole_ull operator""_S_sq_Gm_per_mol(unsigned long long val) {
         return static_cast<siemens_square_gigameter_per_mole_ull>(val);
     }
-    constexpr siemens_square_megameter_per_mole_ull operator""_S_sq_Mm_per_mol(unsigned long long val) {
+    consteval siemens_square_megameter_per_mole_ull operator""_S_sq_Mm_per_mol(unsigned long long val) {
         return static_cast<siemens_square_megameter_per_mole_ull>(val);
     }
-    constexpr siemens_square_kilometer_per_mole_ull operator""_S_sq_km_per_mol(unsigned long long val) {
+    consteval siemens_square_kilometer_per_mole_ull operator""_S_sq_km_per_mol(unsigned long long val) {
         return static_cast<siemens_square_kilometer_per_mole_ull>(val);
     }
-    constexpr siemens_square_hectometer_per_mole_ull operator""_S_sq_hm_per_mol(unsigned long long val) {
+    consteval siemens_square_hectometer_per_mole_ull operator""_S_sq_hm_per_mol(unsigned long long val) {
         return static_cast<siemens_square_hectometer_per_mole_ull>(val);
     }
-    constexpr siemens_square_decameter_per_mole_ull operator""_S_sq_dam_per_mol(unsigned long long val) {
+    consteval siemens_square_decameter_per_mole_ull operator""_S_sq_dam_per_mol(unsigned long long val) {
         return static_cast<siemens_square_decameter_per_mole_ull>(val);
     }
-    constexpr siemens_square_meter_per_mole_ull operator""_S_sq_m_per_mol(unsigned long long val) {
+    consteval siemens_square_meter_per_mole_ull operator""_S_sq_m_per_mol(unsigned long long val) {
         return static_cast<siemens_square_meter_per_mole_ull>(val);
     }
-    constexpr siemens_square_decimeter_per_mole_ull operator""_S_sq_dm_per_mol(unsigned long long val) {
+    consteval siemens_square_decimeter_per_mole_ull operator""_S_sq_dm_per_mol(unsigned long long val) {
         return static_cast<siemens_square_decimeter_per_mole_ull>(val);
     }
-    constexpr siemens_square_centimeter_per_mole_ull operator""_S_sq_cm_per_mol(unsigned long long val) {
+    consteval siemens_square_centimeter_per_mole_ull operator""_S_sq_cm_per_mol(unsigned long long val) {
         return static_cast<siemens_square_centimeter_per_mole_ull>(val);
     }
-    constexpr siemens_square_millimeter_per_mole_ull operator""_S_sq_mm_per_mol(unsigned long long val) {
+    consteval siemens_square_millimeter_per_mole_ull operator""_S_sq_mm_per_mol(unsigned long long val) {
         return static_cast<siemens_square_millimeter_per_mole_ull>(val);
     }
-    constexpr siemens_square_micrometer_per_mole_ull operator""_S_sq_um_per_mol(unsigned long long val) {
+    consteval siemens_square_micrometer_per_mole_ull operator""_S_sq_um_per_mol(unsigned long long val) {
         return static_cast<siemens_square_micrometer_per_mole_ull>(val);
     }
-    constexpr siemens_square_nanometer_per_mole_ull operator""_S_sq_nm_per_mol(unsigned long long val) {
+    consteval siemens_square_nanometer_per_mole_ull operator""_S_sq_nm_per_mol(unsigned long long val) {
         return static_cast<siemens_square_nanometer_per_mole_ull>(val);
     }
-    constexpr siemens_square_picometer_per_mole_ull operator""_S_sq_pm_per_mol(unsigned long long val) {
+    consteval siemens_square_picometer_per_mole_ull operator""_S_sq_pm_per_mol(unsigned long long val) {
         return static_cast<siemens_square_picometer_per_mole_ull>(val);
     }
-    constexpr siemens_square_femtometer_per_mole_ull operator""_S_sq_fm_per_mol(unsigned long long val) {
+    consteval siemens_square_femtometer_per_mole_ull operator""_S_sq_fm_per_mol(unsigned long long val) {
         return static_cast<siemens_square_femtometer_per_mole_ull>(val);
     }
-    constexpr siemens_square_attometer_per_mole_ull operator""_S_sq_am_per_mol(unsigned long long val) {
+    consteval siemens_square_attometer_per_mole_ull operator""_S_sq_am_per_mol(unsigned long long val) {
         return static_cast<siemens_square_attometer_per_mole_ull>(val);
     }
 

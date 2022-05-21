@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtogram_per_cubic_meter_ull    =     gram_per_cubic_meter_impl<std::femto, unsigned long long>;
     using attogram_per_cubic_meter_ull    =     gram_per_cubic_meter_impl<std::atto, unsigned long long>;
 
-    constexpr exagram_per_cubic_meter_ld operator""_Eg_per_cubic_m(long double val) {
+    consteval exagram_per_cubic_meter_ld operator""_Eg_per_cubic_m(long double val) {
         return static_cast<exagram_per_cubic_meter_ld>(val);
     }
-    constexpr petagram_per_cubic_meter_ld operator""_Pg_per_cubic_m(long double val) {
+    consteval petagram_per_cubic_meter_ld operator""_Pg_per_cubic_m(long double val) {
         return static_cast<petagram_per_cubic_meter_ld>(val);
     }
-    constexpr teragram_per_cubic_meter_ld operator""_Tg_per_cubic_m(long double val) {
+    consteval teragram_per_cubic_meter_ld operator""_Tg_per_cubic_m(long double val) {
         return static_cast<teragram_per_cubic_meter_ld>(val);
     }
-    constexpr gigagram_per_cubic_meter_ld operator""_Gg_per_cubic_m(long double val) {
+    consteval gigagram_per_cubic_meter_ld operator""_Gg_per_cubic_m(long double val) {
         return static_cast<gigagram_per_cubic_meter_ld>(val);
     }
-    constexpr megagram_per_cubic_meter_ld operator""_Mg_per_cubic_m(long double val) {
+    consteval megagram_per_cubic_meter_ld operator""_Mg_per_cubic_m(long double val) {
         return static_cast<megagram_per_cubic_meter_ld>(val);
     }
-    constexpr kilogram_per_cubic_meter_ld operator""_kg_per_cubic_m(long double val) {
+    consteval kilogram_per_cubic_meter_ld operator""_kg_per_cubic_m(long double val) {
         return static_cast<kilogram_per_cubic_meter_ld>(val);
     }
-    constexpr hectogram_per_cubic_meter_ld operator""_hg_per_cubic_m(long double val) {
+    consteval hectogram_per_cubic_meter_ld operator""_hg_per_cubic_m(long double val) {
         return static_cast<hectogram_per_cubic_meter_ld>(val);
     }
-    constexpr decagram_per_cubic_meter_ld operator""_dag_per_cubic_m(long double val) {
+    consteval decagram_per_cubic_meter_ld operator""_dag_per_cubic_m(long double val) {
         return static_cast<decagram_per_cubic_meter_ld>(val);
     }
-    constexpr gram_per_cubic_meter_ld operator""_g_per_cubic_m(long double val) {
+    consteval gram_per_cubic_meter_ld operator""_g_per_cubic_m(long double val) {
         return static_cast<gram_per_cubic_meter_ld>(val);
     }
-    constexpr decigram_per_cubic_meter_ld operator""_dg_per_cubic_m(long double val) {
+    consteval decigram_per_cubic_meter_ld operator""_dg_per_cubic_m(long double val) {
         return static_cast<decigram_per_cubic_meter_ld>(val);
     }
-    constexpr centigram_per_cubic_meter_ld operator""_cg_per_cubic_m(long double val) {
+    consteval centigram_per_cubic_meter_ld operator""_cg_per_cubic_m(long double val) {
         return static_cast<centigram_per_cubic_meter_ld>(val);
     }
-    constexpr milligram_per_cubic_meter_ld operator""_mg_per_cubic_m(long double val) {
+    consteval milligram_per_cubic_meter_ld operator""_mg_per_cubic_m(long double val) {
         return static_cast<milligram_per_cubic_meter_ld>(val);
     }
-    constexpr microgram_per_cubic_meter_ld operator""_ug_per_cubic_m(long double val) {
+    consteval microgram_per_cubic_meter_ld operator""_ug_per_cubic_m(long double val) {
         return static_cast<microgram_per_cubic_meter_ld>(val);
     }
-    constexpr nanogram_per_cubic_meter_ld operator""_ng_per_cubic_m(long double val) {
+    consteval nanogram_per_cubic_meter_ld operator""_ng_per_cubic_m(long double val) {
         return static_cast<nanogram_per_cubic_meter_ld>(val);
     }
-    constexpr picogram_per_cubic_meter_ld operator""_pg_per_cubic_m(long double val) {
+    consteval picogram_per_cubic_meter_ld operator""_pg_per_cubic_m(long double val) {
         return static_cast<picogram_per_cubic_meter_ld>(val);
     }
-    constexpr femtogram_per_cubic_meter_ld operator""_fg_per_cubic_m(long double val) {
+    consteval femtogram_per_cubic_meter_ld operator""_fg_per_cubic_m(long double val) {
         return static_cast<femtogram_per_cubic_meter_ld>(val);
     }
-    constexpr attogram_per_cubic_meter_ld operator""_ag_per_cubic_m(long double val) {
+    consteval attogram_per_cubic_meter_ld operator""_ag_per_cubic_m(long double val) {
         return static_cast<attogram_per_cubic_meter_ld>(val);
     }
-    constexpr exagram_per_cubic_meter_ull operator""_Eg_per_cubic_m(unsigned long long val) {
+    consteval exagram_per_cubic_meter_ull operator""_Eg_per_cubic_m(unsigned long long val) {
         return static_cast<exagram_per_cubic_meter_ull>(val);
     }
-    constexpr petagram_per_cubic_meter_ull operator""_Pg_per_cubic_m(unsigned long long val) {
+    consteval petagram_per_cubic_meter_ull operator""_Pg_per_cubic_m(unsigned long long val) {
         return static_cast<petagram_per_cubic_meter_ull>(val);
     }
-    constexpr teragram_per_cubic_meter_ull operator""_Tg_per_cubic_m(unsigned long long val) {
+    consteval teragram_per_cubic_meter_ull operator""_Tg_per_cubic_m(unsigned long long val) {
         return static_cast<teragram_per_cubic_meter_ull>(val);
     }
-    constexpr gigagram_per_cubic_meter_ull operator""_Gg_per_cubic_m(unsigned long long val) {
+    consteval gigagram_per_cubic_meter_ull operator""_Gg_per_cubic_m(unsigned long long val) {
         return static_cast<gigagram_per_cubic_meter_ull>(val);
     }
-    constexpr megagram_per_cubic_meter_ull operator""_Mg_per_cubic_m(unsigned long long val) {
+    consteval megagram_per_cubic_meter_ull operator""_Mg_per_cubic_m(unsigned long long val) {
         return static_cast<megagram_per_cubic_meter_ull>(val);
     }
-    constexpr kilogram_per_cubic_meter_ull operator""_kg_per_cubic_m(unsigned long long val) {
+    consteval kilogram_per_cubic_meter_ull operator""_kg_per_cubic_m(unsigned long long val) {
         return static_cast<kilogram_per_cubic_meter_ull>(val);
     }
-    constexpr hectogram_per_cubic_meter_ull operator""_hg_per_cubic_m(unsigned long long val) {
+    consteval hectogram_per_cubic_meter_ull operator""_hg_per_cubic_m(unsigned long long val) {
         return static_cast<hectogram_per_cubic_meter_ull>(val);
     }
-    constexpr decagram_per_cubic_meter_ull operator""_dag_per_cubic_m(unsigned long long val) {
+    consteval decagram_per_cubic_meter_ull operator""_dag_per_cubic_m(unsigned long long val) {
         return static_cast<decagram_per_cubic_meter_ull>(val);
     }
-    constexpr gram_per_cubic_meter_ull operator""_g_per_cubic_m(unsigned long long val) {
+    consteval gram_per_cubic_meter_ull operator""_g_per_cubic_m(unsigned long long val) {
         return static_cast<gram_per_cubic_meter_ull>(val);
     }
-    constexpr decigram_per_cubic_meter_ull operator""_dg_per_cubic_m(unsigned long long val) {
+    consteval decigram_per_cubic_meter_ull operator""_dg_per_cubic_m(unsigned long long val) {
         return static_cast<decigram_per_cubic_meter_ull>(val);
     }
-    constexpr centigram_per_cubic_meter_ull operator""_cg_per_cubic_m(unsigned long long val) {
+    consteval centigram_per_cubic_meter_ull operator""_cg_per_cubic_m(unsigned long long val) {
         return static_cast<centigram_per_cubic_meter_ull>(val);
     }
-    constexpr milligram_per_cubic_meter_ull operator""_mg_per_cubic_m(unsigned long long val) {
+    consteval milligram_per_cubic_meter_ull operator""_mg_per_cubic_m(unsigned long long val) {
         return static_cast<milligram_per_cubic_meter_ull>(val);
     }
-    constexpr microgram_per_cubic_meter_ull operator""_ug_per_cubic_m(unsigned long long val) {
+    consteval microgram_per_cubic_meter_ull operator""_ug_per_cubic_m(unsigned long long val) {
         return static_cast<microgram_per_cubic_meter_ull>(val);
     }
-    constexpr nanogram_per_cubic_meter_ull operator""_ng_per_cubic_m(unsigned long long val) {
+    consteval nanogram_per_cubic_meter_ull operator""_ng_per_cubic_m(unsigned long long val) {
         return static_cast<nanogram_per_cubic_meter_ull>(val);
     }
-    constexpr picogram_per_cubic_meter_ull operator""_pg_per_cubic_m(unsigned long long val) {
+    consteval picogram_per_cubic_meter_ull operator""_pg_per_cubic_m(unsigned long long val) {
         return static_cast<picogram_per_cubic_meter_ull>(val);
     }
-    constexpr femtogram_per_cubic_meter_ull operator""_fg_per_cubic_m(unsigned long long val) {
+    consteval femtogram_per_cubic_meter_ull operator""_fg_per_cubic_m(unsigned long long val) {
         return static_cast<femtogram_per_cubic_meter_ull>(val);
     }
-    constexpr attogram_per_cubic_meter_ull operator""_ag_per_cubic_m(unsigned long long val) {
+    consteval attogram_per_cubic_meter_ull operator""_ag_per_cubic_m(unsigned long long val) {
         return static_cast<attogram_per_cubic_meter_ull>(val);
     }
 

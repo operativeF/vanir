@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtojoule_ull    =     joule_impl<std::femto, unsigned long long>;
     using attojoule_ull    =     joule_impl<std::atto, unsigned long long>;
 
-    constexpr exajoule_ld operator""_EJ(long double val) {
+    consteval exajoule_ld operator""_EJ(long double val) {
         return static_cast<exajoule_ld>(val);
     }
-    constexpr petajoule_ld operator""_PJ(long double val) {
+    consteval petajoule_ld operator""_PJ(long double val) {
         return static_cast<petajoule_ld>(val);
     }
-    constexpr terajoule_ld operator""_TJ(long double val) {
+    consteval terajoule_ld operator""_TJ(long double val) {
         return static_cast<terajoule_ld>(val);
     }
-    constexpr gigajoule_ld operator""_GJ(long double val) {
+    consteval gigajoule_ld operator""_GJ(long double val) {
         return static_cast<gigajoule_ld>(val);
     }
-    constexpr megajoule_ld operator""_MJ(long double val) {
+    consteval megajoule_ld operator""_MJ(long double val) {
         return static_cast<megajoule_ld>(val);
     }
-    constexpr kilojoule_ld operator""_kJ(long double val) {
+    consteval kilojoule_ld operator""_kJ(long double val) {
         return static_cast<kilojoule_ld>(val);
     }
-    constexpr hectojoule_ld operator""_hJ(long double val) {
+    consteval hectojoule_ld operator""_hJ(long double val) {
         return static_cast<hectojoule_ld>(val);
     }
-    constexpr decajoule_ld operator""_daJ(long double val) {
+    consteval decajoule_ld operator""_daJ(long double val) {
         return static_cast<decajoule_ld>(val);
     }
-    constexpr joule_ld operator""_J(long double val) {
+    consteval joule_ld operator""_J(long double val) {
         return static_cast<joule_ld>(val);
     }
-    constexpr decijoule_ld operator""_dJ(long double val) {
+    consteval decijoule_ld operator""_dJ(long double val) {
         return static_cast<decijoule_ld>(val);
     }
-    constexpr centijoule_ld operator""_cJ(long double val) {
+    consteval centijoule_ld operator""_cJ(long double val) {
         return static_cast<centijoule_ld>(val);
     }
-    constexpr millijoule_ld operator""_mJ(long double val) {
+    consteval millijoule_ld operator""_mJ(long double val) {
         return static_cast<millijoule_ld>(val);
     }
-    constexpr microjoule_ld operator""_uJ(long double val) {
+    consteval microjoule_ld operator""_uJ(long double val) {
         return static_cast<microjoule_ld>(val);
     }
-    constexpr nanojoule_ld operator""_nJ(long double val) {
+    consteval nanojoule_ld operator""_nJ(long double val) {
         return static_cast<nanojoule_ld>(val);
     }
-    constexpr picojoule_ld operator""_pJ(long double val) {
+    consteval picojoule_ld operator""_pJ(long double val) {
         return static_cast<picojoule_ld>(val);
     }
-    constexpr femtojoule_ld operator""_fJ(long double val) {
+    consteval femtojoule_ld operator""_fJ(long double val) {
         return static_cast<femtojoule_ld>(val);
     }
-    constexpr attojoule_ld operator""_aJ(long double val) {
+    consteval attojoule_ld operator""_aJ(long double val) {
         return static_cast<attojoule_ld>(val);
     }
-    constexpr exajoule_ull operator""_EJ(unsigned long long val) {
+    consteval exajoule_ull operator""_EJ(unsigned long long val) {
         return static_cast<exajoule_ull>(val);
     }
-    constexpr petajoule_ull operator""_PJ(unsigned long long val) {
+    consteval petajoule_ull operator""_PJ(unsigned long long val) {
         return static_cast<petajoule_ull>(val);
     }
-    constexpr terajoule_ull operator""_TJ(unsigned long long val) {
+    consteval terajoule_ull operator""_TJ(unsigned long long val) {
         return static_cast<terajoule_ull>(val);
     }
-    constexpr gigajoule_ull operator""_GJ(unsigned long long val) {
+    consteval gigajoule_ull operator""_GJ(unsigned long long val) {
         return static_cast<gigajoule_ull>(val);
     }
-    constexpr megajoule_ull operator""_MJ(unsigned long long val) {
+    consteval megajoule_ull operator""_MJ(unsigned long long val) {
         return static_cast<megajoule_ull>(val);
     }
-    constexpr kilojoule_ull operator""_kJ(unsigned long long val) {
+    consteval kilojoule_ull operator""_kJ(unsigned long long val) {
         return static_cast<kilojoule_ull>(val);
     }
-    constexpr hectojoule_ull operator""_hJ(unsigned long long val) {
+    consteval hectojoule_ull operator""_hJ(unsigned long long val) {
         return static_cast<hectojoule_ull>(val);
     }
-    constexpr decajoule_ull operator""_daJ(unsigned long long val) {
+    consteval decajoule_ull operator""_daJ(unsigned long long val) {
         return static_cast<decajoule_ull>(val);
     }
-    constexpr joule_ull operator""_J(unsigned long long val) {
+    consteval joule_ull operator""_J(unsigned long long val) {
         return static_cast<joule_ull>(val);
     }
-    constexpr decijoule_ull operator""_dJ(unsigned long long val) {
+    consteval decijoule_ull operator""_dJ(unsigned long long val) {
         return static_cast<decijoule_ull>(val);
     }
-    constexpr centijoule_ull operator""_cJ(unsigned long long val) {
+    consteval centijoule_ull operator""_cJ(unsigned long long val) {
         return static_cast<centijoule_ull>(val);
     }
-    constexpr millijoule_ull operator""_mJ(unsigned long long val) {
+    consteval millijoule_ull operator""_mJ(unsigned long long val) {
         return static_cast<millijoule_ull>(val);
     }
-    constexpr microjoule_ull operator""_uJ(unsigned long long val) {
+    consteval microjoule_ull operator""_uJ(unsigned long long val) {
         return static_cast<microjoule_ull>(val);
     }
-    constexpr nanojoule_ull operator""_nJ(unsigned long long val) {
+    consteval nanojoule_ull operator""_nJ(unsigned long long val) {
         return static_cast<nanojoule_ull>(val);
     }
-    constexpr picojoule_ull operator""_pJ(unsigned long long val) {
+    consteval picojoule_ull operator""_pJ(unsigned long long val) {
         return static_cast<picojoule_ull>(val);
     }
-    constexpr femtojoule_ull operator""_fJ(unsigned long long val) {
+    consteval femtojoule_ull operator""_fJ(unsigned long long val) {
         return static_cast<femtojoule_ull>(val);
     }
-    constexpr attojoule_ull operator""_aJ(unsigned long long val) {
+    consteval attojoule_ull operator""_aJ(unsigned long long val) {
         return static_cast<attojoule_ull>(val);
     }
 

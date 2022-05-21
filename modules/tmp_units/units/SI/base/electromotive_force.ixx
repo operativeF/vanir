@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtovolt_ull    =     volt_impl<std::femto, unsigned long long>;
     using attovolt_ull    =     volt_impl<std::atto, unsigned long long>;
 
-    constexpr exavolt_ld operator""_EV(long double val) {
+    consteval exavolt_ld operator""_EV(long double val) {
         return static_cast<exavolt_ld>(val);
     }
-    constexpr petavolt_ld operator""_PV(long double val) {
+    consteval petavolt_ld operator""_PV(long double val) {
         return static_cast<petavolt_ld>(val);
     }
-    constexpr teravolt_ld operator""_TV(long double val) {
+    consteval teravolt_ld operator""_TV(long double val) {
         return static_cast<teravolt_ld>(val);
     }
-    constexpr gigavolt_ld operator""_GV(long double val) {
+    consteval gigavolt_ld operator""_GV(long double val) {
         return static_cast<gigavolt_ld>(val);
     }
-    constexpr megavolt_ld operator""_MV(long double val) {
+    consteval megavolt_ld operator""_MV(long double val) {
         return static_cast<megavolt_ld>(val);
     }
-    constexpr kilovolt_ld operator""_kV(long double val) {
+    consteval kilovolt_ld operator""_kV(long double val) {
         return static_cast<kilovolt_ld>(val);
     }
-    constexpr hectovolt_ld operator""_hV(long double val) {
+    consteval hectovolt_ld operator""_hV(long double val) {
         return static_cast<hectovolt_ld>(val);
     }
-    constexpr decavolt_ld operator""_daV(long double val) {
+    consteval decavolt_ld operator""_daV(long double val) {
         return static_cast<decavolt_ld>(val);
     }
-    constexpr volt_ld operator""_V(long double val) {
+    consteval volt_ld operator""_V(long double val) {
         return static_cast<volt_ld>(val);
     }
-    constexpr decivolt_ld operator""_dV(long double val) {
+    consteval decivolt_ld operator""_dV(long double val) {
         return static_cast<decivolt_ld>(val);
     }
-    constexpr centivolt_ld operator""_cV(long double val) {
+    consteval centivolt_ld operator""_cV(long double val) {
         return static_cast<centivolt_ld>(val);
     }
-    constexpr millivolt_ld operator""_mV(long double val) {
+    consteval millivolt_ld operator""_mV(long double val) {
         return static_cast<millivolt_ld>(val);
     }
-    constexpr microvolt_ld operator""_uV(long double val) {
+    consteval microvolt_ld operator""_uV(long double val) {
         return static_cast<microvolt_ld>(val);
     }
-    constexpr nanovolt_ld operator""_nV(long double val) {
+    consteval nanovolt_ld operator""_nV(long double val) {
         return static_cast<nanovolt_ld>(val);
     }
-    constexpr picovolt_ld operator""_pV(long double val) {
+    consteval picovolt_ld operator""_pV(long double val) {
         return static_cast<picovolt_ld>(val);
     }
-    constexpr femtovolt_ld operator""_fV(long double val) {
+    consteval femtovolt_ld operator""_fV(long double val) {
         return static_cast<femtovolt_ld>(val);
     }
-    constexpr attovolt_ld operator""_aV(long double val) {
+    consteval attovolt_ld operator""_aV(long double val) {
         return static_cast<attovolt_ld>(val);
     }
-    constexpr exavolt_ull operator""_EV(unsigned long long val) {
+    consteval exavolt_ull operator""_EV(unsigned long long val) {
         return static_cast<exavolt_ull>(val);
     }
-    constexpr petavolt_ull operator""_PV(unsigned long long val) {
+    consteval petavolt_ull operator""_PV(unsigned long long val) {
         return static_cast<petavolt_ull>(val);
     }
-    constexpr teravolt_ull operator""_TV(unsigned long long val) {
+    consteval teravolt_ull operator""_TV(unsigned long long val) {
         return static_cast<teravolt_ull>(val);
     }
-    constexpr gigavolt_ull operator""_GV(unsigned long long val) {
+    consteval gigavolt_ull operator""_GV(unsigned long long val) {
         return static_cast<gigavolt_ull>(val);
     }
-    constexpr megavolt_ull operator""_MV(unsigned long long val) {
+    consteval megavolt_ull operator""_MV(unsigned long long val) {
         return static_cast<megavolt_ull>(val);
     }
-    constexpr kilovolt_ull operator""_kV(unsigned long long val) {
+    consteval kilovolt_ull operator""_kV(unsigned long long val) {
         return static_cast<kilovolt_ull>(val);
     }
-    constexpr hectovolt_ull operator""_hV(unsigned long long val) {
+    consteval hectovolt_ull operator""_hV(unsigned long long val) {
         return static_cast<hectovolt_ull>(val);
     }
-    constexpr decavolt_ull operator""_daV(unsigned long long val) {
+    consteval decavolt_ull operator""_daV(unsigned long long val) {
         return static_cast<decavolt_ull>(val);
     }
-    constexpr volt_ull operator""_V(unsigned long long val) {
+    consteval volt_ull operator""_V(unsigned long long val) {
         return static_cast<volt_ull>(val);
     }
-    constexpr decivolt_ull operator""_dV(unsigned long long val) {
+    consteval decivolt_ull operator""_dV(unsigned long long val) {
         return static_cast<decivolt_ull>(val);
     }
-    constexpr centivolt_ull operator""_cV(unsigned long long val) {
+    consteval centivolt_ull operator""_cV(unsigned long long val) {
         return static_cast<centivolt_ull>(val);
     }
-    constexpr millivolt_ull operator""_mV(unsigned long long val) {
+    consteval millivolt_ull operator""_mV(unsigned long long val) {
         return static_cast<millivolt_ull>(val);
     }
-    constexpr microvolt_ull operator""_uV(unsigned long long val) {
+    consteval microvolt_ull operator""_uV(unsigned long long val) {
         return static_cast<microvolt_ull>(val);
     }
-    constexpr nanovolt_ull operator""_nV(unsigned long long val) {
+    consteval nanovolt_ull operator""_nV(unsigned long long val) {
         return static_cast<nanovolt_ull>(val);
     }
-    constexpr picovolt_ull operator""_pV(unsigned long long val) {
+    consteval picovolt_ull operator""_pV(unsigned long long val) {
         return static_cast<picovolt_ull>(val);
     }
-    constexpr femtovolt_ull operator""_fV(unsigned long long val) {
+    consteval femtovolt_ull operator""_fV(unsigned long long val) {
         return static_cast<femtovolt_ull>(val);
     }
-    constexpr attovolt_ull operator""_aV(unsigned long long val) {
+    consteval attovolt_ull operator""_aV(unsigned long long val) {
         return static_cast<attovolt_ull>(val);
     }
 

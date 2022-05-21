@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtonewton_meter_second_per_kilogram_ull    =     newton_meter_second_per_kilogram_impl<std::femto, unsigned long long>;
     using attonewton_meter_second_per_kilogram_ull    =     newton_meter_second_per_kilogram_impl<std::atto, unsigned long long>;
 
-    constexpr exanewton_meter_second_per_kilogram_ld operator""_EN_m_s_per_kg(long double val) {
+    consteval exanewton_meter_second_per_kilogram_ld operator""_EN_m_s_per_kg(long double val) {
         return static_cast<exanewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr petanewton_meter_second_per_kilogram_ld operator""_PN_m_s_per_kg(long double val) {
+    consteval petanewton_meter_second_per_kilogram_ld operator""_PN_m_s_per_kg(long double val) {
         return static_cast<petanewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr teranewton_meter_second_per_kilogram_ld operator""_TN_m_s_per_kg(long double val) {
+    consteval teranewton_meter_second_per_kilogram_ld operator""_TN_m_s_per_kg(long double val) {
         return static_cast<teranewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr giganewton_meter_second_per_kilogram_ld operator""_GN_m_s_per_kg(long double val) {
+    consteval giganewton_meter_second_per_kilogram_ld operator""_GN_m_s_per_kg(long double val) {
         return static_cast<giganewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr meganewton_meter_second_per_kilogram_ld operator""_MN_m_s_per_kg(long double val) {
+    consteval meganewton_meter_second_per_kilogram_ld operator""_MN_m_s_per_kg(long double val) {
         return static_cast<meganewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr kilonewton_meter_second_per_kilogram_ld operator""_kN_m_s_per_kg(long double val) {
+    consteval kilonewton_meter_second_per_kilogram_ld operator""_kN_m_s_per_kg(long double val) {
         return static_cast<kilonewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr hectonewton_meter_second_per_kilogram_ld operator""_hN_m_s_per_kg(long double val) {
+    consteval hectonewton_meter_second_per_kilogram_ld operator""_hN_m_s_per_kg(long double val) {
         return static_cast<hectonewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr decanewton_meter_second_per_kilogram_ld operator""_daN_m_s_per_kg(long double val) {
+    consteval decanewton_meter_second_per_kilogram_ld operator""_daN_m_s_per_kg(long double val) {
         return static_cast<decanewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr newton_meter_second_per_kilogram_ld operator""_N_m_s_per_kg(long double val) {
+    consteval newton_meter_second_per_kilogram_ld operator""_N_m_s_per_kg(long double val) {
         return static_cast<newton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr decinewton_meter_second_per_kilogram_ld operator""_dN_m_s_per_kg(long double val) {
+    consteval decinewton_meter_second_per_kilogram_ld operator""_dN_m_s_per_kg(long double val) {
         return static_cast<decinewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr centinewton_meter_second_per_kilogram_ld operator""_cN_m_s_per_kg(long double val) {
+    consteval centinewton_meter_second_per_kilogram_ld operator""_cN_m_s_per_kg(long double val) {
         return static_cast<centinewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr millinewton_meter_second_per_kilogram_ld operator""_mN_m_s_per_kg(long double val) {
+    consteval millinewton_meter_second_per_kilogram_ld operator""_mN_m_s_per_kg(long double val) {
         return static_cast<millinewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr micronewton_meter_second_per_kilogram_ld operator""_uN_m_s_per_kg(long double val) {
+    consteval micronewton_meter_second_per_kilogram_ld operator""_uN_m_s_per_kg(long double val) {
         return static_cast<micronewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr nanonewton_meter_second_per_kilogram_ld operator""_nN_m_s_per_kg(long double val) {
+    consteval nanonewton_meter_second_per_kilogram_ld operator""_nN_m_s_per_kg(long double val) {
         return static_cast<nanonewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr piconewton_meter_second_per_kilogram_ld operator""_pN_m_s_per_kg(long double val) {
+    consteval piconewton_meter_second_per_kilogram_ld operator""_pN_m_s_per_kg(long double val) {
         return static_cast<piconewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr femtonewton_meter_second_per_kilogram_ld operator""_fN_m_s_per_kg(long double val) {
+    consteval femtonewton_meter_second_per_kilogram_ld operator""_fN_m_s_per_kg(long double val) {
         return static_cast<femtonewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr attonewton_meter_second_per_kilogram_ld operator""_aN_m_s_per_kg(long double val) {
+    consteval attonewton_meter_second_per_kilogram_ld operator""_aN_m_s_per_kg(long double val) {
         return static_cast<attonewton_meter_second_per_kilogram_ld>(val);
     }
-    constexpr exanewton_meter_second_per_kilogram_ull operator""_EN_m_s_per_kg(unsigned long long val) {
+    consteval exanewton_meter_second_per_kilogram_ull operator""_EN_m_s_per_kg(unsigned long long val) {
         return static_cast<exanewton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr petanewton_meter_second_per_kilogram_ull operator""_PN_m_s_per_kg(unsigned long long val) {
+    consteval petanewton_meter_second_per_kilogram_ull operator""_PN_m_s_per_kg(unsigned long long val) {
         return static_cast<petanewton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr teranewton_meter_second_per_kilogram_ull operator""_TN_m_s_per_kg(unsigned long long val) {
+    consteval teranewton_meter_second_per_kilogram_ull operator""_TN_m_s_per_kg(unsigned long long val) {
         return static_cast<teranewton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr giganewton_meter_second_per_kilogram_ull operator""_GN_m_s_per_kg(unsigned long long val) {
+    consteval giganewton_meter_second_per_kilogram_ull operator""_GN_m_s_per_kg(unsigned long long val) {
         return static_cast<giganewton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr meganewton_meter_second_per_kilogram_ull operator""_MN_m_s_per_kg(unsigned long long val) {
+    consteval meganewton_meter_second_per_kilogram_ull operator""_MN_m_s_per_kg(unsigned long long val) {
         return static_cast<meganewton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr kilonewton_meter_second_per_kilogram_ull operator""_kN_m_s_per_kg(unsigned long long val) {
+    consteval kilonewton_meter_second_per_kilogram_ull operator""_kN_m_s_per_kg(unsigned long long val) {
         return static_cast<kilonewton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr hectonewton_meter_second_per_kilogram_ull operator""_hN_m_s_per_kg(unsigned long long val) {
+    consteval hectonewton_meter_second_per_kilogram_ull operator""_hN_m_s_per_kg(unsigned long long val) {
         return static_cast<hectonewton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr decanewton_meter_second_per_kilogram_ull operator""_daN_m_s_per_kg(unsigned long long val) {
+    consteval decanewton_meter_second_per_kilogram_ull operator""_daN_m_s_per_kg(unsigned long long val) {
         return static_cast<decanewton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr newton_meter_second_per_kilogram_ull operator""_N_m_s_per_kg(unsigned long long val) {
+    consteval newton_meter_second_per_kilogram_ull operator""_N_m_s_per_kg(unsigned long long val) {
         return static_cast<newton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr decinewton_meter_second_per_kilogram_ull operator""_dN_m_s_per_kg(unsigned long long val) {
+    consteval decinewton_meter_second_per_kilogram_ull operator""_dN_m_s_per_kg(unsigned long long val) {
         return static_cast<decinewton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr centinewton_meter_second_per_kilogram_ull operator""_cN_m_s_per_kg(unsigned long long val) {
+    consteval centinewton_meter_second_per_kilogram_ull operator""_cN_m_s_per_kg(unsigned long long val) {
         return static_cast<centinewton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr millinewton_meter_second_per_kilogram_ull operator""_mN_m_s_per_kg(unsigned long long val) {
+    consteval millinewton_meter_second_per_kilogram_ull operator""_mN_m_s_per_kg(unsigned long long val) {
         return static_cast<millinewton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr micronewton_meter_second_per_kilogram_ull operator""_uN_m_s_per_kg(unsigned long long val) {
+    consteval micronewton_meter_second_per_kilogram_ull operator""_uN_m_s_per_kg(unsigned long long val) {
         return static_cast<micronewton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr nanonewton_meter_second_per_kilogram_ull operator""_nN_m_s_per_kg(unsigned long long val) {
+    consteval nanonewton_meter_second_per_kilogram_ull operator""_nN_m_s_per_kg(unsigned long long val) {
         return static_cast<nanonewton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr piconewton_meter_second_per_kilogram_ull operator""_pN_m_s_per_kg(unsigned long long val) {
+    consteval piconewton_meter_second_per_kilogram_ull operator""_pN_m_s_per_kg(unsigned long long val) {
         return static_cast<piconewton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr femtonewton_meter_second_per_kilogram_ull operator""_fN_m_s_per_kg(unsigned long long val) {
+    consteval femtonewton_meter_second_per_kilogram_ull operator""_fN_m_s_per_kg(unsigned long long val) {
         return static_cast<femtonewton_meter_second_per_kilogram_ull>(val);
     }
-    constexpr attonewton_meter_second_per_kilogram_ull operator""_aN_m_s_per_kg(unsigned long long val) {
+    consteval attonewton_meter_second_per_kilogram_ull operator""_aN_m_s_per_kg(unsigned long long val) {
         return static_cast<attonewton_meter_second_per_kilogram_ull>(val);
     }
 

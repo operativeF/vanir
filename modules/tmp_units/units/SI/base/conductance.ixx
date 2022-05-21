@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtosiemens_ull    =     siemens_impl<std::femto, unsigned long long>;
     using attosiemens_ull    =     siemens_impl<std::atto, unsigned long long>;
 
-    constexpr exasiemens_ld operator""_ES(long double val) {
+    consteval exasiemens_ld operator""_ES(long double val) {
         return static_cast<exasiemens_ld>(val);
     }
-    constexpr petasiemens_ld operator""_PS(long double val) {
+    consteval petasiemens_ld operator""_PS(long double val) {
         return static_cast<petasiemens_ld>(val);
     }
-    constexpr terasiemens_ld operator""_TS(long double val) {
+    consteval terasiemens_ld operator""_TS(long double val) {
         return static_cast<terasiemens_ld>(val);
     }
-    constexpr gigasiemens_ld operator""_GS(long double val) {
+    consteval gigasiemens_ld operator""_GS(long double val) {
         return static_cast<gigasiemens_ld>(val);
     }
-    constexpr megasiemens_ld operator""_MS(long double val) {
+    consteval megasiemens_ld operator""_MS(long double val) {
         return static_cast<megasiemens_ld>(val);
     }
-    constexpr kilosiemens_ld operator""_kS(long double val) {
+    consteval kilosiemens_ld operator""_kS(long double val) {
         return static_cast<kilosiemens_ld>(val);
     }
-    constexpr hectosiemens_ld operator""_hS(long double val) {
+    consteval hectosiemens_ld operator""_hS(long double val) {
         return static_cast<hectosiemens_ld>(val);
     }
-    constexpr decasiemens_ld operator""_daS(long double val) {
+    consteval decasiemens_ld operator""_daS(long double val) {
         return static_cast<decasiemens_ld>(val);
     }
-    constexpr siemens_ld operator""_S(long double val) {
+    consteval siemens_ld operator""_S(long double val) {
         return static_cast<siemens_ld>(val);
     }
-    constexpr decisiemens_ld operator""_dS(long double val) {
+    consteval decisiemens_ld operator""_dS(long double val) {
         return static_cast<decisiemens_ld>(val);
     }
-    constexpr centisiemens_ld operator""_cS(long double val) {
+    consteval centisiemens_ld operator""_cS(long double val) {
         return static_cast<centisiemens_ld>(val);
     }
-    constexpr millisiemens_ld operator""_mS(long double val) {
+    consteval millisiemens_ld operator""_mS(long double val) {
         return static_cast<millisiemens_ld>(val);
     }
-    constexpr microsiemens_ld operator""_uS(long double val) {
+    consteval microsiemens_ld operator""_uS(long double val) {
         return static_cast<microsiemens_ld>(val);
     }
-    constexpr nanosiemens_ld operator""_nS(long double val) {
+    consteval nanosiemens_ld operator""_nS(long double val) {
         return static_cast<nanosiemens_ld>(val);
     }
-    constexpr picosiemens_ld operator""_pS(long double val) {
+    consteval picosiemens_ld operator""_pS(long double val) {
         return static_cast<picosiemens_ld>(val);
     }
-    constexpr femtosiemens_ld operator""_fS(long double val) {
+    consteval femtosiemens_ld operator""_fS(long double val) {
         return static_cast<femtosiemens_ld>(val);
     }
-    constexpr attosiemens_ld operator""_aS(long double val) {
+    consteval attosiemens_ld operator""_aS(long double val) {
         return static_cast<attosiemens_ld>(val);
     }
-    constexpr exasiemens_ull operator""_ES(unsigned long long val) {
+    consteval exasiemens_ull operator""_ES(unsigned long long val) {
         return static_cast<exasiemens_ull>(val);
     }
-    constexpr petasiemens_ull operator""_PS(unsigned long long val) {
+    consteval petasiemens_ull operator""_PS(unsigned long long val) {
         return static_cast<petasiemens_ull>(val);
     }
-    constexpr terasiemens_ull operator""_TS(unsigned long long val) {
+    consteval terasiemens_ull operator""_TS(unsigned long long val) {
         return static_cast<terasiemens_ull>(val);
     }
-    constexpr gigasiemens_ull operator""_GS(unsigned long long val) {
+    consteval gigasiemens_ull operator""_GS(unsigned long long val) {
         return static_cast<gigasiemens_ull>(val);
     }
-    constexpr megasiemens_ull operator""_MS(unsigned long long val) {
+    consteval megasiemens_ull operator""_MS(unsigned long long val) {
         return static_cast<megasiemens_ull>(val);
     }
-    constexpr kilosiemens_ull operator""_kS(unsigned long long val) {
+    consteval kilosiemens_ull operator""_kS(unsigned long long val) {
         return static_cast<kilosiemens_ull>(val);
     }
-    constexpr hectosiemens_ull operator""_hS(unsigned long long val) {
+    consteval hectosiemens_ull operator""_hS(unsigned long long val) {
         return static_cast<hectosiemens_ull>(val);
     }
-    constexpr decasiemens_ull operator""_daS(unsigned long long val) {
+    consteval decasiemens_ull operator""_daS(unsigned long long val) {
         return static_cast<decasiemens_ull>(val);
     }
-    constexpr siemens_ull operator""_S(unsigned long long val) {
+    consteval siemens_ull operator""_S(unsigned long long val) {
         return static_cast<siemens_ull>(val);
     }
-    constexpr decisiemens_ull operator""_dS(unsigned long long val) {
+    consteval decisiemens_ull operator""_dS(unsigned long long val) {
         return static_cast<decisiemens_ull>(val);
     }
-    constexpr centisiemens_ull operator""_cS(unsigned long long val) {
+    consteval centisiemens_ull operator""_cS(unsigned long long val) {
         return static_cast<centisiemens_ull>(val);
     }
-    constexpr millisiemens_ull operator""_mS(unsigned long long val) {
+    consteval millisiemens_ull operator""_mS(unsigned long long val) {
         return static_cast<millisiemens_ull>(val);
     }
-    constexpr microsiemens_ull operator""_uS(unsigned long long val) {
+    consteval microsiemens_ull operator""_uS(unsigned long long val) {
         return static_cast<microsiemens_ull>(val);
     }
-    constexpr nanosiemens_ull operator""_nS(unsigned long long val) {
+    consteval nanosiemens_ull operator""_nS(unsigned long long val) {
         return static_cast<nanosiemens_ull>(val);
     }
-    constexpr picosiemens_ull operator""_pS(unsigned long long val) {
+    consteval picosiemens_ull operator""_pS(unsigned long long val) {
         return static_cast<picosiemens_ull>(val);
     }
-    constexpr femtosiemens_ull operator""_fS(unsigned long long val) {
+    consteval femtosiemens_ull operator""_fS(unsigned long long val) {
         return static_cast<femtosiemens_ull>(val);
     }
-    constexpr attosiemens_ull operator""_aS(unsigned long long val) {
+    consteval attosiemens_ull operator""_aS(unsigned long long val) {
         return static_cast<attosiemens_ull>(val);
     }
 

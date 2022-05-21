@@ -206,7 +206,7 @@ def generateUnitOperator(unit_name, unit_prefix, unit_suffix, unit_numerical_typ
         unit_name = f"{unit_prefix}{unit_name}"
         unit_symbol_mod = f"{unit_prefix_symbol}{unit_symbol}"
     return \
-        f"{' ':>4}constexpr {unit_name}{unit_suffix} operator\"\"_{unit_symbol_mod}({unit_numerical_type} val) {{\n" \
+        f"{' ':>4}consteval {unit_name}{unit_suffix} operator\"\"_{unit_symbol_mod}({unit_numerical_type} val) {{\n" \
         f"{' ':>8}return static_cast<{unit_name}{unit_suffix}>(val);\n" \
         f"{' ':>4}}}\n"
 

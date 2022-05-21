@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtojoule_per_tesla_ull    =     joule_per_tesla_impl<std::femto, unsigned long long>;
     using attojoule_per_tesla_ull    =     joule_per_tesla_impl<std::atto, unsigned long long>;
 
-    constexpr exajoule_per_tesla_ld operator""_EJ_per_T(long double val) {
+    consteval exajoule_per_tesla_ld operator""_EJ_per_T(long double val) {
         return static_cast<exajoule_per_tesla_ld>(val);
     }
-    constexpr petajoule_per_tesla_ld operator""_PJ_per_T(long double val) {
+    consteval petajoule_per_tesla_ld operator""_PJ_per_T(long double val) {
         return static_cast<petajoule_per_tesla_ld>(val);
     }
-    constexpr terajoule_per_tesla_ld operator""_TJ_per_T(long double val) {
+    consteval terajoule_per_tesla_ld operator""_TJ_per_T(long double val) {
         return static_cast<terajoule_per_tesla_ld>(val);
     }
-    constexpr gigajoule_per_tesla_ld operator""_GJ_per_T(long double val) {
+    consteval gigajoule_per_tesla_ld operator""_GJ_per_T(long double val) {
         return static_cast<gigajoule_per_tesla_ld>(val);
     }
-    constexpr megajoule_per_tesla_ld operator""_MJ_per_T(long double val) {
+    consteval megajoule_per_tesla_ld operator""_MJ_per_T(long double val) {
         return static_cast<megajoule_per_tesla_ld>(val);
     }
-    constexpr kilojoule_per_tesla_ld operator""_kJ_per_T(long double val) {
+    consteval kilojoule_per_tesla_ld operator""_kJ_per_T(long double val) {
         return static_cast<kilojoule_per_tesla_ld>(val);
     }
-    constexpr hectojoule_per_tesla_ld operator""_hJ_per_T(long double val) {
+    consteval hectojoule_per_tesla_ld operator""_hJ_per_T(long double val) {
         return static_cast<hectojoule_per_tesla_ld>(val);
     }
-    constexpr decajoule_per_tesla_ld operator""_daJ_per_T(long double val) {
+    consteval decajoule_per_tesla_ld operator""_daJ_per_T(long double val) {
         return static_cast<decajoule_per_tesla_ld>(val);
     }
-    constexpr joule_per_tesla_ld operator""_J_per_T(long double val) {
+    consteval joule_per_tesla_ld operator""_J_per_T(long double val) {
         return static_cast<joule_per_tesla_ld>(val);
     }
-    constexpr decijoule_per_tesla_ld operator""_dJ_per_T(long double val) {
+    consteval decijoule_per_tesla_ld operator""_dJ_per_T(long double val) {
         return static_cast<decijoule_per_tesla_ld>(val);
     }
-    constexpr centijoule_per_tesla_ld operator""_cJ_per_T(long double val) {
+    consteval centijoule_per_tesla_ld operator""_cJ_per_T(long double val) {
         return static_cast<centijoule_per_tesla_ld>(val);
     }
-    constexpr millijoule_per_tesla_ld operator""_mJ_per_T(long double val) {
+    consteval millijoule_per_tesla_ld operator""_mJ_per_T(long double val) {
         return static_cast<millijoule_per_tesla_ld>(val);
     }
-    constexpr microjoule_per_tesla_ld operator""_uJ_per_T(long double val) {
+    consteval microjoule_per_tesla_ld operator""_uJ_per_T(long double val) {
         return static_cast<microjoule_per_tesla_ld>(val);
     }
-    constexpr nanojoule_per_tesla_ld operator""_nJ_per_T(long double val) {
+    consteval nanojoule_per_tesla_ld operator""_nJ_per_T(long double val) {
         return static_cast<nanojoule_per_tesla_ld>(val);
     }
-    constexpr picojoule_per_tesla_ld operator""_pJ_per_T(long double val) {
+    consteval picojoule_per_tesla_ld operator""_pJ_per_T(long double val) {
         return static_cast<picojoule_per_tesla_ld>(val);
     }
-    constexpr femtojoule_per_tesla_ld operator""_fJ_per_T(long double val) {
+    consteval femtojoule_per_tesla_ld operator""_fJ_per_T(long double val) {
         return static_cast<femtojoule_per_tesla_ld>(val);
     }
-    constexpr attojoule_per_tesla_ld operator""_aJ_per_T(long double val) {
+    consteval attojoule_per_tesla_ld operator""_aJ_per_T(long double val) {
         return static_cast<attojoule_per_tesla_ld>(val);
     }
-    constexpr exajoule_per_tesla_ull operator""_EJ_per_T(unsigned long long val) {
+    consteval exajoule_per_tesla_ull operator""_EJ_per_T(unsigned long long val) {
         return static_cast<exajoule_per_tesla_ull>(val);
     }
-    constexpr petajoule_per_tesla_ull operator""_PJ_per_T(unsigned long long val) {
+    consteval petajoule_per_tesla_ull operator""_PJ_per_T(unsigned long long val) {
         return static_cast<petajoule_per_tesla_ull>(val);
     }
-    constexpr terajoule_per_tesla_ull operator""_TJ_per_T(unsigned long long val) {
+    consteval terajoule_per_tesla_ull operator""_TJ_per_T(unsigned long long val) {
         return static_cast<terajoule_per_tesla_ull>(val);
     }
-    constexpr gigajoule_per_tesla_ull operator""_GJ_per_T(unsigned long long val) {
+    consteval gigajoule_per_tesla_ull operator""_GJ_per_T(unsigned long long val) {
         return static_cast<gigajoule_per_tesla_ull>(val);
     }
-    constexpr megajoule_per_tesla_ull operator""_MJ_per_T(unsigned long long val) {
+    consteval megajoule_per_tesla_ull operator""_MJ_per_T(unsigned long long val) {
         return static_cast<megajoule_per_tesla_ull>(val);
     }
-    constexpr kilojoule_per_tesla_ull operator""_kJ_per_T(unsigned long long val) {
+    consteval kilojoule_per_tesla_ull operator""_kJ_per_T(unsigned long long val) {
         return static_cast<kilojoule_per_tesla_ull>(val);
     }
-    constexpr hectojoule_per_tesla_ull operator""_hJ_per_T(unsigned long long val) {
+    consteval hectojoule_per_tesla_ull operator""_hJ_per_T(unsigned long long val) {
         return static_cast<hectojoule_per_tesla_ull>(val);
     }
-    constexpr decajoule_per_tesla_ull operator""_daJ_per_T(unsigned long long val) {
+    consteval decajoule_per_tesla_ull operator""_daJ_per_T(unsigned long long val) {
         return static_cast<decajoule_per_tesla_ull>(val);
     }
-    constexpr joule_per_tesla_ull operator""_J_per_T(unsigned long long val) {
+    consteval joule_per_tesla_ull operator""_J_per_T(unsigned long long val) {
         return static_cast<joule_per_tesla_ull>(val);
     }
-    constexpr decijoule_per_tesla_ull operator""_dJ_per_T(unsigned long long val) {
+    consteval decijoule_per_tesla_ull operator""_dJ_per_T(unsigned long long val) {
         return static_cast<decijoule_per_tesla_ull>(val);
     }
-    constexpr centijoule_per_tesla_ull operator""_cJ_per_T(unsigned long long val) {
+    consteval centijoule_per_tesla_ull operator""_cJ_per_T(unsigned long long val) {
         return static_cast<centijoule_per_tesla_ull>(val);
     }
-    constexpr millijoule_per_tesla_ull operator""_mJ_per_T(unsigned long long val) {
+    consteval millijoule_per_tesla_ull operator""_mJ_per_T(unsigned long long val) {
         return static_cast<millijoule_per_tesla_ull>(val);
     }
-    constexpr microjoule_per_tesla_ull operator""_uJ_per_T(unsigned long long val) {
+    consteval microjoule_per_tesla_ull operator""_uJ_per_T(unsigned long long val) {
         return static_cast<microjoule_per_tesla_ull>(val);
     }
-    constexpr nanojoule_per_tesla_ull operator""_nJ_per_T(unsigned long long val) {
+    consteval nanojoule_per_tesla_ull operator""_nJ_per_T(unsigned long long val) {
         return static_cast<nanojoule_per_tesla_ull>(val);
     }
-    constexpr picojoule_per_tesla_ull operator""_pJ_per_T(unsigned long long val) {
+    consteval picojoule_per_tesla_ull operator""_pJ_per_T(unsigned long long val) {
         return static_cast<picojoule_per_tesla_ull>(val);
     }
-    constexpr femtojoule_per_tesla_ull operator""_fJ_per_T(unsigned long long val) {
+    consteval femtojoule_per_tesla_ull operator""_fJ_per_T(unsigned long long val) {
         return static_cast<femtojoule_per_tesla_ull>(val);
     }
-    constexpr attojoule_per_tesla_ull operator""_aJ_per_T(unsigned long long val) {
+    consteval attojoule_per_tesla_ull operator""_aJ_per_T(unsigned long long val) {
         return static_cast<attojoule_per_tesla_ull>(val);
     }
 

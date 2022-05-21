@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtosiemens_per_meter_ull    =     siemens_per_meter_impl<std::femto, unsigned long long>;
     using attosiemens_per_meter_ull    =     siemens_per_meter_impl<std::atto, unsigned long long>;
 
-    constexpr exasiemens_per_meter_ld operator""_ES_per_m(long double val) {
+    consteval exasiemens_per_meter_ld operator""_ES_per_m(long double val) {
         return static_cast<exasiemens_per_meter_ld>(val);
     }
-    constexpr petasiemens_per_meter_ld operator""_PS_per_m(long double val) {
+    consteval petasiemens_per_meter_ld operator""_PS_per_m(long double val) {
         return static_cast<petasiemens_per_meter_ld>(val);
     }
-    constexpr terasiemens_per_meter_ld operator""_TS_per_m(long double val) {
+    consteval terasiemens_per_meter_ld operator""_TS_per_m(long double val) {
         return static_cast<terasiemens_per_meter_ld>(val);
     }
-    constexpr gigasiemens_per_meter_ld operator""_GS_per_m(long double val) {
+    consteval gigasiemens_per_meter_ld operator""_GS_per_m(long double val) {
         return static_cast<gigasiemens_per_meter_ld>(val);
     }
-    constexpr megasiemens_per_meter_ld operator""_MS_per_m(long double val) {
+    consteval megasiemens_per_meter_ld operator""_MS_per_m(long double val) {
         return static_cast<megasiemens_per_meter_ld>(val);
     }
-    constexpr kilosiemens_per_meter_ld operator""_kS_per_m(long double val) {
+    consteval kilosiemens_per_meter_ld operator""_kS_per_m(long double val) {
         return static_cast<kilosiemens_per_meter_ld>(val);
     }
-    constexpr hectosiemens_per_meter_ld operator""_hS_per_m(long double val) {
+    consteval hectosiemens_per_meter_ld operator""_hS_per_m(long double val) {
         return static_cast<hectosiemens_per_meter_ld>(val);
     }
-    constexpr decasiemens_per_meter_ld operator""_daS_per_m(long double val) {
+    consteval decasiemens_per_meter_ld operator""_daS_per_m(long double val) {
         return static_cast<decasiemens_per_meter_ld>(val);
     }
-    constexpr siemens_per_meter_ld operator""_S_per_m(long double val) {
+    consteval siemens_per_meter_ld operator""_S_per_m(long double val) {
         return static_cast<siemens_per_meter_ld>(val);
     }
-    constexpr decisiemens_per_meter_ld operator""_dS_per_m(long double val) {
+    consteval decisiemens_per_meter_ld operator""_dS_per_m(long double val) {
         return static_cast<decisiemens_per_meter_ld>(val);
     }
-    constexpr centisiemens_per_meter_ld operator""_cS_per_m(long double val) {
+    consteval centisiemens_per_meter_ld operator""_cS_per_m(long double val) {
         return static_cast<centisiemens_per_meter_ld>(val);
     }
-    constexpr millisiemens_per_meter_ld operator""_mS_per_m(long double val) {
+    consteval millisiemens_per_meter_ld operator""_mS_per_m(long double val) {
         return static_cast<millisiemens_per_meter_ld>(val);
     }
-    constexpr microsiemens_per_meter_ld operator""_uS_per_m(long double val) {
+    consteval microsiemens_per_meter_ld operator""_uS_per_m(long double val) {
         return static_cast<microsiemens_per_meter_ld>(val);
     }
-    constexpr nanosiemens_per_meter_ld operator""_nS_per_m(long double val) {
+    consteval nanosiemens_per_meter_ld operator""_nS_per_m(long double val) {
         return static_cast<nanosiemens_per_meter_ld>(val);
     }
-    constexpr picosiemens_per_meter_ld operator""_pS_per_m(long double val) {
+    consteval picosiemens_per_meter_ld operator""_pS_per_m(long double val) {
         return static_cast<picosiemens_per_meter_ld>(val);
     }
-    constexpr femtosiemens_per_meter_ld operator""_fS_per_m(long double val) {
+    consteval femtosiemens_per_meter_ld operator""_fS_per_m(long double val) {
         return static_cast<femtosiemens_per_meter_ld>(val);
     }
-    constexpr attosiemens_per_meter_ld operator""_aS_per_m(long double val) {
+    consteval attosiemens_per_meter_ld operator""_aS_per_m(long double val) {
         return static_cast<attosiemens_per_meter_ld>(val);
     }
-    constexpr exasiemens_per_meter_ull operator""_ES_per_m(unsigned long long val) {
+    consteval exasiemens_per_meter_ull operator""_ES_per_m(unsigned long long val) {
         return static_cast<exasiemens_per_meter_ull>(val);
     }
-    constexpr petasiemens_per_meter_ull operator""_PS_per_m(unsigned long long val) {
+    consteval petasiemens_per_meter_ull operator""_PS_per_m(unsigned long long val) {
         return static_cast<petasiemens_per_meter_ull>(val);
     }
-    constexpr terasiemens_per_meter_ull operator""_TS_per_m(unsigned long long val) {
+    consteval terasiemens_per_meter_ull operator""_TS_per_m(unsigned long long val) {
         return static_cast<terasiemens_per_meter_ull>(val);
     }
-    constexpr gigasiemens_per_meter_ull operator""_GS_per_m(unsigned long long val) {
+    consteval gigasiemens_per_meter_ull operator""_GS_per_m(unsigned long long val) {
         return static_cast<gigasiemens_per_meter_ull>(val);
     }
-    constexpr megasiemens_per_meter_ull operator""_MS_per_m(unsigned long long val) {
+    consteval megasiemens_per_meter_ull operator""_MS_per_m(unsigned long long val) {
         return static_cast<megasiemens_per_meter_ull>(val);
     }
-    constexpr kilosiemens_per_meter_ull operator""_kS_per_m(unsigned long long val) {
+    consteval kilosiemens_per_meter_ull operator""_kS_per_m(unsigned long long val) {
         return static_cast<kilosiemens_per_meter_ull>(val);
     }
-    constexpr hectosiemens_per_meter_ull operator""_hS_per_m(unsigned long long val) {
+    consteval hectosiemens_per_meter_ull operator""_hS_per_m(unsigned long long val) {
         return static_cast<hectosiemens_per_meter_ull>(val);
     }
-    constexpr decasiemens_per_meter_ull operator""_daS_per_m(unsigned long long val) {
+    consteval decasiemens_per_meter_ull operator""_daS_per_m(unsigned long long val) {
         return static_cast<decasiemens_per_meter_ull>(val);
     }
-    constexpr siemens_per_meter_ull operator""_S_per_m(unsigned long long val) {
+    consteval siemens_per_meter_ull operator""_S_per_m(unsigned long long val) {
         return static_cast<siemens_per_meter_ull>(val);
     }
-    constexpr decisiemens_per_meter_ull operator""_dS_per_m(unsigned long long val) {
+    consteval decisiemens_per_meter_ull operator""_dS_per_m(unsigned long long val) {
         return static_cast<decisiemens_per_meter_ull>(val);
     }
-    constexpr centisiemens_per_meter_ull operator""_cS_per_m(unsigned long long val) {
+    consteval centisiemens_per_meter_ull operator""_cS_per_m(unsigned long long val) {
         return static_cast<centisiemens_per_meter_ull>(val);
     }
-    constexpr millisiemens_per_meter_ull operator""_mS_per_m(unsigned long long val) {
+    consteval millisiemens_per_meter_ull operator""_mS_per_m(unsigned long long val) {
         return static_cast<millisiemens_per_meter_ull>(val);
     }
-    constexpr microsiemens_per_meter_ull operator""_uS_per_m(unsigned long long val) {
+    consteval microsiemens_per_meter_ull operator""_uS_per_m(unsigned long long val) {
         return static_cast<microsiemens_per_meter_ull>(val);
     }
-    constexpr nanosiemens_per_meter_ull operator""_nS_per_m(unsigned long long val) {
+    consteval nanosiemens_per_meter_ull operator""_nS_per_m(unsigned long long val) {
         return static_cast<nanosiemens_per_meter_ull>(val);
     }
-    constexpr picosiemens_per_meter_ull operator""_pS_per_m(unsigned long long val) {
+    consteval picosiemens_per_meter_ull operator""_pS_per_m(unsigned long long val) {
         return static_cast<picosiemens_per_meter_ull>(val);
     }
-    constexpr femtosiemens_per_meter_ull operator""_fS_per_m(unsigned long long val) {
+    consteval femtosiemens_per_meter_ull operator""_fS_per_m(unsigned long long val) {
         return static_cast<femtosiemens_per_meter_ull>(val);
     }
-    constexpr attosiemens_per_meter_ull operator""_aS_per_m(unsigned long long val) {
+    consteval attosiemens_per_meter_ull operator""_aS_per_m(unsigned long long val) {
         return static_cast<attosiemens_per_meter_ull>(val);
     }
 

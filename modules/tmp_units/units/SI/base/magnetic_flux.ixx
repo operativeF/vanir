@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtoweber_ull    =     weber_impl<std::femto, unsigned long long>;
     using attoweber_ull    =     weber_impl<std::atto, unsigned long long>;
 
-    constexpr exaweber_ld operator""_EWb(long double val) {
+    consteval exaweber_ld operator""_EWb(long double val) {
         return static_cast<exaweber_ld>(val);
     }
-    constexpr petaweber_ld operator""_PWb(long double val) {
+    consteval petaweber_ld operator""_PWb(long double val) {
         return static_cast<petaweber_ld>(val);
     }
-    constexpr teraweber_ld operator""_TWb(long double val) {
+    consteval teraweber_ld operator""_TWb(long double val) {
         return static_cast<teraweber_ld>(val);
     }
-    constexpr gigaweber_ld operator""_GWb(long double val) {
+    consteval gigaweber_ld operator""_GWb(long double val) {
         return static_cast<gigaweber_ld>(val);
     }
-    constexpr megaweber_ld operator""_MWb(long double val) {
+    consteval megaweber_ld operator""_MWb(long double val) {
         return static_cast<megaweber_ld>(val);
     }
-    constexpr kiloweber_ld operator""_kWb(long double val) {
+    consteval kiloweber_ld operator""_kWb(long double val) {
         return static_cast<kiloweber_ld>(val);
     }
-    constexpr hectoweber_ld operator""_hWb(long double val) {
+    consteval hectoweber_ld operator""_hWb(long double val) {
         return static_cast<hectoweber_ld>(val);
     }
-    constexpr decaweber_ld operator""_daWb(long double val) {
+    consteval decaweber_ld operator""_daWb(long double val) {
         return static_cast<decaweber_ld>(val);
     }
-    constexpr weber_ld operator""_Wb(long double val) {
+    consteval weber_ld operator""_Wb(long double val) {
         return static_cast<weber_ld>(val);
     }
-    constexpr deciweber_ld operator""_dWb(long double val) {
+    consteval deciweber_ld operator""_dWb(long double val) {
         return static_cast<deciweber_ld>(val);
     }
-    constexpr centiweber_ld operator""_cWb(long double val) {
+    consteval centiweber_ld operator""_cWb(long double val) {
         return static_cast<centiweber_ld>(val);
     }
-    constexpr milliweber_ld operator""_mWb(long double val) {
+    consteval milliweber_ld operator""_mWb(long double val) {
         return static_cast<milliweber_ld>(val);
     }
-    constexpr microweber_ld operator""_uWb(long double val) {
+    consteval microweber_ld operator""_uWb(long double val) {
         return static_cast<microweber_ld>(val);
     }
-    constexpr nanoweber_ld operator""_nWb(long double val) {
+    consteval nanoweber_ld operator""_nWb(long double val) {
         return static_cast<nanoweber_ld>(val);
     }
-    constexpr picoweber_ld operator""_pWb(long double val) {
+    consteval picoweber_ld operator""_pWb(long double val) {
         return static_cast<picoweber_ld>(val);
     }
-    constexpr femtoweber_ld operator""_fWb(long double val) {
+    consteval femtoweber_ld operator""_fWb(long double val) {
         return static_cast<femtoweber_ld>(val);
     }
-    constexpr attoweber_ld operator""_aWb(long double val) {
+    consteval attoweber_ld operator""_aWb(long double val) {
         return static_cast<attoweber_ld>(val);
     }
-    constexpr exaweber_ull operator""_EWb(unsigned long long val) {
+    consteval exaweber_ull operator""_EWb(unsigned long long val) {
         return static_cast<exaweber_ull>(val);
     }
-    constexpr petaweber_ull operator""_PWb(unsigned long long val) {
+    consteval petaweber_ull operator""_PWb(unsigned long long val) {
         return static_cast<petaweber_ull>(val);
     }
-    constexpr teraweber_ull operator""_TWb(unsigned long long val) {
+    consteval teraweber_ull operator""_TWb(unsigned long long val) {
         return static_cast<teraweber_ull>(val);
     }
-    constexpr gigaweber_ull operator""_GWb(unsigned long long val) {
+    consteval gigaweber_ull operator""_GWb(unsigned long long val) {
         return static_cast<gigaweber_ull>(val);
     }
-    constexpr megaweber_ull operator""_MWb(unsigned long long val) {
+    consteval megaweber_ull operator""_MWb(unsigned long long val) {
         return static_cast<megaweber_ull>(val);
     }
-    constexpr kiloweber_ull operator""_kWb(unsigned long long val) {
+    consteval kiloweber_ull operator""_kWb(unsigned long long val) {
         return static_cast<kiloweber_ull>(val);
     }
-    constexpr hectoweber_ull operator""_hWb(unsigned long long val) {
+    consteval hectoweber_ull operator""_hWb(unsigned long long val) {
         return static_cast<hectoweber_ull>(val);
     }
-    constexpr decaweber_ull operator""_daWb(unsigned long long val) {
+    consteval decaweber_ull operator""_daWb(unsigned long long val) {
         return static_cast<decaweber_ull>(val);
     }
-    constexpr weber_ull operator""_Wb(unsigned long long val) {
+    consteval weber_ull operator""_Wb(unsigned long long val) {
         return static_cast<weber_ull>(val);
     }
-    constexpr deciweber_ull operator""_dWb(unsigned long long val) {
+    consteval deciweber_ull operator""_dWb(unsigned long long val) {
         return static_cast<deciweber_ull>(val);
     }
-    constexpr centiweber_ull operator""_cWb(unsigned long long val) {
+    consteval centiweber_ull operator""_cWb(unsigned long long val) {
         return static_cast<centiweber_ull>(val);
     }
-    constexpr milliweber_ull operator""_mWb(unsigned long long val) {
+    consteval milliweber_ull operator""_mWb(unsigned long long val) {
         return static_cast<milliweber_ull>(val);
     }
-    constexpr microweber_ull operator""_uWb(unsigned long long val) {
+    consteval microweber_ull operator""_uWb(unsigned long long val) {
         return static_cast<microweber_ull>(val);
     }
-    constexpr nanoweber_ull operator""_nWb(unsigned long long val) {
+    consteval nanoweber_ull operator""_nWb(unsigned long long val) {
         return static_cast<nanoweber_ull>(val);
     }
-    constexpr picoweber_ull operator""_pWb(unsigned long long val) {
+    consteval picoweber_ull operator""_pWb(unsigned long long val) {
         return static_cast<picoweber_ull>(val);
     }
-    constexpr femtoweber_ull operator""_fWb(unsigned long long val) {
+    consteval femtoweber_ull operator""_fWb(unsigned long long val) {
         return static_cast<femtoweber_ull>(val);
     }
-    constexpr attoweber_ull operator""_aWb(unsigned long long val) {
+    consteval attoweber_ull operator""_aWb(unsigned long long val) {
         return static_cast<attoweber_ull>(val);
     }
 

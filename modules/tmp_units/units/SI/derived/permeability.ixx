@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtohenry_per_meter_ull    =     henry_per_meter_impl<std::femto, unsigned long long>;
     using attohenry_per_meter_ull    =     henry_per_meter_impl<std::atto, unsigned long long>;
 
-    constexpr exahenry_per_meter_ld operator""_EH_per_m(long double val) {
+    consteval exahenry_per_meter_ld operator""_EH_per_m(long double val) {
         return static_cast<exahenry_per_meter_ld>(val);
     }
-    constexpr petahenry_per_meter_ld operator""_PH_per_m(long double val) {
+    consteval petahenry_per_meter_ld operator""_PH_per_m(long double val) {
         return static_cast<petahenry_per_meter_ld>(val);
     }
-    constexpr terahenry_per_meter_ld operator""_TH_per_m(long double val) {
+    consteval terahenry_per_meter_ld operator""_TH_per_m(long double val) {
         return static_cast<terahenry_per_meter_ld>(val);
     }
-    constexpr gigahenry_per_meter_ld operator""_GH_per_m(long double val) {
+    consteval gigahenry_per_meter_ld operator""_GH_per_m(long double val) {
         return static_cast<gigahenry_per_meter_ld>(val);
     }
-    constexpr megahenry_per_meter_ld operator""_MH_per_m(long double val) {
+    consteval megahenry_per_meter_ld operator""_MH_per_m(long double val) {
         return static_cast<megahenry_per_meter_ld>(val);
     }
-    constexpr kilohenry_per_meter_ld operator""_kH_per_m(long double val) {
+    consteval kilohenry_per_meter_ld operator""_kH_per_m(long double val) {
         return static_cast<kilohenry_per_meter_ld>(val);
     }
-    constexpr hectohenry_per_meter_ld operator""_hH_per_m(long double val) {
+    consteval hectohenry_per_meter_ld operator""_hH_per_m(long double val) {
         return static_cast<hectohenry_per_meter_ld>(val);
     }
-    constexpr decahenry_per_meter_ld operator""_daH_per_m(long double val) {
+    consteval decahenry_per_meter_ld operator""_daH_per_m(long double val) {
         return static_cast<decahenry_per_meter_ld>(val);
     }
-    constexpr henry_per_meter_ld operator""_H_per_m(long double val) {
+    consteval henry_per_meter_ld operator""_H_per_m(long double val) {
         return static_cast<henry_per_meter_ld>(val);
     }
-    constexpr decihenry_per_meter_ld operator""_dH_per_m(long double val) {
+    consteval decihenry_per_meter_ld operator""_dH_per_m(long double val) {
         return static_cast<decihenry_per_meter_ld>(val);
     }
-    constexpr centihenry_per_meter_ld operator""_cH_per_m(long double val) {
+    consteval centihenry_per_meter_ld operator""_cH_per_m(long double val) {
         return static_cast<centihenry_per_meter_ld>(val);
     }
-    constexpr millihenry_per_meter_ld operator""_mH_per_m(long double val) {
+    consteval millihenry_per_meter_ld operator""_mH_per_m(long double val) {
         return static_cast<millihenry_per_meter_ld>(val);
     }
-    constexpr microhenry_per_meter_ld operator""_uH_per_m(long double val) {
+    consteval microhenry_per_meter_ld operator""_uH_per_m(long double val) {
         return static_cast<microhenry_per_meter_ld>(val);
     }
-    constexpr nanohenry_per_meter_ld operator""_nH_per_m(long double val) {
+    consteval nanohenry_per_meter_ld operator""_nH_per_m(long double val) {
         return static_cast<nanohenry_per_meter_ld>(val);
     }
-    constexpr picohenry_per_meter_ld operator""_pH_per_m(long double val) {
+    consteval picohenry_per_meter_ld operator""_pH_per_m(long double val) {
         return static_cast<picohenry_per_meter_ld>(val);
     }
-    constexpr femtohenry_per_meter_ld operator""_fH_per_m(long double val) {
+    consteval femtohenry_per_meter_ld operator""_fH_per_m(long double val) {
         return static_cast<femtohenry_per_meter_ld>(val);
     }
-    constexpr attohenry_per_meter_ld operator""_aH_per_m(long double val) {
+    consteval attohenry_per_meter_ld operator""_aH_per_m(long double val) {
         return static_cast<attohenry_per_meter_ld>(val);
     }
-    constexpr exahenry_per_meter_ull operator""_EH_per_m(unsigned long long val) {
+    consteval exahenry_per_meter_ull operator""_EH_per_m(unsigned long long val) {
         return static_cast<exahenry_per_meter_ull>(val);
     }
-    constexpr petahenry_per_meter_ull operator""_PH_per_m(unsigned long long val) {
+    consteval petahenry_per_meter_ull operator""_PH_per_m(unsigned long long val) {
         return static_cast<petahenry_per_meter_ull>(val);
     }
-    constexpr terahenry_per_meter_ull operator""_TH_per_m(unsigned long long val) {
+    consteval terahenry_per_meter_ull operator""_TH_per_m(unsigned long long val) {
         return static_cast<terahenry_per_meter_ull>(val);
     }
-    constexpr gigahenry_per_meter_ull operator""_GH_per_m(unsigned long long val) {
+    consteval gigahenry_per_meter_ull operator""_GH_per_m(unsigned long long val) {
         return static_cast<gigahenry_per_meter_ull>(val);
     }
-    constexpr megahenry_per_meter_ull operator""_MH_per_m(unsigned long long val) {
+    consteval megahenry_per_meter_ull operator""_MH_per_m(unsigned long long val) {
         return static_cast<megahenry_per_meter_ull>(val);
     }
-    constexpr kilohenry_per_meter_ull operator""_kH_per_m(unsigned long long val) {
+    consteval kilohenry_per_meter_ull operator""_kH_per_m(unsigned long long val) {
         return static_cast<kilohenry_per_meter_ull>(val);
     }
-    constexpr hectohenry_per_meter_ull operator""_hH_per_m(unsigned long long val) {
+    consteval hectohenry_per_meter_ull operator""_hH_per_m(unsigned long long val) {
         return static_cast<hectohenry_per_meter_ull>(val);
     }
-    constexpr decahenry_per_meter_ull operator""_daH_per_m(unsigned long long val) {
+    consteval decahenry_per_meter_ull operator""_daH_per_m(unsigned long long val) {
         return static_cast<decahenry_per_meter_ull>(val);
     }
-    constexpr henry_per_meter_ull operator""_H_per_m(unsigned long long val) {
+    consteval henry_per_meter_ull operator""_H_per_m(unsigned long long val) {
         return static_cast<henry_per_meter_ull>(val);
     }
-    constexpr decihenry_per_meter_ull operator""_dH_per_m(unsigned long long val) {
+    consteval decihenry_per_meter_ull operator""_dH_per_m(unsigned long long val) {
         return static_cast<decihenry_per_meter_ull>(val);
     }
-    constexpr centihenry_per_meter_ull operator""_cH_per_m(unsigned long long val) {
+    consteval centihenry_per_meter_ull operator""_cH_per_m(unsigned long long val) {
         return static_cast<centihenry_per_meter_ull>(val);
     }
-    constexpr millihenry_per_meter_ull operator""_mH_per_m(unsigned long long val) {
+    consteval millihenry_per_meter_ull operator""_mH_per_m(unsigned long long val) {
         return static_cast<millihenry_per_meter_ull>(val);
     }
-    constexpr microhenry_per_meter_ull operator""_uH_per_m(unsigned long long val) {
+    consteval microhenry_per_meter_ull operator""_uH_per_m(unsigned long long val) {
         return static_cast<microhenry_per_meter_ull>(val);
     }
-    constexpr nanohenry_per_meter_ull operator""_nH_per_m(unsigned long long val) {
+    consteval nanohenry_per_meter_ull operator""_nH_per_m(unsigned long long val) {
         return static_cast<nanohenry_per_meter_ull>(val);
     }
-    constexpr picohenry_per_meter_ull operator""_pH_per_m(unsigned long long val) {
+    consteval picohenry_per_meter_ull operator""_pH_per_m(unsigned long long val) {
         return static_cast<picohenry_per_meter_ull>(val);
     }
-    constexpr femtohenry_per_meter_ull operator""_fH_per_m(unsigned long long val) {
+    consteval femtohenry_per_meter_ull operator""_fH_per_m(unsigned long long val) {
         return static_cast<femtohenry_per_meter_ull>(val);
     }
-    constexpr attohenry_per_meter_ull operator""_aH_per_m(unsigned long long val) {
+    consteval attohenry_per_meter_ull operator""_aH_per_m(unsigned long long val) {
         return static_cast<attohenry_per_meter_ull>(val);
     }
 

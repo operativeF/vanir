@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtomole_per_kilogram_ull    =     mole_per_kilogram_impl<std::femto, unsigned long long>;
     using attomole_per_kilogram_ull    =     mole_per_kilogram_impl<std::atto, unsigned long long>;
 
-    constexpr examole_per_kilogram_ld operator""_Emol_per_kg(long double val) {
+    consteval examole_per_kilogram_ld operator""_Emol_per_kg(long double val) {
         return static_cast<examole_per_kilogram_ld>(val);
     }
-    constexpr petamole_per_kilogram_ld operator""_Pmol_per_kg(long double val) {
+    consteval petamole_per_kilogram_ld operator""_Pmol_per_kg(long double val) {
         return static_cast<petamole_per_kilogram_ld>(val);
     }
-    constexpr teramole_per_kilogram_ld operator""_Tmol_per_kg(long double val) {
+    consteval teramole_per_kilogram_ld operator""_Tmol_per_kg(long double val) {
         return static_cast<teramole_per_kilogram_ld>(val);
     }
-    constexpr gigamole_per_kilogram_ld operator""_Gmol_per_kg(long double val) {
+    consteval gigamole_per_kilogram_ld operator""_Gmol_per_kg(long double val) {
         return static_cast<gigamole_per_kilogram_ld>(val);
     }
-    constexpr megamole_per_kilogram_ld operator""_Mmol_per_kg(long double val) {
+    consteval megamole_per_kilogram_ld operator""_Mmol_per_kg(long double val) {
         return static_cast<megamole_per_kilogram_ld>(val);
     }
-    constexpr kilomole_per_kilogram_ld operator""_kmol_per_kg(long double val) {
+    consteval kilomole_per_kilogram_ld operator""_kmol_per_kg(long double val) {
         return static_cast<kilomole_per_kilogram_ld>(val);
     }
-    constexpr hectomole_per_kilogram_ld operator""_hmol_per_kg(long double val) {
+    consteval hectomole_per_kilogram_ld operator""_hmol_per_kg(long double val) {
         return static_cast<hectomole_per_kilogram_ld>(val);
     }
-    constexpr decamole_per_kilogram_ld operator""_damol_per_kg(long double val) {
+    consteval decamole_per_kilogram_ld operator""_damol_per_kg(long double val) {
         return static_cast<decamole_per_kilogram_ld>(val);
     }
-    constexpr mole_per_kilogram_ld operator""_mol_per_kg(long double val) {
+    consteval mole_per_kilogram_ld operator""_mol_per_kg(long double val) {
         return static_cast<mole_per_kilogram_ld>(val);
     }
-    constexpr decimole_per_kilogram_ld operator""_dmol_per_kg(long double val) {
+    consteval decimole_per_kilogram_ld operator""_dmol_per_kg(long double val) {
         return static_cast<decimole_per_kilogram_ld>(val);
     }
-    constexpr centimole_per_kilogram_ld operator""_cmol_per_kg(long double val) {
+    consteval centimole_per_kilogram_ld operator""_cmol_per_kg(long double val) {
         return static_cast<centimole_per_kilogram_ld>(val);
     }
-    constexpr millimole_per_kilogram_ld operator""_mmol_per_kg(long double val) {
+    consteval millimole_per_kilogram_ld operator""_mmol_per_kg(long double val) {
         return static_cast<millimole_per_kilogram_ld>(val);
     }
-    constexpr micromole_per_kilogram_ld operator""_umol_per_kg(long double val) {
+    consteval micromole_per_kilogram_ld operator""_umol_per_kg(long double val) {
         return static_cast<micromole_per_kilogram_ld>(val);
     }
-    constexpr nanomole_per_kilogram_ld operator""_nmol_per_kg(long double val) {
+    consteval nanomole_per_kilogram_ld operator""_nmol_per_kg(long double val) {
         return static_cast<nanomole_per_kilogram_ld>(val);
     }
-    constexpr picomole_per_kilogram_ld operator""_pmol_per_kg(long double val) {
+    consteval picomole_per_kilogram_ld operator""_pmol_per_kg(long double val) {
         return static_cast<picomole_per_kilogram_ld>(val);
     }
-    constexpr femtomole_per_kilogram_ld operator""_fmol_per_kg(long double val) {
+    consteval femtomole_per_kilogram_ld operator""_fmol_per_kg(long double val) {
         return static_cast<femtomole_per_kilogram_ld>(val);
     }
-    constexpr attomole_per_kilogram_ld operator""_amol_per_kg(long double val) {
+    consteval attomole_per_kilogram_ld operator""_amol_per_kg(long double val) {
         return static_cast<attomole_per_kilogram_ld>(val);
     }
-    constexpr examole_per_kilogram_ull operator""_Emol_per_kg(unsigned long long val) {
+    consteval examole_per_kilogram_ull operator""_Emol_per_kg(unsigned long long val) {
         return static_cast<examole_per_kilogram_ull>(val);
     }
-    constexpr petamole_per_kilogram_ull operator""_Pmol_per_kg(unsigned long long val) {
+    consteval petamole_per_kilogram_ull operator""_Pmol_per_kg(unsigned long long val) {
         return static_cast<petamole_per_kilogram_ull>(val);
     }
-    constexpr teramole_per_kilogram_ull operator""_Tmol_per_kg(unsigned long long val) {
+    consteval teramole_per_kilogram_ull operator""_Tmol_per_kg(unsigned long long val) {
         return static_cast<teramole_per_kilogram_ull>(val);
     }
-    constexpr gigamole_per_kilogram_ull operator""_Gmol_per_kg(unsigned long long val) {
+    consteval gigamole_per_kilogram_ull operator""_Gmol_per_kg(unsigned long long val) {
         return static_cast<gigamole_per_kilogram_ull>(val);
     }
-    constexpr megamole_per_kilogram_ull operator""_Mmol_per_kg(unsigned long long val) {
+    consteval megamole_per_kilogram_ull operator""_Mmol_per_kg(unsigned long long val) {
         return static_cast<megamole_per_kilogram_ull>(val);
     }
-    constexpr kilomole_per_kilogram_ull operator""_kmol_per_kg(unsigned long long val) {
+    consteval kilomole_per_kilogram_ull operator""_kmol_per_kg(unsigned long long val) {
         return static_cast<kilomole_per_kilogram_ull>(val);
     }
-    constexpr hectomole_per_kilogram_ull operator""_hmol_per_kg(unsigned long long val) {
+    consteval hectomole_per_kilogram_ull operator""_hmol_per_kg(unsigned long long val) {
         return static_cast<hectomole_per_kilogram_ull>(val);
     }
-    constexpr decamole_per_kilogram_ull operator""_damol_per_kg(unsigned long long val) {
+    consteval decamole_per_kilogram_ull operator""_damol_per_kg(unsigned long long val) {
         return static_cast<decamole_per_kilogram_ull>(val);
     }
-    constexpr mole_per_kilogram_ull operator""_mol_per_kg(unsigned long long val) {
+    consteval mole_per_kilogram_ull operator""_mol_per_kg(unsigned long long val) {
         return static_cast<mole_per_kilogram_ull>(val);
     }
-    constexpr decimole_per_kilogram_ull operator""_dmol_per_kg(unsigned long long val) {
+    consteval decimole_per_kilogram_ull operator""_dmol_per_kg(unsigned long long val) {
         return static_cast<decimole_per_kilogram_ull>(val);
     }
-    constexpr centimole_per_kilogram_ull operator""_cmol_per_kg(unsigned long long val) {
+    consteval centimole_per_kilogram_ull operator""_cmol_per_kg(unsigned long long val) {
         return static_cast<centimole_per_kilogram_ull>(val);
     }
-    constexpr millimole_per_kilogram_ull operator""_mmol_per_kg(unsigned long long val) {
+    consteval millimole_per_kilogram_ull operator""_mmol_per_kg(unsigned long long val) {
         return static_cast<millimole_per_kilogram_ull>(val);
     }
-    constexpr micromole_per_kilogram_ull operator""_umol_per_kg(unsigned long long val) {
+    consteval micromole_per_kilogram_ull operator""_umol_per_kg(unsigned long long val) {
         return static_cast<micromole_per_kilogram_ull>(val);
     }
-    constexpr nanomole_per_kilogram_ull operator""_nmol_per_kg(unsigned long long val) {
+    consteval nanomole_per_kilogram_ull operator""_nmol_per_kg(unsigned long long val) {
         return static_cast<nanomole_per_kilogram_ull>(val);
     }
-    constexpr picomole_per_kilogram_ull operator""_pmol_per_kg(unsigned long long val) {
+    consteval picomole_per_kilogram_ull operator""_pmol_per_kg(unsigned long long val) {
         return static_cast<picomole_per_kilogram_ull>(val);
     }
-    constexpr femtomole_per_kilogram_ull operator""_fmol_per_kg(unsigned long long val) {
+    consteval femtomole_per_kilogram_ull operator""_fmol_per_kg(unsigned long long val) {
         return static_cast<femtomole_per_kilogram_ull>(val);
     }
-    constexpr attomole_per_kilogram_ull operator""_amol_per_kg(unsigned long long val) {
+    consteval attomole_per_kilogram_ull operator""_amol_per_kg(unsigned long long val) {
         return static_cast<attomole_per_kilogram_ull>(val);
     }
 

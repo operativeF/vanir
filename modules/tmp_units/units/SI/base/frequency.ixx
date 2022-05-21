@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtohertz_ull    =     hertz_impl<std::femto, unsigned long long>;
     using attohertz_ull    =     hertz_impl<std::atto, unsigned long long>;
 
-    constexpr exahertz_ld operator""_EHz(long double val) {
+    consteval exahertz_ld operator""_EHz(long double val) {
         return static_cast<exahertz_ld>(val);
     }
-    constexpr petahertz_ld operator""_PHz(long double val) {
+    consteval petahertz_ld operator""_PHz(long double val) {
         return static_cast<petahertz_ld>(val);
     }
-    constexpr terahertz_ld operator""_THz(long double val) {
+    consteval terahertz_ld operator""_THz(long double val) {
         return static_cast<terahertz_ld>(val);
     }
-    constexpr gigahertz_ld operator""_GHz(long double val) {
+    consteval gigahertz_ld operator""_GHz(long double val) {
         return static_cast<gigahertz_ld>(val);
     }
-    constexpr megahertz_ld operator""_MHz(long double val) {
+    consteval megahertz_ld operator""_MHz(long double val) {
         return static_cast<megahertz_ld>(val);
     }
-    constexpr kilohertz_ld operator""_kHz(long double val) {
+    consteval kilohertz_ld operator""_kHz(long double val) {
         return static_cast<kilohertz_ld>(val);
     }
-    constexpr hectohertz_ld operator""_hHz(long double val) {
+    consteval hectohertz_ld operator""_hHz(long double val) {
         return static_cast<hectohertz_ld>(val);
     }
-    constexpr decahertz_ld operator""_daHz(long double val) {
+    consteval decahertz_ld operator""_daHz(long double val) {
         return static_cast<decahertz_ld>(val);
     }
-    constexpr hertz_ld operator""_Hz(long double val) {
+    consteval hertz_ld operator""_Hz(long double val) {
         return static_cast<hertz_ld>(val);
     }
-    constexpr decihertz_ld operator""_dHz(long double val) {
+    consteval decihertz_ld operator""_dHz(long double val) {
         return static_cast<decihertz_ld>(val);
     }
-    constexpr centihertz_ld operator""_cHz(long double val) {
+    consteval centihertz_ld operator""_cHz(long double val) {
         return static_cast<centihertz_ld>(val);
     }
-    constexpr millihertz_ld operator""_mHz(long double val) {
+    consteval millihertz_ld operator""_mHz(long double val) {
         return static_cast<millihertz_ld>(val);
     }
-    constexpr microhertz_ld operator""_uHz(long double val) {
+    consteval microhertz_ld operator""_uHz(long double val) {
         return static_cast<microhertz_ld>(val);
     }
-    constexpr nanohertz_ld operator""_nHz(long double val) {
+    consteval nanohertz_ld operator""_nHz(long double val) {
         return static_cast<nanohertz_ld>(val);
     }
-    constexpr picohertz_ld operator""_pHz(long double val) {
+    consteval picohertz_ld operator""_pHz(long double val) {
         return static_cast<picohertz_ld>(val);
     }
-    constexpr femtohertz_ld operator""_fHz(long double val) {
+    consteval femtohertz_ld operator""_fHz(long double val) {
         return static_cast<femtohertz_ld>(val);
     }
-    constexpr attohertz_ld operator""_aHz(long double val) {
+    consteval attohertz_ld operator""_aHz(long double val) {
         return static_cast<attohertz_ld>(val);
     }
-    constexpr exahertz_ull operator""_EHz(unsigned long long val) {
+    consteval exahertz_ull operator""_EHz(unsigned long long val) {
         return static_cast<exahertz_ull>(val);
     }
-    constexpr petahertz_ull operator""_PHz(unsigned long long val) {
+    consteval petahertz_ull operator""_PHz(unsigned long long val) {
         return static_cast<petahertz_ull>(val);
     }
-    constexpr terahertz_ull operator""_THz(unsigned long long val) {
+    consteval terahertz_ull operator""_THz(unsigned long long val) {
         return static_cast<terahertz_ull>(val);
     }
-    constexpr gigahertz_ull operator""_GHz(unsigned long long val) {
+    consteval gigahertz_ull operator""_GHz(unsigned long long val) {
         return static_cast<gigahertz_ull>(val);
     }
-    constexpr megahertz_ull operator""_MHz(unsigned long long val) {
+    consteval megahertz_ull operator""_MHz(unsigned long long val) {
         return static_cast<megahertz_ull>(val);
     }
-    constexpr kilohertz_ull operator""_kHz(unsigned long long val) {
+    consteval kilohertz_ull operator""_kHz(unsigned long long val) {
         return static_cast<kilohertz_ull>(val);
     }
-    constexpr hectohertz_ull operator""_hHz(unsigned long long val) {
+    consteval hectohertz_ull operator""_hHz(unsigned long long val) {
         return static_cast<hectohertz_ull>(val);
     }
-    constexpr decahertz_ull operator""_daHz(unsigned long long val) {
+    consteval decahertz_ull operator""_daHz(unsigned long long val) {
         return static_cast<decahertz_ull>(val);
     }
-    constexpr hertz_ull operator""_Hz(unsigned long long val) {
+    consteval hertz_ull operator""_Hz(unsigned long long val) {
         return static_cast<hertz_ull>(val);
     }
-    constexpr decihertz_ull operator""_dHz(unsigned long long val) {
+    consteval decihertz_ull operator""_dHz(unsigned long long val) {
         return static_cast<decihertz_ull>(val);
     }
-    constexpr centihertz_ull operator""_cHz(unsigned long long val) {
+    consteval centihertz_ull operator""_cHz(unsigned long long val) {
         return static_cast<centihertz_ull>(val);
     }
-    constexpr millihertz_ull operator""_mHz(unsigned long long val) {
+    consteval millihertz_ull operator""_mHz(unsigned long long val) {
         return static_cast<millihertz_ull>(val);
     }
-    constexpr microhertz_ull operator""_uHz(unsigned long long val) {
+    consteval microhertz_ull operator""_uHz(unsigned long long val) {
         return static_cast<microhertz_ull>(val);
     }
-    constexpr nanohertz_ull operator""_nHz(unsigned long long val) {
+    consteval nanohertz_ull operator""_nHz(unsigned long long val) {
         return static_cast<nanohertz_ull>(val);
     }
-    constexpr picohertz_ull operator""_pHz(unsigned long long val) {
+    consteval picohertz_ull operator""_pHz(unsigned long long val) {
         return static_cast<picohertz_ull>(val);
     }
-    constexpr femtohertz_ull operator""_fHz(unsigned long long val) {
+    consteval femtohertz_ull operator""_fHz(unsigned long long val) {
         return static_cast<femtohertz_ull>(val);
     }
-    constexpr attohertz_ull operator""_aHz(unsigned long long val) {
+    consteval attohertz_ull operator""_aHz(unsigned long long val) {
         return static_cast<attohertz_ull>(val);
     }
 

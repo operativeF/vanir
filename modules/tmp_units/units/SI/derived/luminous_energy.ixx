@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtolumen_second_ull    =     lumen_second_impl<std::femto, unsigned long long>;
     using attolumen_second_ull    =     lumen_second_impl<std::atto, unsigned long long>;
 
-    constexpr exalumen_second_ld operator""_Es_cd(long double val) {
+    consteval exalumen_second_ld operator""_Es_cd(long double val) {
         return static_cast<exalumen_second_ld>(val);
     }
-    constexpr petalumen_second_ld operator""_Ps_cd(long double val) {
+    consteval petalumen_second_ld operator""_Ps_cd(long double val) {
         return static_cast<petalumen_second_ld>(val);
     }
-    constexpr teralumen_second_ld operator""_Ts_cd(long double val) {
+    consteval teralumen_second_ld operator""_Ts_cd(long double val) {
         return static_cast<teralumen_second_ld>(val);
     }
-    constexpr gigalumen_second_ld operator""_Gs_cd(long double val) {
+    consteval gigalumen_second_ld operator""_Gs_cd(long double val) {
         return static_cast<gigalumen_second_ld>(val);
     }
-    constexpr megalumen_second_ld operator""_Ms_cd(long double val) {
+    consteval megalumen_second_ld operator""_Ms_cd(long double val) {
         return static_cast<megalumen_second_ld>(val);
     }
-    constexpr kilolumen_second_ld operator""_ks_cd(long double val) {
+    consteval kilolumen_second_ld operator""_ks_cd(long double val) {
         return static_cast<kilolumen_second_ld>(val);
     }
-    constexpr hectolumen_second_ld operator""_hs_cd(long double val) {
+    consteval hectolumen_second_ld operator""_hs_cd(long double val) {
         return static_cast<hectolumen_second_ld>(val);
     }
-    constexpr decalumen_second_ld operator""_das_cd(long double val) {
+    consteval decalumen_second_ld operator""_das_cd(long double val) {
         return static_cast<decalumen_second_ld>(val);
     }
-    constexpr lumen_second_ld operator""_s_cd(long double val) {
+    consteval lumen_second_ld operator""_s_cd(long double val) {
         return static_cast<lumen_second_ld>(val);
     }
-    constexpr decilumen_second_ld operator""_ds_cd(long double val) {
+    consteval decilumen_second_ld operator""_ds_cd(long double val) {
         return static_cast<decilumen_second_ld>(val);
     }
-    constexpr centilumen_second_ld operator""_cs_cd(long double val) {
+    consteval centilumen_second_ld operator""_cs_cd(long double val) {
         return static_cast<centilumen_second_ld>(val);
     }
-    constexpr millilumen_second_ld operator""_ms_cd(long double val) {
+    consteval millilumen_second_ld operator""_ms_cd(long double val) {
         return static_cast<millilumen_second_ld>(val);
     }
-    constexpr microlumen_second_ld operator""_us_cd(long double val) {
+    consteval microlumen_second_ld operator""_us_cd(long double val) {
         return static_cast<microlumen_second_ld>(val);
     }
-    constexpr nanolumen_second_ld operator""_ns_cd(long double val) {
+    consteval nanolumen_second_ld operator""_ns_cd(long double val) {
         return static_cast<nanolumen_second_ld>(val);
     }
-    constexpr picolumen_second_ld operator""_ps_cd(long double val) {
+    consteval picolumen_second_ld operator""_ps_cd(long double val) {
         return static_cast<picolumen_second_ld>(val);
     }
-    constexpr femtolumen_second_ld operator""_fs_cd(long double val) {
+    consteval femtolumen_second_ld operator""_fs_cd(long double val) {
         return static_cast<femtolumen_second_ld>(val);
     }
-    constexpr attolumen_second_ld operator""_as_cd(long double val) {
+    consteval attolumen_second_ld operator""_as_cd(long double val) {
         return static_cast<attolumen_second_ld>(val);
     }
-    constexpr exalumen_second_ull operator""_Es_cd(unsigned long long val) {
+    consteval exalumen_second_ull operator""_Es_cd(unsigned long long val) {
         return static_cast<exalumen_second_ull>(val);
     }
-    constexpr petalumen_second_ull operator""_Ps_cd(unsigned long long val) {
+    consteval petalumen_second_ull operator""_Ps_cd(unsigned long long val) {
         return static_cast<petalumen_second_ull>(val);
     }
-    constexpr teralumen_second_ull operator""_Ts_cd(unsigned long long val) {
+    consteval teralumen_second_ull operator""_Ts_cd(unsigned long long val) {
         return static_cast<teralumen_second_ull>(val);
     }
-    constexpr gigalumen_second_ull operator""_Gs_cd(unsigned long long val) {
+    consteval gigalumen_second_ull operator""_Gs_cd(unsigned long long val) {
         return static_cast<gigalumen_second_ull>(val);
     }
-    constexpr megalumen_second_ull operator""_Ms_cd(unsigned long long val) {
+    consteval megalumen_second_ull operator""_Ms_cd(unsigned long long val) {
         return static_cast<megalumen_second_ull>(val);
     }
-    constexpr kilolumen_second_ull operator""_ks_cd(unsigned long long val) {
+    consteval kilolumen_second_ull operator""_ks_cd(unsigned long long val) {
         return static_cast<kilolumen_second_ull>(val);
     }
-    constexpr hectolumen_second_ull operator""_hs_cd(unsigned long long val) {
+    consteval hectolumen_second_ull operator""_hs_cd(unsigned long long val) {
         return static_cast<hectolumen_second_ull>(val);
     }
-    constexpr decalumen_second_ull operator""_das_cd(unsigned long long val) {
+    consteval decalumen_second_ull operator""_das_cd(unsigned long long val) {
         return static_cast<decalumen_second_ull>(val);
     }
-    constexpr lumen_second_ull operator""_s_cd(unsigned long long val) {
+    consteval lumen_second_ull operator""_s_cd(unsigned long long val) {
         return static_cast<lumen_second_ull>(val);
     }
-    constexpr decilumen_second_ull operator""_ds_cd(unsigned long long val) {
+    consteval decilumen_second_ull operator""_ds_cd(unsigned long long val) {
         return static_cast<decilumen_second_ull>(val);
     }
-    constexpr centilumen_second_ull operator""_cs_cd(unsigned long long val) {
+    consteval centilumen_second_ull operator""_cs_cd(unsigned long long val) {
         return static_cast<centilumen_second_ull>(val);
     }
-    constexpr millilumen_second_ull operator""_ms_cd(unsigned long long val) {
+    consteval millilumen_second_ull operator""_ms_cd(unsigned long long val) {
         return static_cast<millilumen_second_ull>(val);
     }
-    constexpr microlumen_second_ull operator""_us_cd(unsigned long long val) {
+    consteval microlumen_second_ull operator""_us_cd(unsigned long long val) {
         return static_cast<microlumen_second_ull>(val);
     }
-    constexpr nanolumen_second_ull operator""_ns_cd(unsigned long long val) {
+    consteval nanolumen_second_ull operator""_ns_cd(unsigned long long val) {
         return static_cast<nanolumen_second_ull>(val);
     }
-    constexpr picolumen_second_ull operator""_ps_cd(unsigned long long val) {
+    consteval picolumen_second_ull operator""_ps_cd(unsigned long long val) {
         return static_cast<picolumen_second_ull>(val);
     }
-    constexpr femtolumen_second_ull operator""_fs_cd(unsigned long long val) {
+    consteval femtolumen_second_ull operator""_fs_cd(unsigned long long val) {
         return static_cast<femtolumen_second_ull>(val);
     }
-    constexpr attolumen_second_ull operator""_as_cd(unsigned long long val) {
+    consteval attolumen_second_ull operator""_as_cd(unsigned long long val) {
         return static_cast<attolumen_second_ull>(val);
     }
 

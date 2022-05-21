@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtosecond_ull    =     second_impl<std::femto, unsigned long long>;
     using attosecond_ull    =     second_impl<std::atto, unsigned long long>;
 
-    constexpr exasecond_ld operator""_Es(long double val) {
+    consteval exasecond_ld operator""_Es(long double val) {
         return static_cast<exasecond_ld>(val);
     }
-    constexpr petasecond_ld operator""_Ps(long double val) {
+    consteval petasecond_ld operator""_Ps(long double val) {
         return static_cast<petasecond_ld>(val);
     }
-    constexpr terasecond_ld operator""_Ts(long double val) {
+    consteval terasecond_ld operator""_Ts(long double val) {
         return static_cast<terasecond_ld>(val);
     }
-    constexpr gigasecond_ld operator""_Gs(long double val) {
+    consteval gigasecond_ld operator""_Gs(long double val) {
         return static_cast<gigasecond_ld>(val);
     }
-    constexpr megasecond_ld operator""_Ms(long double val) {
+    consteval megasecond_ld operator""_Ms(long double val) {
         return static_cast<megasecond_ld>(val);
     }
-    constexpr kilosecond_ld operator""_ks(long double val) {
+    consteval kilosecond_ld operator""_ks(long double val) {
         return static_cast<kilosecond_ld>(val);
     }
-    constexpr hectosecond_ld operator""_hs(long double val) {
+    consteval hectosecond_ld operator""_hs(long double val) {
         return static_cast<hectosecond_ld>(val);
     }
-    constexpr decasecond_ld operator""_das(long double val) {
+    consteval decasecond_ld operator""_das(long double val) {
         return static_cast<decasecond_ld>(val);
     }
-    constexpr second_ld operator""_s(long double val) {
+    consteval second_ld operator""_s(long double val) {
         return static_cast<second_ld>(val);
     }
-    constexpr decisecond_ld operator""_ds(long double val) {
+    consteval decisecond_ld operator""_ds(long double val) {
         return static_cast<decisecond_ld>(val);
     }
-    constexpr centisecond_ld operator""_cs(long double val) {
+    consteval centisecond_ld operator""_cs(long double val) {
         return static_cast<centisecond_ld>(val);
     }
-    constexpr millisecond_ld operator""_ms(long double val) {
+    consteval millisecond_ld operator""_ms(long double val) {
         return static_cast<millisecond_ld>(val);
     }
-    constexpr microsecond_ld operator""_us(long double val) {
+    consteval microsecond_ld operator""_us(long double val) {
         return static_cast<microsecond_ld>(val);
     }
-    constexpr nanosecond_ld operator""_ns(long double val) {
+    consteval nanosecond_ld operator""_ns(long double val) {
         return static_cast<nanosecond_ld>(val);
     }
-    constexpr picosecond_ld operator""_ps(long double val) {
+    consteval picosecond_ld operator""_ps(long double val) {
         return static_cast<picosecond_ld>(val);
     }
-    constexpr femtosecond_ld operator""_fs(long double val) {
+    consteval femtosecond_ld operator""_fs(long double val) {
         return static_cast<femtosecond_ld>(val);
     }
-    constexpr attosecond_ld operator""_as(long double val) {
+    consteval attosecond_ld operator""_as(long double val) {
         return static_cast<attosecond_ld>(val);
     }
-    constexpr exasecond_ull operator""_Es(unsigned long long val) {
+    consteval exasecond_ull operator""_Es(unsigned long long val) {
         return static_cast<exasecond_ull>(val);
     }
-    constexpr petasecond_ull operator""_Ps(unsigned long long val) {
+    consteval petasecond_ull operator""_Ps(unsigned long long val) {
         return static_cast<petasecond_ull>(val);
     }
-    constexpr terasecond_ull operator""_Ts(unsigned long long val) {
+    consteval terasecond_ull operator""_Ts(unsigned long long val) {
         return static_cast<terasecond_ull>(val);
     }
-    constexpr gigasecond_ull operator""_Gs(unsigned long long val) {
+    consteval gigasecond_ull operator""_Gs(unsigned long long val) {
         return static_cast<gigasecond_ull>(val);
     }
-    constexpr megasecond_ull operator""_Ms(unsigned long long val) {
+    consteval megasecond_ull operator""_Ms(unsigned long long val) {
         return static_cast<megasecond_ull>(val);
     }
-    constexpr kilosecond_ull operator""_ks(unsigned long long val) {
+    consteval kilosecond_ull operator""_ks(unsigned long long val) {
         return static_cast<kilosecond_ull>(val);
     }
-    constexpr hectosecond_ull operator""_hs(unsigned long long val) {
+    consteval hectosecond_ull operator""_hs(unsigned long long val) {
         return static_cast<hectosecond_ull>(val);
     }
-    constexpr decasecond_ull operator""_das(unsigned long long val) {
+    consteval decasecond_ull operator""_das(unsigned long long val) {
         return static_cast<decasecond_ull>(val);
     }
-    constexpr second_ull operator""_s(unsigned long long val) {
+    consteval second_ull operator""_s(unsigned long long val) {
         return static_cast<second_ull>(val);
     }
-    constexpr decisecond_ull operator""_ds(unsigned long long val) {
+    consteval decisecond_ull operator""_ds(unsigned long long val) {
         return static_cast<decisecond_ull>(val);
     }
-    constexpr centisecond_ull operator""_cs(unsigned long long val) {
+    consteval centisecond_ull operator""_cs(unsigned long long val) {
         return static_cast<centisecond_ull>(val);
     }
-    constexpr millisecond_ull operator""_ms(unsigned long long val) {
+    consteval millisecond_ull operator""_ms(unsigned long long val) {
         return static_cast<millisecond_ull>(val);
     }
-    constexpr microsecond_ull operator""_us(unsigned long long val) {
+    consteval microsecond_ull operator""_us(unsigned long long val) {
         return static_cast<microsecond_ull>(val);
     }
-    constexpr nanosecond_ull operator""_ns(unsigned long long val) {
+    consteval nanosecond_ull operator""_ns(unsigned long long val) {
         return static_cast<nanosecond_ull>(val);
     }
-    constexpr picosecond_ull operator""_ps(unsigned long long val) {
+    consteval picosecond_ull operator""_ps(unsigned long long val) {
         return static_cast<picosecond_ull>(val);
     }
-    constexpr femtosecond_ull operator""_fs(unsigned long long val) {
+    consteval femtosecond_ull operator""_fs(unsigned long long val) {
         return static_cast<femtosecond_ull>(val);
     }
-    constexpr attosecond_ull operator""_as(unsigned long long val) {
+    consteval attosecond_ull operator""_as(unsigned long long val) {
         return static_cast<attosecond_ull>(val);
     }
 

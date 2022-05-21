@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtoampere_per_meter_ull    =     ampere_per_meter_impl<std::femto, unsigned long long>;
     using attoampere_per_meter_ull    =     ampere_per_meter_impl<std::atto, unsigned long long>;
 
-    constexpr exaampere_per_meter_ld operator""_EA_per_m(long double val) {
+    consteval exaampere_per_meter_ld operator""_EA_per_m(long double val) {
         return static_cast<exaampere_per_meter_ld>(val);
     }
-    constexpr petaampere_per_meter_ld operator""_PA_per_m(long double val) {
+    consteval petaampere_per_meter_ld operator""_PA_per_m(long double val) {
         return static_cast<petaampere_per_meter_ld>(val);
     }
-    constexpr teraampere_per_meter_ld operator""_TA_per_m(long double val) {
+    consteval teraampere_per_meter_ld operator""_TA_per_m(long double val) {
         return static_cast<teraampere_per_meter_ld>(val);
     }
-    constexpr gigaampere_per_meter_ld operator""_GA_per_m(long double val) {
+    consteval gigaampere_per_meter_ld operator""_GA_per_m(long double val) {
         return static_cast<gigaampere_per_meter_ld>(val);
     }
-    constexpr megaampere_per_meter_ld operator""_MA_per_m(long double val) {
+    consteval megaampere_per_meter_ld operator""_MA_per_m(long double val) {
         return static_cast<megaampere_per_meter_ld>(val);
     }
-    constexpr kiloampere_per_meter_ld operator""_kA_per_m(long double val) {
+    consteval kiloampere_per_meter_ld operator""_kA_per_m(long double val) {
         return static_cast<kiloampere_per_meter_ld>(val);
     }
-    constexpr hectoampere_per_meter_ld operator""_hA_per_m(long double val) {
+    consteval hectoampere_per_meter_ld operator""_hA_per_m(long double val) {
         return static_cast<hectoampere_per_meter_ld>(val);
     }
-    constexpr decaampere_per_meter_ld operator""_daA_per_m(long double val) {
+    consteval decaampere_per_meter_ld operator""_daA_per_m(long double val) {
         return static_cast<decaampere_per_meter_ld>(val);
     }
-    constexpr ampere_per_meter_ld operator""_A_per_m(long double val) {
+    consteval ampere_per_meter_ld operator""_A_per_m(long double val) {
         return static_cast<ampere_per_meter_ld>(val);
     }
-    constexpr deciampere_per_meter_ld operator""_dA_per_m(long double val) {
+    consteval deciampere_per_meter_ld operator""_dA_per_m(long double val) {
         return static_cast<deciampere_per_meter_ld>(val);
     }
-    constexpr centiampere_per_meter_ld operator""_cA_per_m(long double val) {
+    consteval centiampere_per_meter_ld operator""_cA_per_m(long double val) {
         return static_cast<centiampere_per_meter_ld>(val);
     }
-    constexpr milliampere_per_meter_ld operator""_mA_per_m(long double val) {
+    consteval milliampere_per_meter_ld operator""_mA_per_m(long double val) {
         return static_cast<milliampere_per_meter_ld>(val);
     }
-    constexpr microampere_per_meter_ld operator""_uA_per_m(long double val) {
+    consteval microampere_per_meter_ld operator""_uA_per_m(long double val) {
         return static_cast<microampere_per_meter_ld>(val);
     }
-    constexpr nanoampere_per_meter_ld operator""_nA_per_m(long double val) {
+    consteval nanoampere_per_meter_ld operator""_nA_per_m(long double val) {
         return static_cast<nanoampere_per_meter_ld>(val);
     }
-    constexpr picoampere_per_meter_ld operator""_pA_per_m(long double val) {
+    consteval picoampere_per_meter_ld operator""_pA_per_m(long double val) {
         return static_cast<picoampere_per_meter_ld>(val);
     }
-    constexpr femtoampere_per_meter_ld operator""_fA_per_m(long double val) {
+    consteval femtoampere_per_meter_ld operator""_fA_per_m(long double val) {
         return static_cast<femtoampere_per_meter_ld>(val);
     }
-    constexpr attoampere_per_meter_ld operator""_aA_per_m(long double val) {
+    consteval attoampere_per_meter_ld operator""_aA_per_m(long double val) {
         return static_cast<attoampere_per_meter_ld>(val);
     }
-    constexpr exaampere_per_meter_ull operator""_EA_per_m(unsigned long long val) {
+    consteval exaampere_per_meter_ull operator""_EA_per_m(unsigned long long val) {
         return static_cast<exaampere_per_meter_ull>(val);
     }
-    constexpr petaampere_per_meter_ull operator""_PA_per_m(unsigned long long val) {
+    consteval petaampere_per_meter_ull operator""_PA_per_m(unsigned long long val) {
         return static_cast<petaampere_per_meter_ull>(val);
     }
-    constexpr teraampere_per_meter_ull operator""_TA_per_m(unsigned long long val) {
+    consteval teraampere_per_meter_ull operator""_TA_per_m(unsigned long long val) {
         return static_cast<teraampere_per_meter_ull>(val);
     }
-    constexpr gigaampere_per_meter_ull operator""_GA_per_m(unsigned long long val) {
+    consteval gigaampere_per_meter_ull operator""_GA_per_m(unsigned long long val) {
         return static_cast<gigaampere_per_meter_ull>(val);
     }
-    constexpr megaampere_per_meter_ull operator""_MA_per_m(unsigned long long val) {
+    consteval megaampere_per_meter_ull operator""_MA_per_m(unsigned long long val) {
         return static_cast<megaampere_per_meter_ull>(val);
     }
-    constexpr kiloampere_per_meter_ull operator""_kA_per_m(unsigned long long val) {
+    consteval kiloampere_per_meter_ull operator""_kA_per_m(unsigned long long val) {
         return static_cast<kiloampere_per_meter_ull>(val);
     }
-    constexpr hectoampere_per_meter_ull operator""_hA_per_m(unsigned long long val) {
+    consteval hectoampere_per_meter_ull operator""_hA_per_m(unsigned long long val) {
         return static_cast<hectoampere_per_meter_ull>(val);
     }
-    constexpr decaampere_per_meter_ull operator""_daA_per_m(unsigned long long val) {
+    consteval decaampere_per_meter_ull operator""_daA_per_m(unsigned long long val) {
         return static_cast<decaampere_per_meter_ull>(val);
     }
-    constexpr ampere_per_meter_ull operator""_A_per_m(unsigned long long val) {
+    consteval ampere_per_meter_ull operator""_A_per_m(unsigned long long val) {
         return static_cast<ampere_per_meter_ull>(val);
     }
-    constexpr deciampere_per_meter_ull operator""_dA_per_m(unsigned long long val) {
+    consteval deciampere_per_meter_ull operator""_dA_per_m(unsigned long long val) {
         return static_cast<deciampere_per_meter_ull>(val);
     }
-    constexpr centiampere_per_meter_ull operator""_cA_per_m(unsigned long long val) {
+    consteval centiampere_per_meter_ull operator""_cA_per_m(unsigned long long val) {
         return static_cast<centiampere_per_meter_ull>(val);
     }
-    constexpr milliampere_per_meter_ull operator""_mA_per_m(unsigned long long val) {
+    consteval milliampere_per_meter_ull operator""_mA_per_m(unsigned long long val) {
         return static_cast<milliampere_per_meter_ull>(val);
     }
-    constexpr microampere_per_meter_ull operator""_uA_per_m(unsigned long long val) {
+    consteval microampere_per_meter_ull operator""_uA_per_m(unsigned long long val) {
         return static_cast<microampere_per_meter_ull>(val);
     }
-    constexpr nanoampere_per_meter_ull operator""_nA_per_m(unsigned long long val) {
+    consteval nanoampere_per_meter_ull operator""_nA_per_m(unsigned long long val) {
         return static_cast<nanoampere_per_meter_ull>(val);
     }
-    constexpr picoampere_per_meter_ull operator""_pA_per_m(unsigned long long val) {
+    consteval picoampere_per_meter_ull operator""_pA_per_m(unsigned long long val) {
         return static_cast<picoampere_per_meter_ull>(val);
     }
-    constexpr femtoampere_per_meter_ull operator""_fA_per_m(unsigned long long val) {
+    consteval femtoampere_per_meter_ull operator""_fA_per_m(unsigned long long val) {
         return static_cast<femtoampere_per_meter_ull>(val);
     }
-    constexpr attoampere_per_meter_ull operator""_aA_per_m(unsigned long long val) {
+    consteval attoampere_per_meter_ull operator""_aA_per_m(unsigned long long val) {
         return static_cast<attoampere_per_meter_ull>(val);
     }
 

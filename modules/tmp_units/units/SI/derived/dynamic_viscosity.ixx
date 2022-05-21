@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtopascal_second_ull    =     pascal_second_impl<std::femto, unsigned long long>;
     using attopascal_second_ull    =     pascal_second_impl<std::atto, unsigned long long>;
 
-    constexpr exapascal_second_ld operator""_EPa_s(long double val) {
+    consteval exapascal_second_ld operator""_EPa_s(long double val) {
         return static_cast<exapascal_second_ld>(val);
     }
-    constexpr petapascal_second_ld operator""_PPa_s(long double val) {
+    consteval petapascal_second_ld operator""_PPa_s(long double val) {
         return static_cast<petapascal_second_ld>(val);
     }
-    constexpr terapascal_second_ld operator""_TPa_s(long double val) {
+    consteval terapascal_second_ld operator""_TPa_s(long double val) {
         return static_cast<terapascal_second_ld>(val);
     }
-    constexpr gigapascal_second_ld operator""_GPa_s(long double val) {
+    consteval gigapascal_second_ld operator""_GPa_s(long double val) {
         return static_cast<gigapascal_second_ld>(val);
     }
-    constexpr megapascal_second_ld operator""_MPa_s(long double val) {
+    consteval megapascal_second_ld operator""_MPa_s(long double val) {
         return static_cast<megapascal_second_ld>(val);
     }
-    constexpr kilopascal_second_ld operator""_kPa_s(long double val) {
+    consteval kilopascal_second_ld operator""_kPa_s(long double val) {
         return static_cast<kilopascal_second_ld>(val);
     }
-    constexpr hectopascal_second_ld operator""_hPa_s(long double val) {
+    consteval hectopascal_second_ld operator""_hPa_s(long double val) {
         return static_cast<hectopascal_second_ld>(val);
     }
-    constexpr decapascal_second_ld operator""_daPa_s(long double val) {
+    consteval decapascal_second_ld operator""_daPa_s(long double val) {
         return static_cast<decapascal_second_ld>(val);
     }
-    constexpr pascal_second_ld operator""_Pa_s(long double val) {
+    consteval pascal_second_ld operator""_Pa_s(long double val) {
         return static_cast<pascal_second_ld>(val);
     }
-    constexpr decipascal_second_ld operator""_dPa_s(long double val) {
+    consteval decipascal_second_ld operator""_dPa_s(long double val) {
         return static_cast<decipascal_second_ld>(val);
     }
-    constexpr centipascal_second_ld operator""_cPa_s(long double val) {
+    consteval centipascal_second_ld operator""_cPa_s(long double val) {
         return static_cast<centipascal_second_ld>(val);
     }
-    constexpr millipascal_second_ld operator""_mPa_s(long double val) {
+    consteval millipascal_second_ld operator""_mPa_s(long double val) {
         return static_cast<millipascal_second_ld>(val);
     }
-    constexpr micropascal_second_ld operator""_uPa_s(long double val) {
+    consteval micropascal_second_ld operator""_uPa_s(long double val) {
         return static_cast<micropascal_second_ld>(val);
     }
-    constexpr nanopascal_second_ld operator""_nPa_s(long double val) {
+    consteval nanopascal_second_ld operator""_nPa_s(long double val) {
         return static_cast<nanopascal_second_ld>(val);
     }
-    constexpr picopascal_second_ld operator""_pPa_s(long double val) {
+    consteval picopascal_second_ld operator""_pPa_s(long double val) {
         return static_cast<picopascal_second_ld>(val);
     }
-    constexpr femtopascal_second_ld operator""_fPa_s(long double val) {
+    consteval femtopascal_second_ld operator""_fPa_s(long double val) {
         return static_cast<femtopascal_second_ld>(val);
     }
-    constexpr attopascal_second_ld operator""_aPa_s(long double val) {
+    consteval attopascal_second_ld operator""_aPa_s(long double val) {
         return static_cast<attopascal_second_ld>(val);
     }
-    constexpr exapascal_second_ull operator""_EPa_s(unsigned long long val) {
+    consteval exapascal_second_ull operator""_EPa_s(unsigned long long val) {
         return static_cast<exapascal_second_ull>(val);
     }
-    constexpr petapascal_second_ull operator""_PPa_s(unsigned long long val) {
+    consteval petapascal_second_ull operator""_PPa_s(unsigned long long val) {
         return static_cast<petapascal_second_ull>(val);
     }
-    constexpr terapascal_second_ull operator""_TPa_s(unsigned long long val) {
+    consteval terapascal_second_ull operator""_TPa_s(unsigned long long val) {
         return static_cast<terapascal_second_ull>(val);
     }
-    constexpr gigapascal_second_ull operator""_GPa_s(unsigned long long val) {
+    consteval gigapascal_second_ull operator""_GPa_s(unsigned long long val) {
         return static_cast<gigapascal_second_ull>(val);
     }
-    constexpr megapascal_second_ull operator""_MPa_s(unsigned long long val) {
+    consteval megapascal_second_ull operator""_MPa_s(unsigned long long val) {
         return static_cast<megapascal_second_ull>(val);
     }
-    constexpr kilopascal_second_ull operator""_kPa_s(unsigned long long val) {
+    consteval kilopascal_second_ull operator""_kPa_s(unsigned long long val) {
         return static_cast<kilopascal_second_ull>(val);
     }
-    constexpr hectopascal_second_ull operator""_hPa_s(unsigned long long val) {
+    consteval hectopascal_second_ull operator""_hPa_s(unsigned long long val) {
         return static_cast<hectopascal_second_ull>(val);
     }
-    constexpr decapascal_second_ull operator""_daPa_s(unsigned long long val) {
+    consteval decapascal_second_ull operator""_daPa_s(unsigned long long val) {
         return static_cast<decapascal_second_ull>(val);
     }
-    constexpr pascal_second_ull operator""_Pa_s(unsigned long long val) {
+    consteval pascal_second_ull operator""_Pa_s(unsigned long long val) {
         return static_cast<pascal_second_ull>(val);
     }
-    constexpr decipascal_second_ull operator""_dPa_s(unsigned long long val) {
+    consteval decipascal_second_ull operator""_dPa_s(unsigned long long val) {
         return static_cast<decipascal_second_ull>(val);
     }
-    constexpr centipascal_second_ull operator""_cPa_s(unsigned long long val) {
+    consteval centipascal_second_ull operator""_cPa_s(unsigned long long val) {
         return static_cast<centipascal_second_ull>(val);
     }
-    constexpr millipascal_second_ull operator""_mPa_s(unsigned long long val) {
+    consteval millipascal_second_ull operator""_mPa_s(unsigned long long val) {
         return static_cast<millipascal_second_ull>(val);
     }
-    constexpr micropascal_second_ull operator""_uPa_s(unsigned long long val) {
+    consteval micropascal_second_ull operator""_uPa_s(unsigned long long val) {
         return static_cast<micropascal_second_ull>(val);
     }
-    constexpr nanopascal_second_ull operator""_nPa_s(unsigned long long val) {
+    consteval nanopascal_second_ull operator""_nPa_s(unsigned long long val) {
         return static_cast<nanopascal_second_ull>(val);
     }
-    constexpr picopascal_second_ull operator""_pPa_s(unsigned long long val) {
+    consteval picopascal_second_ull operator""_pPa_s(unsigned long long val) {
         return static_cast<picopascal_second_ull>(val);
     }
-    constexpr femtopascal_second_ull operator""_fPa_s(unsigned long long val) {
+    consteval femtopascal_second_ull operator""_fPa_s(unsigned long long val) {
         return static_cast<femtopascal_second_ull>(val);
     }
-    constexpr attopascal_second_ull operator""_aPa_s(unsigned long long val) {
+    consteval attopascal_second_ull operator""_aPa_s(unsigned long long val) {
         return static_cast<attopascal_second_ull>(val);
     }
 

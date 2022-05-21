@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtocoulomb_per_cubic_meter_ull    =     coulomb_per_cubic_meter_impl<std::femto, unsigned long long>;
     using attocoulomb_per_cubic_meter_ull    =     coulomb_per_cubic_meter_impl<std::atto, unsigned long long>;
 
-    constexpr exacoulomb_per_cubic_meter_ld operator""_EC_per_cubic_m(long double val) {
+    consteval exacoulomb_per_cubic_meter_ld operator""_EC_per_cubic_m(long double val) {
         return static_cast<exacoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr petacoulomb_per_cubic_meter_ld operator""_PC_per_cubic_m(long double val) {
+    consteval petacoulomb_per_cubic_meter_ld operator""_PC_per_cubic_m(long double val) {
         return static_cast<petacoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr teracoulomb_per_cubic_meter_ld operator""_TC_per_cubic_m(long double val) {
+    consteval teracoulomb_per_cubic_meter_ld operator""_TC_per_cubic_m(long double val) {
         return static_cast<teracoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr gigacoulomb_per_cubic_meter_ld operator""_GC_per_cubic_m(long double val) {
+    consteval gigacoulomb_per_cubic_meter_ld operator""_GC_per_cubic_m(long double val) {
         return static_cast<gigacoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr megacoulomb_per_cubic_meter_ld operator""_MC_per_cubic_m(long double val) {
+    consteval megacoulomb_per_cubic_meter_ld operator""_MC_per_cubic_m(long double val) {
         return static_cast<megacoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr kilocoulomb_per_cubic_meter_ld operator""_kC_per_cubic_m(long double val) {
+    consteval kilocoulomb_per_cubic_meter_ld operator""_kC_per_cubic_m(long double val) {
         return static_cast<kilocoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr hectocoulomb_per_cubic_meter_ld operator""_hC_per_cubic_m(long double val) {
+    consteval hectocoulomb_per_cubic_meter_ld operator""_hC_per_cubic_m(long double val) {
         return static_cast<hectocoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr decacoulomb_per_cubic_meter_ld operator""_daC_per_cubic_m(long double val) {
+    consteval decacoulomb_per_cubic_meter_ld operator""_daC_per_cubic_m(long double val) {
         return static_cast<decacoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr coulomb_per_cubic_meter_ld operator""_C_per_cubic_m(long double val) {
+    consteval coulomb_per_cubic_meter_ld operator""_C_per_cubic_m(long double val) {
         return static_cast<coulomb_per_cubic_meter_ld>(val);
     }
-    constexpr decicoulomb_per_cubic_meter_ld operator""_dC_per_cubic_m(long double val) {
+    consteval decicoulomb_per_cubic_meter_ld operator""_dC_per_cubic_m(long double val) {
         return static_cast<decicoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr centicoulomb_per_cubic_meter_ld operator""_cC_per_cubic_m(long double val) {
+    consteval centicoulomb_per_cubic_meter_ld operator""_cC_per_cubic_m(long double val) {
         return static_cast<centicoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr millicoulomb_per_cubic_meter_ld operator""_mC_per_cubic_m(long double val) {
+    consteval millicoulomb_per_cubic_meter_ld operator""_mC_per_cubic_m(long double val) {
         return static_cast<millicoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr microcoulomb_per_cubic_meter_ld operator""_uC_per_cubic_m(long double val) {
+    consteval microcoulomb_per_cubic_meter_ld operator""_uC_per_cubic_m(long double val) {
         return static_cast<microcoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr nanocoulomb_per_cubic_meter_ld operator""_nC_per_cubic_m(long double val) {
+    consteval nanocoulomb_per_cubic_meter_ld operator""_nC_per_cubic_m(long double val) {
         return static_cast<nanocoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr picocoulomb_per_cubic_meter_ld operator""_pC_per_cubic_m(long double val) {
+    consteval picocoulomb_per_cubic_meter_ld operator""_pC_per_cubic_m(long double val) {
         return static_cast<picocoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr femtocoulomb_per_cubic_meter_ld operator""_fC_per_cubic_m(long double val) {
+    consteval femtocoulomb_per_cubic_meter_ld operator""_fC_per_cubic_m(long double val) {
         return static_cast<femtocoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr attocoulomb_per_cubic_meter_ld operator""_aC_per_cubic_m(long double val) {
+    consteval attocoulomb_per_cubic_meter_ld operator""_aC_per_cubic_m(long double val) {
         return static_cast<attocoulomb_per_cubic_meter_ld>(val);
     }
-    constexpr exacoulomb_per_cubic_meter_ull operator""_EC_per_cubic_m(unsigned long long val) {
+    consteval exacoulomb_per_cubic_meter_ull operator""_EC_per_cubic_m(unsigned long long val) {
         return static_cast<exacoulomb_per_cubic_meter_ull>(val);
     }
-    constexpr petacoulomb_per_cubic_meter_ull operator""_PC_per_cubic_m(unsigned long long val) {
+    consteval petacoulomb_per_cubic_meter_ull operator""_PC_per_cubic_m(unsigned long long val) {
         return static_cast<petacoulomb_per_cubic_meter_ull>(val);
     }
-    constexpr teracoulomb_per_cubic_meter_ull operator""_TC_per_cubic_m(unsigned long long val) {
+    consteval teracoulomb_per_cubic_meter_ull operator""_TC_per_cubic_m(unsigned long long val) {
         return static_cast<teracoulomb_per_cubic_meter_ull>(val);
     }
-    constexpr gigacoulomb_per_cubic_meter_ull operator""_GC_per_cubic_m(unsigned long long val) {
+    consteval gigacoulomb_per_cubic_meter_ull operator""_GC_per_cubic_m(unsigned long long val) {
         return static_cast<gigacoulomb_per_cubic_meter_ull>(val);
     }
-    constexpr megacoulomb_per_cubic_meter_ull operator""_MC_per_cubic_m(unsigned long long val) {
+    consteval megacoulomb_per_cubic_meter_ull operator""_MC_per_cubic_m(unsigned long long val) {
         return static_cast<megacoulomb_per_cubic_meter_ull>(val);
     }
-    constexpr kilocoulomb_per_cubic_meter_ull operator""_kC_per_cubic_m(unsigned long long val) {
+    consteval kilocoulomb_per_cubic_meter_ull operator""_kC_per_cubic_m(unsigned long long val) {
         return static_cast<kilocoulomb_per_cubic_meter_ull>(val);
     }
-    constexpr hectocoulomb_per_cubic_meter_ull operator""_hC_per_cubic_m(unsigned long long val) {
+    consteval hectocoulomb_per_cubic_meter_ull operator""_hC_per_cubic_m(unsigned long long val) {
         return static_cast<hectocoulomb_per_cubic_meter_ull>(val);
     }
-    constexpr decacoulomb_per_cubic_meter_ull operator""_daC_per_cubic_m(unsigned long long val) {
+    consteval decacoulomb_per_cubic_meter_ull operator""_daC_per_cubic_m(unsigned long long val) {
         return static_cast<decacoulomb_per_cubic_meter_ull>(val);
     }
-    constexpr coulomb_per_cubic_meter_ull operator""_C_per_cubic_m(unsigned long long val) {
+    consteval coulomb_per_cubic_meter_ull operator""_C_per_cubic_m(unsigned long long val) {
         return static_cast<coulomb_per_cubic_meter_ull>(val);
     }
-    constexpr decicoulomb_per_cubic_meter_ull operator""_dC_per_cubic_m(unsigned long long val) {
+    consteval decicoulomb_per_cubic_meter_ull operator""_dC_per_cubic_m(unsigned long long val) {
         return static_cast<decicoulomb_per_cubic_meter_ull>(val);
     }
-    constexpr centicoulomb_per_cubic_meter_ull operator""_cC_per_cubic_m(unsigned long long val) {
+    consteval centicoulomb_per_cubic_meter_ull operator""_cC_per_cubic_m(unsigned long long val) {
         return static_cast<centicoulomb_per_cubic_meter_ull>(val);
     }
-    constexpr millicoulomb_per_cubic_meter_ull operator""_mC_per_cubic_m(unsigned long long val) {
+    consteval millicoulomb_per_cubic_meter_ull operator""_mC_per_cubic_m(unsigned long long val) {
         return static_cast<millicoulomb_per_cubic_meter_ull>(val);
     }
-    constexpr microcoulomb_per_cubic_meter_ull operator""_uC_per_cubic_m(unsigned long long val) {
+    consteval microcoulomb_per_cubic_meter_ull operator""_uC_per_cubic_m(unsigned long long val) {
         return static_cast<microcoulomb_per_cubic_meter_ull>(val);
     }
-    constexpr nanocoulomb_per_cubic_meter_ull operator""_nC_per_cubic_m(unsigned long long val) {
+    consteval nanocoulomb_per_cubic_meter_ull operator""_nC_per_cubic_m(unsigned long long val) {
         return static_cast<nanocoulomb_per_cubic_meter_ull>(val);
     }
-    constexpr picocoulomb_per_cubic_meter_ull operator""_pC_per_cubic_m(unsigned long long val) {
+    consteval picocoulomb_per_cubic_meter_ull operator""_pC_per_cubic_m(unsigned long long val) {
         return static_cast<picocoulomb_per_cubic_meter_ull>(val);
     }
-    constexpr femtocoulomb_per_cubic_meter_ull operator""_fC_per_cubic_m(unsigned long long val) {
+    consteval femtocoulomb_per_cubic_meter_ull operator""_fC_per_cubic_m(unsigned long long val) {
         return static_cast<femtocoulomb_per_cubic_meter_ull>(val);
     }
-    constexpr attocoulomb_per_cubic_meter_ull operator""_aC_per_cubic_m(unsigned long long val) {
+    consteval attocoulomb_per_cubic_meter_ull operator""_aC_per_cubic_m(unsigned long long val) {
         return static_cast<attocoulomb_per_cubic_meter_ull>(val);
     }
 

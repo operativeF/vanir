@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtohertz_per_second_ull    =     hertz_per_second_impl<std::femto, unsigned long long>;
     using attohertz_per_second_ull    =     hertz_per_second_impl<std::atto, unsigned long long>;
 
-    constexpr exahertz_per_second_ld operator""_Einv_square_s(long double val) {
+    consteval exahertz_per_second_ld operator""_Einv_square_s(long double val) {
         return static_cast<exahertz_per_second_ld>(val);
     }
-    constexpr petahertz_per_second_ld operator""_Pinv_square_s(long double val) {
+    consteval petahertz_per_second_ld operator""_Pinv_square_s(long double val) {
         return static_cast<petahertz_per_second_ld>(val);
     }
-    constexpr terahertz_per_second_ld operator""_Tinv_square_s(long double val) {
+    consteval terahertz_per_second_ld operator""_Tinv_square_s(long double val) {
         return static_cast<terahertz_per_second_ld>(val);
     }
-    constexpr gigahertz_per_second_ld operator""_Ginv_square_s(long double val) {
+    consteval gigahertz_per_second_ld operator""_Ginv_square_s(long double val) {
         return static_cast<gigahertz_per_second_ld>(val);
     }
-    constexpr megahertz_per_second_ld operator""_Minv_square_s(long double val) {
+    consteval megahertz_per_second_ld operator""_Minv_square_s(long double val) {
         return static_cast<megahertz_per_second_ld>(val);
     }
-    constexpr kilohertz_per_second_ld operator""_kinv_square_s(long double val) {
+    consteval kilohertz_per_second_ld operator""_kinv_square_s(long double val) {
         return static_cast<kilohertz_per_second_ld>(val);
     }
-    constexpr hectohertz_per_second_ld operator""_hinv_square_s(long double val) {
+    consteval hectohertz_per_second_ld operator""_hinv_square_s(long double val) {
         return static_cast<hectohertz_per_second_ld>(val);
     }
-    constexpr decahertz_per_second_ld operator""_dainv_square_s(long double val) {
+    consteval decahertz_per_second_ld operator""_dainv_square_s(long double val) {
         return static_cast<decahertz_per_second_ld>(val);
     }
-    constexpr hertz_per_second_ld operator""_inv_square_s(long double val) {
+    consteval hertz_per_second_ld operator""_inv_square_s(long double val) {
         return static_cast<hertz_per_second_ld>(val);
     }
-    constexpr decihertz_per_second_ld operator""_dinv_square_s(long double val) {
+    consteval decihertz_per_second_ld operator""_dinv_square_s(long double val) {
         return static_cast<decihertz_per_second_ld>(val);
     }
-    constexpr centihertz_per_second_ld operator""_cinv_square_s(long double val) {
+    consteval centihertz_per_second_ld operator""_cinv_square_s(long double val) {
         return static_cast<centihertz_per_second_ld>(val);
     }
-    constexpr millihertz_per_second_ld operator""_minv_square_s(long double val) {
+    consteval millihertz_per_second_ld operator""_minv_square_s(long double val) {
         return static_cast<millihertz_per_second_ld>(val);
     }
-    constexpr microhertz_per_second_ld operator""_uinv_square_s(long double val) {
+    consteval microhertz_per_second_ld operator""_uinv_square_s(long double val) {
         return static_cast<microhertz_per_second_ld>(val);
     }
-    constexpr nanohertz_per_second_ld operator""_ninv_square_s(long double val) {
+    consteval nanohertz_per_second_ld operator""_ninv_square_s(long double val) {
         return static_cast<nanohertz_per_second_ld>(val);
     }
-    constexpr picohertz_per_second_ld operator""_pinv_square_s(long double val) {
+    consteval picohertz_per_second_ld operator""_pinv_square_s(long double val) {
         return static_cast<picohertz_per_second_ld>(val);
     }
-    constexpr femtohertz_per_second_ld operator""_finv_square_s(long double val) {
+    consteval femtohertz_per_second_ld operator""_finv_square_s(long double val) {
         return static_cast<femtohertz_per_second_ld>(val);
     }
-    constexpr attohertz_per_second_ld operator""_ainv_square_s(long double val) {
+    consteval attohertz_per_second_ld operator""_ainv_square_s(long double val) {
         return static_cast<attohertz_per_second_ld>(val);
     }
-    constexpr exahertz_per_second_ull operator""_Einv_square_s(unsigned long long val) {
+    consteval exahertz_per_second_ull operator""_Einv_square_s(unsigned long long val) {
         return static_cast<exahertz_per_second_ull>(val);
     }
-    constexpr petahertz_per_second_ull operator""_Pinv_square_s(unsigned long long val) {
+    consteval petahertz_per_second_ull operator""_Pinv_square_s(unsigned long long val) {
         return static_cast<petahertz_per_second_ull>(val);
     }
-    constexpr terahertz_per_second_ull operator""_Tinv_square_s(unsigned long long val) {
+    consteval terahertz_per_second_ull operator""_Tinv_square_s(unsigned long long val) {
         return static_cast<terahertz_per_second_ull>(val);
     }
-    constexpr gigahertz_per_second_ull operator""_Ginv_square_s(unsigned long long val) {
+    consteval gigahertz_per_second_ull operator""_Ginv_square_s(unsigned long long val) {
         return static_cast<gigahertz_per_second_ull>(val);
     }
-    constexpr megahertz_per_second_ull operator""_Minv_square_s(unsigned long long val) {
+    consteval megahertz_per_second_ull operator""_Minv_square_s(unsigned long long val) {
         return static_cast<megahertz_per_second_ull>(val);
     }
-    constexpr kilohertz_per_second_ull operator""_kinv_square_s(unsigned long long val) {
+    consteval kilohertz_per_second_ull operator""_kinv_square_s(unsigned long long val) {
         return static_cast<kilohertz_per_second_ull>(val);
     }
-    constexpr hectohertz_per_second_ull operator""_hinv_square_s(unsigned long long val) {
+    consteval hectohertz_per_second_ull operator""_hinv_square_s(unsigned long long val) {
         return static_cast<hectohertz_per_second_ull>(val);
     }
-    constexpr decahertz_per_second_ull operator""_dainv_square_s(unsigned long long val) {
+    consteval decahertz_per_second_ull operator""_dainv_square_s(unsigned long long val) {
         return static_cast<decahertz_per_second_ull>(val);
     }
-    constexpr hertz_per_second_ull operator""_inv_square_s(unsigned long long val) {
+    consteval hertz_per_second_ull operator""_inv_square_s(unsigned long long val) {
         return static_cast<hertz_per_second_ull>(val);
     }
-    constexpr decihertz_per_second_ull operator""_dinv_square_s(unsigned long long val) {
+    consteval decihertz_per_second_ull operator""_dinv_square_s(unsigned long long val) {
         return static_cast<decihertz_per_second_ull>(val);
     }
-    constexpr centihertz_per_second_ull operator""_cinv_square_s(unsigned long long val) {
+    consteval centihertz_per_second_ull operator""_cinv_square_s(unsigned long long val) {
         return static_cast<centihertz_per_second_ull>(val);
     }
-    constexpr millihertz_per_second_ull operator""_minv_square_s(unsigned long long val) {
+    consteval millihertz_per_second_ull operator""_minv_square_s(unsigned long long val) {
         return static_cast<millihertz_per_second_ull>(val);
     }
-    constexpr microhertz_per_second_ull operator""_uinv_square_s(unsigned long long val) {
+    consteval microhertz_per_second_ull operator""_uinv_square_s(unsigned long long val) {
         return static_cast<microhertz_per_second_ull>(val);
     }
-    constexpr nanohertz_per_second_ull operator""_ninv_square_s(unsigned long long val) {
+    consteval nanohertz_per_second_ull operator""_ninv_square_s(unsigned long long val) {
         return static_cast<nanohertz_per_second_ull>(val);
     }
-    constexpr picohertz_per_second_ull operator""_pinv_square_s(unsigned long long val) {
+    consteval picohertz_per_second_ull operator""_pinv_square_s(unsigned long long val) {
         return static_cast<picohertz_per_second_ull>(val);
     }
-    constexpr femtohertz_per_second_ull operator""_finv_square_s(unsigned long long val) {
+    consteval femtohertz_per_second_ull operator""_finv_square_s(unsigned long long val) {
         return static_cast<femtohertz_per_second_ull>(val);
     }
-    constexpr attohertz_per_second_ull operator""_ainv_square_s(unsigned long long val) {
+    consteval attohertz_per_second_ull operator""_ainv_square_s(unsigned long long val) {
         return static_cast<attohertz_per_second_ull>(val);
     }
 

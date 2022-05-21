@@ -85,106 +85,106 @@ export namespace potato::units {
     using femtoampere_ull    =     ampere_impl<std::femto, unsigned long long>;
     using attoampere_ull    =     ampere_impl<std::atto, unsigned long long>;
 
-    constexpr exaampere_ld operator""_EA(long double val) {
+    consteval exaampere_ld operator""_EA(long double val) {
         return static_cast<exaampere_ld>(val);
     }
-    constexpr petaampere_ld operator""_PA(long double val) {
+    consteval petaampere_ld operator""_PA(long double val) {
         return static_cast<petaampere_ld>(val);
     }
-    constexpr teraampere_ld operator""_TA(long double val) {
+    consteval teraampere_ld operator""_TA(long double val) {
         return static_cast<teraampere_ld>(val);
     }
-    constexpr gigaampere_ld operator""_GA(long double val) {
+    consteval gigaampere_ld operator""_GA(long double val) {
         return static_cast<gigaampere_ld>(val);
     }
-    constexpr megaampere_ld operator""_MA(long double val) {
+    consteval megaampere_ld operator""_MA(long double val) {
         return static_cast<megaampere_ld>(val);
     }
-    constexpr kiloampere_ld operator""_kA(long double val) {
+    consteval kiloampere_ld operator""_kA(long double val) {
         return static_cast<kiloampere_ld>(val);
     }
-    constexpr hectoampere_ld operator""_hA(long double val) {
+    consteval hectoampere_ld operator""_hA(long double val) {
         return static_cast<hectoampere_ld>(val);
     }
-    constexpr decaampere_ld operator""_daA(long double val) {
+    consteval decaampere_ld operator""_daA(long double val) {
         return static_cast<decaampere_ld>(val);
     }
-    constexpr ampere_ld operator""_A(long double val) {
+    consteval ampere_ld operator""_A(long double val) {
         return static_cast<ampere_ld>(val);
     }
-    constexpr deciampere_ld operator""_dA(long double val) {
+    consteval deciampere_ld operator""_dA(long double val) {
         return static_cast<deciampere_ld>(val);
     }
-    constexpr centiampere_ld operator""_cA(long double val) {
+    consteval centiampere_ld operator""_cA(long double val) {
         return static_cast<centiampere_ld>(val);
     }
-    constexpr milliampere_ld operator""_mA(long double val) {
+    consteval milliampere_ld operator""_mA(long double val) {
         return static_cast<milliampere_ld>(val);
     }
-    constexpr microampere_ld operator""_uA(long double val) {
+    consteval microampere_ld operator""_uA(long double val) {
         return static_cast<microampere_ld>(val);
     }
-    constexpr nanoampere_ld operator""_nA(long double val) {
+    consteval nanoampere_ld operator""_nA(long double val) {
         return static_cast<nanoampere_ld>(val);
     }
-    constexpr picoampere_ld operator""_pA(long double val) {
+    consteval picoampere_ld operator""_pA(long double val) {
         return static_cast<picoampere_ld>(val);
     }
-    constexpr femtoampere_ld operator""_fA(long double val) {
+    consteval femtoampere_ld operator""_fA(long double val) {
         return static_cast<femtoampere_ld>(val);
     }
-    constexpr attoampere_ld operator""_aA(long double val) {
+    consteval attoampere_ld operator""_aA(long double val) {
         return static_cast<attoampere_ld>(val);
     }
-    constexpr exaampere_ull operator""_EA(unsigned long long val) {
+    consteval exaampere_ull operator""_EA(unsigned long long val) {
         return static_cast<exaampere_ull>(val);
     }
-    constexpr petaampere_ull operator""_PA(unsigned long long val) {
+    consteval petaampere_ull operator""_PA(unsigned long long val) {
         return static_cast<petaampere_ull>(val);
     }
-    constexpr teraampere_ull operator""_TA(unsigned long long val) {
+    consteval teraampere_ull operator""_TA(unsigned long long val) {
         return static_cast<teraampere_ull>(val);
     }
-    constexpr gigaampere_ull operator""_GA(unsigned long long val) {
+    consteval gigaampere_ull operator""_GA(unsigned long long val) {
         return static_cast<gigaampere_ull>(val);
     }
-    constexpr megaampere_ull operator""_MA(unsigned long long val) {
+    consteval megaampere_ull operator""_MA(unsigned long long val) {
         return static_cast<megaampere_ull>(val);
     }
-    constexpr kiloampere_ull operator""_kA(unsigned long long val) {
+    consteval kiloampere_ull operator""_kA(unsigned long long val) {
         return static_cast<kiloampere_ull>(val);
     }
-    constexpr hectoampere_ull operator""_hA(unsigned long long val) {
+    consteval hectoampere_ull operator""_hA(unsigned long long val) {
         return static_cast<hectoampere_ull>(val);
     }
-    constexpr decaampere_ull operator""_daA(unsigned long long val) {
+    consteval decaampere_ull operator""_daA(unsigned long long val) {
         return static_cast<decaampere_ull>(val);
     }
-    constexpr ampere_ull operator""_A(unsigned long long val) {
+    consteval ampere_ull operator""_A(unsigned long long val) {
         return static_cast<ampere_ull>(val);
     }
-    constexpr deciampere_ull operator""_dA(unsigned long long val) {
+    consteval deciampere_ull operator""_dA(unsigned long long val) {
         return static_cast<deciampere_ull>(val);
     }
-    constexpr centiampere_ull operator""_cA(unsigned long long val) {
+    consteval centiampere_ull operator""_cA(unsigned long long val) {
         return static_cast<centiampere_ull>(val);
     }
-    constexpr milliampere_ull operator""_mA(unsigned long long val) {
+    consteval milliampere_ull operator""_mA(unsigned long long val) {
         return static_cast<milliampere_ull>(val);
     }
-    constexpr microampere_ull operator""_uA(unsigned long long val) {
+    consteval microampere_ull operator""_uA(unsigned long long val) {
         return static_cast<microampere_ull>(val);
     }
-    constexpr nanoampere_ull operator""_nA(unsigned long long val) {
+    consteval nanoampere_ull operator""_nA(unsigned long long val) {
         return static_cast<nanoampere_ull>(val);
     }
-    constexpr picoampere_ull operator""_pA(unsigned long long val) {
+    consteval picoampere_ull operator""_pA(unsigned long long val) {
         return static_cast<picoampere_ull>(val);
     }
-    constexpr femtoampere_ull operator""_fA(unsigned long long val) {
+    consteval femtoampere_ull operator""_fA(unsigned long long val) {
         return static_cast<femtoampere_ull>(val);
     }
-    constexpr attoampere_ull operator""_aA(unsigned long long val) {
+    consteval attoampere_ull operator""_aA(unsigned long long val) {
         return static_cast<attoampere_ull>(val);
     }
 
