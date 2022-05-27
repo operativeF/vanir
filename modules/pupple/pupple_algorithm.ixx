@@ -28,7 +28,7 @@ template<typename TP>
 using tuple_indexer = std::make_index_sequence<std::tuple_size_v<TP>>;
 
 template<std::size_t V, std::size_t... Is>
-constexpr auto make_repeated_sequence(std::index_sequence<Is...>) -> std::index_sequence<(Is, V)...>
+consteval auto make_repeated_sequence(std::index_sequence<Is...>) -> std::index_sequence<(Is, V)...>
 {
     return {};
 }
@@ -37,26 +37,26 @@ template<std::size_t N, std::size_t V>
 using repeated_sequence = decltype(make_repeated_sequence<V>(std::make_index_sequence<N>{}));
 
 template<std::size_t... Is, std::size_t... Js>
-constexpr std::index_sequence<Is..., Js...> concat_sequences(std::index_sequence<Is...>,
+consteval std::index_sequence<Is..., Js...> concat_sequences(std::index_sequence<Is...>,
                                                              std::index_sequence<Js...>)
 {
     return {};
 }
 
 template<std::size_t... Is, std::size_t... Js, typename... Others>
-constexpr auto concat_sequences(std::index_sequence<Is...>, std::index_sequence<Js...>, Others...)
+consteval auto concat_sequences(std::index_sequence<Is...>, std::index_sequence<Js...>, Others...)
 {
     return concat_sequences(std::index_sequence<Is..., Js...>{}, Others{}...);
 }
 
 template<std::size_t... Is>
-constexpr std::index_sequence<Is...> concat_sequences(std::index_sequence<Is...>)
+consteval std::index_sequence<Is...> concat_sequences(std::index_sequence<Is...>)
 {
     return {};
 }
 
 template<typename T>
-constexpr std::index_sequence<> concat_sequences(std::index_sequence<>)
+consteval std::index_sequence<> concat_sequences(std::index_sequence<>)
 {
     return {};
 }
