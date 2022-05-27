@@ -42,10 +42,10 @@ export namespace boost::tmp {
 			static constexpr std::size_t value = At;
 		};
 
-		constexpr std::size_t select_foldey_loop(std::size_t rest_size) {
+		consteval std::size_t select_foldey_loop(std::size_t rest_size) {
 			return static_cast<std::size_t>(rest_size < 8 ? (rest_size == 0 ? 1000 : 1001) : 1008);
 		}
-		constexpr std::size_t select_foldey(std::size_t chunk_size, std::size_t rest_size, std::size_t found_at_index) {
+		consteval std::size_t select_foldey(std::size_t chunk_size, std::size_t rest_size, std::size_t found_at_index) {
 			return found_at_index == -1 ? select_foldey_loop(rest_size) :
 				                            chunk_size - found_at_index;
 		}

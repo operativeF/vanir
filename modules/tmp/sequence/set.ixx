@@ -90,14 +90,14 @@ namespace boost::tmp {
 
 		// Our starting point; gets dropped off at the end.
 		struct unique_super_base {
-			static constexpr bool contains(void *) {
+			static consteval bool contains(void *) {
 				return false;
 			}
 		};
 
 		template <typename Tail, typename T>
 		struct unique_base : Tail {
-			static constexpr bool contains(unique_magic_type<T> *) {
+			static consteval bool contains(unique_magic_type<T> *) {
 				return true;
 			}
 

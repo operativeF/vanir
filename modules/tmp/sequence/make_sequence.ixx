@@ -26,14 +26,14 @@ export namespace boost::tmp {
 	struct make_sequence_ {};
 	
 	namespace detail {
-		constexpr std::size_t next_number(std::size_t current, std::size_t end) {
+		consteval std::size_t next_number(std::size_t current, std::size_t end) {
 			return ((end - 2 * current) < 2) ?
 				            end :
 				            next_number(current,
 				                        end / 2); // note that std::size_t / 2 always rounds down
 		}
 
-		constexpr std::size_t next_state(std::size_t current, std::size_t end) {
+		consteval std::size_t next_state(std::size_t current, std::size_t end) {
 			return ((end - current) < 2) ? end - current :
 				                            (2 + (next_number(current, end) - 2 * current));
 		}

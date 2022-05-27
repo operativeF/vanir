@@ -23,7 +23,7 @@ namespace boost::tmp {
 	struct rotate_ {};
 
 	namespace detail {
-		constexpr std::size_t rotate_select(std::size_t N) {
+		consteval std::size_t rotate_select(std::size_t N) {
 			return N <= 8 ? N : N < 16 ? 8 : N < 32 ? 16 : N < 64 ? 32 : 64;
 		}
 		template <std::size_t, typename C>

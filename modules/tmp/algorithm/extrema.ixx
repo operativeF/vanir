@@ -27,7 +27,7 @@ namespace boost::tmp {
 	struct extrema_ {};
 
 	namespace detail {
-		constexpr std::size_t extrema_select(std::size_t N) {
+		consteval std::size_t extrema_select(std::size_t N) {
 			return N == 0 ? 0 :
 				            N < 2 ?
 				            1 :

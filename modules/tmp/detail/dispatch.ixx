@@ -17,7 +17,7 @@ import std.core;
 
 // FIXME: Export of detail namespace.
 export namespace boost::tmp::detail {
-	constexpr std::size_t find_dispatch(std::size_t n) {
+	consteval std::size_t find_dispatch(std::size_t n) {
 		return n <= 8 ? n :
 				        n < 16 ?
 				        9 :
