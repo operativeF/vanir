@@ -352,15 +352,10 @@ namespace detail {
 struct op {};
 struct fatal {};
 
-// NOTE / NEEDS FIX: In VS2022 17.0 Preview 2, inline static does not work
-// here. Use of inline static results in an unresolved external symbol error.
 struct cfg {
-  static std::source_location location;
-  static bool wip;
+  inline static std::source_location location;
+  inline static bool wip;
 };
-
-std::source_location cfg::location{};
-bool cfg::wip{};
 
 template <class T>
 [[nodiscard]] constexpr auto get_impl(const T& t, int) -> decltype(t.get()) {
