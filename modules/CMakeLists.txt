@@ -74,6 +74,7 @@ set(TMP_SEQ_IXX
     ${TMP_SEQ_DIR}/pop_front.ixx
     ${TMP_SEQ_DIR}/push_back.ixx
     ${TMP_SEQ_DIR}/push_front.ixx
+    ${TMP_SEQ_DIR}/repeat_sequence.ixx
     ${TMP_SEQ_DIR}/reverse.ixx
     ${TMP_SEQ_DIR}/rotate.ixx
     ${TMP_SEQ_DIR}/sequence.ixx

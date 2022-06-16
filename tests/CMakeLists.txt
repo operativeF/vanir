@@ -71,7 +71,7 @@ add_executable(tmp_test
     tmp/push_front_test.ixx
     tmp/range_math_test.ixx
     tmp/remove_if_test.ixx
-    tmp/repeat_test.ixx
+    tmp/repeat_sequence_test.ixx
     tmp/replace_if_test.ixx
     tmp/reverse_test.ixx
     tmp/rotate_test.ixx

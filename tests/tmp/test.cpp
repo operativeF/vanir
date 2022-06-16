@@ -36,6 +36,7 @@ int main() {
            push_front_test::run() ||
            range_math_test::run() ||
            remove_if_test::run() ||
+           repeat_sequence_test::run() ||
            replace_if_test::run() ||
            reverse_test::run() ||
            rotate_test::run() ||

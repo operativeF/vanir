@@ -34,6 +34,7 @@ export import Boost.TMP.Test.PushFront;
 export import Boost.TMP.Test.RangeMath;
 export import Boost.TMP.Test.RemoveIf;
 // export import Boost.TMP.Test.Repeat; // TODO: Not implemented yet.
+export import Boost.TMP.Test.RepeatSequence;
 export import Boost.TMP.Test.ReplaceIf;
 export import Boost.TMP.Test.Reverse;
 export import Boost.TMP.Test.Rotate;

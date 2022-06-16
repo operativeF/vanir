@@ -36,38 +36,16 @@ consteval auto make_repeated_sequence(std::index_sequence<Is...>) -> std::index_
 template<std::size_t N, std::size_t V>
 using repeated_sequence = decltype(make_repeated_sequence<V>(std::make_index_sequence<N>{}));
 
-template<std::size_t... Is, std::size_t... Js>
-consteval std::index_sequence<Is..., Js...> concat_sequences(std::index_sequence<Is...>,
-                                                             std::index_sequence<Js...>)
-{
-    return {};
-}
-
-template<std::size_t... Is, std::size_t... Js, typename... Others>
-consteval auto concat_sequences(std::index_sequence<Is...>, std::index_sequence<Js...>, Others...)
-{
-    return concat_sequences(std::index_sequence<Is..., Js...>{}, Others{}...);
-}
-
-template<std::size_t... Is>
-consteval std::index_sequence<Is...> concat_sequences(std::index_sequence<Is...>)
-{
-    return {};
-}
-
-template<typename T>
-consteval std::index_sequence<> concat_sequences(std::index_sequence<>)
-{
-    return {};
-}
+template<typename... IndexSeqs>
+using concat_seqs = boost::tmp::call_<boost::tmp::join_seq_<boost::tmp::lift_<boost::tmp::into_sequence>>, IndexSeqs...>;
 
 template<typename... TupleTs, std::size_t... Ns>
 constexpr auto pupple_cat_impl(std::index_sequence<Ns...>, TupleTs&&... tps)
 {
-    auto cc_seq = concat_sequences(
-        repeated_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>, Ns>{}...);
-    auto ts_seq = concat_sequences(
-        std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>>{}...);
+    auto cc_seq = concat_seqs<
+        repeated_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>, Ns>...>{};
+    auto ts_seq = concat_seqs<
+        std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>>...>{};
 
     return []<typename FullTuple, std::size_t... Is, std::size_t... Js>
         (FullTuple&& ft, std::index_sequence<Is...>, std::index_sequence<Js...>)
@@ -164,10 +142,9 @@ constexpr auto operator+(TupleLeft&& left, TupleRight&& right)
 template<typename GatherType, typename... GatherTypes>
 constexpr auto gather(auto&& tps)
 {
-    // UNUSUAL: Brace initialization doesn't work here; only parentheses.
-    auto concatted = concat_sequences(
-        std::remove_reference_t<decltype(tps)>::template get_indexes_of_type<GatherType>(),
-        std::remove_reference_t<decltype(tps)>::template get_indexes_of_type<GatherTypes>()...);
+    auto concatted = concat_seqs<
+        typename std::remove_reference_t<decltype(tps)>::template get_indexes_of_type<GatherType>,
+        typename std::remove_reference_t<decltype(tps)>::template get_indexes_of_type<GatherTypes>...>();
 
     return []<typename TT, std::size_t... Is>
     (TT&& tt, std::index_sequence<Is...>)
