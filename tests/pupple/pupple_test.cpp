@@ -178,6 +178,29 @@ ut::suite StructuredBindingPuppleTest = []
     };
 };
 
+ut::suite TupleApplyTest = []
+{
+    using namespace ut;
+
+    "Tuple Apply Exception Detection"_test = []
+    {
+        using simple_tuple  = Tuple<int, std::string>;
+
+        auto NonThrowingFunction = [](auto value) noexcept
+        {
+            return value;
+        };
+
+        auto PossiblyThrowingFunction = [](auto value)
+        {
+            return value;
+        };
+
+        expect(tuple_func_invoke_noexcept<decltype(NonThrowingFunction),      simple_tuple>::value == true);
+        expect(tuple_func_invoke_noexcept<decltype(PossiblyThrowingFunction), simple_tuple>::value == false);
+    };
+};
+
 constexpr Tuple<char, int, char, int, char, double, char> constexpr_tupple{'a', 1, 'c', 3, 'd', 5.0, 'e'};
 
 static_assert(get<0>(constexpr_tupple) == 'a');

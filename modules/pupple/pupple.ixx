@@ -164,6 +164,8 @@ struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
     {
     }
 
+    using param_list = boost::tmp::list_<Ts...>;
+
     pupple<Ts...> m_pupple{};
 };
 
@@ -200,12 +202,6 @@ using remap_by_size_ = tmp::call_<
             >
         >
     >, Ts...>;
-
-template <class F, class T, std::size_t... Is>
-constexpr decltype(auto) tapply_impl(F&& f, T&& t, std::index_sequence<Is...>)
-{
-    return std::invoke(std::forward<F>(f), get<Is>(std::forward<T>(t))...);
-}
 
 export
 {
@@ -288,11 +284,29 @@ constexpr const auto&& get(const Tuple<Us...>&& pup) noexcept
     return get<Tuple<Us...>::template actual_index_t<I>::value>(pup.m_pupple);
 }
 
-template <class F, class T>
-constexpr decltype(auto) tapply(F&& f, T&& t)
+template<typename F>
+struct tuple_func_nothrow_invocable
 {
-    return tapply_impl(std::forward<F>(f), std::forward<T>(t),
-        std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<T>>>{});
+    template<typename TupleArg>
+    using f = std::is_nothrow_invocable<F, TupleArg>;
+};
+
+template<class F, class T>
+using tuple_func_invoke_noexcept = boost::tmp::call_<
+    boost::tmp::unpack_<
+        boost::tmp::and_<
+            boost::tmp::lift_<typename tuple_func_nothrow_invocable<std::remove_reference_t<F>>::template f>>
+    >, typename std::remove_reference_t<T>::param_list>;
+
+template<class F, class TupleType>
+constexpr decltype(auto) tapply(F&& f, TupleType&& t) noexcept(tuple_func_invoke_noexcept<F, TupleType>::value)
+{
+    return []<std::size_t... Ns>(auto&& func, auto&& tup, std::index_sequence<Ns...>)
+        {
+            return std::invoke(std::forward<decltype(func)>(func), get<Ns>(std::forward<decltype(tup)>(tup))...);
+        } (std::forward<F>(f),
+           std::forward<TupleType>(t),
+           std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<TupleType>>>{});
 }
 
 } // export
