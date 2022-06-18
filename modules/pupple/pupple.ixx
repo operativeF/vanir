@@ -45,7 +45,7 @@ using indexed_at = tmp::call_<tmp::index_<tmp::sizet_<I>>, Ts...>;
 template<typename... Params>
 constexpr auto make_pupple(Params&&... params)
 {
-    return pupple<typename tmp::decay<Params>::type...>(std::forward<Params>(params)...);
+    return pupple<std::remove_reference_t<Params>...>(std::forward<Params>(params)...);
 }
 
 template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
@@ -135,13 +135,10 @@ template<std::size_t... Is, typename... Ts>
 struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
 {
     template<std::size_t I>
-    static constexpr std::size_t actual_index_v = actual_index<I, Is...>::value;
+    using actual_index_t = actual_index<I, Is...>;
 
     template<std::size_t I>
     using type_at_index = tmp::call_<tmp::index_<tmp::sizet_<I>>, Ts...>;
-
-    template<typename... Ts>
-    using sequence_from_params = std::index_sequence<Ts::value...>;
 
     // TODO: Multiple types
     // TODO: What if empty?
@@ -150,7 +147,7 @@ struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
         tmp::zip_<tmp::listify_,
             tmp::filter_<typename tmp::lift_<is_indexed_type<T>::template f>,
                 tmp::transform_<tmp::ui0_<>,
-                    tmp::lift_<sequence_from_params>
+                    tmp::lift_<tmp::into_sequence>
                 >
             >
         >, tmp::list_<tmp::sizet_<Is>...>, tmp::list_<Ts...>>;
@@ -167,7 +164,7 @@ struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
     {
     }
 
-    pupple<Ts...> m_pupple;
+    pupple<Ts...> m_pupple{};
 };
 
 template<typename T, typename U>
@@ -234,32 +231,33 @@ struct Tuple : remap_by_size_<Ts...>
     }
 };
 
-template<>
-struct Tuple<>
-{
-    [[nodiscard]] constexpr bool operator==(const Tuple&) const noexcept
-    {
-        return true;
-    }
-
-    [[nodiscard]] constexpr std::strong_ordering three_way_comp(const Tuple&, std::index_sequence<>) const noexcept
-    {
-        return std::strong_ordering::equal;
-    }
-};
-
 template <class... Ts, class... Us>
 [[nodiscard]] constexpr auto operator<=>(const Tuple<Ts...>& Left, const Tuple<Us...>& Right)
 {
     static_assert(sizeof...(Ts) == sizeof...(Us), "cannot compare tuples of different sizes");
-    return Left.three_way_comp(Right, std::index_sequence_for<Ts...>{});
+    if constexpr(sizeof...(Ts) != 0 && sizeof...(Us) != 0)
+    {
+        return Left.three_way_comp(Right, std::index_sequence_for<Ts...>{});
+    }
+    else // Tuple<>
+    {
+        return std::strong_ordering::equal;
+    }
 }
 
 template <class... Ts, class... Us>
 [[nodiscard]] constexpr bool operator==(const Tuple<Ts...>& Left, const Tuple<Us...>& Right)
 {
     static_assert(sizeof...(Ts) == sizeof...(Us), "cannot compare tuples of different sizes");
-    return Left.equals(Right, std::index_sequence_for<Ts...>{});
+    
+    if constexpr(sizeof...(Ts) != 0 && sizeof...(Us) != 0)
+    {
+        return Left.equals(Right, std::index_sequence_for<Ts...>{});
+    }
+    else // Tuple<>
+    {
+        return true;
+    }
 }
 
 // Deduction Guides
@@ -269,25 +267,25 @@ Tuple(Ts... ts) -> Tuple<Ts...>;
 template<std::size_t I, typename... Us>
 constexpr const auto& get(const Tuple<Us...>& pup) noexcept
 {
-    return get<Tuple<Us...>::template actual_index_v<I>>(pup.m_pupple);
+    return get<Tuple<Us...>::template actual_index_t<I>::value>(pup.m_pupple);
 }
 
 template<std::size_t I, typename... Us>
 constexpr auto& get(Tuple<Us...>& pup) noexcept
 {
-    return get<Tuple<Us...>::template actual_index_v<I>>(pup.m_pupple);
+    return get<Tuple<Us...>::template actual_index_t<I>::value>(pup.m_pupple);
 }
 
 template<std::size_t I, typename... Us>
-constexpr auto&& get(Tuple<Us...>&& pup) noexcept
+constexpr auto get(Tuple<Us...>&& pup) noexcept
 {
-    return get<Tuple<Us...>::template actual_index_v<I>>(pup.m_pupple);
+    return get<Tuple<Us...>::template actual_index_t<I>::value>(pup.m_pupple);
 }
 
 template<std::size_t I, typename... Us>
 constexpr const auto&& get(const Tuple<Us...>&& pup) noexcept
 {
-    return get<Tuple<Us...>::template actual_index_v<I>>(pup.m_pupple);
+    return get<Tuple<Us...>::template actual_index_t<I>::value>(pup.m_pupple);
 }
 
 template <class F, class T>

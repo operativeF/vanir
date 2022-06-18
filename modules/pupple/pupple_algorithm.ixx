@@ -13,7 +13,6 @@ import <type_traits>;
 import std;
 #elif _MSC_VER
 import std.core;
-import std.memory;
 #endif
 
 // make_from_pupple impl
@@ -27,33 +26,32 @@ constexpr T make_from_pupple_impl(P&& t, std::index_sequence<Is...>)
 template<typename TP>
 using tuple_indexer = std::make_index_sequence<std::tuple_size_v<TP>>;
 
-template<std::size_t V, std::size_t... Is>
-consteval auto make_repeated_sequence(std::index_sequence<Is...>) -> std::index_sequence<(Is, V)...>
-{
-    return {};
-}
-
 template<std::size_t N, std::size_t V>
-using repeated_sequence = decltype(make_repeated_sequence<V>(std::make_index_sequence<N>{}));
+using repeated_sequence = boost::tmp::call_<
+    boost::tmp::repeat_sequence_<boost::tmp::sizet_<N>, 
+        boost::tmp::lift_<boost::tmp::into_sequence>
+    >, boost::tmp::sizet_<V>>;
 
 template<typename... IndexSeqs>
-using concat_seqs = boost::tmp::call_<boost::tmp::join_seq_<boost::tmp::lift_<boost::tmp::into_sequence>>, IndexSeqs...>;
+using concat_seqs = boost::tmp::call_<
+    boost::tmp::join_seq_<boost::tmp::lift_<boost::tmp::into_sequence>
+    >, IndexSeqs...>;
 
 template<typename... TupleTs, std::size_t... Ns>
 constexpr auto pupple_cat_impl(std::index_sequence<Ns...>, TupleTs&&... tps)
 {
-    auto cc_seq = concat_seqs<
-        repeated_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>, Ns>...>{};
-    auto ts_seq = concat_seqs<
-        std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>>...>{};
+    using cc_seq = concat_seqs<
+        repeated_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>, Ns>...>;
+    using ts_seq = concat_seqs<
+        std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>>...>;
 
     return []<typename FullTuple, std::size_t... Is, std::size_t... Js>
         (FullTuple&& ft, std::index_sequence<Is...>, std::index_sequence<Js...>)
         {
             return Tuple{get<Is>(get<Js>(std::forward<FullTuple>(ft)))...};
         } (Tuple{std::forward<TupleTs>(tps)...},
-           ts_seq,
-           cc_seq);
+           ts_seq{},
+           cc_seq{});
 }
 
 export
@@ -142,16 +140,16 @@ constexpr auto operator+(TupleLeft&& left, TupleRight&& right)
 template<typename GatherType, typename... GatherTypes>
 constexpr auto gather(auto&& tps)
 {
-    auto concatted = concat_seqs<
+    using concatted = concat_seqs<
         typename std::remove_reference_t<decltype(tps)>::template get_indexes_of_type<GatherType>,
-        typename std::remove_reference_t<decltype(tps)>::template get_indexes_of_type<GatherTypes>...>();
+        typename std::remove_reference_t<decltype(tps)>::template get_indexes_of_type<GatherTypes>...>;
 
     return []<typename TT, std::size_t... Is>
-    (TT&& tt, std::index_sequence<Is...>)
-    {
-        return Tuple{get<Is>(std::forward<TT>(tt))...};
-    } (std::forward<decltype(tps)>(tps),
-       concatted);
+        (TT&& tt, std::index_sequence<Is...>)
+        {
+            return Tuple{get<Is>(std::forward<TT>(tt))...};
+        } (std::forward<decltype(tps)>(tps),
+           concatted{});
 }
 
 } // export
