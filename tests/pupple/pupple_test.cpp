@@ -21,8 +21,6 @@ import std.core;
 namespace ut = boost::ut;
 namespace tmp = boost::tmp;
 
-static_assert(std::is_nothrow_constructible_v<Tuple<>>, "Empty Tuple should be nothrow constructible.");
-
 ut::suite TestPuppleComparisons = []
 {
     using namespace ut;
