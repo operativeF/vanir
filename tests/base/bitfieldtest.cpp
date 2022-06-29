@@ -183,7 +183,8 @@ ut::suite BitfieldMetaTest = []
 
     using resolute = bitfield<check_array{Styles::Bold, Styles::Underline}, check_array{Styles::Italic, Styles::Underline, Styles::Bold}>;
 
-    resolute newres{Styles::Bold, Styles::Italic};
+    // ERROR: C7595, Call to immediate function is not a constant expression.
+    // resolute newres{Styles::Bold, Styles::Italic};
 
     // resolute oldres{Borders::Double, Borders::Single};
 

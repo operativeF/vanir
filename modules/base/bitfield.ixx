@@ -373,17 +373,14 @@ public:
     {
         static constexpr auto enum_maximums = {static_cast<value_type>(Enums::_max_size)...};
 
-        // value_type offset{};
+        value_type offset{};
 
-        // ICE: Serious error occurs when using impromptu ranges. Crashes the compiler cl
-        // and emits a weird error. 
-        // for(auto enummax : std::views::counted(std::ranges::begin(enum_maximums), idx))
-        // {
-        //     offset += enummax;
-        // }
-        // return offset;
-
-        return std::accumulate(std::begin(enum_maximums), std::begin(enum_maximums) + idx, value_type{0});
+        for(auto enummax : std::views::counted(std::ranges::begin(enum_maximums), idx))
+        {
+            offset += enummax;
+        }
+        
+        return offset;
     }
 
     template<typename Enum> requires(enum_is_present<Enum, Enums...>)
