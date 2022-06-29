@@ -31,10 +31,10 @@ module;
 
 export module Nil.MetaTest;
 
+import fmt;
+
 import Boost.TMP;
 import Utils.Strings;
-
-import fmt;
 
 #ifdef __GNUC__
 import <cstdint>;
@@ -115,7 +115,7 @@ template <class T = std::string_view, class TDelim>
 
 namespace reflection {
 template <class T>
-[[nodiscard]] constexpr auto type_name() -> std::string_view {
+[[nodiscard]] consteval auto type_name() -> std::string_view {
 #if defined(_MSC_VER) && !defined(__clang__)
   return {&__FUNCSIG__[120], sizeof(__FUNCSIG__) - 128};
 #elif defined(__clang_analyzer__)
@@ -752,6 +752,103 @@ struct aborts_ : op {
 #endif
 }  // namespace detail
 
+} // export namespace boost::inline ext::ut::inline v1_1_8 {
+
+export
+{
+
+template<>
+struct fmt::formatter<boost::ut::detail::op>
+{
+  template<typename ParseContext>
+  constexpr auto parse(ParseContext& ctx)
+  {
+    return ctx.begin();
+  }
+
+  template<typename Lhs, typename Rhs, typename FormatContext>
+  auto format(const boost::ut::detail::gt_<Lhs, Rhs>& cmp, FormatContext& ctx)
+  {
+    return format_to(ctx.out(), "({} > {})", cmp.lhs(), cmp.rhs());
+  }
+
+  template<typename Lhs, typename Rhs, typename FormatContext>
+  auto format(const boost::ut::detail::eq_<Lhs, Rhs>& cmp, FormatContext& ctx)
+  {
+    return format_to(ctx.out(), "({} == {})", cmp.lhs(), cmp.rhs());
+  }
+
+  template<typename Lhs, typename Rhs, typename FormatContext>
+  auto format(const boost::ut::detail::neq_<Lhs, Rhs>& cmp, FormatContext& ctx)
+  {
+    return format_to(ctx.out(), "({} != {})", cmp.lhs(), cmp.rhs());
+  }
+
+  template<typename Lhs, typename Rhs, typename FormatContext>
+  auto format(const boost::ut::detail::lt_<Lhs, Rhs>& cmp, FormatContext& ctx)
+  {
+    return format_to(ctx.out(), "({} < {})", cmp.lhs(), cmp.rhs());
+  }
+
+  template<typename Lhs, typename Rhs, typename FormatContext>
+  auto format(const boost::ut::detail::le_<Lhs, Rhs>& cmp, FormatContext& ctx)
+  {
+    return format_to(ctx.out(), "({} <= {})", cmp.lhs(), cmp.rhs());
+  }
+
+  template<typename Lhs, typename Rhs, typename FormatContext>
+  auto format(const boost::ut::detail::ge_<Lhs, Rhs>& cmp, FormatContext& ctx)
+  {
+    return format_to(ctx.out(), "({} >= {})", cmp.lhs(), cmp.rhs());
+  }
+
+  template<typename Lhs, typename Rhs, typename FormatContext>
+  auto format(const boost::ut::detail::and_<Lhs, Rhs>& cmp, FormatContext& ctx)
+  {
+    return format_to(ctx.out(), "({} and {})", cmp.lhs(), cmp.rhs());
+  }
+
+  template<typename Lhs, typename Rhs, typename FormatContext>
+  auto format(const boost::ut::detail::or_<Lhs, Rhs>& cmp, FormatContext& ctx)
+  {
+    return format_to(ctx.out(), "({} or {})", cmp.lhs(), cmp.rhs());
+  }
+
+  template<typename T, typename FormatContext>
+  auto format(const boost::ut::detail::not_<T>& cmp, FormatContext& ctx)
+  {
+    return format_to(ctx.out(), "(not {})", cmp.value());
+  }
+
+  template<typename TExpr, typename FormatContext>
+  auto format(const boost::ut::detail::throws_<TExpr, void>& cmp, FormatContext& ctx)
+  {
+    return format_to(ctx.out(), "throws");
+  }
+
+  template<class TExpr, class TException, typename FormatContext>
+  auto format(const boost::ut::detail::throws_<TExpr, TException>& cmp, FormatContext& ctx)
+  {
+    return format_to(ctx.out(), "throws<{}>", boost::ut::reflection::type_name<TException>());
+  }
+
+  template<typename TExpr, typename FormatContext>
+  auto format(const boost::ut::detail::nothrow_<TExpr>& cmp, FormatContext& ctx)
+  {
+    return format_to(ctx.out(), "nothrow", cmp.value());
+  }
+
+  template<typename T, typename FormatContext>
+  auto format(const boost::ut::detail::type_<T>& t, FormatContext& ctx)
+  {
+    return format_to(ctx.out(), boost::ut::reflection::type_name<T>());
+  }
+};
+
+} // export
+
+export namespace boost::inline ext::ut::inline v1_1_8 {
+
 namespace type_traits
 {
 template<class T>
@@ -893,49 +990,39 @@ class printer {
   std::stringstream out_{};
 };
 
-template <class TPrinter = printer>
 class reporter {
  public:
-  constexpr auto operator=(TPrinter printer) {
-    printer_ = static_cast<TPrinter&&>(printer);
-  }
-
   auto on(events::test_begin test_begin) -> void {
-    printer_ << "Running \"" << test_begin.name << "\"...";
+    fmt::print("Running \"{}\"...", test_begin.name);
     fails_ = asserts_.fail;
   }
 
   auto on(events::test_run test_run) -> void {
-    printer_ << "\n \"" << test_run.name << "\"...";
+    fmt::print("\n \"{}\"...", test_run.name);
   }
 
   auto on(events::test_skip test_skip) -> void {
-    printer_ << test_skip.name << "...SKIPPED\n";
+    fmt::print("{}...SKIPPED\n", test_skip.name);
     ++tests_.skip;
   }
 
   auto on(events::test_end) -> void {
     if (asserts_.fail > fails_) {
       ++tests_.fail;
-      printer_ << '\n'
-               << printer_.colors().fail << "FAILED" << printer_.colors().none
-               << '\n';
+      fmt::print(fg(fmt::color::red), "\nFAILED\n");
     } else {
       ++tests_.pass;
-      printer_ << printer_.colors().pass << "PASSED" << printer_.colors().none
-               << '\n';
+      fmt::print(fg(fmt::color::green), "PASSED\n");
     }
   }
 
   template <class TMsg>
   auto on(events::log<TMsg> l) -> void {
-    printer_ << l.msg;
+    fmt::print("{}", l.msg);
   }
 
   auto on(events::exception exception) -> void {
-    printer_ << "\n  " << printer_.colors().fail
-             << "Unexpected exception with message:\n"
-             << exception.what() << printer_.colors().none;
+    fmt::print("\n  Unexpected exception with message:\n{}", exception.what());
     ++asserts_.fail;
   }
 
@@ -951,10 +1038,9 @@ class reporter {
                  ? name.substr(name.rfind('/') + 1)
                  : name;
     };
-    printer_ << "\n  " << short_name(assertion.location.file_name()) << ':'
-             << assertion.location.line() << ':' << printer_.colors().fail
-             << "FAILED" << printer_.colors().none << " [" << std::boolalpha
-             << assertion.expr << printer_.colors().none << ']';
+    fmt::print("\n  {}:{}:FAILED [{}]", short_name(assertion.location.file_name()),
+                                        assertion.location.line(),
+                                        assertion.expr);
     ++asserts_.fail;
   }
 
@@ -964,17 +1050,13 @@ class reporter {
     if (static auto once = true; once) {
       once = false;
       if (tests_.fail || asserts_.fail) {
-        printer_ << "\n========================================================"
-                    "=======================\n"
-                 << "tests:   " << (tests_.pass + tests_.fail) << " | "
-                 << printer_.colors().fail << tests_.fail << " failed"
-                 << printer_.colors().none << '\n'
-                 << "asserts: " << (asserts_.pass + asserts_.fail) << " | "
-                 << asserts_.pass << " passed"
-                 << " | " << printer_.colors().fail << asserts_.fail
-                 << " failed" << printer_.colors().none << '\n';
-
-        fmt::print("{}\n", printer_.str());
+        fmt::print("\n========================================================"
+                    "=======================\ntests:    {} | {} failed\n"
+                    "asserts: {} | {} passed | {} failed\n", (tests_.pass + tests_.fail),
+                                                             tests_.fail,
+                                                             (asserts_.pass +  asserts_.fail),
+                                                             asserts_.pass,
+                                                             asserts_.fail);
       } else {
         // FIXME: Add colors.
         fmt::print("All test passed ({} asserts in {} tests)\n", asserts_.pass, tests_.pass);
@@ -999,8 +1081,6 @@ class reporter {
   } asserts_{};
 
   std::size_t fails_{};
-
-  TPrinter printer_{};
 };
 
 struct options {
@@ -1014,7 +1094,7 @@ struct run_cfg {
   bool report_errors{false};
 };
 
-template <class TReporter = reporter<printer>, auto MaxPathSize = 16>
+template <class TReporter = reporter, auto MaxPathSize = 16>
 class runner {
   class filter {
     static constexpr auto delim = ".";
@@ -1047,7 +1127,7 @@ class runner {
     const auto should_run = !run_;
 
     if (should_run) {
-      static_cast<void>(run());
+      std::ignore = run();
     }
 
     if (!dry_run_) {
@@ -1191,21 +1271,21 @@ class runner {
   }
 
  protected:
-  TReporter reporter_{};
-  std::vector<void (*)()> suites_{};
-  std::size_t level_{};
-  bool run_{};
-  std::size_t fails_{};
-  std::array<std::string_view, MaxPathSize> path_{};
-  filter filter_{};
   std::vector<std::string_view> tag_{};
+  std::vector<void (*)()> suites_{};
+  std::array<std::string_view, MaxPathSize> path_{};
+  TReporter reporter_{};
+  filter filter_{};
+  std::size_t level_{};
+  std::size_t fails_{};
+  bool run_{};
   bool dry_run_{};
 };
 
 struct override {};
 
 template <class = override, class...>
-[[maybe_unused]] inline auto cfg = runner<reporter<printer>>{};
+[[maybe_unused]] inline auto cfg = runner<reporter>{};
 
 namespace detail {
 struct tag {
@@ -1831,7 +1911,7 @@ constexpr auto operator !(const T& t) {
 template <class TExpr> requires(type_traits::DerivedFromOp<TExpr> || std::is_convertible_v<TExpr, bool>)
 constexpr auto expect(const TExpr& expr,
                       const std::source_location& sl =
-                          std::source_location::current()) {
+                            std::source_location::current()) {
   return detail::expect_<TExpr>{detail::on<TExpr>(
       events::assertion<TExpr>{.expr = expr, .location = sl})};
 }

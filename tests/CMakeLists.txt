@@ -8,11 +8,23 @@ if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
     add_module(metatest metatest/metatest.ixx)
 endif()
 
+add_library(MetaTestLib
+    STATIC
+        metatest/metatest.ixx
+)
+
+target_link_libraries(MetaTestLib
+    PRIVATE
+        fmt::fmt
+        nil_tmp
+        nilbase
+)
+
 add_executable(niltest
-    metatest/metatest.ixx
     # base/algorithm/strutils.cpp
     base/bitfieldtest.cpp
     test.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/base/geometry/shapes.cpp
     ${PUPPLE_TESTS}
 )
 
@@ -26,8 +38,10 @@ target_link_libraries(niltest
     PRIVATE
         nilbase
         nil_tmp
+        VanirGeometry
         Boost::nowide
         fmt::fmt
+        MetaTestLib
 )
 
 add_executable(tmp_unit_test
