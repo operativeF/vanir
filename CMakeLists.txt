@@ -30,6 +30,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 project(vanir VERSION 1.0)
 
 find_package(Boost REQUIRED COMPONENTS nowide)
+find_package(Eigen3 CONFIG REQUIRED)
 
 include_directories(cmake)
 
