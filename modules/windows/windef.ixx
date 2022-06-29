@@ -47,6 +47,7 @@ using NLWORD      = WORD;
 using NLDWORD     = DWORD;
 
 using NLDWORD_PTR = DWORD_PTR;
+using NLPWSTR     = PWSTR;
 
 using NLDRAWITEMSTRUCT    = void*;
 using NLMEASUREITEMSTRUCT = void*;

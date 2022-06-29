@@ -147,11 +147,12 @@ set(STRING_ALGORITHM
 )
 
 if(MSVC)
-    set(WIN_IXX
-        ${CMAKE_CURRENT_SOURCE_DIR}/win/unique_hnd.ixx
-        ${CMAKE_CURRENT_SOURCE_DIR}/win/windef.ixx
-        ${CMAKE_CURRENT_SOURCE_DIR}/win/window_styles.ixx
+    set(WIN_ONLY_INTERFACE
+        ${CMAKE_CURRENT_SOURCE_DIR}/windows/unique_hnd.ixx
+        ${CMAKE_CURRENT_SOURCE_DIR}/windows/windef.ixx
+        ${CMAKE_CURRENT_SOURCE_DIR}/windows/window_styles.ixx
     )
+    set(WIN_HEADER_FILES ${CMAKE_SOURCE_DIR}/include/windows/main.h)
 endif()
 
 if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
@@ -164,8 +165,13 @@ endif()
 add_library(nilbase
         ${BASE_ALGORITHM}
         ${STRING_ALGORITHM}
-        ${WIN_IXX}
+        ${WIN_ONLY_INTERFACE}
+        ${WIN_HEADER_FILES}
 )
+
+if(MSVC)
+    target_include_directories(nilbase PUBLIC ${CMAKE_SOURCE_DIR}/include/windows)
+endif()
 
 if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
     foreach(algo_mod IN LISTS ${BASE_ALGORITHM} ${STRING_ALGORITHM})

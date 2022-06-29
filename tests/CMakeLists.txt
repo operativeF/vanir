@@ -34,6 +34,8 @@ endif()
 
 target_compile_features(niltest PRIVATE cxx_std_23)
 
+# target_compile_options(niltest PRIVATE "/d1reportTime")
+
 target_link_libraries(niltest
     PRIVATE
         nilbase
@@ -105,3 +107,8 @@ target_link_libraries(tmp_test
     PRIVATE
         nil_tmp
 )
+
+if(WIN32)
+    add_subdirectory(windows)
+endif()
+

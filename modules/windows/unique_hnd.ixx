@@ -110,7 +110,7 @@ struct WndHdcPaintDeleter
 {
     using pointer = NLHDC;
 
-    void operator()(NLHWND hWnd, const PAINTSTRUCT* lpPaint) noexcept { ::EndPaint(hWnd, lpPaint); };
+    void operator()(NLHWND hWnd, PAINTSTRUCT* lpPaint) noexcept { ::EndPaint(hWnd, lpPaint); };
 };
 
 struct WndThemeDeleter
@@ -125,6 +125,41 @@ struct WndThemeDeleter
 export namespace msw::utils
 {
 
+struct unique_dcpaint
+{
+    explicit unique_dcpaint(NLHWND hwnd) noexcept
+        : hwndRef{hwnd},
+          ps{std::make_unique<PAINTSTRUCT>()}
+    {
+        hdc = ::BeginPaint(hwnd, ps.get());
+    }
+
+    ~unique_dcpaint()
+    {
+        std::ignore = ::EndPaint(hwndRef, ps.get());
+    }
+
+    void DrawAll(auto&&... Fs)
+    {
+
+    }
+
+    PAINTSTRUCT* get() noexcept
+    {
+        return ps.get();
+    }
+
+    HDC get_dc() noexcept
+    {
+        return hdc;
+    }
+
+    std::unique_ptr<PAINTSTRUCT> ps{};
+    NLHWND hwndRef;
+    HDC hdc;
+
+};
+
 using unique_handle      = std::unique_ptr<NLHANDLE, WndHandleDeleter>;
 using unique_wnd         = std::unique_ptr<NLHWND, WndWindowDeleter>;
 using unique_console     = std::unique_ptr<NLHANDLE, WndConsoleDeleter>;
@@ -136,7 +171,6 @@ using unique_accel       = std::unique_ptr<NLHACCEL, WndAccelDeleter>;
 using unique_icon        = std::unique_ptr<NLHICON, WndIconDeleter>;
 using unique_enhmetafile = std::unique_ptr<NLHENHMETAFILE, WndEnhMetafileDeleter>;
 using unique_dcwnd       = std::unique_ptr<NLHDC, WndHdcWndDeleter>;
-using unique_dcpaint     = std::unique_ptr<NLHDC, WndHdcPaintDeleter>;
 using unique_theme       = std::unique_ptr<NLHTHEME, WndThemeDeleter>;
 
 template<typename GDIObjT>
