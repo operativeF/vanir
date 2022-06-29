@@ -99,6 +99,10 @@ set(TMP_BASE_IXX
     ${CMAKE_CURRENT_SOURCE_DIR}/tmp.ixx
 )
 
+set(INTERNAL_UTILITIES_IXX
+    ${CMAKE_CURRENT_SOURCE_DIR}/utility/three_way_impl.ixx
+)
+
 if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
     foreach(tmp_module IN LISTS ${TMP_ALGO_IXX} ${TMP_MAIN_IXX} ${TMP_DETAIL_IXX} ${TMP_SEQ_IXX} ${PUPPLE_IXX} ${TMP_BASE_IXX})
         string(REGEX REPLACE "\/(.+)\.ixx" "\\1" module_file_name ${tmp_module})
@@ -114,6 +118,7 @@ add_library(nil_tmp
         ${TMP_SEQ_IXX}
         ${PUPPLE_IXX}
         ${TMP_BASE_IXX}
+        ${INTERNAL_UTILITIES_IXX}
 )
 
 if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
