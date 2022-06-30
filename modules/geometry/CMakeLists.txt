@@ -9,7 +9,7 @@ set(GEOMETRY_IXX
     ${CMAKE_CURRENT_SOURCE_DIR}/base/polygon.ixx
     ${CMAKE_CURRENT_SOURCE_DIR}/base/polyline.ixx
     ${CMAKE_CURRENT_SOURCE_DIR}/base/rect.ixx
-    ${CMAKE_CURRENT_SOURCE_DIR}/base/triangle.ixx
+    ${CMAKE_CURRENT_SOURCE_DIR}/base/segment.ixx
 
     ${CMAKE_CURRENT_SOURCE_DIR}/base/shapes.ixx
     

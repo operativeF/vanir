@@ -8,4 +8,4 @@ export import Vanir.Geometry.Line;
 export import Vanir.Geometry.Point;
 export import Vanir.Geometry.Polygon;
 export import Vanir.Geometry.Rect;
-export import Vanir.Geometry.Triangle;
+export import Vanir.Geometry.Segment;

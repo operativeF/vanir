@@ -1,8 +1,9 @@
 
 export module Vanir.Geometry.Circle;
 
-import Vanir.Geometry.Point;
 import Vanir.Geometry.Line;
+import Vanir.Geometry.Point;
+import Vanir.Geometry.Segment;
 
 import <Eigen/Dense>;
 
@@ -12,6 +13,8 @@ import std.core;
 
 export namespace Vanir::Geo
 {
+    // Much like the Line object, this represents
+    // an object that represents an equation of the circle.
     template<typename Scalar, size_t Dim>
     class Circle
     {
@@ -23,7 +26,7 @@ export namespace Vanir::Geo
 
         // TODO: Conditionally explicit?
         // A line that is the diameter of the circle
-        explicit constexpr Circle(const Line<scalar_type, Dim>& diameter)
+        explicit constexpr Circle(const Segment<scalar_type, Dim>& diameter)
         {
             circle.col(0) << diameter.get().col(0); // starting point
             circle.col(1) << std::midpoint(diameter.get()(0, 1), diameter.get()(0, 0)),
@@ -43,29 +46,35 @@ export namespace Vanir::Geo
                          const Point<scalar_type, Dim>& ptB,
                          const Point<scalar_type, Dim>& ptC)
         {
-            auto chordBA = Line<scalar_type, Dim>(ptB, ptA);
-            auto chordCB = Line<scalar_type, Dim>(ptC, ptB);
+            auto chordBA = Segment<scalar_type, Dim>(ptB, ptA);
+            auto chordCB = Segment<scalar_type, Dim>(ptC, ptB);
 
-            // TODO: Make function for line perpendicular bisector.
-            Line<scalar_type, Dim> midBA{chordBA.get() / chordBA.get().norm()};
-            Line<scalar_type, Dim> midCB{chordBA.get() / chordCB.get().norm()};
+            // fmt::print("\nChord BA: (({}, {}), ({}, {}))", chordBA.get()(0, 0), chordBA.get()(1, 0), chordBA.get()(0, 1), chordBA.get()(1, 1));
+            // fmt::print("\nChord CB: (({}, {}), ({}, {}))", chordCB.get()(0, 0), chordCB.get()(1, 0), chordCB.get()(0, 1), chordCB.get()(1, 1));
 
-            fmt::print("\nLine midBA: (({}, {}), ({}, {}))\n", midBA.get()(0, 0), midBA.get()(0, 1), midBA.get()(1, 0), midBA.get()(1, 1));
-            fmt::print("\nLine midCB: (({}, {}), ({}, {}))\n", midCB.get()(0, 0), midCB.get()(0, 1), midCB.get()(1, 0), midCB.get()(1, 1));
+            Line<scalar_type, Dim> midBA{getPerpendicularBisector(chordBA)};
+            Line<scalar_type, Dim> midCB{getPerpendicularBisector(chordCB)};
+
+            // fmt::print("\nLine midBA: ({}, {}, {} = 0)\n", midBA.get()(0, 0), midBA.get()(1, 0), midBA.get()(2, 0));
+            // fmt::print("\nLine midCB: ({}, {}, {} = 0)\n", midCB.get()(0, 0), midCB.get()(1, 0), midCB.get()(2, 0));
 
             Eigen::Matrix<scalar_type, Dim, 2> intersectMat;
-            intersectMat.col(0) << midBA.get();
-            intersectMat.col(1) << midCB.get();
-            Eigen::Matrix<scalar_type, Dim, 1> b{};
+            intersectMat << midBA.get()(0, 0), midBA.get()(1, 0),
+                            midCB.get()(0, 0), midCB.get()(1, 0);
+            Eigen::Matrix<scalar_type, Dim, 1> b;
+            b << -midBA.get()(2, 0),
+                 -midCB.get()(2, 0);
             Eigen::ColPivHouseholderQR<decltype(intersectMat)> dec(intersectMat);
             Eigen::Matrix<scalar_type, Dim, 1> intersectionPt = dec.solve(b);
+
+            // fmt::print("\nIntersection: ({}, {})\n", intersectionPt(0, 0), intersectionPt(1, 0));
 
             circle.col(0) << (intersectionPt - ptA.get());
             circle.col(1) << intersectionPt;
         }
 
-        constexpr Circle(const Line<scalar_type, Dim>& tangentLineA,
-                         const Line<scalar_type, Dim>& tangentLineB,
+        constexpr Circle(const Segment<scalar_type, Dim>& tangentLineA,
+                         const Segment<scalar_type, Dim>& tangentLineB,
                          const Point<scalar_type, Dim>& radii)
         {
         }

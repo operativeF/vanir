@@ -20,7 +20,4 @@ export namespace Vanir::Geo
         {
         }
     };
-
-
-
 } // export

@@ -8,20 +8,43 @@ import std.core;
 
 export namespace Vanir::Geo
 {
+    // An object that contains a matrix for a line /equation/.
+    // Used for composing objects / intersections, not for synthesizing,
+    // per se.
+    // Kept in the form of [-mx, y, c] where c is some constant.
+    // Solving a system of equations (2D) then is:
+    // [-mx_1, y1, c1][x]   [0]
+    // [-mx_2, y2, c2][y] = [0]
+    //                [1]
+    // or more generally, for n-dimensions: (m x n + 1) (rows x columns)
+    // rowvec[-slope*x_11, y_12, ..., A_1n, c_1n] * colvec[x, y, ..., Zn, 1] = ZeroMatrix[m]
+    // rowvec[-slope*x_21, y_22, ..., B_1n, c_2n]
+    // ...
+    // rowvec[-slope*x_m1, y_m2, ..., Z_mn, c_mn]
+    // 
     template<typename Scalar, size_t Dim>
     struct Line
     {
-        using value_type  = typename Eigen::Matrix<Scalar, Dim, 2>;
+        using dim         = std::integral_constant<int, size_t{Dim + 1}>;
+        using value_type  = typename Eigen::Matrix<Scalar, dim::value, 1>;
         using scalar_type = Scalar;
-        using width       = std::integral_constant<int, 2>;
-        using dim         = std::integral_constant<int, Dim>;
+        using width       = std::integral_constant<int, 3>;
 
         constexpr Line() = default;
 
-        constexpr Line(const Point<scalar_type, Dim>& ptA, const Point<scalar_type, Dim>& ptB)
+        constexpr Line(const Point<scalar_type, dim::value>& ptA, const Point<scalar_type, dim::value>& ptB)
         {
-            line.col(0) << ptA.pt;
-            line.col(1) << ptB.pt;
+            auto slope       = (ptA.get()(1) - ptB.get()(1)) / (ptA.get()(0) - ptB.get()(0));
+            auto x_component = -slope;
+            auto y_component = 1;
+            auto const_coeff = slope * ptA.get()(0) - ptA.get()(1);
+            line = {x_component, y_component, const_coeff};
+        }
+
+        // A line formed from the equation Ay - B*x + c = 0
+        constexpr Line(scalar_type x_coeff, scalar_type y_coeff, scalar_type const_coeff)
+        {
+            line = {x_coeff, y_coeff, const_coeff};
         }
 
         constexpr Line(const value_type& val)
@@ -34,20 +57,6 @@ export namespace Vanir::Geo
             return line;
         }
 
-        template<size_t N>
-        constexpr auto getPoint() const noexcept
-        {
-            return line.col(N);
-        }
-
-        constexpr auto getPerpendicularBisector() const noexcept
-        {
-            auto mid_x = std::midpoint(line(0, 0), line(1, 0));
-            auto mid_y = std::midpoint(line(0, 1), line(1, 1));
-
-            auto neg_recip_slope = - (line(1, 0) - line(0, 0)) / (line(1, 1) - line(0, 1));
-        }
-        
         value_type line{};
     };
 

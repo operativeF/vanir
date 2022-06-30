@@ -57,7 +57,7 @@ export namespace Vanir::Geo
             // Because the vector will be in the Quadrant III, instead of adding pi to
             // half the InteriorAngle, use the following identities to reduce precision loss:
             // cos(r/2 + pi) = -cos(r/2) and sin(r/2 + pi) = -sin(r/2)
-            const double angleAtOriginPtFromUnitZero = ToRadians(0.5 * InteriorAngle);
+            constexpr double angleAtOriginPtFromUnitZero = ToRadians(0.5 * InteriorAngle);
             const comp_type centerPt{origin.get()(0, 0) + cr * std::cos(angleAtOriginPtFromUnitZero), 
                                      origin.get()(1, 0) + cr * std::sin(angleAtOriginPtFromUnitZero)};
 

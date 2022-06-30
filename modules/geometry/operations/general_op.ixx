@@ -5,7 +5,7 @@ export module Vanir.Geometry.Ops;
 import <Eigen/Dense>;
 
 import Vanir.Geometry.Point;
-import Vanir.Geometry.Line;
+import Vanir.Geometry.Segment;
 
 import fmt;
 
@@ -119,7 +119,7 @@ export namespace Vanir::Geo
 
         if constexpr(!std::is_same_v<obj_t::value_type, Eigen::Matrix<scalar_t, dim_t::value, 2>>)
         {
-            return Line<scalar_t, dim_t::value>{
+            return Segment<scalar_t, dim_t::value>{
                 Point<scalar_t, dim_t::value>{geoObj.get().row(0).minCoeff(),
                                               geoObj.get().row(1).minCoeff()},
                 Point<scalar_t, dim_t::value>{geoObj.get().row(0).maxCoeff(),
@@ -128,7 +128,7 @@ export namespace Vanir::Geo
         }
         else // circle (always axis aligned)
         {
-            return Line<scalar_t, dim_t::value>{
+            return Segment<scalar_t, dim_t::value>{
                 Point<scalar_t, dim_t::value>{geoObj.getCenter()(0, 0) - geoObj.getRadius(),
                                               geoObj.getCenter()(1, 0) - geoObj.getRadius()},
                 Point<scalar_t, dim_t::value>{geoObj.getCenter()(0, 0) + geoObj.getRadius(),
