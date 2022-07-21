@@ -34,6 +34,8 @@ endif()
 
 target_compile_features(niltest PRIVATE cxx_std_23)
 
+add_test(NAME niltest COMMAND niltest)
+
 # target_compile_options(niltest PRIVATE "/d1reportTime")
 
 target_link_libraries(niltest
@@ -59,6 +61,8 @@ target_link_libraries(tmp_unit_test
         fmt::fmt
         tmp_units_lib
 )
+
+add_test(NAME tmp_unit_test COMMAND tmp_unit_test)
 
 if(WIN32)
     add_subdirectory(windows)

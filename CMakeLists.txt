@@ -42,6 +42,12 @@ include_directories(cmake)
 
 add_subdirectory(3rdparty/fmt EXCLUDE_FROM_ALL)
 
-add_subdirectory(benchmark)
+if(VANIR_ENABLE_BENCHMARK)
+    add_subdirectory(benchmark)
+endif()
+
 add_subdirectory(modules)
+
+include(CTest)
+
 add_subdirectory(tests)

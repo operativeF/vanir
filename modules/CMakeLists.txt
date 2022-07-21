@@ -98,7 +98,6 @@ endif()
 
 target_link_libraries(nilbase
     PRIVATE
-        boost_tmp
         nil_tmp
         fmt::fmt
 )
@@ -208,8 +207,10 @@ set(TMP_UNITS_BASE_SI_DERIVED_IXX
     ${TMP_UNITS_DIR}/units/SI/derived/yank.ixx
 )
 
-add_library(tmp_units_lib
-    STATIC
+add_library(tmp_units_lib INTERFACE)
+
+target_sources(tmp_units_lib
+    PUBLIC
         ${TMP_UNITS_ENGINE_IXX}
         ${TMP_UNITS_IXX}
         ${TMP_UNITS_ANY_IXX}
@@ -218,9 +219,8 @@ add_library(tmp_units_lib
 )
 
 target_link_libraries(tmp_units_lib
-    PRIVATE
+    INTERFACE
         nil_tmp
-        boost_tmp
 )
 
 add_subdirectory(geometry)
