@@ -1,7 +1,7 @@
 
 export module Utils.BitManip;
 
-import std.core;
+import std;
 
 export namespace nil::utils
 {

@@ -1,4 +1,17 @@
 
+//  Copyright 2022 Thomas Figueroa.
+//
+//  Distributed under the Boost Software License, Version 1.0.
+//
+//  See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt
+
+module;
+
+#if defined(__GNUC__) || defined(__clang__)
+#include <cstdint>
+#include <type_traits>
+#endif // defined(__GNUC__ ) || defined(__clang__)
 
 export module Pupple.Algorithm;
 
@@ -6,14 +19,9 @@ import Pupple;
 
 import Boost.TMP;
 
-#ifdef __GNUC__
-import <cstdint>;
-import <type_traits>;
-#elif __clang__
+#if _MSC_VER
 import std;
-#elif _MSC_VER
-import std.core;
-#endif
+#endif // _MSC_VER
 
 // make_from_pupple impl
 template <class T, class P, std::size_t... Is> requires(std::is_constructible_v<T,

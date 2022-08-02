@@ -1,16 +1,18 @@
-export module Utils.Strings.Unsafe;
+module;
 
-#ifdef __GNUC__
+#if defined(__GNUC__) || defined(__clang__)
 import <cstdint>;
 import <ranges>;
 import <string>;
 import <string_view>;
 import <vector>;
-#elif __clang__
+#endif // defined(__GNUC__) || defined(__clang__)
+
+export module Utils.Strings.Unsafe;
+
+#if _MSC_VER
 import std;
-#elif _MSC_VER
-import std.core;
-#endif
+#endif // _MSC_VER
 
 // Generally unsafe utilities to be used in circumstances where
 // speed is important and / or lifetimes are a certainty.

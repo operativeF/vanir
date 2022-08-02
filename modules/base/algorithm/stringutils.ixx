@@ -9,7 +9,7 @@ import <ranges>;
 #elif __clang__
 import std;
 #elif _MSC_VER
-import std.core;
+import std;
 #endif
 
 export template<size_t N>

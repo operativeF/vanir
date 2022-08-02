@@ -7,15 +7,17 @@
 // Licence:
 /////////////////////////////////////////////////////////////////////////////
 
+module;
+
+#if defined(__GNUC__) || defined(__clang__)
+#include <cstddef>
+#endif // defined(__GNUC__) || defined(__clang__)
+
 export module Utils.Chars;
 
-#ifdef __GNUC__
-import <cstddef>;
-#elif __clang__
+#if _MSC_VER
 import std;
-#elif _MSC_VER
-import std.core;
-#endif
+#endif // _MSC_VER
 
 export namespace nil::utils
 {

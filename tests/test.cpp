@@ -1,8 +1,6 @@
 
 import Nil.MetaTest;
 
-import fmt;
-
 namespace ut = boost::ut;
 
 int main(int argc, char** argv)

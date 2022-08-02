@@ -5,7 +5,7 @@ module;
 
 export module Nil.Windows.Styles;
 
-import std.core;
+import std;
 import Utils.Bitfield;
 import Utils.BitManip;
 

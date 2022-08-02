@@ -1,17 +1,20 @@
+
+module;
+
+#if defined(__GNUC__) || defined(__clang__)
+#include <cstdint>
+#include <ranges>
+#include <string>
+#include <string_view>
+#endif // defined(__GNUC__) || defined(__clang__)
+
 export module Utils.Strings.Modifying;
 
 import Utils.Chars;
 
-#ifdef __GNUC__
-import <cstdint>;
-import <ranges>;
-import <string>;
-import <string_view>;
-#elif __clang__
+#if _MSC_VER
 import std;
-#elif _MSC_VER
-import std.core;
-#endif
+#endif // _MSC_VER
 
 export namespace nil::utils
 {

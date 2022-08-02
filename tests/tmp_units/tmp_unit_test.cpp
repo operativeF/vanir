@@ -3,15 +3,13 @@ import Nil.MetaTest;
 
 import Boost.TMP.Units;
 
-import fmt;
-
 #ifdef __GNUC__
 import <tuple>;
 import <utility>;
 #elif __clang__
 import std;
 #elif _MSC_VER
-import std.core;
+import std;
 #endif
 
 namespace ut = boost::ut;

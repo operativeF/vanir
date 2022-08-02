@@ -1,20 +1,24 @@
+//  Copyright 2019-2021 Thomas Figueroa.
+//
+//  Distributed under the Boost Software License, Version 1.0.
+//
+//  See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt
+
+#if defined(__GNUC__) || defined(__clang__)
+#include <cstdint>
+#endif // defined(__GNUC__ ) || defined(__clang__)
 
 import Nil.MetaTest;
 import Utils.Bitfield;
 
 import Boost.TMP;
 
-#ifdef __GNUC__
-import <array>;
-import <type_traits>;
-#elif __clang__
+#if _MSC_VER
 import std;
-#elif _MSC_VER
-import std.core;
-#endif
+#endif // _MSC_VER
 
 namespace ut = boost::ut;
-
 
 // Exclusive bitflag example
 enum class Borders
@@ -203,12 +207,12 @@ ut::suite CombineBitfieldTest = []
 
     expect(newcb.max_options == 8);
 
-    expect(newcb.enum_offset(Borders::Double) == 0) << fmt::format("{}", newcb.enum_offset(Borders::Double));
-    expect(newcb.enum_offset(Styles::Bold) == 4) << fmt::format("{}", newcb.enum_offset(Styles::Bold));
+    expect(newcb.enum_offset(Borders::Double) == 0) << std::format("{}", newcb.enum_offset(Borders::Double));
+    expect(newcb.enum_offset(Styles::Bold) == 4) << std::format("{}", newcb.enum_offset(Styles::Bold));
 
-    expect(newcb.enum_offset_value(Borders::Triple) == 2) << fmt::format("{}", newcb.enum_offset_value(Borders::Triple));
+    expect(newcb.enum_offset_value(Borders::Triple) == 2) << std::format("{}", newcb.enum_offset_value(Borders::Triple));
     expect(newcb.enum_offset_value(Styles::Strikethrough) == (static_cast<int>(Borders::_max_size) + static_cast<int>(Styles::Strikethrough)))
-        << fmt::format("{}", newcb.enum_offset_value(Styles::Strikethrough));
+        << std::format("{}", newcb.enum_offset_value(Styles::Strikethrough));
 
     "Operator tests"_test = []
     {
@@ -254,7 +258,7 @@ ut::suite CombineBitfieldTest = []
         optest.toggle_all();
 
         const cb zero_bitset{Borders::Single};
-        expect(zero_bitset.as_enum_value() == 0) << fmt::format("{}", zero_bitset.as_enum_value());
-        expect(zero_bitset.as_value() == 1) << fmt::format("{}", zero_bitset.as_value());
+        expect(zero_bitset.as_enum_value() == 0) << std::format("{}", zero_bitset.as_enum_value());
+        expect(zero_bitset.as_value() == 1) << std::format("{}", zero_bitset.as_value());
     };
 };

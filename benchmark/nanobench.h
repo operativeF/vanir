@@ -40,8 +40,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #ifdef _MSC_VER
-import std.core;
-import std.memory;
+import std;
 #else
 #include <chrono>  // high_resolution_clock
 #include <cstring> // memcpy

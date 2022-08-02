@@ -6,8 +6,6 @@ import Boost.TMP;
 import Pupple;
 import Pupple.Algorithm;
 
-import fmt;
-
 #ifdef __GNUC__
 import <array>;
 import <string_view>;
@@ -15,7 +13,7 @@ import <type_traits>;
 #elif __clang__
 import std;
 #elif _MSC_VER
-import std.core;
+import std;
 #endif
 
 namespace ut = boost::ut;
@@ -106,11 +104,11 @@ ut::suite TestPuppleStorageAlignment = []
     expect(nestedTupleAgg != nestedTupleOther);
 
     // Size of new_tupple will be 20 bytes + 4 bytes padding.
-    expect(sizeof(new_tupple) == 24) << fmt::format("{}", sizeof(new_tupple));
-    expect(sizeof(nestedTupleAgg) == 16) << fmt::format("{}", sizeof(nestedTupleAgg));
-    expect(sizeof(nestedTupleComplexAlignment) == 56) << fmt::format("{}", sizeof(nestedTupleComplexAlignment));
-    // fmt::print("Size of Pupple: {} bytes.\n", sizeof(new_tupple));
-    // fmt::print("Size of std::tuple: {} bytes.\n", sizeof(stdtuple));
+    expect(sizeof(new_tupple) == 24) << std::format("{}", sizeof(new_tupple));
+    expect(sizeof(nestedTupleAgg) == 16) << std::format("{}", sizeof(nestedTupleAgg));
+    expect(sizeof(nestedTupleComplexAlignment) == 56) << std::format("{}", sizeof(nestedTupleComplexAlignment));
+    // std::print("Size of Pupple: {} bytes.\n", sizeof(new_tupple));
+    // std::print("Size of std::tuple: {} bytes.\n", sizeof(stdtuple));
 
     auto pos = get<5>(new_tupple);
     expect(pos == 5.0);

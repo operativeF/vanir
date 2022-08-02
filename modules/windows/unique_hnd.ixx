@@ -12,7 +12,7 @@ export module Nil.Win.UniqueHnd;
 
 import Nil.WinDef;
 
-import std.core;
+import std;
 
 namespace
 {

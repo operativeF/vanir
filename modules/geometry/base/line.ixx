@@ -4,7 +4,7 @@ import Vanir.Geometry.Point;
 
 import <Eigen/Dense>;
 
-import std.core;
+import std;
 
 export namespace Vanir::Geo
 {

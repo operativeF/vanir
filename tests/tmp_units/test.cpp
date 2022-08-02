@@ -6,9 +6,8 @@
 //  http://www.boost.org/LICENSE_1_0.txt
 
 import Nil.MetaTest;
-import fmt;
 
-import std.core;
+import std;
 
 namespace ut = boost::ut;
 

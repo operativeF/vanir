@@ -21,13 +21,20 @@ set(GEOMETRY_IXX
     ${CMAKE_CURRENT_SOURCE_DIR}/geometry.ixx
 )
 
-add_library(VanirGeometry
-    STATIC
-        ${GEOMETRY_IXX}
-)
+# FIXME: Not convinced about using Eigen3
+# add_library(VanirGeometry)
 
-target_link_libraries(VanirGeometry
-    PRIVATE
-        fmt::fmt
-        Eigen3::Eigen
-)
+# target_sources(VanirGeometry
+#     PUBLIC
+#     FILE_SET boost_tmp_modules TYPE CXX_MODULES FILES
+#     ${GEOMETRY_IXX}
+# )
+
+# target_link_libraries(VanirGeometry
+#     PRIVATE
+#         # fmt::fmt
+#         boost_tmp
+#         EigenHeaderUnits
+# )
+
+# target_compile_options(VanirGeometry PRIVATE /reference std=C:/dev/STL/std.ifc /translateInclude)

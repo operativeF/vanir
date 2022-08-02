@@ -8,7 +8,7 @@ import <Eigen/Geometry>;
 import Vanir.Geometry.Point;
 import Vanir.Geometry.Ops;
 
-import std.core;
+import std;
 
 export namespace Vanir::Geo
 {

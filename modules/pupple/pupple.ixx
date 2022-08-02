@@ -1,3 +1,15 @@
+//  Copyright 2022 Thomas Figueroa.
+//
+//  Distributed under the Boost Software License, Version 1.0.
+//
+//  See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt
+
+module;
+
+#if defined(__GNUC__) || defined(__clang__)
+#include <cstdint>
+#endif // defined(__GNUC__ ) || defined(__clang__)
 
 export module Pupple;
 
@@ -7,15 +19,9 @@ import Pupple.Element;
 
 import Vanir.Utils.ThreeWayImpl;
 
-#ifdef __GNUC__
-import <cstdint>;
-import <type_traits>;
-#elif __clang__
+#if _MSC_VER
 import std;
-#elif _MSC_VER
-import std.core;
-import std.memory;
-#endif
+#endif // _MSC_VER
 
 namespace tmp = boost::tmp;
 

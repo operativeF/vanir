@@ -6,7 +6,7 @@ import <Eigen/Dense>;
 import Vanir.Geometry.Line;
 import Vanir.Geometry.Point;
 
-import std.core;
+import std;
 
 export namespace Vanir::Geo
 {

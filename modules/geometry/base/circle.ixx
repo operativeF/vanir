@@ -7,9 +7,7 @@ import Vanir.Geometry.Segment;
 
 import <Eigen/Dense>;
 
-import fmt;
-
-import std.core;
+import std;
 
 export namespace Vanir::Geo
 {
@@ -49,14 +47,14 @@ export namespace Vanir::Geo
             auto chordBA = Segment<scalar_type, Dim>(ptB, ptA);
             auto chordCB = Segment<scalar_type, Dim>(ptC, ptB);
 
-            // fmt::print("\nChord BA: (({}, {}), ({}, {}))", chordBA.get()(0, 0), chordBA.get()(1, 0), chordBA.get()(0, 1), chordBA.get()(1, 1));
-            // fmt::print("\nChord CB: (({}, {}), ({}, {}))", chordCB.get()(0, 0), chordCB.get()(1, 0), chordCB.get()(0, 1), chordCB.get()(1, 1));
+            // std::print("\nChord BA: (({}, {}), ({}, {}))", chordBA.get()(0, 0), chordBA.get()(1, 0), chordBA.get()(0, 1), chordBA.get()(1, 1));
+            // std::print("\nChord CB: (({}, {}), ({}, {}))", chordCB.get()(0, 0), chordCB.get()(1, 0), chordCB.get()(0, 1), chordCB.get()(1, 1));
 
             Line<scalar_type, Dim> midBA{getPerpendicularBisector(chordBA)};
             Line<scalar_type, Dim> midCB{getPerpendicularBisector(chordCB)};
 
-            // fmt::print("\nLine midBA: ({}, {}, {} = 0)\n", midBA.get()(0, 0), midBA.get()(1, 0), midBA.get()(2, 0));
-            // fmt::print("\nLine midCB: ({}, {}, {} = 0)\n", midCB.get()(0, 0), midCB.get()(1, 0), midCB.get()(2, 0));
+            // std::print("\nLine midBA: ({}, {}, {} = 0)\n", midBA.get()(0, 0), midBA.get()(1, 0), midBA.get()(2, 0));
+            // std::print("\nLine midCB: ({}, {}, {} = 0)\n", midCB.get()(0, 0), midCB.get()(1, 0), midCB.get()(2, 0));
 
             Eigen::Matrix<scalar_type, Dim, 2> intersectMat;
             intersectMat << midBA.get()(0, 0), midBA.get()(1, 0),
@@ -67,7 +65,7 @@ export namespace Vanir::Geo
             Eigen::ColPivHouseholderQR<decltype(intersectMat)> dec(intersectMat);
             Eigen::Matrix<scalar_type, Dim, 1> intersectionPt = dec.solve(b);
 
-            // fmt::print("\nIntersection: ({}, {})\n", intersectionPt(0, 0), intersectionPt(1, 0));
+            // std::print("\nIntersection: ({}, {})\n", intersectionPt(0, 0), intersectionPt(1, 0));
 
             circle.col(0) << (intersectionPt - ptA.get());
             circle.col(1) << intersectionPt;

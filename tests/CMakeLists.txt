@@ -4,67 +4,38 @@ set(PUPPLE_TESTS
     pupple/pupple_algorithm_test.cpp
 )
 
-if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
-    add_module(metatest metatest/metatest.ixx)
-endif()
+add_library(MetaTestLib)
 
-add_library(MetaTestLib
-    STATIC
-        metatest/metatest.ixx
+target_sources(MetaTestLib
+    PUBLIC
+    FILE_SET boost_tmp_modules TYPE CXX_MODULES FILES
+    metatest/metatest.ixx
 )
 
 target_link_libraries(MetaTestLib
     PRIVATE
         fmt::fmt
-        nil_tmp
         nilbase
 )
+
+target_compile_options(MetaTestLib PUBLIC /reference std=C:/dev/STL/std.ifc)
 
 add_executable(niltest
     # base/algorithm/strutils.cpp
     base/bitfieldtest.cpp
     test.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/base/geometry/shapes.cpp
     ${PUPPLE_TESTS}
 )
-
-if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
-    add_dependencies(niltest metatest.pcm)
-endif()
 
 target_compile_features(niltest PRIVATE cxx_std_23)
 
 add_test(NAME niltest COMMAND niltest)
 
-# target_compile_options(niltest PRIVATE "/d1reportTime")
-
 target_link_libraries(niltest
     PRIVATE
         nilbase
-        nil_tmp
-        VanirGeometry
-        Boost::nowide
         fmt::fmt
         MetaTestLib
 )
 
-add_executable(tmp_unit_test
-    tmp_units/test.cpp
-    tmp_units/tmp_unit_test.cpp
-    metatest/metatest.ixx
-)
-
-target_link_libraries(tmp_unit_test
-    PRIVATE
-        nilbase
-        nil_tmp
-        fmt::fmt
-        tmp_units_lib
-)
-
-add_test(NAME tmp_unit_test COMMAND tmp_unit_test)
-
-if(WIN32)
-    add_subdirectory(windows)
-endif()
-
+target_link_directories(niltest PRIVATE C:/dev/STL/out/x64/out/lib/amd64)

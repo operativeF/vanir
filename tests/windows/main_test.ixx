@@ -1,13 +1,13 @@
 
-import <main.h>;
-
 #include <windows.h>
 
 import Nil.MetaTest;
 import Nil.WinDef;
 import Nil.Win.UniqueHnd;
 
-import std.core;
+import std;
+
+#define WWIN_MAIN int wWinMain(NLHINSTANCE hInstance, NLHINSTANCE hPrevInstance, NLPWSTR pCmdLine, int nCmdShow)
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 

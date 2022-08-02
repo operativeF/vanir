@@ -9,6 +9,16 @@
 
 module;
 
+// FIXME: Doesn't work with import std; yet
+#if defined(__GNUC__) || defined(__clang__)
+#include <cstdint>
+#include <source_location>
+#include <sstream>
+#include <string>
+#include <string_view>
+#include <vector>
+#endif // defined(__GNUC__) || defined(__clang__)
+
 #define BOOST_UT_VERSION 1'1'8
 
 #if defined(__has_builtin) && defined(__GNUC__) && (__GNUC__ < 10) && \
@@ -31,22 +41,10 @@ module;
 
 export module Nil.MetaTest;
 
-import fmt;
+import std;
 
 import Boost.TMP;
 import Utils.Strings;
-
-#ifdef __GNUC__
-import <cstdint>;
-import <ranges>;
-import <string>;
-import <string_view>;
-import <vector>;
-#elif __clang__
-import std;
-#elif _MSC_VER
-import std.core;
-#endif
 
 export namespace boost::inline ext::ut::inline v1_1_8 {
 namespace utility {
@@ -758,7 +756,7 @@ export
 {
 
 template<>
-struct fmt::formatter<boost::ut::detail::op>
+struct std::formatter<boost::ut::detail::op>
 {
   template<typename ParseContext>
   constexpr auto parse(ParseContext& ctx)
@@ -769,79 +767,79 @@ struct fmt::formatter<boost::ut::detail::op>
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::gt_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return format_to(ctx.out(), "({} > {})", cmp.lhs(), cmp.rhs());
+    return std::format_to(ctx.out(), "({} > {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::eq_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return format_to(ctx.out(), "({} == {})", cmp.lhs(), cmp.rhs());
+    return std::format_to(ctx.out(), "({} == {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::neq_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return format_to(ctx.out(), "({} != {})", cmp.lhs(), cmp.rhs());
+    return std::format_to(ctx.out(), "({} != {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::lt_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return format_to(ctx.out(), "({} < {})", cmp.lhs(), cmp.rhs());
+    return std::format_to(ctx.out(), "({} < {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::le_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return format_to(ctx.out(), "({} <= {})", cmp.lhs(), cmp.rhs());
+    return std::format_to(ctx.out(), "({} <= {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::ge_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return format_to(ctx.out(), "({} >= {})", cmp.lhs(), cmp.rhs());
+    return std::format_to(ctx.out(), "({} >= {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::and_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return format_to(ctx.out(), "({} and {})", cmp.lhs(), cmp.rhs());
+    return std::format_to(ctx.out(), "({} and {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::or_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return format_to(ctx.out(), "({} or {})", cmp.lhs(), cmp.rhs());
+    return std::format_to(ctx.out(), "({} or {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename T, typename FormatContext>
   auto format(const boost::ut::detail::not_<T>& cmp, FormatContext& ctx)
   {
-    return format_to(ctx.out(), "(not {})", cmp.value());
+    return std::format_to(ctx.out(), "(not {})", cmp.value());
   }
 
   template<typename TExpr, typename FormatContext>
   auto format(const boost::ut::detail::throws_<TExpr, void>& cmp, FormatContext& ctx)
   {
-    return format_to(ctx.out(), "throws");
+    return std::format_to(ctx.out(), "throws");
   }
 
   template<class TExpr, class TException, typename FormatContext>
   auto format(const boost::ut::detail::throws_<TExpr, TException>& cmp, FormatContext& ctx)
   {
-    return format_to(ctx.out(), "throws<{}>", boost::ut::reflection::type_name<TException>());
+    return std::format_to(ctx.out(), "throws<{}>", boost::ut::reflection::type_name<TException>());
   }
 
   template<typename TExpr, typename FormatContext>
   auto format(const boost::ut::detail::nothrow_<TExpr>& cmp, FormatContext& ctx)
   {
-    return format_to(ctx.out(), "nothrow", cmp.value());
+    return std::format_to(ctx.out(), "nothrow", cmp.value());
   }
 
   template<typename T, typename FormatContext>
   auto format(const boost::ut::detail::type_<T>& t, FormatContext& ctx)
   {
-    return format_to(ctx.out(), boost::ut::reflection::type_name<T>());
+    return std::format_to(ctx.out(), boost::ut::reflection::type_name<T>());
   }
 };
 
@@ -993,36 +991,36 @@ class printer {
 class reporter {
  public:
   auto on(events::test_begin test_begin) -> void {
-    fmt::print("Running \"{}\"...", test_begin.name);
+    std::cout << std::format("Running \"{}\"...", test_begin.name);
     fails_ = asserts_.fail;
   }
 
   auto on(events::test_run test_run) -> void {
-    fmt::print("\n \"{}\"...", test_run.name);
+    std::cout << std::format("\n \"{}\"...", test_run.name);
   }
 
   auto on(events::test_skip test_skip) -> void {
-    fmt::print("{}...SKIPPED\n", test_skip.name);
+    std::cout << std::format("{}...SKIPPED\n", test_skip.name);
     ++tests_.skip;
   }
 
   auto on(events::test_end) -> void {
     if (asserts_.fail > fails_) {
       ++tests_.fail;
-      fmt::print(fg(fmt::color::red), "\nFAILED\n");
+      std::cout << "\nFAILED\n";
     } else {
       ++tests_.pass;
-      fmt::print(fg(fmt::color::green), "PASSED\n");
+      std::cout << "PASSED\n";
     }
   }
 
   template <class TMsg>
   auto on(events::log<TMsg> l) -> void {
-    fmt::print("{}", l.msg);
+    std::cout << l.msg;
   }
 
   auto on(events::exception exception) -> void {
-    fmt::print("\n  Unexpected exception with message:\n{}", exception.what());
+    std::cout << std::format("\n  Unexpected exception with message:\n{}", exception.what());
     ++asserts_.fail;
   }
 
@@ -1038,9 +1036,9 @@ class reporter {
                  ? name.substr(name.rfind('/') + 1)
                  : name;
     };
-    fmt::print("\n  {}:{}:FAILED [{}]", short_name(assertion.location.file_name()),
-                                        assertion.location.line(),
-                                        assertion.expr);
+    std::cout << std::format("\n  {}:{}:FAILED [{}]", short_name(assertion.location.file_name()),
+                                                      assertion.location.line(),
+                                                      assertion.expr);
     ++asserts_.fail;
   }
 
@@ -1050,19 +1048,19 @@ class reporter {
     if (static auto once = true; once) {
       once = false;
       if (tests_.fail || asserts_.fail) {
-        fmt::print("\n========================================================"
-                    "=======================\ntests:    {} | {} failed\n"
-                    "asserts: {} | {} passed | {} failed\n", (tests_.pass + tests_.fail),
-                                                             tests_.fail,
-                                                             (asserts_.pass +  asserts_.fail),
-                                                             asserts_.pass,
-                                                             asserts_.fail);
+        std::cout << std::format("\n========================================================"
+                                 "=======================\ntests:    {} | {} failed\n"
+                                 "asserts: {} | {} passed | {} failed\n", (tests_.pass + tests_.fail),
+                                                                           tests_.fail,
+                                                                           (asserts_.pass +  asserts_.fail),
+                                                                           asserts_.pass,
+                                                                           asserts_.fail);
       } else {
         // FIXME: Add colors.
-        fmt::print("All test passed ({} asserts in {} tests)\n", asserts_.pass, tests_.pass);
+        std::cout << std::format("All test passed ({} asserts in {} tests)\n", asserts_.pass, tests_.pass);
 
         if (tests_.skip) {
-          fmt::print("{} tests skipped\n", tests_.skip);
+          std::cout << std::format("{} tests skipped\n", tests_.skip);
         }
       }
     }
@@ -1185,9 +1183,9 @@ class runner {
 
       if (dry_run_) {
         for (auto i = 0u; i < level_; ++i) {
-          fmt::print("{}{}", (i ? "." : ""), path_[i]);
+          std::cout << std::format("{}{}", (i ? "." : ""), path_[i]);
         }
-        fmt::print("\n");
+        std::cout << '\n';
       }
 
 #if defined(__cpp_exceptions)

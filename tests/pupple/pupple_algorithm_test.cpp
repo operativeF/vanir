@@ -6,15 +6,13 @@ import Boost.TMP;
 import Pupple;
 import Pupple.Algorithm;
 
-import fmt;
-
 #ifdef __GNUC__
 import <tuple>;
 import <utility>;
 #elif __clang__
 import std;
 #elif _MSC_VER
-import std.core;
+import std;
 #endif
 
 namespace ut = boost::ut;
@@ -60,7 +58,7 @@ ut::suite SwapPupplesTest = []
         expect(get<0>(y) == "first"  && get<1>(y) == 1);
 
         // Specialized swap shouldn't affect alignment / size.
-        expect(sizeof(x) == sizeof(y)) << fmt::format("{} != {}", sizeof(x), sizeof(y));
+        expect(sizeof(x) == sizeof(y)) << std::format("{} != {}", sizeof(x), sizeof(y));
     };
 
     "std::swap"_test = [=]
@@ -74,7 +72,7 @@ ut::suite SwapPupplesTest = []
         expect(get<0>(y) == "first"  && get<1>(y) == 1);
 
         // Using std::swap shouldn't affect alignment / size.
-        expect(sizeof(x) == sizeof(y)) << fmt::format("{} != {}", sizeof(x), sizeof(y));
+        expect(sizeof(x) == sizeof(y)) << std::format("{} != {}", sizeof(x), sizeof(y));
     };
 };
 
@@ -91,9 +89,9 @@ ut::suite ConcatPuppleTest = []
     auto pcat = pupple_cat(newtup, othertup);
     auto ecat = pupple_cat(emptytup, othertup);
     auto plus_cat = newtup + othertup;
-    // expect(sizeof(cpptuple) == 24) << fmt::format("{}", sizeof(cpptuple));
-    expect(sizeof(newtup) == 16) << fmt::format("{}", sizeof(newtup));
-    expect(sizeof(pcat) == 32) << fmt::format("{}", sizeof(newtup) + sizeof(othertup));
+    // expect(sizeof(cpptuple) == 24) << std::format("{}", sizeof(cpptuple));
+    expect(sizeof(newtup) == 16) << std::format("{}", sizeof(newtup));
+    expect(sizeof(pcat) == 32) << std::format("{}", sizeof(newtup) + sizeof(othertup));
     expect(ecat == othertup);
     expect(plus_cat == pcat);
 
@@ -102,11 +100,11 @@ ut::suite ConcatPuppleTest = []
         auto aligntup = Tuple{"first", 1, 2, "second"};
         auto aligned_actual = Tuple{"first", 1, 2, "second", "first", 1, 2, "second", "first", 1, 2, "second"};
 
-        expect(sizeof(aligntup) == 24) << fmt::format("{} != 24", sizeof(aligntup));
+        expect(sizeof(aligntup) == 24) << std::format("{} != 24", sizeof(aligntup));
 
         auto align3 = pupple_cat(aligntup, aligntup, aligntup);
 
-        expect(sizeof(align3) == sizeof(aligned_actual)) << fmt::format("{} != {}", sizeof(align3), sizeof(aligned_actual));
+        expect(sizeof(align3) == sizeof(aligned_actual)) << std::format("{} != {}", sizeof(align3), sizeof(aligned_actual));
     };
 };
 

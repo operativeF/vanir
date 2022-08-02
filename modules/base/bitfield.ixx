@@ -11,7 +11,7 @@ import <type_traits>;
 #elif __clang__
 import std;
 #elif _MSC_VER
-import std.core;
+import std;
 #endif
 
 template<typename Enum>

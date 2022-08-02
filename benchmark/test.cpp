@@ -5,7 +5,7 @@
 import Pupple;
 import Pupple.Algorithm;
 
-import std.core;
+import std;
 
 static constexpr std::tuple cc_stda{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"};
 static constexpr std::tuple cc_stdb{"bubsy", 3.0, 5, 10.0, 99, "values", "genos", "pulses", 32, 'a', 7, 44, -10, "gary the snail"};
