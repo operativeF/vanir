@@ -1,16 +1,19 @@
+
+module;
+
+#if defined(__GNUC__) || defined(__clang__)
+#include <ranges>
+#endif // defined(__GNUC__) || defined(__clang__)
+
 export module Utils.Strings;
 
 export import Utils.Strings.Modifying;
 export import Utils.Strings.Nonmodifying;
 export import Utils.Strings.Unsafe;
 
-#ifdef __GNUC__
-import <ranges>;
-#elif __clang__
+#if _MSC_VER
 import std;
-#elif _MSC_VER
-import std;
-#endif
+#endif // _MSC_VER
 
 export template<size_t N>
 struct StrLit

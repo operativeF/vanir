@@ -9,12 +9,13 @@ module;
 
 #if defined(__GNUC__) || defined(__clang__)
 #include <cstdint>
+#include <numbers>
 #include <type_traits>
 #endif // defined(__GNUC__ ) || defined(__clang__)
 
-export module Vanir.Geometry.Ops;
+#include <Eigen/Dense>
 
-import <Eigen/Dense>;
+export module Vanir.Geometry.Ops;
 
 import Vanir.Geometry.Point;
 import Vanir.Geometry.Segment;

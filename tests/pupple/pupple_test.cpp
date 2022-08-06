@@ -1,4 +1,12 @@
 
+#if defined(__GNUC__) || defined(__clang__)
+#include <array>
+#include <format>
+#include <string_view>
+#include <tuple>
+#include <type_traits>
+#endif // defined(__GNUC__) || defined(__clang__)
+
 import Nil.MetaTest;
 
 import Boost.TMP;
@@ -6,15 +14,9 @@ import Boost.TMP;
 import Pupple;
 import Pupple.Algorithm;
 
-#ifdef __GNUC__
-import <array>;
-import <string_view>;
-import <type_traits>;
-#elif __clang__
+#if _MSC_VER
 import std;
-#elif _MSC_VER
-import std;
-#endif
+#endif // _MSC_VER
 
 namespace ut = boost::ut;
 namespace tmp = boost::tmp;

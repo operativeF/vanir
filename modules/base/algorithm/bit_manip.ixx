@@ -1,7 +1,17 @@
 
+module;
+
+#if defined(__GNUC__) || defined(__clang__)
+#include <bit>
+#include <cstdint>
+#endif // defined(__GNUC__) || defined(__clang__)
+
+
 export module Utils.BitManip;
 
+#if _MSC_VER
 import std;
+#endif // _MSC_VER
 
 export namespace nil::utils
 {

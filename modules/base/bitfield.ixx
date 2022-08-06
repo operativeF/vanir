@@ -1,18 +1,20 @@
 
+module;
+
+#if defined(__GNUC__) || defined(__clang__)
+#include <algorithm>
+#include <cstdint>
+#include <ranges>
+#include <type_traits>
+#endif // defined(__GNUC__) || defined(__clang__)
+
 export module Utils.Bitfield;
 
 import Boost.TMP;
 
-#ifdef __GNUC__
-import <algorithm>;
-import <cstdint>;
-import <ranges>;
-import <type_traits>;
-#elif __clang__
+#if _MSC_VER
 import std;
-#elif _MSC_VER
-import std;
-#endif
+#endif // _MSC_VER
 
 template<typename Enum>
 concept BitfieldCompatible =  requires

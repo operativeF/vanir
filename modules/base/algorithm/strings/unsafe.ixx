@@ -1,11 +1,11 @@
 module;
 
 #if defined(__GNUC__) || defined(__clang__)
-import <cstdint>;
-import <ranges>;
-import <string>;
-import <string_view>;
-import <vector>;
+#include <cstdint>
+#include <ranges>
+#include <string>
+#include <string_view>
+#include <vector>
 #endif // defined(__GNUC__) || defined(__clang__)
 
 export module Utils.Strings.Unsafe;

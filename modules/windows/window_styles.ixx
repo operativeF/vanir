@@ -5,9 +5,10 @@ module;
 
 export module Nil.Windows.Styles;
 
-import std;
 import Utils.Bitfield;
 import Utils.BitManip;
+
+import std;
 
 export namespace msw::utils
 {

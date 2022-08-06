@@ -3,15 +3,6 @@ import Nil.MetaTest;
 
 import Boost.TMP.Units;
 
-#ifdef __GNUC__
-import <tuple>;
-import <utility>;
-#elif __clang__
-import std;
-#elif _MSC_VER
-import std;
-#endif
-
 namespace ut = boost::ut;
 
 using namespace potato::units;

@@ -1,16 +1,16 @@
 
+#if defined(__GNUC__) || defined(__clang__)
+#include <string>
+#include <string_view>
+#include <vector>
+#endif // defined(__GNUC__) || defined(__clang__)
+
 import Nil.MetaTest;
 import Utils.Strings;
 
-#ifdef __GNUC__
-import <string>;
-import <string_view>;
-import <vector>;
-#elif __clang__
-import std;
-#elif _MSC_VER
+#if _MSC_VER
 import std.core;
-#endif
+#endif // _MSC_VER
 
 namespace ut = boost::ut;
 

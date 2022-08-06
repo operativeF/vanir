@@ -1,16 +1,14 @@
 
 module;
 
-#ifdef __GNUC__
-import <cstdint>;
-import <ranges>;
-import <span>;
-import <string>;
-import <string_view>;
-import <vector>;
-#elif __clang__
-import std;
-#endif
+#if defined(__GNUC__) || defined(__clang__)
+#include <cstdint>
+#include <ranges>
+#include <span>
+#include <string>
+#include <string_view>
+#include <vector>
+#endif // defined(__GNUC__) || defined(__clang__)
 
 export module Utils.Strings.Nonmodifying;
 

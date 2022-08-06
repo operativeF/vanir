@@ -1,12 +1,21 @@
 
-export module Vanir.Geometry.Segment;
+module;
 
-import <Eigen/Dense>;
+#if defined(__GNUC__) || defined(__clang__)
+#include <cstdint>
+#include <numeric>
+#endif // defined(__GNUC__) || defined(__clang__)
+
+#include <Eigen/Dense>
+
+export module Vanir.Geometry.Segment;
 
 import Vanir.Geometry.Line;
 import Vanir.Geometry.Point;
 
+#ifdef _MSC_VER
 import std;
+#endif // _MSC_VER
 
 export namespace Vanir::Geo
 {

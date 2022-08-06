@@ -7,8 +7,6 @@
 
 import Nil.MetaTest;
 
-import std;
-
 namespace ut = boost::ut;
 
 int main(int argc, char** argv)

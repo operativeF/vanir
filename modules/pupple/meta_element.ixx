@@ -1,16 +1,19 @@
 
+module;
+
+#if defined(__GNUC__) || defined(__clang__)
+#include <concepts>
+#include <cstdint>
+#include <type_traits>
+#endif // defined(__GNUC__) || defined(__clang__)
+
 export module Pupple.Element;
 
 import Boost.TMP;
 
-#ifdef __GNUC__
-import <cstdint>;
-import <type_traits>;
-#elif __clang__
+#if _MSC_VER
 import std;
-#elif _MSC_VER
-import std;
-#endif
+#endif // _MSC_VER
 
 namespace tmp = boost::tmp;
 

@@ -1,13 +1,21 @@
 
+module;
+
+#if defined(__GNUC__) || defined(__clang__)
+#include <numeric>
+#endif // defined(__GNUC__) || defined(__clang__)
+
+#include <Eigen/Dense>
+
 export module Vanir.Geometry.Circle;
 
 import Vanir.Geometry.Line;
 import Vanir.Geometry.Point;
 import Vanir.Geometry.Segment;
 
-import <Eigen/Dense>;
-
+#if _MSC_VER
 import std;
+#endif // _MSC_VER
 
 export namespace Vanir::Geo
 {

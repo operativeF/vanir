@@ -1,14 +1,22 @@
+
 module;
 
-export module Vanir.Geometry.Polygon;
+#if defined(__GNUC__) || defined(__clang__)
+#include <cmath>
+#include <numbers>
+#endif // defined(__GNUC__) || defined(__clang__)
 
-import <Eigen/Dense>;
-import <Eigen/Geometry>;
+#include <Eigen/Dense>
+#include <Eigen/Geometry>
+
+export module Vanir.Geometry.Polygon;
 
 import Vanir.Geometry.Point;
 import Vanir.Geometry.Ops;
 
+#ifdef _MSC_VER
 import std;
+#endif // _MSC_VER
 
 export namespace Vanir::Geo
 {

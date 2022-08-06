@@ -8,6 +8,7 @@
 module;
 
 #if defined(__GNUC__) || defined(__clang__)
+#include <compare>
 #include <cstdint>
 #include <tuple>
 #include <type_traits>
