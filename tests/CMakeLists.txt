@@ -18,7 +18,9 @@ target_link_libraries(MetaTestLib
         nilbase
 )
 
-target_compile_options(MetaTestLib PUBLIC /reference std=C:/dev/STL/std.ifc)
+if(MSVC)
+    target_compile_options(MetaTestLib PUBLIC /reference std=C:/dev/STL/std.ifc)
+endif()
 
 add_executable(niltest
     # base/algorithm/strutils.cpp
