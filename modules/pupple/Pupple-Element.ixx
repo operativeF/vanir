@@ -8,7 +8,7 @@ module;
 #include <utility>
 #endif // defined(__GNUC__) || defined(__clang__)
 
-export module Pupple.Element;
+export module Pupple:Element;
 
 import Boost.TMP;
 

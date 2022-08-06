@@ -15,7 +15,6 @@ import Nil.MetaTest;
 import Boost.TMP;
 
 import Pupple;
-import Pupple.Algorithm;
 
 #if _MSC_VER
 import std;

@@ -16,9 +16,9 @@ module;
 #include <utility>
 #endif // defined(__GNUC__ ) || defined(__clang__)
 
-export module Pupple.Algorithm;
+export module Pupple:Algorithm;
 
-import Pupple;
+import :PuppleImpl;
 
 import Boost.TMP;
 
