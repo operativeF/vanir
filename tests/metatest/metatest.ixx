@@ -12,6 +12,7 @@ module;
 // FIXME: Doesn't work with import std; yet
 #if defined(__GNUC__) || defined(__clang__)
 #include <cstdint>
+#include <format>
 #include <source_location>
 #include <sstream>
 #include <string>
@@ -41,7 +42,9 @@ module;
 
 export module Nil.MetaTest;
 
+#ifdef _MSC_VER
 import std;
+#endif // _MSC_VER
 
 import Boost.TMP;
 import Utils.Strings;

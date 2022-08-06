@@ -6,7 +6,9 @@
 //  http://www.boost.org/LICENSE_1_0.txt
 
 #if defined(__GNUC__) || defined(__clang__)
+#include <array>
 #include <cstdint>
+#include <format>
 #endif // defined(__GNUC__ ) || defined(__clang__)
 
 import Nil.MetaTest;

@@ -9,6 +9,8 @@ module;
 
 #if defined(__GNUC__) || defined(__clang__)
 #include <cstdint>
+#include <tuple>
+#include <type_traits>
 #endif // defined(__GNUC__ ) || defined(__clang__)
 
 export module Pupple;
@@ -56,35 +58,8 @@ constexpr auto make_pupple(Params&&... params)
     return pupple<std::remove_reference_t<Params>...>(std::forward<Params>(params)...);
 }
 
-template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
-constexpr const VT& get(const pupple<Ts...>& t) noexcept
-{
-    return get(static_cast<const pupple_element<I, VT>&>(t));
-}
-
-template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
-constexpr VT& get(pupple<Ts...>& t) noexcept
-{
-    return get(static_cast<pupple_element<I, VT>&>(t));
-}
-
-template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
-constexpr VT&& get(pupple<Ts...>&& t) noexcept
-{
-    return get(static_cast<pupple_element<I, VT>&&>(t));
-}
-
-template<std::size_t I, typename... Ts, typename VT = indexed_at<I, Ts...>>
-constexpr const VT&& get(const pupple<Ts...>&& t) noexcept
-{
-    return get(static_cast<const pupple_element<I, VT>&&>(t));
-}
-
 template<std::size_t I, std::size_t... Is>
 using actual_index = tmp::call_<tmp::find_if_<tmp::is_<tmp::sizet_<I>>>, tmp::sizet_<Is>...>;
-
-template<typename It, std::size_t... Is>
-using actual_index_t = tmp::call_<tmp::find_if_<tmp::is_<It>>, tmp::sizet_<Is>...>;
 
 template<typename TypeToFind>
 struct is_indexed_type
@@ -135,14 +110,14 @@ struct PuppleBase<tmp::list_<tmp::sizet_<Is>...>, pupple<Ts...>>
 };
 
 template<typename T, typename U>
-using alignment_greater = tmp::bool_<((std::alignment_of_v<T>) > (std::alignment_of_v<U>))>;
+using size_greater = tmp::bool_<(sizeof(T) > sizeof(U))>;
 
 template<typename T, typename U>
-using align_greater_ = tmp::call_<
+using size_greater_ = tmp::call_<
     tmp::tee_<
         tmp::i0_<tmp::ui1_<>>,
         tmp::i1_<tmp::ui1_<>>,
-        tmp::lift_<alignment_greater>
+        tmp::lift_<size_greater>
     >, T, U>;
 
 // Sorts input types from greatest to least and maps their 
@@ -157,9 +132,12 @@ using align_greater_ = tmp::call_<
 // and the second part generated, pupple<double, int, char>
 // actually represents how the types are stored.
 template<typename... Ts>
+using remap_by_size_test_ = tmp::call_<tmp::map_<tmp::lift_<size_greater>, tmp::lift_<pupple, tmp::lift_<PuppleBase>>>, Ts...>;
+
+template<typename... Ts>
 using remap_by_size_ = tmp::call_<
     tmp::zip_with_index_<tmp::listify_,
-        tmp::sort_<tmp::lift_<align_greater_>,
+        tmp::sort_<tmp::lift_<size_greater_>,
             tmp::tee_<
                 tmp::transform_<tmp::ui0_<>>,
                 tmp::transform_<tmp::ui1_<>, tmp::lift_<pupple>>,
@@ -227,25 +205,25 @@ template<class... Ts>
 Tuple(Ts... ts) -> Tuple<Ts...>;
 
 template<std::size_t I, typename... Us>
-constexpr const auto& get(const Tuple<Us...>& pup) noexcept
+constexpr decltype(auto) get(const Tuple<Us...>& pup) noexcept
 {
     return get<Tuple<Us...>::template actual_index_t<I>::value>(pup.m_pupple);
 }
 
 template<std::size_t I, typename... Us>
-constexpr auto& get(Tuple<Us...>& pup) noexcept
+constexpr decltype(auto) get(Tuple<Us...>& pup) noexcept
 {
     return get<Tuple<Us...>::template actual_index_t<I>::value>(pup.m_pupple);
 }
 
 template<std::size_t I, typename... Us>
-constexpr auto get(Tuple<Us...>&& pup) noexcept
+constexpr decltype(auto) get(Tuple<Us...>&& pup) noexcept
 {
     return get<Tuple<Us...>::template actual_index_t<I>::value>(pup.m_pupple);
 }
 
 template<std::size_t I, typename... Us>
-constexpr const auto&& get(const Tuple<Us...>&& pup) noexcept
+constexpr decltype(auto) get(const Tuple<Us...>&& pup) noexcept
 {
     return get<Tuple<Us...>::template actual_index_t<I>::value>(pup.m_pupple);
 }

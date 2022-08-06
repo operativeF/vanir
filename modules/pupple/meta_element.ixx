@@ -15,16 +15,16 @@ import std;
 namespace tmp = boost::tmp;
 
 // FIXME: Reference values?
-template<typename Data>
+export template<typename Data>
 struct pupple_data
 {
     [[msvc::no_unique_address]] Data value;
 };
 
-template<typename T>
+export template<typename T>
 using IsEmptyAndInheritible = tmp::bool_<(std::is_empty_v<T> && !std::is_final_v<T>)>;
 
-template<typename T>
+export template<typename T>
 using PuppleDataT = tmp::call_<
     tmp::if_<
         tmp::lift_<IsEmptyAndInheritible>,

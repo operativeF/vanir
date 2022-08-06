@@ -2,10 +2,16 @@
 #define ANKERL_NANOBENCH_IMPLEMENT
 #include "nanobench.h"
 
+#if defined(__GNUC__) || defined(__clang__)
+#include <tuple>
+#endif // defined(__GNUC__) || defined(__clang__)
+
 import Pupple;
 import Pupple.Algorithm;
 
+#if _MSC_VER
 import std;
+#endif // _MSC_VER
 
 static constexpr std::tuple cc_stda{"vectorman", 1.0, 2, 3.0, 4, "names", "values", "gneves", 3, 'a', 1, 2, 4, "larry the lobster"};
 static constexpr std::tuple cc_stdb{"bubsy", 3.0, 5, 10.0, 99, "values", "genos", "pulses", 32, 'a', 7, 44, -10, "gary the snail"};

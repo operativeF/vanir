@@ -9,7 +9,9 @@
 module;
 
 #if defined(__GNUC__) || defined(__clang__)
+#include <concepts>
 #include <cstdint>
+#include <tuple>
 #include <type_traits>
 #endif // defined(__GNUC__ ) || defined(__clang__)
 
@@ -102,7 +104,7 @@ constexpr T make_from_pupple(P&& p)
 
 // Forward As Pupple
 template<typename... Ts>
-constexpr Tuple<Ts&&...> forward_as_pupple(Ts&&... ts) noexcept // TODO: Conditionally noexcept?
+constexpr decltype(auto) forward_as_pupple(Ts&&... ts) noexcept // TODO: Conditionally noexcept?
 {
     return Tuple<Ts&&...>(std::forward<Ts>(ts)...);
 }
@@ -132,21 +134,21 @@ constexpr void swap(const Tuple<Ts...>& a, const Tuple<Ts...>& b)
 
 // Concatenation
 template<typename... TupleTs>
-constexpr auto pupple_cat(TupleTs&&... tps)
+constexpr decltype(auto) pupple_cat(TupleTs&&... tps)
 {
     return pupple_cat_impl(std::index_sequence_for<TupleTs...>{}, std::forward<TupleTs>(tps)...);
 }
 
 // Concatenation operator+
 template<typename TupleLeft, typename TupleRight>
-constexpr auto operator+(TupleLeft&& left, TupleRight&& right)
+constexpr decltype(auto) operator+(TupleLeft&& left, TupleRight&& right)
 {
     return pupple_cat(std::forward<TupleLeft>(left), std::forward<TupleRight>(right));
 }
 
 // Gather
 template<typename GatherType, typename... GatherTypes>
-constexpr auto gather(auto&& tps)
+constexpr decltype(auto) gather(auto&& tps)
 {
     using concatted = concat_seqs<
         typename std::remove_reference_t<decltype(tps)>::template get_indexes_of_type<GatherType>,

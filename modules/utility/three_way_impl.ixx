@@ -8,7 +8,9 @@
 module;
 
 #if defined(__GNUC__) || defined(__clang__)
+#include <compare>
 #include <cstdint>
+#include <type_traits>
 #endif // defined(__GNUC__ ) || defined(__clang__)
 
 export module Vanir.Utils.ThreeWayImpl;
