@@ -22,7 +22,7 @@ namespace tmp = boost::tmp;
 export template<typename Data>
 struct pupple_data
 {
-    [[msvc::no_unique_address]] Data value;
+    Data value;
 };
 
 export template<typename T>

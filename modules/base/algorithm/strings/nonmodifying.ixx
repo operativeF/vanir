@@ -2,6 +2,7 @@
 module;
 
 #if defined(__GNUC__) || defined(__clang__)
+#include <algorithm>
 #include <cstdint>
 #include <ranges>
 #include <span>
@@ -9,6 +10,12 @@ module;
 #include <string_view>
 #include <vector>
 #endif // defined(__GNUC__) || defined(__clang__)
+
+#if defined(__GNUC__)
+#include <fmt/core.h>
+#elif defined(__clang__)
+#include <format>
+#endif // defined(__GNUC__)
 
 export module Utils.Strings.Nonmodifying;
 

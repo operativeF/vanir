@@ -9,6 +9,7 @@
 module;
 
 #if defined(__GNUC__) || defined(__clang__)
+#include <algorithm>
 #include <cstdint>
 #include <ranges>
 #include <type_traits>
