@@ -10,9 +10,11 @@ set(PUPPLE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/pupple)
 set(TMP_UNITS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tmp_units)
 
 set(PUPPLE_IXX
-    ${PUPPLE_DIR}/meta_element.ixx
-    ${PUPPLE_DIR}/pupple.ixx
-    ${PUPPLE_DIR}/pupple_algorithm.ixx
+    ${PUPPLE_DIR}/Pupple-Algorithm.ixx
+    ${PUPPLE_DIR}/Pupple-Element.ixx
+    ${PUPPLE_DIR}/Pupple-Impl.ixx
+    # ${PUPPLE_DIR}/new_pupple.ixx
+    ${PUPPLE_DIR}/Pupple.ixx
 )
 
 set(INTERNAL_UTILITIES_IXX
@@ -58,7 +60,7 @@ target_sources(nilbase
     ${PUPPLE_IXX}
     ${BASE_ALGORITHM}
     ${STRING_ALGORITHM}
-    ${WIN_ONLY_INTERFACE}
+    # ${WIN_ONLY_INTERFACE}
     ${INTERNAL_UTILITIES_IXX}
 )
 
