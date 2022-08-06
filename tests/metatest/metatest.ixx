@@ -16,6 +16,7 @@ module;
 #include <sstream>
 #include <string>
 #include <string_view>
+#include <utility>
 #include <vector>
 #endif // defined(__GNUC__) || defined(__clang__)
 

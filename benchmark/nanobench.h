@@ -46,6 +46,7 @@ import std;
 #include <cstring> // memcpy
 #include <iosfwd>  // for std::ostream* custom output target in Config
 #include <string>  // all names
+#include <utility>
 #include <vector>  // holds all results
 #endif
 

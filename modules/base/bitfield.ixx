@@ -4,8 +4,10 @@ module;
 #if defined(__GNUC__) || defined(__clang__)
 #include <algorithm>
 #include <cstdint>
+#include <limits>
 #include <ranges>
 #include <type_traits>
+#include <vector>
 #endif // defined(__GNUC__) || defined(__clang__)
 
 export module Utils.Bitfield;

@@ -10,6 +10,9 @@ module;
 
 #if defined(__GNUC__) || defined(__clang__)
 #include <cstdint>
+#include <ranges>
+#include <type_traits>
+#include <vector>
 #endif // defined(__GNUC__ ) || defined(__clang__)
 
 export module Nil.SVector;
@@ -32,12 +35,12 @@ struct cs_vector
     {
         auto vs = std::vector{ts...};
 
-        std::ranges::copy_n(std::begin(vs), std::size(vs), std::begin(value));
+        std::ranges::copy_n(std::ranges::begin(vs), std::ranges::size(vs), std::ranges::begin(value));
     }
 
     constexpr cs_vector(T val[N])
     {
-        std::ranges::copy_n(std::begin(val), std::size(val), std::begin(value));
+        std::ranges::copy_n(std::ranges::begin(val), std::ranges::size(val), std::ranges::begin(value));
     }
 
     T value[N]{};
