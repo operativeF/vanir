@@ -55,6 +55,12 @@ import std;
 import Boost.TMP;
 import Utils.Strings;
 
+#if defined(__GNUC__)
+namespace stfmt = fmt;
+#elif defined(_MSC_VER) || defined(__clang__)
+namespace stfmt = std;
+#endif // defined(__GNUC__)
+
 export namespace boost::inline ext::ut::inline v1_1_8 {
 namespace utility {
 template <class>
@@ -765,7 +771,7 @@ export
 {
 
 template<>
-struct std::formatter<boost::ut::detail::op>
+struct stfmt::formatter<boost::ut::detail::op>
 {
   template<typename ParseContext>
   constexpr auto parse(ParseContext& ctx)
@@ -776,79 +782,79 @@ struct std::formatter<boost::ut::detail::op>
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::gt_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return std::format_to(ctx.out(), "({} > {})", cmp.lhs(), cmp.rhs());
+    return stfmt::format_to(ctx.out(), "({} > {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::eq_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return std::format_to(ctx.out(), "({} == {})", cmp.lhs(), cmp.rhs());
+    return stfmt::format_to(ctx.out(), "({} == {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::neq_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return std::format_to(ctx.out(), "({} != {})", cmp.lhs(), cmp.rhs());
+    return stfmt::format_to(ctx.out(), "({} != {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::lt_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return std::format_to(ctx.out(), "({} < {})", cmp.lhs(), cmp.rhs());
+    return stfmt::format_to(ctx.out(), "({} < {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::le_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return std::format_to(ctx.out(), "({} <= {})", cmp.lhs(), cmp.rhs());
+    return stfmt::format_to(ctx.out(), "({} <= {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::ge_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return std::format_to(ctx.out(), "({} >= {})", cmp.lhs(), cmp.rhs());
+    return stfmt::format_to(ctx.out(), "({} >= {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::and_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return std::format_to(ctx.out(), "({} and {})", cmp.lhs(), cmp.rhs());
+    return stfmt::format_to(ctx.out(), "({} and {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename Lhs, typename Rhs, typename FormatContext>
   auto format(const boost::ut::detail::or_<Lhs, Rhs>& cmp, FormatContext& ctx)
   {
-    return std::format_to(ctx.out(), "({} or {})", cmp.lhs(), cmp.rhs());
+    return stfmt::format_to(ctx.out(), "({} or {})", cmp.lhs(), cmp.rhs());
   }
 
   template<typename T, typename FormatContext>
   auto format(const boost::ut::detail::not_<T>& cmp, FormatContext& ctx)
   {
-    return std::format_to(ctx.out(), "(not {})", cmp.value());
+    return stfmt::format_to(ctx.out(), "(not {})", cmp.value());
   }
 
   template<typename TExpr, typename FormatContext>
   auto format(const boost::ut::detail::throws_<TExpr, void>& cmp, FormatContext& ctx)
   {
-    return std::format_to(ctx.out(), "throws");
+    return stfmt::format_to(ctx.out(), "throws");
   }
 
   template<class TExpr, class TException, typename FormatContext>
   auto format(const boost::ut::detail::throws_<TExpr, TException>& cmp, FormatContext& ctx)
   {
-    return std::format_to(ctx.out(), "throws<{}>", boost::ut::reflection::type_name<TException>());
+    return stfmt::format_to(ctx.out(), "throws<{}>", boost::ut::reflection::type_name<TException>());
   }
 
   template<typename TExpr, typename FormatContext>
   auto format(const boost::ut::detail::nothrow_<TExpr>& cmp, FormatContext& ctx)
   {
-    return std::format_to(ctx.out(), "nothrow", cmp.value());
+    return stfmt::format_to(ctx.out(), "nothrow", cmp.value());
   }
 
   template<typename T, typename FormatContext>
   auto format(const boost::ut::detail::type_<T>& t, FormatContext& ctx)
   {
-    return std::format_to(ctx.out(), boost::ut::reflection::type_name<T>());
+    return stfmt::format_to(ctx.out(), boost::ut::reflection::type_name<T>());
   }
 };
 
@@ -1000,16 +1006,16 @@ class printer {
 class reporter {
  public:
   auto on(events::test_begin test_begin) -> void {
-    std::cout << std::format("Running \"{}\"...", test_begin.name);
+    std::cout << stfmt::format("Running \"{}\"...", test_begin.name);
     fails_ = asserts_.fail;
   }
 
   auto on(events::test_run test_run) -> void {
-    std::cout << std::format("\n \"{}\"...", test_run.name);
+    std::cout << stfmt::format("\n \"{}\"...", test_run.name);
   }
 
   auto on(events::test_skip test_skip) -> void {
-    std::cout << std::format("{}...SKIPPED\n", test_skip.name);
+    std::cout << stfmt::format("{}...SKIPPED\n", test_skip.name);
     ++tests_.skip;
   }
 
@@ -1029,7 +1035,7 @@ class reporter {
   }
 
   auto on(events::exception exception) -> void {
-    std::cout << std::format("\n  Unexpected exception with message:\n{}", exception.what());
+    std::cout << stfmt::format("\n  Unexpected exception with message:\n{}", exception.what());
     ++asserts_.fail;
   }
 
@@ -1045,7 +1051,7 @@ class reporter {
                  ? name.substr(name.rfind('/') + 1)
                  : name;
     };
-    std::cout << std::format("\n  {}:{}:FAILED [{}]", short_name(assertion.location.file_name()),
+    std::cout << stfmt::format("\n  {}:{}:FAILED [{}]", short_name(assertion.location.file_name()),
                                                       assertion.location.line(),
                                                       assertion.expr);
     ++asserts_.fail;
@@ -1057,7 +1063,7 @@ class reporter {
     if (static auto once = true; once) {
       once = false;
       if (tests_.fail || asserts_.fail) {
-        std::cout << std::format("\n========================================================"
+        std::cout << stfmt::format("\n========================================================"
                                  "=======================\ntests:    {} | {} failed\n"
                                  "asserts: {} | {} passed | {} failed\n", (tests_.pass + tests_.fail),
                                                                            tests_.fail,
@@ -1066,10 +1072,10 @@ class reporter {
                                                                            asserts_.fail);
       } else {
         // FIXME: Add colors.
-        std::cout << std::format("All test passed ({} asserts in {} tests)\n", asserts_.pass, tests_.pass);
+        std::cout << stfmt::format("All test passed ({} asserts in {} tests)\n", asserts_.pass, tests_.pass);
 
         if (tests_.skip) {
-          std::cout << std::format("{} tests skipped\n", tests_.skip);
+          std::cout << stfmt::format("{} tests skipped\n", tests_.skip);
         }
       }
     }
@@ -1192,7 +1198,7 @@ class runner {
 
       if (dry_run_) {
         for (auto i = 0u; i < level_; ++i) {
-          std::cout << std::format("{}{}", (i ? "." : ""), path_[i]);
+          std::cout << stfmt::format("{}{}", (i ? "." : ""), path_[i]);
         }
         std::cout << '\n';
       }

@@ -25,6 +25,12 @@ import Utils.Chars;
 import std;
 #endif // _MSC_VER
 
+#if defined(__GNUC__)
+namespace stfmt = fmt;
+#elif defined(_MSC_VER) || defined(__clang__)
+namespace stfmt = std;
+#endif // defined(__GNUC__)
+
 export namespace nil::utils
 {
 
@@ -140,7 +146,7 @@ std::vector<std::string> JoinChArray(std::span<const char> chSpan)
 // Delimit strings from a span of them.
 // std::string JoinStrings(std::span<std::string> strSpan, char delim)
 // {
-//     return std::format("{}", std::join(strSpan, std::string{delim}));
+//     return stfmt::format("{}", std::join(strSpan, std::string{delim}));
 // }
 
 // Like JoinStrings, except there is an
@@ -149,7 +155,7 @@ std::string JoinStringsEsc(std::span<const std::string> strSpan, char delim, std
 {
     std::string str;
 
-    const auto escBack = std::format("{}{}", esc, delim);
+    const auto escBack = stfmt::format("{}{}", esc, delim);
 
     for(auto&& name : strSpan)
     {

@@ -23,6 +23,12 @@ import Pupple.Algorithm;
 import std;
 #endif // _MSC_VER
 
+#if defined(__GNUC__)
+namespace stfmt = fmt;
+#elif defined(_MSC_VER) || defined(__clang__)
+namespace stfmt = std;
+#endif // defined(__GNUC__)
+
 namespace ut = boost::ut;
 namespace tmp = boost::tmp;
 
@@ -111,9 +117,9 @@ ut::suite TestPuppleStorageAlignment = []
     expect(nestedTupleAgg != nestedTupleOther);
 
     // Size of new_tupple will be 20 bytes + 4 bytes padding.
-    expect(sizeof(new_tupple) == 24) << std::format("{}", sizeof(new_tupple));
-    expect(sizeof(nestedTupleAgg) == 16) << std::format("{}", sizeof(nestedTupleAgg));
-    expect(sizeof(nestedTupleComplexAlignment) == 56) << std::format("{}", sizeof(nestedTupleComplexAlignment));
+    expect(sizeof(new_tupple) == 24) << stfmt::format("{}", sizeof(new_tupple));
+    expect(sizeof(nestedTupleAgg) == 16) << stfmt::format("{}", sizeof(nestedTupleAgg));
+    expect(sizeof(nestedTupleComplexAlignment) == 56) << stfmt::format("{}", sizeof(nestedTupleComplexAlignment));
     // std::print("Size of Pupple: {} bytes.\n", sizeof(new_tupple));
     // std::print("Size of std::tuple: {} bytes.\n", sizeof(stdtuple));
 

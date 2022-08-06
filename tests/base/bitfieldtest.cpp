@@ -25,6 +25,12 @@ import Boost.TMP;
 import std;
 #endif // _MSC_VER
 
+#if defined(__GNUC__)
+namespace stfmt = fmt;
+#elif defined(_MSC_VER) || defined(__clang__)
+namespace stfmt = std;
+#endif // defined(__GNUC__)
+
 namespace ut = boost::ut;
 
 // Exclusive bitflag example
@@ -214,12 +220,12 @@ ut::suite CombineBitfieldTest = []
 
     expect(newcb.max_options == 8);
 
-    expect(newcb.enum_offset(Borders::Double) == 0) << std::format("{}", newcb.enum_offset(Borders::Double));
-    expect(newcb.enum_offset(Styles::Bold) == 4) << std::format("{}", newcb.enum_offset(Styles::Bold));
+    expect(newcb.enum_offset(Borders::Double) == 0) << stfmt::format("{}", newcb.enum_offset(Borders::Double));
+    expect(newcb.enum_offset(Styles::Bold) == 4) << stfmt::format("{}", newcb.enum_offset(Styles::Bold));
 
-    expect(newcb.enum_offset_value(Borders::Triple) == 2) << std::format("{}", newcb.enum_offset_value(Borders::Triple));
+    expect(newcb.enum_offset_value(Borders::Triple) == 2) << stfmt::format("{}", newcb.enum_offset_value(Borders::Triple));
     expect(newcb.enum_offset_value(Styles::Strikethrough) == (static_cast<int>(Borders::_max_size) + static_cast<int>(Styles::Strikethrough)))
-        << std::format("{}", newcb.enum_offset_value(Styles::Strikethrough));
+        << stfmt::format("{}", newcb.enum_offset_value(Styles::Strikethrough));
 
     "Operator tests"_test = []
     {
@@ -265,7 +271,7 @@ ut::suite CombineBitfieldTest = []
         optest.toggle_all();
 
         const cb zero_bitset{Borders::Single};
-        expect(zero_bitset.as_enum_value() == 0) << std::format("{}", zero_bitset.as_enum_value());
-        expect(zero_bitset.as_value() == 1) << std::format("{}", zero_bitset.as_value());
+        expect(zero_bitset.as_enum_value() == 0) << stfmt::format("{}", zero_bitset.as_enum_value());
+        expect(zero_bitset.as_value() == 1) << stfmt::format("{}", zero_bitset.as_value());
     };
 };
