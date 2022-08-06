@@ -58,7 +58,7 @@ endif()
 
 find_package(Boost REQUIRED COMPONENTS nowide)
 find_package(Eigen3 CONFIG REQUIRED)
-find_package(fmt CONFIG REQUIRED)
+find_package(fmt CONFIG REQUIRED) # std::format N/A on GCC yet
 
 include_directories(cmake)
 

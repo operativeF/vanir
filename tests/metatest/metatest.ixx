@@ -12,13 +12,18 @@ module;
 // FIXME: Doesn't work with import std; yet
 #if defined(__GNUC__) || defined(__clang__)
 #include <cstdint>
-#include <format>
 #include <source_location>
 #include <sstream>
 #include <string>
 #include <string_view>
 #include <vector>
 #endif // defined(__GNUC__) || defined(__clang__)
+
+#if defined(__GNUC__)
+#include <fmt/core.h>
+#elif defined(__clang__)
+#include <format>
+#endif // defined(__GNUC__)
 
 #define BOOST_UT_VERSION 1'1'8
 

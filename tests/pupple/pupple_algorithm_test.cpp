@@ -1,9 +1,14 @@
 
 #if defined(__GNUC__) || defined(__clang__)
-#include <format>
 #include <tuple>
 #include <utility>
 #endif // defined(__GNUC__) || defined(__clang__)
+
+#if defined(__GNUC__)
+#include <fmt/core.h>
+#elif defined(__clang__)
+#include <format>
+#endif // defined(__GNUC__)
 
 import Nil.MetaTest;
 
