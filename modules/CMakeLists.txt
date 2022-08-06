@@ -71,7 +71,7 @@ target_link_libraries(nilbase
     PRIVATE
         boost_tmp
         C:/dev/STL/std.obj
-        # fmt::fmt
+        fmt::fmt
 )
 
 add_subdirectory(geometry)
