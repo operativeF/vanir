@@ -10,6 +10,7 @@ module;
 #if defined(__GNUC__) || defined(__clang__)
 #include <compare>
 #include <cstdint>
+#include <functional>
 #include <tuple>
 #include <type_traits>
 #include <utility>
@@ -240,7 +241,7 @@ template<class F, class T>
 using tuple_func_invoke_noexcept = boost::tmp::call_<
     boost::tmp::unpack_<
         boost::tmp::and_<
-            boost::tmp::lift_<typename tuple_func_nothrow_invocable<std::remove_reference_t<F>>::template f>>
+            boost::tmp::lift_<tuple_func_nothrow_invocable<std::remove_reference_t<F>>::template f>>
     >, typename std::remove_reference_t<T>::param_list>;
 
 template<class F, class TupleType>

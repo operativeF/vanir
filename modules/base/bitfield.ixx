@@ -3,6 +3,7 @@ module;
 
 #if defined(__GNUC__) || defined(__clang__)
 #include <algorithm>
+#include <concepts>
 #include <cstdint>
 #include <limits>
 #include <ranges>
@@ -348,7 +349,7 @@ using size_type = call_<
                   >;
 
 template<typename Enum, typename... Enums>
-static constexpr bool enum_is_present = std::disjunction_v<std::is_same<Enum, Enums>...>;
+constexpr bool enum_is_present = std::disjunction_v<std::is_same<Enum, Enums>...>;
 
 // FIXME: For enums with a larger than usual initial value,
 // there also needs to be an initial offset (a range).
