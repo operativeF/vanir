@@ -7,7 +7,6 @@
 #endif // defined(__GNUC__) || defined(__clang__)
 
 import Pupple;
-import Pupple.Algorithm;
 
 #if _MSC_VER
 import std;
