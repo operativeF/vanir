@@ -56,7 +56,7 @@ add_dependencies(nilbase boost_tmp)
 
 target_sources(nilbase
     PUBLIC
-    FILE_SET boost_tmp_modules TYPE CXX_MODULES FILES
+    FILE_SET nilbase_modules TYPE CXX_MODULES FILES
     ${PUPPLE_IXX}
     ${BASE_ALGORITHM}
     ${STRING_ALGORITHM}
@@ -67,12 +67,12 @@ target_sources(nilbase
 if(MSVC)
     target_include_directories(nilbase PUBLIC ${CMAKE_SOURCE_DIR}/include/windows)
     target_compile_options(nilbase PRIVATE /reference std=C:/dev/STL/std.ifc)
+    target_link_libraries(nilbase PRIVATE C:/dev/STL/std.obj)
 endif()
 
 target_link_libraries(nilbase
     PRIVATE
         boost_tmp
-        C:/dev/STL/std.obj
         fmt::fmt
 )
 
