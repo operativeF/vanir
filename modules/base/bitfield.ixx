@@ -181,11 +181,11 @@ using enum_list = call_<sort_<lift_<less>>, int_<static_cast<std::underlying_typ
 template<auto E1, auto E2, auto... Es>
 using conflict_list = enum_list<E1, E2, Es...>;
 
-template<typename InputFields, typename ConflictFields>
-concept check_conflicts = requires
-{
-    requires call_<unpack_<or_<is_<InputFields>, not_<>>>, ConflictFields>;
-};
+// template<typename InputFields, typename ConflictFields>
+// concept check_conflicts = requires
+// {
+//     requires call_<unpack_<or_<is_<InputFields>, not_<>>>, ConflictFields>;
+// };
 
 #define FAIL_CONSTEVAL throw
 

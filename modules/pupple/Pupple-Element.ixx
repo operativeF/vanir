@@ -44,14 +44,14 @@ struct pupple_element : IV
 {
     template<typename OV = Value>
     explicit(!std::convertible_to<OV, Value>) constexpr pupple_element(const OV& v)
-        noexcept(std::is_nothrow_copy_constructible<OV>)
+        noexcept(std::is_nothrow_copy_constructible_v<OV>)
         : IV{v}
     {
     }
 
     template<typename OV = Value>
     explicit(!std::convertible_to<OV, Value>) constexpr pupple_element(OV&& v)
-        noexcept(std::is_nothrow_move_constructible<OV>)
+        noexcept(std::is_nothrow_move_constructible_v<OV>)
         : IV{std::forward<OV>(v)}
     {
     }
