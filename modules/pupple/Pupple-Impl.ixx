@@ -134,9 +134,6 @@ using size_greater_ = tmp::call_<
 // and the second part generated, pupple<double, int, char>
 // actually represents how the types are stored.
 template<typename... Ts>
-using remap_by_size_test_ = tmp::call_<tmp::map_<tmp::lift_<size_greater>, tmp::lift_<pupple, tmp::lift_<PuppleBase>>>, Ts...>;
-
-template<typename... Ts>
 using remap_by_size_ = tmp::call_<
     tmp::zip_with_index_<tmp::listify_,
         tmp::sort_<tmp::lift_<size_greater_>,

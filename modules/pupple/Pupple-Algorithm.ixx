@@ -52,9 +52,9 @@ template<typename... TupleTs, std::size_t... Ns>
 constexpr auto pupple_cat_impl(std::index_sequence<Ns...>, TupleTs&&... tps)
 {
     using cc_seq = concat_seqs<
-        repeated_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>, Ns>...>;
+        repeated_sequence<std::tuple_size_v<std::remove_cvref_t<TupleTs>>, Ns>...>;
     using ts_seq = concat_seqs<
-        std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<TupleTs>>>...>;
+        std::make_index_sequence<std::tuple_size_v<std::remove_cvref_t<TupleTs>>>...>;
 
     return []<typename FullTuple, std::size_t... Is, std::size_t... Js>
         (FullTuple&& ft, std::index_sequence<Is...>, std::index_sequence<Js...>)
@@ -92,7 +92,7 @@ constexpr auto append(TupleT&& elements, Us&&... params) noexcept
         {
             return Tuple{get<Is>(tp)..., std::forward<Params>(ps)...};
         } (std::forward<TupleT>(elements),
-           tuple_indexer<std::remove_reference_t<TupleT>>{},
+           tuple_indexer<std::remove_cvref_t<TupleT>>{},
            std::forward<Us>(params)...);
 }
 
