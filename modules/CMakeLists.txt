@@ -4,8 +4,6 @@
 #  See accompanying file LICENSE_1_0.txt or copy at
 #  http://www.boost.org/LICENSE_1_0.txt
 
-FetchContent_MakeAvailable(boost_tmp)
-
 set(PUPPLE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/pupple)
 set(TMP_UNITS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tmp_units)
 
