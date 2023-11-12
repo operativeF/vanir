@@ -19,7 +19,7 @@ export module Utils.Chars;
 import std;
 #endif // _MSC_VER
 
-export namespace nil::utils
+export namespace vanir::utils
 {
 
 constexpr bool isAlphaUpper(char ch)
@@ -276,4 +276,4 @@ constexpr std::byte HexCharToDec(std::byte C)
     }
 }
 
-} // export namespace nil::utils
+} // export namespace vanir::utils

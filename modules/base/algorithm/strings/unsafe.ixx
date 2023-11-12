@@ -16,7 +16,7 @@ import std;
 
 // Generally unsafe utilities to be used in circumstances where
 // speed is important and / or lifetimes are a certainty.
-export namespace nil::unsafe
+export namespace vanir::unsafe
 {
 
 // From an input string_view, split the view on each delimiter and store each split in a vector.
@@ -43,4 +43,4 @@ constexpr std::vector<std::string_view> StrViewSplit(std::string_view strView, c
     return output;
 }
 
-} // namespace nil::unsafe
+} // namespace vanir::unsafe

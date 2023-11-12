@@ -26,7 +26,7 @@ concept BitfieldCompatible =  requires
     {Enum::_max_size};
 };
 
-export namespace nil::utils
+export namespace vanir::utils
 {
 
 template<BitfieldCompatible Enum>

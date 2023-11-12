@@ -16,7 +16,8 @@ export import Utils.Strings.Unsafe;
 import std;
 #endif // _MSC_VER
 
-export template<size_t N>
+export namespace vanir::utils {
+
 struct StrLit
 {
     constexpr StrLit(const char (&str)[N])
@@ -26,3 +27,4 @@ struct StrLit
 
     char value[N];
 };
+} // export namespace vanir::utils

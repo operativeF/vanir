@@ -13,7 +13,7 @@ export module Utils.BitManip;
 import std;
 #endif // _MSC_VER
 
-export namespace nil::utils
+export namespace vanir::utils
 {
 
 template<typename V>
