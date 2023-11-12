@@ -31,12 +31,6 @@ set(BASE_ALGORITHM
     ${ALGO_DIR}/stringutils.ixx
 )
 
-set(STRING_ALGORITHM
-    ${ALGO_DIR}/strings/modifying.ixx
-    ${ALGO_DIR}/strings/nonmodifying.ixx
-    ${ALGO_DIR}/strings/unsafe.ixx
-)
-
 if(MSVC)
     set(WIN_ONLY_INTERFACE
         ${CMAKE_CURRENT_SOURCE_DIR}/windows/unique_hnd.ixx

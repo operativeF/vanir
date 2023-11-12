@@ -36,5 +36,3 @@ set(GEOMETRY_IXX
 #         boost_tmp
 #         EigenHeaderUnits
 # )
-
-# target_compile_options(VanirGeometry PRIVATE /reference std=C:/dev/STL/std.ifc /translateInclude)
