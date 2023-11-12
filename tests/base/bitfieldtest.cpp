@@ -185,7 +185,7 @@ ut::suite BitfieldOpTests = []
     };
 };
 
-template<typename T, size_t N>
+template<typename T, std::size_t N>
 struct check_array : std::array<T, N> {};
 
 template<typename... Args>

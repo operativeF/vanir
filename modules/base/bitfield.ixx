@@ -363,7 +363,7 @@ class CombineBitfield
 public:
     // FIXME: What if _max_size == 0?
     // FIXME: Not correct.
-    using value_type = size_type<(static_cast<size_t>(Enums::_max_size) + ... + 0)>;
+    using value_type = size_type<(static_cast<std::size_t>(Enums::_max_size) + ... + 0)>;
     using enum_list = list_<Enums...>;
     
     template<typename Enum>

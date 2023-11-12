@@ -40,7 +40,7 @@ export namespace Vanir::Geo
         return 0.5 * side_length * (1.0 / std::tan(std::numbers::pi / num_of_sides));
     }
 
-    template<typename Scalar, size_t NSides, size_t Dim>
+    template<typename Scalar, std::size_t NSides, std::size_t Dim>
     class Polygon
     {
     public:
@@ -92,18 +92,18 @@ export namespace Vanir::Geo
         value_type polyn{};
     };
 
-    template<size_t Sides>
+    template<std::size_t Sides>
     using Polygon2d = Polygon<double, Sides, 2>;
-    template<size_t Sides>
+    template<std::size_t Sides>
     using Polygon2f = Polygon<float, Sides, 2>;
-    template<size_t Sides>
+    template<std::size_t Sides>
     using Polygon2i = Polygon<int, Sides, 2>;
 
-    template<size_t Sides>
+    template<std::size_t Sides>
     using Polygon3d = Polygon<double, Sides, 3>;
-    template<size_t Sides>
+    template<std::size_t Sides>
     using Polygon3f = Polygon<float, Sides, 3>;
-    template<size_t Sides>
+    template<std::size_t Sides>
     using Polygon3i = Polygon<int, Sides, 3>;
 
     using Tri2d = Polygon2d<3>;

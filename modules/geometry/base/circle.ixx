@@ -21,7 +21,7 @@ export namespace Vanir::Geo
 {
     // Much like the Line object, this represents
     // an object that represents an equation of the circle.
-    template<typename Scalar, size_t Dim>
+    template<typename Scalar, std::size_t Dim>
     class Circle
     {
     public:

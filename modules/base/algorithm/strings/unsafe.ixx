@@ -25,7 +25,7 @@ constexpr std::vector<std::string_view> StrViewSplit(std::string_view strView, c
 {
     std::vector<std::string_view> output;
 
-    size_t first{0};
+    std::size_t first{0};
 
     while (first < strView.size())
     {

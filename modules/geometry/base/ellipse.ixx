@@ -7,7 +7,7 @@ import Vanir.Geometry.Line;
 
 export namespace Vanir::Geo
 {
-    template<typename Scalar, size_t Dim>
+    template<typename Scalar, std::size_t Dim>
     struct Ellipse
     {
         template<typename S>

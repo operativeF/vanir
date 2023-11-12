@@ -21,7 +21,7 @@ import std;
 
 export namespace Vanir::Geo
 {
-    template<typename Scalar, size_t Dim>
+    template<typename Scalar, std::size_t Dim>
     struct Point
     {
         using value_type  = typename Eigen::Matrix<Scalar, Dim, 1>;

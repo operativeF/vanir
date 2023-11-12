@@ -26,10 +26,10 @@ export namespace Vanir::Geo
     // ...
     // rowvec[-slope*x_m1, y_m2, ..., Z_mn, c_mn]
     // 
-    template<typename Scalar, size_t Dim>
+    template<typename Scalar, std::size_t Dim>
     struct Line
     {
-        using dim         = std::integral_constant<int, size_t{Dim + 1}>;
+        using dim         = std::integral_constant<int, std::size_t{Dim + 1}>;
         using value_type  = typename Eigen::Matrix<Scalar, dim::value, 1>;
         using scalar_type = Scalar;
         using width       = std::integral_constant<int, 3>;
