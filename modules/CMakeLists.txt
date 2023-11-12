@@ -64,12 +64,6 @@ target_sources(nilbase
     ${INTERNAL_UTILITIES_IXX}
 )
 
-if(MSVC)
-    target_include_directories(nilbase PUBLIC ${CMAKE_SOURCE_DIR}/include/windows)
-    target_compile_options(nilbase PRIVATE /reference std=C:/dev/STL/std.ifc)
-    target_link_libraries(nilbase PRIVATE C:/dev/STL/std.obj)
-endif()
-
 target_link_libraries(nilbase
     PRIVATE
         boost_tmp
