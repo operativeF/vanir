@@ -5,7 +5,7 @@
 #include <vector>
 #endif // defined(__GNUC__) || defined(__clang__)
 
-import Nil.MetaTest;
+import boost.ut;
 import Utils.Strings;
 
 #if _MSC_VER
@@ -17,7 +17,7 @@ namespace ut = boost::ut;
 ut::suite StrModifyingAlgorithmTests = []
 {
     using namespace ut;
-    using namespace nil::utils;
+    using namespace vanir::utils;
 
     "ReplaceAll"_test = []
     {
@@ -185,7 +185,7 @@ ut::suite StrModifyingAlgorithmTests = []
 ut::suite StrNonModifyingAlgorithmTests = []
 {
     using namespace ut;
-    using namespace nil::utils;
+    using namespace vanir::utils;
 
     "Case conversion"_test = []
     {

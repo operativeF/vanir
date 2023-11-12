@@ -16,7 +16,7 @@
 #include <format>
 #endif // defined(__GNUC__)
 
-import Nil.MetaTest;
+import boost.ut;
 import Utils.Bitfield;
 
 import Boost.TMP;
@@ -53,7 +53,7 @@ enum class Styles
     _max_size
 };
 
-using StyleFlags = nil::utils::InclBitfield<Styles>;
+using StyleFlags = vanir::utils::InclBitfield<Styles>;
 
 ut::suite BitfieldTests = []
 {
@@ -109,7 +109,7 @@ ut::suite BitfieldTests = []
 ut::suite BitfieldOpTests = []
 {
     using namespace ut;
-    using namespace nil::utils;
+    using namespace vanir::utils;
 
     "& operator"_test = []
     {
@@ -196,7 +196,7 @@ ut::suite BitfieldMetaTest = []
     using namespace ut;
 
     using namespace boost::tmp;
-    using namespace nil::utils;
+    using namespace vanir::utils;
 
     using resolute = bitfield<check_array{Styles::Bold, Styles::Underline}, check_array{Styles::Italic, Styles::Underline, Styles::Bold}>;
 
@@ -212,7 +212,7 @@ ut::suite BitfieldMetaTest = []
 ut::suite CombineBitfieldTest = []
 {
     using namespace ut;
-    using namespace nil::utils;
+    using namespace vanir::utils;
 
     using cb = CombineBitfield<Borders, Styles>;
 

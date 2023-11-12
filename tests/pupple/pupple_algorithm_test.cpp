@@ -10,7 +10,7 @@
 #include <format>
 #endif // defined(__GNUC__)
 
-import Nil.MetaTest;
+import boost.ut;
 
 import Boost.TMP;
 
